@@ -38,13 +38,13 @@ console.log(controllers);
 controllers.forEach(controller => {
   const methods = Reflect.getMetadata(METADATA_KEY.controllerMethod, controller.target);
   const params = Reflect.getMetadata(METADATA_KEY.controllerParams, controller.target);
-  const middlewares = Reflect.getMetadata(METADATA_KEY.controllerMiddlewares, controller.target);
 
   const instController = Injector.resolve<any>(controller.target);
 
   if(methods instanceof Array) {
-    methods.forEach(({ method, descriptor, path, middlewares }) => {
-      const handler = createHandler(descriptor.value.bind(instController), params);
+    methods.forEach(({ method, descriptor, path, middlewares, key }) => {
+      const methodParams = params.filter(({ methodName }) => methodName === `${controller.target.name}:${key}`);
+      const handler = createHandler(descriptor.value.bind(instController), methodParams);
       app[method](`/${controller.path}/${path}`, ...middlewares, handler);
     });
 
@@ -57,7 +57,6 @@ function createHandler(method: Function, params: any[]) {
   return async function (req: Request, res: Response, next: NextFunction) {
     try {
       const args = createArgs(req, res, next, params);
-
       const result = await method(...args);
       res.send(result);
     } catch (e) {
@@ -71,6 +70,8 @@ function createArgs(req, res, next, params) {
   if(!params || !params.length) {
     return [req, res, next];
   }
+
+  console.log('Creating args', params);
 
   return params.map(({ type, paramName }) => {
     switch (type) {

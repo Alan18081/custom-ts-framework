@@ -14,7 +14,7 @@ export class UsersController {
     next();
   })
   async getUsers(@Headers('authorization') token: string, @Param('id') id: number) {
-    console.log('My service', this.someService);
+    console.log('My service', this.someService.findOne());
     console.log('From route', id);
     console.log('From route: token', token);
   }

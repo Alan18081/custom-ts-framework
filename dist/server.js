@@ -59,6 +59,7 @@ exports.Get = Get;
 function RouteParams(type, paramName) {
     return function (target, name, index) {
         var metadata = {
+            methodName: target.constructor.name + ":" + name,
             index: index,
             type: type,
             paramName: paramName

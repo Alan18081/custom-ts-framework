@@ -60,6 +60,7 @@ export function Get(path: string, ...middlewares: RequestHandler[]) {
 function RouteParams(type: string, paramName: string) {
   return function (target: any, name: string, index: number) {
     const metadata = {
+      methodName: `${target.constructor.name}:${name}`,
       index,
       type,
       paramName

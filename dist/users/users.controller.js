@@ -56,7 +56,7 @@ var UsersController = /** @class */ (function () {
     UsersController.prototype.getUsers = function (token, id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                console.log('My service', this.someService);
+                console.log('My service', this.someService.findOne());
                 console.log('From route', id);
                 console.log('From route: token', token);
                 return [2 /*return*/];

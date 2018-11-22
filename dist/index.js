@@ -75,12 +75,15 @@ console.log(controllers);
 controllers.forEach(function (controller) {
     var methods = Reflect.getMetadata(server_1.METADATA_KEY.controllerMethod, controller.target);
     var params = Reflect.getMetadata(server_1.METADATA_KEY.controllerParams, controller.target);
-    var middlewares = Reflect.getMetadata(server_1.METADATA_KEY.controllerMiddlewares, controller.target);
     var instController = injector_1.Injector.resolve(controller.target);
     if (methods instanceof Array) {
         methods.forEach(function (_a) {
-            var method = _a.method, descriptor = _a.descriptor, path = _a.path, middlewares = _a.middlewares;
-            var handler = createHandler(descriptor.value.bind(instController), params);
+            var method = _a.method, descriptor = _a.descriptor, path = _a.path, middlewares = _a.middlewares, key = _a.key;
+            var methodParams = params.filter(function (_a) {
+                var methodName = _a.methodName;
+                return methodName === controller.target.name + ":" + key;
+            });
+            var handler = createHandler(descriptor.value.bind(instController), methodParams);
             app[method].apply(app, ["/" + controller.path + "/" + path].concat(middlewares, [handler]));
         });
     }
@@ -114,6 +117,7 @@ function createArgs(req, res, next, params) {
     if (!params || !params.length) {
         return [req, res, next];
     }
+    console.log('Creating args', params);
     return params.map(function (_a) {
         var type = _a.type, paramName = _a.paramName;
         switch (type) {
