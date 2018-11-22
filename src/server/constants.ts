@@ -1,5 +1,3 @@
-import { RequestHandler } from 'express';
-
 export const METADATA_KEY = {
   controller: 'ioc:controller',
   controllerMethod: 'ioc:controller-method',
@@ -9,16 +7,7 @@ export const METADATA_KEY = {
   service: 'ioc:service'
 };
 
-export const MODULE_KEYS = {
-  controllers: 'module:controllers',
-  services: 'module:services',
-  imports: 'module:imports',
-  exports: 'module:exports'
-};
-
 export const PARAMS_TYPES = {
   params: 'params',
   headers: 'headers'
 };
-
-// const app = express();

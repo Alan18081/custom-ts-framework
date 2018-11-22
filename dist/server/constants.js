@@ -8,14 +8,7 @@ exports.METADATA_KEY = {
     module: 'ioc:module',
     service: 'ioc:service'
 };
-exports.MODULE_KEYS = {
-    controllers: 'module:controllers',
-    services: 'module:services',
-    imports: 'module:imports',
-    exports: 'module:exports'
-};
 exports.PARAMS_TYPES = {
     params: 'params',
     headers: 'headers'
 };
-// const app = express();

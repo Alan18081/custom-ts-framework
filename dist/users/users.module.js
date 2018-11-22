@@ -9,13 +9,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var module_1 = require("../module");
 var users_service_1 = require("./users.service");
 var users_controller_1 = require("./users.controller");
+var auth_module_1 = require("../auth/auth.module");
 var UsersModule = /** @class */ (function () {
     function UsersModule() {
     }
     UsersModule = __decorate([
         module_1.Module({
+            imports: [auth_module_1.AuthModule],
             controllers: [users_controller_1.UsersController],
-            providers: [users_service_1.UsersService]
+            services: [users_service_1.UsersService]
         })
     ], UsersModule);
     return UsersModule;

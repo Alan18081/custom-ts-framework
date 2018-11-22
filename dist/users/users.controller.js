@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var server_1 = require("../server");
+var decorators_1 = require("../server/decorators");
 var users_service_1 = require("./users.service");
 var UsersController = /** @class */ (function () {
     function UsersController(someService) {
@@ -72,24 +72,24 @@ var UsersController = /** @class */ (function () {
         });
     };
     __decorate([
-        server_1.Get('list/:id', function (req, res, next) {
+        decorators_1.Get('list/:id', function (req, res, next) {
             console.log(req.method);
             next();
         }),
-        __param(0, server_1.Headers('authorization')), __param(1, server_1.Param('id')),
+        __param(0, decorators_1.Headers('authorization')), __param(1, decorators_1.Param('id')),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [String, Number]),
         __metadata("design:returntype", Promise)
     ], UsersController.prototype, "getUsers", null);
     __decorate([
-        server_1.Get('mark/:id'),
-        __param(0, server_1.Param('id')),
+        decorators_1.Get('mark/:id'),
+        __param(0, decorators_1.Param('id')),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Number]),
         __metadata("design:returntype", Promise)
     ], UsersController.prototype, "getMark", null);
     UsersController = __decorate([
-        server_1.Controller('users'),
+        decorators_1.Controller('users'),
         __metadata("design:paramtypes", [users_service_1.UsersService])
     ], UsersController);
     return UsersController;

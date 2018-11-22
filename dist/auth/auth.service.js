@@ -6,13 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var decorators_1 = require("../server/decorators");
-var AuthController = /** @class */ (function () {
-    function AuthController() {
+var injector_1 = require("../injector");
+var AuthService = /** @class */ (function () {
+    function AuthService() {
     }
-    AuthController = __decorate([
-        decorators_1.Controller('auth')
-    ], AuthController);
-    return AuthController;
+    AuthService.prototype.login = function () {
+        console.log('Login process');
+    };
+    AuthService = __decorate([
+        injector_1.Injectable()
+    ], AuthService);
+    return AuthService;
 }());
-exports.AuthController = AuthController;
+exports.AuthService = AuthService;

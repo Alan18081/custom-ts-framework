@@ -1,4 +1,4 @@
-import { Controller, Get, Headers, Param } from '../server';
+import { Controller, Get, Headers, Param } from '../server/decorators';
 import { UsersService } from './users.service';
 
 @Controller('users')
