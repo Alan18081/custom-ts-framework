@@ -8,9 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -49,145 +46,46 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 var express = require("express");
-var METADATA_KEY = {
-    controller: 'ioc:controller',
-    controllerMethod: 'ioc:controller-method',
-    controllerParams: 'ioc:controller-params',
-    controllerMiddlewares: 'ioc:controller-middlewares'
-};
-var PARAMS_TYPES = {
-    params: 'params',
-    headers: 'headers'
-};
-// const app = express();
-function Controller(path) {
-    var middleware = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        middleware[_i - 1] = arguments[_i];
+var injector_1 = require("./injector");
+var server_1 = require("./server");
+var users_module_1 = require("./users/users.module");
+var userModule = new users_module_1.UsersModule();
+var SomeInject = /** @class */ (function () {
+    function SomeInject() {
     }
-    return function (target) {
-        var metadata = {
-            path: path,
-            middleware: middleware,
-            target: target
-        };
-        var prevMetadata = Reflect.getMetadata(METADATA_KEY.controller, Reflect) || [];
-        var currentMetadata = [metadata].concat(prevMetadata);
-        Reflect.defineMetadata(METADATA_KEY.controller, currentMetadata, Reflect);
+    SomeInject.prototype.say = function () {
+        console.log('Hello from some injectee');
     };
-}
-function Get(path) {
-    var middlewares = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        middlewares[_i - 1] = arguments[_i];
-    }
-    return function (target, key, descriptor) {
-        var metadata = {
-            key: key,
-            method: 'get',
-            path: path,
-            target: target,
-            descriptor: descriptor,
-            middlewares: middlewares
-        };
-        var metadataList = [];
-        if (!Reflect.hasMetadata(METADATA_KEY.controllerMethod, target.constructor)) {
-            Reflect.defineMetadata(METADATA_KEY.controllerMethod, metadataList, target.constructor);
-        }
-        else {
-            metadataList = Reflect.getMetadata(METADATA_KEY.controllerMethod, target.constructor);
-        }
-        metadataList.push(metadata);
-    };
-}
-function RouteParams(type, paramName) {
-    return function (target, name, index) {
-        var metadata = {
-            index: index,
-            type: type,
-            paramName: paramName
-        };
-        var metadataList = [];
-        if (!Reflect.hasMetadata(METADATA_KEY.controllerParams, target.constructor)) {
-            Reflect.defineMetadata(METADATA_KEY.controllerParams, metadataList, target.constructor);
-        }
-        else {
-            metadataList = Reflect.getMetadata(METADATA_KEY.controllerParams, target.constructor);
-        }
-        metadataList.unshift(metadata);
-    };
-}
-function Param(name) {
-    return RouteParams(PARAMS_TYPES.params, name);
-}
-function Headers(name) {
-    return RouteParams(PARAMS_TYPES.headers, name);
-}
-var Item = /** @class */ (function () {
-    function Item() {
-    }
-    Item.prototype.getUsers = function (token, id) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                console.log('From route', id);
-                console.log('From route: token', token);
-                return [2 /*return*/];
-            });
-        });
-    };
-    Item.prototype.getMark = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                console.log('From second route', id);
-                return [2 /*return*/];
-            });
-        });
-    };
-    __decorate([
-        Get('list/:id', function (req, res, next) {
-            console.log(req.method);
-            next();
-        }),
-        __param(0, Headers('authorization')), __param(1, Param('id')),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String, Number]),
-        __metadata("design:returntype", Promise)
-    ], Item.prototype, "getUsers", null);
-    __decorate([
-        Get('mark/:id'),
-        __param(0, Param('id')),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number]),
-        __metadata("design:returntype", Promise)
-    ], Item.prototype, "getMark", null);
-    Item = __decorate([
-        Controller('users')
-    ], Item);
-    return Item;
+    SomeInject = __decorate([
+        Injectable()
+    ], SomeInject);
+    return SomeInject;
 }());
-var Item2 = /** @class */ (function () {
-    function Item2() {
-    }
-    Item2 = __decorate([
-        Controller('products')
-    ], Item2);
-    return Item2;
-}());
+// @Controller('products')
+// class Item2 {
+//
+//   // @Get('')
+//   // async getUsers() {
+//   //
+//   // }
+// }
 var app = express();
-var controllers = Reflect.getMetadata(METADATA_KEY.controller, Reflect);
+var controllers = Reflect.getMetadata(server_1.METADATA_KEY.controller, Reflect);
+console.log(controllers);
 controllers.forEach(function (controller) {
-    var methods = Reflect.getMetadata(METADATA_KEY.controllerMethod, controller.target);
-    var params = Reflect.getMetadata(METADATA_KEY.controllerParams, controller.target);
-    var middlewares = Reflect.getMetadata(METADATA_KEY.controllerMiddlewares, controller.target);
+    var methods = Reflect.getMetadata(server_1.METADATA_KEY.controllerMethod, controller.target);
+    var params = Reflect.getMetadata(server_1.METADATA_KEY.controllerParams, controller.target);
+    var middlewares = Reflect.getMetadata(server_1.METADATA_KEY.controllerMiddlewares, controller.target);
+    var instController = injector_1.Injector.resolve(controller.target);
     if (methods instanceof Array) {
         methods.forEach(function (_a) {
             var method = _a.method, descriptor = _a.descriptor, path = _a.path, middlewares = _a.middlewares;
-            var handler = createHandler(descriptor, params);
+            var handler = createHandler(descriptor.value.bind(instController), params);
             app[method].apply(app, ["/" + controller.path + "/" + path].concat(middlewares, [handler]));
         });
     }
 });
-function createHandler(descriptor, params) {
+function createHandler(method, params) {
     return function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
             var args, result, e_1;
@@ -196,13 +94,14 @@ function createHandler(descriptor, params) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         args = createArgs(req, res, next, params);
-                        return [4 /*yield*/, descriptor.value.apply(descriptor, args)];
+                        return [4 /*yield*/, method.apply(void 0, args)];
                     case 1:
                         result = _a.sent();
                         res.send(result);
                         return [3 /*break*/, 3];
                     case 2:
                         e_1 = _a.sent();
+                        console.log(e_1);
                         next(e_1);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
@@ -218,13 +117,37 @@ function createArgs(req, res, next, params) {
     return params.map(function (_a) {
         var type = _a.type, paramName = _a.paramName;
         switch (type) {
-            case PARAMS_TYPES.params:
+            case server_1.PARAMS_TYPES.params:
                 return req.params[paramName];
-            case PARAMS_TYPES.headers:
+            case server_1.PARAMS_TYPES.headers:
                 return req.headers[paramName];
         }
     });
 }
-app.listen(3000, function () {
+function Injectable() {
+    return function (target) {
+        // Reflect.defineMetadata(METADATA_KEY.service, target.constructor)
+    };
+}
+var SomeOtherInjectable = /** @class */ (function () {
+    function SomeOtherInjectable(someInject) {
+        this.someInject = someInject;
+    }
+    SomeOtherInjectable = __decorate([
+        Injectable(),
+        __metadata("design:paramtypes", [SomeInject])
+    ], SomeOtherInjectable);
+    return SomeOtherInjectable;
+}());
+app.listen(4000, function () {
     console.log('Listening');
 });
+// const res: SomeOtherInjectable = Injector.resolve<SomeOtherInjectable>(SomeOtherInjectable);
+// res.someInject.say();
+//
+// @Module({
+//   providers: [SomeOtherInjectable, SomeInject],
+//   controllers: [Item],
+// })
+// export class MyModule {}
+// console.log(Reflect.getMetadataKeys(Reflect))

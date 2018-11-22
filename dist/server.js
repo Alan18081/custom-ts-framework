@@ -1,59 +1,83 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var http_1 = __importDefault(require("http"));
-var url = __importStar(require("url"));
-var handlers = {};
-var Server = /** @class */ (function () {
-    function Server(port) {
-        this.port = port;
-        this.server = http_1.default.createServer(function (req, res) {
-        });
-        this.server.listen(this.port, function () {
-            console.log('Server is running');
-        });
+exports.METADATA_KEY = {
+    controller: 'ioc:controller',
+    controllerMethod: 'ioc:controller-method',
+    controllerParams: 'ioc:controller-params',
+    controllerMiddlewares: 'ioc:controller-middlewares',
+    module: 'ioc:module',
+    service: 'ioc:service'
+};
+exports.PARAMS_TYPES = {
+    params: 'params',
+    headers: 'headers'
+};
+// const app = express();
+function Controller(path) {
+    var middleware = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        middleware[_i - 1] = arguments[_i];
     }
-    Server.prototype.listen = function () {
-    };
-    return Server;
-}());
-exports.Server = Server;
-var server = http_1.default.createServer(function (req, res) {
-    if (req.url) {
-        var parsedUrl = url.parse(req.url);
-    }
-});
-// const app: Application  = express();
-function SetValue(object, name) {
-    Object.defineProperty(object, name, {
-        value: 'Alan',
-        configurable: true
-    });
-}
-exports.SetValue = SetValue;
-function Param(param) {
-    console.log(param);
-    return function (obj, name, index) {
-        return {
-            value: 'Parameter'
+    return function (target) {
+        console.log('Hey');
+        var metadata = {
+            path: path,
+            middleware: middleware,
+            target: target
         };
+        var prevMetadata = Reflect.getMetadata(exports.METADATA_KEY.controller, Reflect) || [];
+        var currentMetadata = [metadata].concat(prevMetadata);
+        Reflect.defineMetadata(exports.METADATA_KEY.controller, currentMetadata, Reflect);
     };
+}
+exports.Controller = Controller;
+function Get(path) {
+    var middlewares = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        middlewares[_i - 1] = arguments[_i];
+    }
+    return function (target, key, descriptor) {
+        var metadata = {
+            key: key,
+            method: 'get',
+            path: path,
+            target: target,
+            descriptor: descriptor,
+            middlewares: middlewares
+        };
+        var metadataList = [];
+        if (!Reflect.hasMetadata(exports.METADATA_KEY.controllerMethod, target.constructor)) {
+            Reflect.defineMetadata(exports.METADATA_KEY.controllerMethod, metadataList, target.constructor);
+        }
+        else {
+            metadataList = Reflect.getMetadata(exports.METADATA_KEY.controllerMethod, target.constructor);
+        }
+        metadataList.push(metadata);
+    };
+}
+exports.Get = Get;
+function RouteParams(type, paramName) {
+    return function (target, name, index) {
+        var metadata = {
+            index: index,
+            type: type,
+            paramName: paramName
+        };
+        var metadataList = [];
+        if (!Reflect.hasMetadata(exports.METADATA_KEY.controllerParams, target.constructor)) {
+            Reflect.defineMetadata(exports.METADATA_KEY.controllerParams, metadataList, target.constructor);
+        }
+        else {
+            metadataList = Reflect.getMetadata(exports.METADATA_KEY.controllerParams, target.constructor);
+        }
+        metadataList.unshift(metadata);
+    };
+}
+function Param(name) {
+    return RouteParams(exports.PARAMS_TYPES.params, name);
 }
 exports.Param = Param;
-function Post(url) {
-    return function (obj, key) {
-        return {
-            value: obj[key]
-        };
-    };
+function Headers(name) {
+    return RouteParams(exports.PARAMS_TYPES.headers, name);
 }
-exports.Post = Post;
+exports.Headers = Headers;
