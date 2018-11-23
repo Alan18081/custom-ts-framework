@@ -9,19 +9,24 @@ export function Injectable() {
 }
 
 export const Injector = new class {
-  resolve<T>(target: any, module: any, services: any[]): T {
+  resolve<T>(target: any, module: any, serviceTypes: any[]): T {
     const tokens = Reflect.getMetadata('design:paramtypes', target) || [];
-    const moduleServices = Reflect.getMetadata(MODULE_KEYS.services, module) || []
+    const moduleServices = Reflect.getMetadata(MODULE_KEYS.services, module) || {};
+    console.log(moduleServices);
+
+    const moduleServicesList = Object.keys(moduleServices).map(key => moduleServices[key]);
 
     const injectors = tokens.map(token => {
-      if(services.indexOf(token) === -1) {
-        console.log(services, token);
-        throw new TypeError('Type doesn\'t injected');
+      const isImportedService = moduleServicesList.find(({ type }) => type === token);
+      if(isImportedService) {
+        return isImportedService.instance;
       }
-      if(services[token.name]) {
-        return services[token.name].instance;
+
+      if(serviceTypes.indexOf(token) !== -1) {
+        return Injector.resolve<any>(token, module, serviceTypes);
       }
-      return Injector.resolve<any>(token, module, services);
+
+      throw new TypeError('Type doesn\'t injected');
     });
 
     return new target(...injectors);

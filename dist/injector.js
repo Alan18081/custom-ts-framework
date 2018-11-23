@@ -10,18 +10,23 @@ exports.Injectable = Injectable;
 exports.Injector = new /** @class */ (function () {
     function class_1() {
     }
-    class_1.prototype.resolve = function (target, module, services) {
+    class_1.prototype.resolve = function (target, module, serviceTypes) {
         var tokens = Reflect.getMetadata('design:paramtypes', target) || [];
-        var moduleServices = Reflect.getMetadata(server_1.MODULE_KEYS.services, module) || [];
+        var moduleServices = Reflect.getMetadata(server_1.MODULE_KEYS.services, module) || {};
+        console.log(moduleServices);
+        var moduleServicesList = Object.keys(moduleServices).map(function (key) { return moduleServices[key]; });
         var injectors = tokens.map(function (token) {
-            if (services.indexOf(token) === -1) {
-                console.log(services, token);
-                throw new TypeError('Type doesn\'t injected');
+            var isImportedService = moduleServicesList.find(function (_a) {
+                var type = _a.type;
+                return type === token;
+            });
+            if (isImportedService) {
+                return isImportedService.instance;
             }
-            if (services[token.name]) {
-                return services[token.name].instance;
+            if (serviceTypes.indexOf(token) !== -1) {
+                return exports.Injector.resolve(token, module, serviceTypes);
             }
-            return exports.Injector.resolve(token, module, services);
+            throw new TypeError('Type doesn\'t injected');
         });
         return new (target.bind.apply(target, [void 0].concat(injectors)))();
     };

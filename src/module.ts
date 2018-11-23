@@ -24,15 +24,24 @@ export function Module(config: ModuleConfig) {
     const exportsMetadata = {};
 
     imports.forEach((module: Function) => {
-      const exportedServices = Object.values(Reflect.getMetadata(MODULE_KEYS.exports, module)) || [];
-      exportedServices.forEach((service: Function) => {
+      const exportsServices = Reflect.getMetadata(MODULE_KEYS.exports, module);
+      const exportedServicesList = Object.keys(Reflect.getMetadata(MODULE_KEYS.exports, module)).map(key => exportsServices[key]) || [];
+      exportedServicesList.forEach((service: Function) => {
         servicesMetadata[service.name] = service;
       });
     });
 
+    Reflect.defineMetadata(
+      MODULE_KEYS.services,
+      servicesMetadata,
+      moduleConstructor
+    );
 
     exports.forEach((module: Function) => {
-      const instance = Injector.resolve<any>(module, moduleConstructor, services);
+      const instance = Injector.resolve<any>(
+        module,
+        moduleConstructor,
+        Object.keys(servicesMetadata).map(key => servicesMetadata[key]));
       const metadata = {
         name: module.name,
         instance,
@@ -54,6 +63,19 @@ export function Module(config: ModuleConfig) {
 
       servicesMetadata[service.name] = metadata;
     });
+
+    exports.forEach((exports: Function) => {
+      const instance = Injector.resolve<any>(exports, moduleConstructor, services);
+      const metadata = {
+        name: exports.name,
+        instance,
+        module: moduleConstructor.name,
+        type: exports
+      };
+
+      exportsMetadata[exports.name] = metadata;
+    });
+
     //
     Reflect.defineMetadata(
       MODULE_KEYS.services,

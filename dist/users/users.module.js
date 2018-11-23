@@ -17,7 +17,8 @@ var UsersModule = /** @class */ (function () {
         module_1.Module({
             imports: [auth_module_1.AuthModule],
             controllers: [users_controller_1.UsersController],
-            services: [users_service_1.UsersService]
+            services: [users_service_1.UsersService],
+            exports: []
         })
     ], UsersModule);
     return UsersModule;
