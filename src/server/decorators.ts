@@ -1,72 +1,38 @@
-import { METADATA_KEY, PARAMS_TYPES } from './constants';
-import {RequestHandler} from 'express';
+import { METADATA_KEY, METHODS } from './constants';
+import { getHandler } from './route-params.decorators';
 
-export function Controller(path: string, ...middleware: Function[]) {
+export function Controller(path: string) {
   return function (target: any) {
-    console.log('Hey');
     const metadata = {
-      path,
-      middleware,
-      target
+      path
     };
 
-    const prevMetadata = Reflect.getMetadata(METADATA_KEY.controller, Reflect) || [];
-
-    const currentMetadata = [metadata, ...prevMetadata];
-
-    Reflect.defineMetadata(METADATA_KEY.controller, currentMetadata, Reflect);
-
+    Reflect.defineMetadata(METADATA_KEY.controller, metadata, target);
   }
 }
 
-export function Get(path: string, ...middlewares: RequestHandler[]) {
-  return function (target: any, key: string, descriptor: PropertyDescriptor) {
-    const metadata = {
-      key,
-      method: 'get',
-      path,
-      target,
-      descriptor,
-      middlewares
-    };
+export function Get(path: string) {
+  return RouteMethod(METHODS.get, path);
+}
 
-    let metadataList = [];
+export function Post(path: string) {
+  return RouteMethod(METHODS.post, path);
+}
 
-    if(!Reflect.hasMetadata(METADATA_KEY.controllerMethod, target.constructor)) {
-      Reflect.defineMetadata(METADATA_KEY.controllerMethod, metadataList, target.constructor);
-    } else {
-      metadataList = Reflect.getMetadata(METADATA_KEY.controllerMethod, target.constructor);
-    }
+export function Put(path: string) {
+  return RouteMethod(METHODS.put, path);
+}
 
-    metadataList.push(metadata);
+export function Delete(path: string) {
+  return RouteMethod(METHODS.delete, path);
+}
+
+
+function RouteMethod(method: string, path: string) {
+  return function (target: any, name: string, descriptor: PropertyDescriptor) {
+    const handler = getHandler(target, name, descriptor);
+    handler.method = method;
+    handler.path = path;
   }
 }
 
-function RouteParams(type: string, paramName: string) {
-  return function (target: any, name: string, index: number) {
-    const metadata = {
-      methodName: `${target.constructor.name}:${name}`,
-      index,
-      type,
-      paramName
-    };
-
-    let metadataList = [];
-
-    if(!Reflect.hasMetadata(METADATA_KEY.controllerParams, target.constructor)) {
-      Reflect.defineMetadata(METADATA_KEY.controllerParams, metadataList, target.constructor);
-    } else {
-      metadataList = Reflect.getMetadata(METADATA_KEY.controllerParams, target.constructor);
-    }
-
-    metadataList.unshift(metadata);
-  }
-}
-
-export function Param(name: string) {
-  return RouteParams(PARAMS_TYPES.params, name);
-}
-
-export function Headers(name: string) {
-  return RouteParams(PARAMS_TYPES.headers, name);
-}

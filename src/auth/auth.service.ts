@@ -1,4 +1,4 @@
-import {Injectable} from '../injector';
+import {Injectable} from '../server/injector';
 
 @Injectable()
 export class AuthService {

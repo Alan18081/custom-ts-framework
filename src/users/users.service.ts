@@ -1,4 +1,4 @@
-import { Injectable } from '../injector';
+import { Injectable } from '../server/injector';
 import {AuthService} from '../auth/auth.service';
 
 @Injectable()

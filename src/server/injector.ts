@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import {MODULE_KEYS} from './server';
+import {MODULE_KEYS} from '../server';
 
 
 export function Injectable() {
@@ -12,7 +12,6 @@ export const Injector = new class {
   resolve<T>(target: any, module: any, serviceTypes: any[]): T {
     const tokens = Reflect.getMetadata('design:paramtypes', target) || [];
     const moduleServices = Reflect.getMetadata(MODULE_KEYS.services, module) || {};
-    console.log(moduleServices);
 
     const moduleServicesList = Object.keys(moduleServices).map(key => moduleServices[key]);
 

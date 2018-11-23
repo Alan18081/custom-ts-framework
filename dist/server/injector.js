@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-var server_1 = require("./server");
+var server_1 = require("../server");
 function Injectable() {
     return function (target) {
     };

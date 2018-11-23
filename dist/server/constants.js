@@ -8,7 +8,16 @@ exports.METADATA_KEY = {
     module: 'ioc:module',
     service: 'ioc:service'
 };
+exports.METHODS = {
+    get: 'get',
+    post: 'post',
+    put: 'put',
+    delete: 'delete',
+    update: 'update',
+    patch: 'patch'
+};
 exports.PARAMS_TYPES = {
     params: 'params',
-    headers: 'headers'
+    headers: 'headers',
+    body: 'body'
 };

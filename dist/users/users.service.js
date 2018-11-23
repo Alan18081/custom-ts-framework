@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var injector_1 = require("../injector");
+var injector_1 = require("../server/injector");
 var auth_service_1 = require("../auth/auth.service");
 var UsersService = /** @class */ (function () {
     function UsersService(authService) {

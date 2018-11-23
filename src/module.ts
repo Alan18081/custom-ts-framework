@@ -1,6 +1,7 @@
-import {Injector} from './injector';
+import {Injector} from './server/injector';
 import {MODULE_KEYS} from './server';
 import {METADATA_KEY} from './server/constants';
+import { Exports, Service } from './server/interfaces';
 
 interface ModuleConfig {
   imports: any[];
@@ -17,10 +18,8 @@ export function Module(config: ModuleConfig) {
     const exports = config.exports || [];
     const moduleConstructor = target;
 
-
     const controllersMetadata = {};
     const servicesMetadata = {};
-    const importsMetadata = {};
     const exportsMetadata = {};
 
     imports.forEach((module: Function) => {
@@ -42,7 +41,8 @@ export function Module(config: ModuleConfig) {
         module,
         moduleConstructor,
         Object.keys(servicesMetadata).map(key => servicesMetadata[key]));
-      const metadata = {
+
+      const metadata: Exports<typeof module> = {
         name: module.name,
         instance,
         module: moduleConstructor.name,
@@ -54,7 +54,7 @@ export function Module(config: ModuleConfig) {
 
     services.forEach((service: Function) => {
       const instance = Injector.resolve<any>(service, moduleConstructor, services);
-      const metadata = {
+      const metadata: Service<typeof service> = {
         name: service.name,
         instance,
         module: moduleConstructor.name,
@@ -62,18 +62,6 @@ export function Module(config: ModuleConfig) {
       };
 
       servicesMetadata[service.name] = metadata;
-    });
-
-    exports.forEach((exports: Function) => {
-      const instance = Injector.resolve<any>(exports, moduleConstructor, services);
-      const metadata = {
-        name: exports.name,
-        instance,
-        module: moduleConstructor.name,
-        type: exports
-      };
-
-      exportsMetadata[exports.name] = metadata;
     });
 
     //
@@ -89,30 +77,43 @@ export function Module(config: ModuleConfig) {
       moduleConstructor
     );
     //
-    // controllers.forEach((controller: Function) => {
-    //   const instance = Injector.resolve<any>(controller, moduleConstructor);
-    //   const metadata = {
-    //     name: controller.name,
-    //     instance,
-    //     module: moduleConstructor.name
-    //   };
-    //
-    //   controllersMetadata[controller.name] = metadata;
-    // });
-    //
-    //
-    //
-    // Reflect.defineMetadata(
-    //   MODULE_KEYS.controllers,
-    //   controllersMetadata,
-    //   moduleConstructor
-    // );
-    //
-    // Reflect.defineMetadata(
-    //   MODULE_KEYS.imports,
-    //   importsMetadata,
-    //   moduleConstructor
-    // );
+    controllers.forEach((controller: Function) => {
+      const instance = Injector.resolve<any>(controller, moduleConstructor, services);
+      const controllerMetadata = Reflect.getMetadata(METADATA_KEY.controller, controller);
+
+      if(!controllerMetadata) {
+        throw new Error('Each should be decorated by controller function');
+      }
+
+      const metadata = {
+        name: controller.name,
+        instance,
+        module: moduleConstructor.name,
+        type: controller,
+        ...controllerMetadata
+      };
+
+      controllersMetadata[controller.name] = metadata;
+    });
+
+    Reflect.defineMetadata(
+      MODULE_KEYS.controllers,
+      controllersMetadata,
+      moduleConstructor
+    );
+
+    let modulesList = [];
+
+    if(!Reflect.hasMetadata(METADATA_KEY.module, Reflect)) {
+      Reflect.defineMetadata(METADATA_KEY.module, modulesList, Reflect);
+    } else {
+      modulesList = Reflect.getMetadata(METADATA_KEY.module, Reflect);
+    }
+
+    modulesList.push({
+      name: moduleConstructor.name,
+      type: moduleConstructor
+    });
   }
 }
 
