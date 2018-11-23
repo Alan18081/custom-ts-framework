@@ -1,5 +1,15 @@
-import { Controller, Get, Headers, Param } from '../server/decorators';
+import { Controller, Get, Post, } from '../server/decorators';
 import { UsersService } from './users.service';
+import { UseValidator } from '../filter/decorators';
+import { Validator } from '../helpers';
+import { Body, Headers, Param, UseMiddlewares } from '../server/route-params.decorators';
+
+class ValidateUser implements Validator {
+  validate(@Body() body: any): boolean {
+    console.log(body);
+    return false;
+  }
+}
 
 @Controller('users')
 export class UsersController {
@@ -9,18 +19,21 @@ export class UsersController {
   ) {}
 
 
-  @Get('list/:id', (req, res, next) => {
+  @Get('list/:id')
+  @UseMiddlewares((req, res, next) => {
     console.log(req.method);
     next();
   })
   async getUsers(@Headers('authorization') token: string, @Param('id') id: number) {
-    console.log('My service', this.someService.findOne());
-    console.log('From route', id);
-    console.log('From route: token', token);
+    console.log(typeof token);
+    // console.log('My service', this.someService.findOne());
+    // console.log('From route', id);
+    // console.log('From route: token', token);
   }
 
-  @Get('mark/:id')
-  async getMark(@Param('id') id: number) {
-    console.log('From second route', id);
+  @Post('')
+  @UseValidator(ValidateUser)
+  async getMark(@Body() body: any) {
+    // console.log('From second route', id);
   }
 }

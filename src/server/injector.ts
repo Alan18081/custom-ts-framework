@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import {MODULE_KEYS} from './server';
+import {MODULE_KEYS} from '../server';
 
 
 export function Injectable() {

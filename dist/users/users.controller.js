@@ -49,6 +49,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var decorators_1 = require("../server/decorators");
 var users_service_1 = require("./users.service");
+var decorators_2 = require("../filter/decorators");
+var route_params_decorators_1 = require("../server/route-params.decorators");
+var ValidateUser = /** @class */ (function () {
+    function ValidateUser() {
+    }
+    ValidateUser.prototype.validate = function (body) {
+        console.log(body);
+        return false;
+    };
+    __decorate([
+        __param(0, route_params_decorators_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Boolean)
+    ], ValidateUser.prototype, "validate", null);
+    return ValidateUser;
+}());
 var UsersController = /** @class */ (function () {
     function UsersController(someService) {
         this.someService = someService;
@@ -56,36 +73,35 @@ var UsersController = /** @class */ (function () {
     UsersController.prototype.getUsers = function (token, id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                console.log('My service', this.someService.findOne());
-                console.log('From route', id);
-                console.log('From route: token', token);
+                console.log(typeof token);
                 return [2 /*return*/];
             });
         });
     };
-    UsersController.prototype.getMark = function (id) {
+    UsersController.prototype.getMark = function (body) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                console.log('From second route', id);
                 return [2 /*return*/];
             });
         });
     };
     __decorate([
-        decorators_1.Get('list/:id', function (req, res, next) {
+        decorators_1.Get('list/:id'),
+        route_params_decorators_1.UseMiddlewares(function (req, res, next) {
             console.log(req.method);
             next();
         }),
-        __param(0, decorators_1.Headers('authorization')), __param(1, decorators_1.Param('id')),
+        __param(0, route_params_decorators_1.Headers('authorization')), __param(1, route_params_decorators_1.Param('id')),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [String, Number]),
         __metadata("design:returntype", Promise)
     ], UsersController.prototype, "getUsers", null);
     __decorate([
-        decorators_1.Get('mark/:id'),
-        __param(0, decorators_1.Param('id')),
+        decorators_1.Post(''),
+        decorators_2.UseValidator(ValidateUser),
+        __param(0, route_params_decorators_1.Body()),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number]),
+        __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], UsersController.prototype, "getMark", null);
     UsersController = __decorate([

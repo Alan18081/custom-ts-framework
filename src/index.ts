@@ -6,7 +6,7 @@ import {AuthModule} from './auth/auth.module';
 
 const userModule = new UsersModule();
 
-const server = new Server(4000);
+const server = new Server(5000);
 
 server.run();
 

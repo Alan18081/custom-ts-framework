@@ -7,6 +7,15 @@ export const METADATA_KEY = {
   service: 'ioc:service'
 };
 
+export const METHODS = {
+  get: 'get',
+  post: 'post',
+  put: 'put',
+  delete: 'delete',
+  update: 'update',
+  patch: 'patch'
+};
+
 export const PARAMS_TYPES = {
   params: 'params',
   headers: 'headers',

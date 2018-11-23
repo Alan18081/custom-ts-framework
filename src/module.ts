@@ -1,6 +1,7 @@
-import {Injector} from './injector';
+import {Injector} from './server/injector';
 import {MODULE_KEYS} from './server';
 import {METADATA_KEY} from './server/constants';
+import { Exports, Service } from './server/interfaces';
 
 interface ModuleConfig {
   imports: any[];
@@ -16,7 +17,6 @@ export function Module(config: ModuleConfig) {
     const imports = config.imports || [];
     const exports = config.exports || [];
     const moduleConstructor = target;
-
 
     const controllersMetadata = {};
     const servicesMetadata = {};
@@ -41,7 +41,8 @@ export function Module(config: ModuleConfig) {
         module,
         moduleConstructor,
         Object.keys(servicesMetadata).map(key => servicesMetadata[key]));
-      const metadata = {
+
+      const metadata: Exports<typeof module> = {
         name: module.name,
         instance,
         module: moduleConstructor.name,
@@ -53,7 +54,7 @@ export function Module(config: ModuleConfig) {
 
     services.forEach((service: Function) => {
       const instance = Injector.resolve<any>(service, moduleConstructor, services);
-      const metadata = {
+      const metadata: Service<typeof service> = {
         name: service.name,
         instance,
         module: moduleConstructor.name,
@@ -61,18 +62,6 @@ export function Module(config: ModuleConfig) {
       };
 
       servicesMetadata[service.name] = metadata;
-    });
-
-    exports.forEach((exports: Function) => {
-      const instance = Injector.resolve<any>(exports, moduleConstructor, services);
-      const metadata = {
-        name: exports.name,
-        instance,
-        module: moduleConstructor.name,
-        type: exports
-      };
-
-      exportsMetadata[exports.name] = metadata;
     });
 
     //

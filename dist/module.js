@@ -11,7 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var injector_1 = require("./injector");
+var injector_1 = require("./server/injector");
 var server_1 = require("./server");
 var constants_1 = require("./server/constants");
 function Module(config) {
@@ -51,16 +51,6 @@ function Module(config) {
                 type: service
             };
             servicesMetadata[service.name] = metadata;
-        });
-        exports.forEach(function (exports) {
-            var instance = injector_1.Injector.resolve(exports, moduleConstructor, services);
-            var metadata = {
-                name: exports.name,
-                instance: instance,
-                module: moduleConstructor.name,
-                type: exports
-            };
-            exportsMetadata[exports.name] = metadata;
         });
         //
         Reflect.defineMetadata(server_1.MODULE_KEYS.services, servicesMetadata, moduleConstructor);

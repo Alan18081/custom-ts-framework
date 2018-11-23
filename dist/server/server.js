@@ -50,27 +50,26 @@ var Server = /** @class */ (function () {
     Server.prototype.registerControllers = function () {
         var _this = this;
         var modules = Reflect.getMetadata(constants_1.METADATA_KEY.module, Reflect);
-        console.log(modules);
         modules.forEach(function (_a) {
             var type = _a.type;
             var controllers = Reflect.getMetadata(server_1.MODULE_KEYS.controllers, type);
             var controllersList = Object.keys(controllers).map(function (key) { return controllers[key]; });
             controllersList.forEach(function (controller) {
-                var methods = Reflect.getMetadata(constants_1.METADATA_KEY.controllerMethod, controller.type);
+                var methods = Reflect.getMetadata(constants_1.METADATA_KEY.controllerMethod, controller.type) || {};
                 var params = Reflect.getMetadata(constants_1.METADATA_KEY.controllerParams, controller.type);
-                console.log(controller.instance);
-                if (methods instanceof Array) {
-                    methods.forEach(function (_a) {
-                        var method = _a.method, descriptor = _a.descriptor, path = _a.path, middlewares = _a.middlewares, key = _a.key;
-                        var _b;
-                        var methodParams = params.filter(function (_a) {
-                            var methodName = _a.methodName;
-                            return methodName === controller.name + ":" + key;
-                        });
-                        var handler = _this.createHandler(descriptor.value.bind(controller.instance), methodParams);
-                        (_b = _this.app)[method].apply(_b, ["/" + controller.path + "/" + path].concat(middlewares, [handler]));
+                var methodsList = Object.keys(methods).map(function (key) { return methods[key]; });
+                methodsList.forEach(function (_a) {
+                    var method = _a.method, handler = _a.handler, path = _a.path, middlewares = _a.middlewares, name = _a.name, validators = _a.validators;
+                    var _b;
+                    // console.log(params);
+                    var methodParams = params.filter(function (_a) {
+                        var methodName = _a.methodName;
+                        return methodName === name;
                     });
-                }
+                    var validatorsMiddleware = _this.createValidationMiddleware(validators);
+                    var expressHandler = _this.createHandler(handler.bind(controller.instance), methodParams);
+                    (_b = _this.app)[method].apply(_b, ["/" + controller.path + "/" + path].concat(middlewares, [expressHandler]));
+                });
             });
         });
     };
@@ -113,6 +112,22 @@ var Server = /** @class */ (function () {
                     return req.body[paramName];
             }
         });
+    };
+    Server.prototype.createValidationMiddleware = function (validatorTypes) {
+        var _this = this;
+        return function (req, res, next) {
+            try {
+                validatorTypes.forEach(function (Type) {
+                    var validator = new Type();
+                    var params = Reflect.getMetadata(constants_1.METADATA_KEY.controllerParams, Type);
+                    var args = _this.createArgs(req, res, next, params);
+                    validator.validate.apply(validator, args);
+                });
+            }
+            catch (e) {
+                res.status(400).send(e.message);
+            }
+        };
     };
     return Server;
 }());
