@@ -1,21 +1,15 @@
 import { METADATA_KEY, PARAMS_TYPES } from './constants';
 import {RequestHandler} from 'express';
+import { MODULE_KEYS } from '../server';
 
-export function Controller(path: string, ...middleware: Function[]) {
+export function Controller(path: string, ...middlewares: Function[]) {
   return function (target: any) {
-    console.log('Hey');
     const metadata = {
       path,
-      middleware,
-      target
+      middlewares
     };
 
-    const prevMetadata = Reflect.getMetadata(METADATA_KEY.controller, Reflect) || [];
-
-    const currentMetadata = [metadata, ...prevMetadata];
-
-    Reflect.defineMetadata(METADATA_KEY.controller, currentMetadata, Reflect);
-
+    Reflect.defineMetadata(METADATA_KEY.controller, metadata, target);
   }
 }
 

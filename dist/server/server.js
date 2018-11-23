@@ -36,37 +36,42 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
-var injector_1 = require("../injector");
 var constants_1 = require("./constants");
+var server_1 = require("../server");
 var Server = /** @class */ (function () {
     function Server(port) {
         this.port = port;
         this.app = express();
-        // this.registerControllers();
+        this.registerControllers();
     }
     Server.prototype.run = function () {
         this.app.listen(this.port);
     };
     Server.prototype.registerControllers = function () {
         var _this = this;
-        var controllers = Reflect.getMetadata(constants_1.METADATA_KEY.controller, Reflect);
-        console.log(controllers);
-        controllers.forEach(function (controller) {
-            var methods = Reflect.getMetadata(constants_1.METADATA_KEY.controllerMethod, controller.target);
-            var params = Reflect.getMetadata(constants_1.METADATA_KEY.controllerParams, controller.target);
-            var instController = injector_1.Injector.resolve(controller.target);
-            if (methods instanceof Array) {
-                methods.forEach(function (_a) {
-                    var method = _a.method, descriptor = _a.descriptor, path = _a.path, middlewares = _a.middlewares, key = _a.key;
-                    var _b;
-                    var methodParams = params.filter(function (_a) {
-                        var methodName = _a.methodName;
-                        return methodName === controller.target.name + ":" + key;
+        var modules = Reflect.getMetadata(constants_1.METADATA_KEY.module, Reflect);
+        console.log(modules);
+        modules.forEach(function (_a) {
+            var type = _a.type;
+            var controllers = Reflect.getMetadata(server_1.MODULE_KEYS.controllers, type);
+            var controllersList = Object.keys(controllers).map(function (key) { return controllers[key]; });
+            controllersList.forEach(function (controller) {
+                var methods = Reflect.getMetadata(constants_1.METADATA_KEY.controllerMethod, controller.type);
+                var params = Reflect.getMetadata(constants_1.METADATA_KEY.controllerParams, controller.type);
+                console.log(controller.instance);
+                if (methods instanceof Array) {
+                    methods.forEach(function (_a) {
+                        var method = _a.method, descriptor = _a.descriptor, path = _a.path, middlewares = _a.middlewares, key = _a.key;
+                        var _b;
+                        var methodParams = params.filter(function (_a) {
+                            var methodName = _a.methodName;
+                            return methodName === controller.name + ":" + key;
+                        });
+                        var handler = _this.createHandler(descriptor.value.bind(controller.instance), methodParams);
+                        (_b = _this.app)[method].apply(_b, ["/" + controller.path + "/" + path].concat(middlewares, [handler]));
                     });
-                    var handler = _this.createHandler(descriptor.value.bind(instController), methodParams);
-                    (_b = _this.app)[method].apply(_b, ["/" + controller.path + "/" + path].concat(middlewares, [handler]));
-                });
-            }
+                }
+            });
         });
     };
     Server.prototype.createHandler = function (method, params) {
@@ -104,6 +109,8 @@ var Server = /** @class */ (function () {
                     return req.params[paramName];
                 case constants_1.PARAMS_TYPES.headers:
                     return req.headers[paramName];
+                case constants_1.PARAMS_TYPES.body:
+                    return req.body[paramName];
             }
         });
     };

@@ -13,7 +13,6 @@ exports.Injector = new /** @class */ (function () {
     class_1.prototype.resolve = function (target, module, serviceTypes) {
         var tokens = Reflect.getMetadata('design:paramtypes', target) || [];
         var moduleServices = Reflect.getMetadata(server_1.MODULE_KEYS.services, module) || {};
-        console.log(moduleServices);
         var moduleServicesList = Object.keys(moduleServices).map(function (key) { return moduleServices[key]; });
         var injectors = tokens.map(function (token) {
             var isImportedService = moduleServicesList.find(function (_a) {

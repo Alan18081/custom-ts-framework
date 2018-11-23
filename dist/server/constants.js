@@ -10,5 +10,6 @@ exports.METADATA_KEY = {
 };
 exports.PARAMS_TYPES = {
     params: 'params',
-    headers: 'headers'
+    headers: 'headers',
+    body: 'body'
 };

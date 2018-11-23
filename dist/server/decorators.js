@@ -2,20 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var constants_1 = require("./constants");
 function Controller(path) {
-    var middleware = [];
+    var middlewares = [];
     for (var _i = 1; _i < arguments.length; _i++) {
-        middleware[_i - 1] = arguments[_i];
+        middlewares[_i - 1] = arguments[_i];
     }
     return function (target) {
-        console.log('Hey');
         var metadata = {
             path: path,
-            middleware: middleware,
-            target: target
+            middlewares: middlewares
         };
-        var prevMetadata = Reflect.getMetadata(constants_1.METADATA_KEY.controller, Reflect) || [];
-        var currentMetadata = [metadata].concat(prevMetadata);
-        Reflect.defineMetadata(constants_1.METADATA_KEY.controller, currentMetadata, Reflect);
+        Reflect.defineMetadata(constants_1.METADATA_KEY.controller, metadata, target);
     };
 }
 exports.Controller = Controller;

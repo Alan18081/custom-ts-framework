@@ -1,17 +1,17 @@
 import * as express from 'express';
-import {Injector} from '../injector';
 import {METADATA_KEY, PARAMS_TYPES} from './constants';
 import {NextFunction, Request, Response} from 'express';
+import { MODULE_KEYS } from '../server';
 
 export class Server {
 
-  private port: number;
-  private app: express.Application;
+  private readonly port: number;
+  private readonly app: express.Application;
 
   constructor(port: number) {
     this.port = port;
     this.app = express();
-    // this.registerControllers();
+    this.registerControllers();
   }
 
   run() {
@@ -19,23 +19,28 @@ export class Server {
   }
 
   private registerControllers() {
-    const controllers = Reflect.getMetadata(METADATA_KEY.controller, Reflect);
-    console.log(controllers);
+    const modules = Reflect.getMetadata(METADATA_KEY.module, Reflect);
+    console.log(modules);
 
-    controllers.forEach(controller => {
-      const methods = Reflect.getMetadata(METADATA_KEY.controllerMethod, controller.target);
-      const params = Reflect.getMetadata(METADATA_KEY.controllerParams, controller.target);
+    modules.forEach(({ type }) => {
+      const controllers = Reflect.getMetadata(MODULE_KEYS.controllers, type);
+      const controllersList = Object.keys(controllers).map(key => controllers[key]);
 
-      const instController = Injector.resolve<any>(controller.target, );
+      controllersList.forEach(controller => {
+        const methods = Reflect.getMetadata(METADATA_KEY.controllerMethod, controller.type);
+        const params = Reflect.getMetadata(METADATA_KEY.controllerParams, controller.type);
 
-      if(methods instanceof Array) {
-        methods.forEach(({ method, descriptor, path, middlewares, key }) => {
-          const methodParams = params.filter(({ methodName }) => methodName === `${controller.target.name}:${key}`);
-          const handler = this.createHandler(descriptor.value.bind(instController), methodParams);
-          this.app[method](`/${controller.path}/${path}`, ...middlewares, handler);
-        });
-      }
-    })
+        console.log(controller.instance);
+
+        if(methods instanceof Array) {
+          methods.forEach(({ method, descriptor, path, middlewares, key }) => {
+            const methodParams = params.filter(({ methodName }) => methodName === `${controller.name}:${key}`);
+            const handler = this.createHandler(descriptor.value.bind(controller.instance), methodParams);
+            this.app[method](`/${controller.path}/${path}`, ...middlewares, handler);
+          });
+        }
+      })
+    });
   }
 
   private createHandler(method: Function, params: any[]) {
@@ -63,6 +68,9 @@ export class Server {
 
         case PARAMS_TYPES.headers:
           return req.headers[paramName];
+
+        case PARAMS_TYPES.body:
+          return req.body[paramName];
       }
     });
   }
