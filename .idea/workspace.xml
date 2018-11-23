@@ -2,30 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6ba7a0d-7a54-4cc3-a544-edad17a87006" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/filter/decorators.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/handler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/interfaces.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/route-params.decorators.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/auth/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/auth/auth.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/server/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/server/decorators.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/decorators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/users.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/users.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/injector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/injector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/decorators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/decorators.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/helpers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.service.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/server.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="82" column="46" selection-start-line="82" selection-start-column="46" selection-end-line="82" selection-end-column="46" />
+            <state relative-caret-position="570">
+              <caret line="82" column="39" selection-start-line="82" selection-start-column="39" selection-end-line="82" selection-end-column="39" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -63,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/src/helpers/index.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="112">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="17" />
+              <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -313,12 +290,12 @@
       <workItem from="1542962281252" duration="34000" />
       <workItem from="1542962408337" duration="317000" />
       <workItem from="1542962745927" duration="20000" />
-      <workItem from="1542962784086" duration="16707000" />
+      <workItem from="1542962784086" duration="17205000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24752000" />
+    <option name="totallyTimeSpent" value="25250000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-4" width="1920" height="1084" extended-state="6" />
@@ -635,14 +612,14 @@
     <entry file="file://$PROJECT_DIR$/src/helpers/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="17" />
+          <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/server.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="82" column="46" selection-start-line="82" selection-start-column="46" selection-end-line="82" selection-end-column="46" />
+        <state relative-caret-position="570">
+          <caret line="82" column="39" selection-start-line="82" selection-start-column="39" selection-end-line="82" selection-end-column="39" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

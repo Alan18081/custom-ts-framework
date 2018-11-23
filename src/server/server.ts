@@ -76,11 +76,11 @@ export class Server {
     });
   }
 
-  private createValidationMiddleware<T extends MyNew>(validatorTypes: T[]): RequestHandler {
+  private createValidationMiddleware<T extends Validator>(validatorTypes: { new(): T; }[]): RequestHandler {
     return (req: Request, res: Response, next: NextFunction) => {
       try {
-        validatorTypes.forEach((Type: T) => {
-          const validator = new (Type as MyNew)();
+        validatorTypes.forEach((Type) => {
+          const validator = new Type();
           const params = Reflect.getMetadata(METADATA_KEY.controllerParams, Type);
           const args = this.createArgs(req, res, next, params);
           validator.validate(...args);
