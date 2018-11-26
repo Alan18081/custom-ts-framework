@@ -3,7 +3,6 @@ import {METADATA_KEY, PARAMS_TYPES} from './constants';
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { MODULE_KEYS } from '../server';
 import { Handler } from './handler';
-import { MyNew, Validator } from '../helpers';
 
 export class Server {
 
@@ -36,7 +35,6 @@ export class Server {
         methodsList.forEach(({ method, handler, path, middlewares, name, validators }: Handler) => {
           // console.log(params);
           const methodParams = params.filter(({ methodName }) => methodName === name);
-          const validatorsMiddleware = this.createValidationMiddleware(validators);
           const expressHandler = this.createHandler(handler.bind(controller.instance), methodParams);
           this.app[method](`/${controller.path}/${path}`, ...middlewares, expressHandler);
         });
@@ -74,21 +72,5 @@ export class Server {
           return req.body[paramName];
       }
     });
-  }
-
-  private createValidationMiddleware<T extends Validator>(validatorTypes: { new(): T; }[]): RequestHandler {
-    return (req: Request, res: Response, next: NextFunction) => {
-      try {
-        validatorTypes.forEach((Type) => {
-          const validator = new Type();
-          const params = Reflect.getMetadata(METADATA_KEY.controllerParams, Type);
-          const args = this.createArgs(req, res, next, params);
-          validator.validate(...args);
-        });
-      } catch (e) {
-        res.status(400).send(e.message);
-
-      }
-    }
   }
 }
