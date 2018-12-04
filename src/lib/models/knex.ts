@@ -1,0 +1,5 @@
+import * as knex from 'knex';
+import {DB_CONFIG} from '../../config/index';
+
+export const db = knex(DB_CONFIG);
+

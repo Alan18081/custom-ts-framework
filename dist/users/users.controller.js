@@ -51,18 +51,18 @@ var decorators_1 = require("../server/decorators");
 var users_service_1 = require("./users.service");
 var decorators_2 = require("../filter/decorators");
 var route_params_decorators_1 = require("../server/route-params.decorators");
+var http_error_1 = require("../server/http-error");
 var ValidateUser = /** @class */ (function () {
     function ValidateUser() {
     }
     ValidateUser.prototype.validate = function (body) {
-        console.log(body);
-        return false;
+        throw new http_error_1.BadRequest('Body is invalid');
     };
     __decorate([
         __param(0, route_params_decorators_1.Body()),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", Boolean)
+        __metadata("design:returntype", void 0)
     ], ValidateUser.prototype, "validate", null);
     return ValidateUser;
 }());
@@ -73,7 +73,6 @@ var UsersController = /** @class */ (function () {
     UsersController.prototype.getUsers = function (token, id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                console.log(typeof token);
                 return [2 /*return*/];
             });
         });

@@ -38,10 +38,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var constants_1 = require("./constants");
 var server_1 = require("../server");
+var bodyParser = require("body-parser");
 var Server = /** @class */ (function () {
     function Server(port) {
         this.port = port;
         this.app = express();
+        this.app.use(bodyParser.json());
         this.registerControllers();
     }
     Server.prototype.run = function () {
@@ -61,14 +63,13 @@ var Server = /** @class */ (function () {
                 methodsList.forEach(function (_a) {
                     var method = _a.method, handler = _a.handler, path = _a.path, middlewares = _a.middlewares, name = _a.name, validators = _a.validators;
                     var _b;
-                    // console.log(params);
                     var methodParams = params.filter(function (_a) {
                         var methodName = _a.methodName;
                         return methodName === name;
                     });
                     var validatorsMiddleware = _this.createValidationMiddleware(validators);
                     var expressHandler = _this.createHandler(handler.bind(controller.instance), methodParams);
-                    (_b = _this.app)[method].apply(_b, ["/" + controller.path + "/" + path].concat(middlewares, [expressHandler]));
+                    (_b = _this.app)[method].apply(_b, ["/" + controller.path + "/" + path, validatorsMiddleware].concat(middlewares, [expressHandler]));
                 });
             });
         });
@@ -109,7 +110,7 @@ var Server = /** @class */ (function () {
                 case constants_1.PARAMS_TYPES.headers:
                     return req.headers[paramName];
                 case constants_1.PARAMS_TYPES.body:
-                    return req.body[paramName];
+                    return req.body;
             }
         });
     };
@@ -123,9 +124,10 @@ var Server = /** @class */ (function () {
                     var args = _this.createArgs(req, res, next, params);
                     validator.validate.apply(validator, args);
                 });
+                next();
             }
             catch (e) {
-                res.status(400).send(e.message);
+                res.status(400).json({ error: e.message });
             }
         };
     };

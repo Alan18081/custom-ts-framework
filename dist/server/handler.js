@@ -20,6 +20,9 @@ var Handler = /** @class */ (function () {
         if (data.method)
             this.method = data.method;
     }
+    Handler.prototype.addValidator = function (validators) {
+        this.validators = this.validators.concat(validators);
+    };
     return Handler;
 }());
 exports.Handler = Handler;

@@ -8,8 +8,12 @@
     "watch": "tsc -w"
   },
   "dependencies": {
+    "@types/knex": "^0.15.1",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "inversify": "^5.0.1",
+    "knex": "^0.15.2",
+    "pg": "^7.6.1",
     "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {

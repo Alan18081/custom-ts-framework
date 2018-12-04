@@ -6,7 +6,9 @@ exports.METADATA_KEY = {
     controllerParams: 'ioc:controller-params',
     controllerMiddlewares: 'ioc:controller-middlewares',
     module: 'ioc:module',
-    service: 'ioc:service'
+    service: 'ioc:service',
+    repository: 'ioc:repository',
+    args: 'ioc:args'
 };
 exports.MODULE_KEYS = {
     controllers: 'module:controllers',
