@@ -1,4 +1,4 @@
-import { getHandler } from '../lib/server/route-params.decorators';
+import { getHandler } from '../server/route-params.decorators';
 
 export function UseValidator(...validators: Function[]) {
   return function (target: any, name: string, descriptor: PropertyDescriptor) {

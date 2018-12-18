@@ -8,7 +8,7 @@ export class UserModel extends BaseModel<UserModel> {
   password: string;
 
   constructor(data?: Partial<UserModel>) {
-    super();
+    super({});
     if(data) {
       this.name = data.name || '';
       this.age = data.age || 0;

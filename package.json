@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@types/knex": "^0.15.1",
+    "@types/lodash": "^4.14.119",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "inversify": "^5.0.1",
     "knex": "^0.15.2",
+    "lodash": "^4.17.11",
     "pg": "^7.6.1",
     "pg-promise": "^8.5.4",
     "reflect-metadata": "^0.1.12"

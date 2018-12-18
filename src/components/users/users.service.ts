@@ -1,15 +1,12 @@
-import { Injectable } from '../../lib/server/injector';
+import { Injectable } from '../../common/server/injector';
 import {AuthService} from '../auth/auth.service';
-import {InjectRepository} from '../../lib/models/injector';
-import {User} from '../../lib/models/user.entity';
-import {Repository} from '../../lib/models/repository';
+import { User } from './user.interface';
+import { UserModel } from './user.model';
 
 @Injectable()
 export class UsersService {
 
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
     private readonly authService: AuthService
   ) {}
 
@@ -17,11 +14,12 @@ export class UsersService {
     return await this.userRepository.find({}, { relations: ['profile'] });
   }
 
-  async createOne(userData: Partial<User>): Promise<User> {
-    const user = new User();
-    user.name = userData.name;
-    user.age = userData.age;
-    return await this.userRepository.save(user);
+  async createOne(userData: User): Promise<User> {
+    const user = new UserModel({
+      ...userData
+    });
+
+    return await UserModel.save(user);
   }
 
   async updateOne(id: number, userData: Partial<User>): Promise<User | undefined> {

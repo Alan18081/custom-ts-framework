@@ -4,7 +4,7 @@ export const DB_CONFIG = {
   connection: {
     host : '127.0.0.1',
     user : 'postgres',
-    password : 'postgres',
+    password : 'qwerty1',
     database : 'postgres'
   }
 };

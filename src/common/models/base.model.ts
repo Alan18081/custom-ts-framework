@@ -6,23 +6,14 @@ const raw = pg()({});
 
 type GenericModel<T> = {
   new (...args: any[]): T;
+  tableName: string;
 }
 
 export class BaseModel<T> {
-
-  public static table: string = '';
-  private fieldsToUpdate: string[] = [];
-
-  constructor(data: any) {
+  
+  constructor(...args: any[]) {
     return new Proxy(this, this);
   };
-
-  public set (target: BaseModel<T>, property: string | symbol | number): boolean {
-    if(typeof property === 'string') {
-      this.fieldsToUpdate.push(property);
-    }
-    return true;
-  }
 
   public static createQueryBuilder(): QueryBuilder {
     return db.queryBuilder();
@@ -36,6 +27,30 @@ export class BaseModel<T> {
   public static async getMany<T>(this: GenericModel<T>, query: QueryBuilder): Promise<T[]> {
     const data = await raw.manyOrNone(query.toSQL().sql);
     return data.map(item => new this(item));
+  }
+
+  public static async save<T>(this: GenericModel<T>, entity: T): Promise<T> {
+     const rawData = await db.table(this.tableName)
+       .insert(entity)
+       .returning('*');
+
+     return new this(rawData);
+  }
+
+  public static async update<T>(this: GenericModel<T>, query: object, entity: Partial<T>): Promise<T> {
+
+    const rawData = await db.table(this.tableName)
+      .update(entity)
+      .where(query)
+      .returning('*');
+
+    return new this(rawData);
+  }
+
+  public static async delete<T>(this: GenericModel<T>, query: object): Promise<void> {
+    await db.table(this.tableName)
+      .delete('')
+      .where(query)
   }
 
 }

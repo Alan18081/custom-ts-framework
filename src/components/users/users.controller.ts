@@ -1,10 +1,9 @@
-import {Controller, Get, Post, Put,} from '../../lib/server/decorators';
+import {Controller, Get, Post, Put,} from '../../common/server/decorators';
 import { UsersService } from './users.service';
-import { UseValidator } from '../../filter/decorators';
-import { Validator } from '../../helpers';
-import { Body, Headers, Param, UseMiddlewares } from '../../lib/server/route-params.decorators';
-import {BadRequest} from '../../lib/server/http-error';
-import {User} from '../../lib/models/user.entity';
+import { UseValidator } from '../../common/filter/decorators';
+import { Validator } from '../../common/helpers';
+import { Body, Headers, Param, UseMiddlewares } from '../../common/server/route-params.decorators';
+import {BadRequest} from '../../common/server/http-error';
 
 class ValidateUser implements Validator {
   validate(@Body() body: any): void {

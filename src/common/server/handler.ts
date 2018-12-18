@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express-serve-static-core';
-import { Validator } from '../../helpers';
+import { Validator } from '../helpers';
 import { METHODS_LIST } from './interfaces';
 
 export class Handler {

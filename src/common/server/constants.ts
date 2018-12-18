@@ -1,4 +1,5 @@
 export const METADATA_KEY = {
+  fieldsToUpdate: 'model:fieldsToUpdate',
   controller: 'ioc:controller',
   controllerMethod: 'ioc:controller-method',
   controllerParams: 'ioc:controller-params',

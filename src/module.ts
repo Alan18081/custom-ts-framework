@@ -1,7 +1,7 @@
-import {Injector} from './lib/server/injector';
+import {Injector} from './common/server/injector';
 import {MODULE_KEYS} from './server';
-import {METADATA_KEY} from './lib/server/constants';
-import { Exports, Service } from './lib/server/interfaces';
+import {METADATA_KEY} from './common/server/constants';
+import { Exports, Service } from './common/server/interfaces';
 
 interface ModuleConfig {
   imports?: any[];
