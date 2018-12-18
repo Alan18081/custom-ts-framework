@@ -1,13 +1,11 @@
 import 'reflect-metadata';
-import { UsersModule } from './users/users.module';
-import { Server } from './server/server';
-import {MODULE_KEYS} from './server';
-import {AuthModule} from './auth/auth.module';
+import { AppModule } from './app.module';
+import { Server } from './lib/server/server';
+import {db} from './lib/models/knex';
 
-const userModule = new UsersModule();
+const appModule = new AppModule();
+
 
 const server = new Server(5000);
 
 server.run();
-
-// console.log(Reflect.getMetadata(MODULE_KEYS.exports, AuthModule));

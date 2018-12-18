@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/tsc-template.iml" filepath="$PROJECT_DIR$/.idea/tsc-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/tsc.iml" filepath="$PROJECT_DIR$/.idea/tsc.iml" />
     </modules>
   </component>
 </project>

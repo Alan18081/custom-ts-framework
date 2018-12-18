@@ -11,9 +11,9 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var injector_1 = require("./server/injector");
+var injector_1 = require("./lib/server/injector");
 var server_1 = require("./server");
-var constants_1 = require("./server/constants");
+var constants_1 = require("./lib/server/constants");
 function Module(config) {
     return function (target) {
         var services = config.services || [];

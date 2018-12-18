@@ -1,24 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Handler = /** @class */ (function () {
-    function Handler(url, handler) {
-        this.params = [];
-        this.url = url;
-        this.handler = handler;
-        this.urlReg = new RegExp(url.replace(/:.\//, ':.\/'));
+    function Handler(data) {
+        this.middlewares = [];
+        this.validators = [];
+        this.path = '';
+        if (data.name)
+            this.name = data.name;
+        if (data.path)
+            this.path = data.path;
+        if (data.handler)
+            this.handler = data.handler;
+        if (data.middlewares)
+            this.middlewares = data.middlewares.slice();
+        if (data.validators)
+            this.validators = data.validators.slice();
+        if (data.controller)
+            this.controller = data.controller;
+        if (data.method)
+            this.method = data.method;
     }
-    Handler.prototype.parseParams = function (url) {
-        var _this = this;
-        var repl = url.replace(this.urlReg, function (match) {
-            _this.params.push(match);
-            return match;
-        });
-    };
-    Handler.prototype.getHandler = function () {
-        return this.handler;
-    };
-    Handler.prototype.isValid = function (url) {
-        return this.urlReg.test(url);
+    Handler.prototype.addValidator = function (validators) {
+        this.validators = this.validators.concat(validators);
     };
     return Handler;
 }());

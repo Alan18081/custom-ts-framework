@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-var users_module_1 = require("./users/users.module");
-var server_1 = require("./server/server");
-var userModule = new users_module_1.UsersModule();
+var app_module_1 = require("./app.module");
+var server_1 = require("./lib/server/server");
+var appModule = new app_module_1.AppModule();
 var server = new server_1.Server(5000);
 server.run();
-// console.log(Reflect.getMetadata(MODULE_KEYS.exports, AuthModule));

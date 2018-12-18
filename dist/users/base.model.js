@@ -38,7 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var BaseModel = /** @class */ (function () {
     function BaseModel() {
     }
-    BaseModel.manyOrNone = function (query, params, model) {
+    BaseModel.manyOrNone = function (query) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 try {

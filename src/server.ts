@@ -1,12 +1,12 @@
-import { RequestHandler } from 'express';
-
 export const METADATA_KEY = {
   controller: 'ioc:controller',
   controllerMethod: 'ioc:controller-method',
   controllerParams: 'ioc:controller-params',
   controllerMiddlewares: 'ioc:controller-middlewares',
   module: 'ioc:module',
-  service: 'ioc:service'
+  service: 'ioc:service',
+  repository: 'ioc:repository',
+  args: 'ioc:args'
 };
 
 export const MODULE_KEYS = {

@@ -8,9 +8,13 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "class-validator": "^0.9.1",
+    "@types/knex": "^0.15.1",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "inversify": "^5.0.1",
+    "knex": "^0.15.2",
+    "pg": "^7.6.1",
+    "pg-promise": "^8.5.4",
     "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {

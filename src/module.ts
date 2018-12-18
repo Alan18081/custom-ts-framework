@@ -1,13 +1,13 @@
-import {Injector} from './server/injector';
+import {Injector} from './lib/server/injector';
 import {MODULE_KEYS} from './server';
-import {METADATA_KEY} from './server/constants';
-import { Exports, Service } from './server/interfaces';
+import {METADATA_KEY} from './lib/server/constants';
+import { Exports, Service } from './lib/server/interfaces';
 
 interface ModuleConfig {
-  imports: any[];
-  services: any[];
-  controllers: any[];
-  exports: any[];
+  imports?: any[];
+  services?: any[];
+  controllers?: any[];
+  exports?: any[];
 }
 
 export function Module(config: ModuleConfig) {
