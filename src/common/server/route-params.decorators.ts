@@ -3,8 +3,8 @@ import { METADATA_KEY, PARAMS_TYPES } from './constants';
 import { RequestHandler } from 'express';
 import { Handler } from './handler';
 
-function RouteParams(type: PARAMS_TYPES_LIST, paramName: string): string | number;
-function RouteParams(type: PARAMS_TYPES_LIST): any;
+function RouteParams(type: PARAMS_TYPES_LIST, paramName: string): ParameterDecorator;
+function RouteParams(type: PARAMS_TYPES_LIST): ParameterDecorator;
 
 function RouteParams(type: PARAMS_TYPES_LIST, paramName?: string) {
   return function (target: any, name: string, index: number) {
@@ -34,7 +34,7 @@ export function UseMiddlewares(...middlewares: RequestHandler[]) {
   }
 }
 
-export function Param(name: string): string | number {
+export function Param(name: string): ParameterDecorator {
   return RouteParams(PARAMS_TYPES.params, name);
 }
 
@@ -42,7 +42,9 @@ export function Headers(name: string) {
   return RouteParams(PARAMS_TYPES.headers, name);
 }
 
-export function Body() {
+
+
+export function Body(): ParameterDecorator {
   return RouteParams(PARAMS_TYPES.body);
 }
 

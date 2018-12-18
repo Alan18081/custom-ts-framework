@@ -5,8 +5,8 @@ import { MODULE_KEYS } from '../../server';
 import { Handler } from './handler';
 import * as bodyParser from 'body-parser';
 import {PARAM} from './interfaces';
-import {METADATA} from '../models/constants';
-import {createTable} from '../models/helpers';
+import {Guard, GuardCreator} from "./guards-decorators";
+import {Injector} from "./injector";
 
 export class Server {
 
@@ -18,11 +18,12 @@ export class Server {
     this.app = express();
     this.app.use(bodyParser.json());
     this.registerControllers();
-    this.createTables();
   }
 
   run() {
-    this.app.listen(this.port);
+    this.app.listen(this.port, () => {
+      console.log(`Server is listening on port ${this.port}`);
+    });
   }
 
   private registerControllers() {
@@ -31,6 +32,7 @@ export class Server {
     modules.forEach(({ type }) => {
       const controllers = Reflect.getMetadata(MODULE_KEYS.controllers, type);
       const controllersList = Object.keys(controllers).map(key => controllers[key]);
+      const servicesList = Reflect.getMetadata(MODULE_KEYS.services, type) || {};
 
       controllersList.forEach(controller => {
         const methods = Reflect.getMetadata(METADATA_KEY.controllerMethod, controller.type) || {};
@@ -38,11 +40,13 @@ export class Server {
 
         const methodsList = Object.keys(methods).map(key => methods[key]);
 
-        methodsList.forEach(({ method, handler, path, middlewares, name, validators }: Handler) => {
+        methodsList.forEach(({ method, handler, path, middlewares, name, validators, guards }: Handler) => {
+          console.log(Array.isArray(guards));
           const methodParams = params.filter(({ methodName }) => methodName === name);
           const validatorsMiddleware = this.createValidationMiddleware(validators);
+          const guardsMiddleware = this.createGuardsMiddleware(guards, module, servicesList);
           const expressHandler = this.createHandler(handler.bind(controller.instance), methodParams);
-          this.app[method](`/${controller.path}/${path}`, validatorsMiddleware, ...middlewares, expressHandler);
+          this.app[method](`/${controller.path}/${path}`, guardsMiddleware, validatorsMiddleware, ...middlewares, expressHandler);
         });
       })
     });
@@ -101,16 +105,19 @@ export class Server {
     }
   }
 
-  private async createTables() {
-    try {
-      const tables = Reflect.getMetadata(METADATA.TABLES, Reflect);
-      for (const table of tables) {
-        await createTable(table);
-        console.log(`Table ${table.name} is created`);
-      }
-    } catch (e) {
-      console.log('Failed to create tables');
-      console.log(e);
+  private createGuardsMiddleware(guardTypes: GuardCreator[], module: any, serviceTypes): RequestHandler {
+    return (req: Request, res: Response, next: NextFunction) => {
+        try {
+          console.log(guardTypes);
+          guardTypes.forEach((guardType: GuardCreator) => {
+              const guard = Injector.resolve(guardType, module, serviceTypes) as Guard;
+              guard.check(req, res);
+              next();
+          });
+
+        } catch (e) {
+            res.status(403).json({ error: e.message });
+        }
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import {METADATA_KEY, MODULE_KEYS} from '../../server';
+import {Service} from "./interfaces";
 
 export function Injectable() {
   return function (target: any) {
@@ -12,7 +13,7 @@ export const Injector = new class {
     const tokens = Reflect.getMetadata('design:paramtypes', target) || [];
     const moduleServices = Reflect.getMetadata(MODULE_KEYS.services, module) || {};
 
-    const moduleServicesList = Object.keys(moduleServices).map(key => moduleServices[key]);
+    const moduleServicesList: Service<T>[] = Object.keys(moduleServices).map(key => moduleServices[key]);
 
     const injectors = tokens.map((token) => {
       const isImportedService = moduleServicesList.find(({ type }) => type === token);
@@ -20,16 +21,13 @@ export const Injector = new class {
         return isImportedService.instance;
       }
 
-      if(serviceTypes.indexOf(token) !== -1) {
+      if(serviceTypes[token.name]) {
         return Injector.resolve<any>(token, module, serviceTypes);
       }
 
       throw new TypeError('Type doesn\'t injected');
     });
 
-    const metaArgs = Reflect.getMetadata(METADATA_KEY.args, target);
-
-    const args = metaArgs ? metaArgs : injectors;
-    return new target(...args);
+    return new target(injectors);
   }
 };
