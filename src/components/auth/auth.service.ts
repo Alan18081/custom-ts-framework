@@ -14,4 +14,8 @@ export class AuthService {
     console.log('Login process');
   }
 
+  async checkUserByJwt(): Promise<boolean> {
+
+  }
+
 }

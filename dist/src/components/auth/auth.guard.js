@@ -19,18 +19,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const auth_service_1 = require("./auth.service");
 const injector_1 = require("../../common/server/injector");
-const http_errors_1 = require("../../helpers/http-errors");
 let AuthGuard = class AuthGuard {
     constructor(authService) {
         this.authService = authService;
     }
     check(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const token = req.header('authorization');
-            if (!token) {
-                throw new http_errors_1.Unathorized('Invalid credentials');
-            }
-            return true;
         });
     }
 };
