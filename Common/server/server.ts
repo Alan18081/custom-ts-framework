@@ -1,7 +1,7 @@
 import * as express from 'express';
 import {METADATA_KEY, PARAMS_TYPES} from './constants';
 import { NextFunction, Request, RequestHandler, Response } from 'express';
-import { MODULE_KEYS } from '../../server';
+import { MODULE_KEYS } from '../metadata/keys';
 import { Handler } from './handler';
 import * as bodyParser from 'body-parser';
 import {PARAM} from './interfaces';

@@ -8,6 +8,7 @@
     "dev": "ts-node-dev ./src/index.ts"
   },
   "dependencies": {
+    "@types/amqplib": "^0.5.9",
     "@types/lodash": "^4.14.119",
     "amqplib": "^0.5.3",
     "body-parser": "^1.18.3",
