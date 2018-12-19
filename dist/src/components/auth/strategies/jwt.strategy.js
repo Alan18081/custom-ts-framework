@@ -23,6 +23,7 @@ let JwtStrategy = class JwtStrategy {
         };
         const strategy = new passport_jwt_1.Strategy(this.config, (jwtPayload, done) => {
             try {
+                console.log(jwtPayload);
                 this.authService.checkUserByJwt()
                     .then(user => {
                     if (user) {

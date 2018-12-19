@@ -1,20 +1,22 @@
 import {Injectable} from '../../common/server/injector';
-import * as passport from 'passport';
+import { JwtResponse } from './interfaces/jwt-response';
+import { LoginDto } from './dto/login.dto';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class AuthService {
 
 
-  constructor() {
+  constructor(
+    private readonly usersService: UsersService
+  ) {}
 
-  }
-
-
-  login() {
-    console.log('Login process');
-  }
 
   async checkUserByJwt(): Promise<boolean> {
+
+  }
+
+  async login(payload: LoginDto): Promise<JwtResponse> {
 
   }
 

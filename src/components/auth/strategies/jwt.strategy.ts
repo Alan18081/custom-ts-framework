@@ -16,6 +16,7 @@ export class JwtStrategy {
     ) {
         const strategy = new Strategy(this.config, (jwtPayload: any, done: Function) => {
             try {
+                console.log(jwtPayload);
                 this.authService.checkUserByJwt()
                     .then(user => {
                         if(user) {

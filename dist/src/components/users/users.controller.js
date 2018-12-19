@@ -31,7 +31,6 @@ let UsersController = class UsersController {
     }
     getUsers(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('Hello');
             return [];
             // return await this.usersService.findAll();
         });

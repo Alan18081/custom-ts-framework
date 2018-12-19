@@ -18,19 +18,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const injector_1 = require("../../common/server/injector");
+const users_service_1 = require("../users/users.service");
 let AuthService = class AuthService {
-    constructor() {
-    }
-    login() {
-        console.log('Login process');
+    constructor(usersService) {
+        this.usersService = usersService;
     }
     checkUserByJwt() {
+        return __awaiter(this, void 0, void 0, function* () {
+        });
+    }
+    login(payload) {
         return __awaiter(this, void 0, void 0, function* () {
         });
     }
 };
 AuthService = __decorate([
     injector_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [users_service_1.UsersService])
 ], AuthService);
 exports.AuthService = AuthService;

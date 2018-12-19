@@ -16,7 +16,6 @@ export class UsersController {
   @Get('')
   @UseGuards(AuthGuard)
   async getUsers(@Param('id') id: number): Promise<User[]> {
-    console.log('Hello');
     return [];
     // return await this.usersService.findAll();
   }
