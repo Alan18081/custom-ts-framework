@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c0954dd-edcd-4e2d-a789-cbf74c7cbf92" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Common/broker/message-broker.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/broker/message.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/broker/queues.enum.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/API/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/API/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/message-broker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/server/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/server/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/API/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,14 +25,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/src/app.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+            <state relative-caret-position="79">
+              <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/API/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="1" selection-start-column="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -130,6 +131,7 @@
         <option value="$PROJECT_DIR$/Common/broker/message-broker.ts" />
         <option value="$PROJECT_DIR$/Common/server/server.ts" />
         <option value="$PROJECT_DIR$/API/src/app.ts" />
+        <option value="$PROJECT_DIR$/API/.gitignore" />
       </list>
     </option>
   </component>
@@ -245,7 +247,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14147000" />
+    <option name="totallyTimeSpent" value="14186000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -256,7 +258,7 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.9148248" weight="0.6815817" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.9148248" visible="true" weight="0.6815817" />
       <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959569" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -294,16 +296,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/common/server/server.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="34" column="74" selection-start-line="34" selection-start-column="74" selection-end-line="34" selection-end-column="74" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/auth/auth.guard.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="79">
@@ -445,11 +437,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API/src/app.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        <state relative-caret-position="79">
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
