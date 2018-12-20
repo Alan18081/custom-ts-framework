@@ -9,14 +9,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 class MessageBroker {
-    constructor(connection) {
-        this.connection = connection;
-    }
     sendMessage(queue, message) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.connection.assertQueue(queue);
             this.connection.sendToQueue(queue, Buffer.from(JSON.stringify(message)));
         });
+    }
+    handleError(err) {
+        console.log('[AMQP] Connection error: ', err);
+    }
+    handleClose(err) {
+        console.log('[AMQP] Connection closed: ', err);
+    }
+    run(connection) {
+        this.connection = connection;
+        this.connection.on('error', this.handleError.bind(this));
+        this.connection.on('close', this.handleClose.bind(this));
+        console.log('[AMQP] Connection established');
     }
 }
 exports.MessageBroker = MessageBroker;

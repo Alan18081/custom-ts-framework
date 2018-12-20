@@ -1,22 +1,27 @@
 import { config } from '../../config';
 import { connect } from 'amqplib';
 import {MessageBroker} from '../../Common/broker/message-broker';
-import { Server } from '../../Common/server/server';
+import { Server } from './server/server';
+import { AppModule } from './app.module';
 
 class API {
 
-    private messageBroker: MessageBroker;
-    private server: Server;
+    private readonly server: Server;
+    private readonly appModule: AppModule;
 
     constructor(port: number) {
+        this.appModule = new AppModule();
         this.server = new Server(port);
         this.initBroker();
         this.server.run();
     }
 
     async initBroker() {
-        const connection = await connect(config.rabbitmq.url);
-        this.messageBroker = new MessageBroker(connection);
+        try {
+            const connection = await connect(config.rabbitmq.url);
+        } catch (e) {
+          console.log('[AMQP] Failed to create connection: ', e.message);
+        }
     }
 }
 

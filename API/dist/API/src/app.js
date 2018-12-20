@@ -10,18 +10,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = require("../../config");
 const amqplib_1 = require("amqplib");
-const message_broker_1 = require("../../Common/broker/message-broker");
-const server_1 = require("../../Common/server/server");
+const server_1 = require("./server/server");
+const app_module_1 = require("./app.module");
 class API {
     constructor(port) {
+        this.appModule = new app_module_1.AppModule();
         this.server = new server_1.Server(port);
         this.initBroker();
         this.server.run();
     }
     initBroker() {
         return __awaiter(this, void 0, void 0, function* () {
-            const connection = yield amqplib_1.connect(config_1.config.rabbitmq.url);
-            this.messageBroker = new message_broker_1.MessageBroker(connection);
+            try {
+                const connection = yield amqplib_1.connect(config_1.config.rabbitmq.url);
+            }
+            catch (e) {
+                console.log('[AMQP] Failed to create connection: ', e.message);
+            }
         });
     }
 }
