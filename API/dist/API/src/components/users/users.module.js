@@ -6,14 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const module_1 = require("../../modules/module");
+const module_inversify_1 = require("../../modules/module.inversify");
+const users_controller_1 = require("./users.controller");
+const users_service_1 = require("./users.service");
+const broker_module_1 = require("../broker/broker.module");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
-    module_1.Module({
-        imports: [],
-        services: [],
-        controllers: []
+    module_inversify_1.Module({
+        imports: [
+            broker_module_1.BrokerModule
+        ],
+        services: [users_service_1.UsersService],
+        controllers: [users_controller_1.UsersController]
     })
 ], UsersModule);
 exports.UsersModule = UsersModule;

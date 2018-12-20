@@ -1,5 +1,4 @@
 import { RequestHandler } from 'express-serve-static-core';
-import { Validator } from '../../../Common/helpers/index';
 import { METHODS_LIST } from './interfaces';
 import {Guard, GuardCreator} from "./guards-decorators";
 

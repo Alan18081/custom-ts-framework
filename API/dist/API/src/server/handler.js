@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Handler = /** @class */ (function () {
-    function Handler(data) {
+class Handler {
+    constructor(data) {
         this.middlewares = [];
         this.validators = [];
         this.guards = [];
@@ -13,17 +13,16 @@ var Handler = /** @class */ (function () {
         if (data.handler)
             this.handler = data.handler;
         if (data.middlewares)
-            this.middlewares = data.middlewares.slice();
+            this.middlewares = [...data.middlewares];
         if (data.validators)
-            this.validators = data.validators.slice();
+            this.validators = [...data.validators];
         if (data.controller)
             this.controller = data.controller;
         if (data.method)
             this.method = data.method;
     }
-    Handler.prototype.addValidator = function (validators) {
+    addValidator(validators) {
         this.validators = this.validators.concat(validators);
-    };
-    return Handler;
-}());
+    }
+}
 exports.Handler = Handler;

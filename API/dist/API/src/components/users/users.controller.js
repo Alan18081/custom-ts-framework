@@ -22,13 +22,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const route_decorators_1 = require("../../server/route-decorators");
 const route_params_decorators_1 = require("../../server/route-params.decorators");
+const inversify_1 = require("inversify");
+const users_service_1 = require("./users.service");
+const message_broker_1 = require("../../broker/message-broker");
 let UsersController = class UsersController {
-    constructor() { }
     createOne(body) {
         return __awaiter(this, void 0, void 0, function* () {
+            this.usersService.createUser();
         });
     }
 };
+__decorate([
+    inversify_1.inject(message_broker_1.MessageBroker),
+    __metadata("design:type", message_broker_1.MessageBroker)
+], UsersController.prototype, "messageBroker", void 0);
+__decorate([
+    inversify_1.inject(users_service_1.UsersService),
+    __metadata("design:type", users_service_1.UsersService)
+], UsersController.prototype, "usersService", void 0);
 __decorate([
     route_decorators_1.Post(''),
     __param(0, route_params_decorators_1.Body()),
@@ -37,7 +48,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "createOne", null);
 UsersController = __decorate([
-    route_decorators_1.Controller('users'),
-    __metadata("design:paramtypes", [])
+    inversify_1.injectable(),
+    route_decorators_1.Controller('users')
 ], UsersController);
 exports.UsersController = UsersController;

@@ -1,8 +1,9 @@
 import { config } from '../../config';
 import { connect } from 'amqplib';
-import {MessageBroker} from '../../Common/broker/message-broker';
 import { Server } from './server/server';
+import { globalContainer } from './inversify.config';
 import { AppModule } from './app.module';
+import { MessageBroker } from './broker/message-broker';
 
 class API {
 
@@ -10,19 +11,20 @@ class API {
     private readonly appModule: AppModule;
 
     constructor(port: number) {
-        this.appModule = new AppModule();
+        this.appModule = globalContainer.get<AppModule>(AppModule);
         this.server = new Server(port);
-        this.initBroker();
         this.server.run();
     }
 
-    async initBroker() {
-        try {
-            const connection = await connect(config.rabbitmq.url);
-        } catch (e) {
-          console.log('[AMQP] Failed to create connection: ', e.message);
-        }
-    }
+    // async initBroker() {
+    //     try {
+    //         const connection = await connect(config.rabbitmq.url);
+    //         const messageBroker = globalContainer.get<MessageBroker>(MessageBroker);
+    //         messageBroker.run(connection);
+    //     } catch (e) {
+    //       console.log('[AMQP] Failed to create connection: ', e.message);
+    //     }
+    // }
 }
 
 new API(5000);

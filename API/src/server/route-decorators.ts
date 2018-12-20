@@ -7,6 +7,7 @@ export function Controller(path: string) {
       path
     };
 
+
     Reflect.defineMetadata(METADATA_KEY.controller, metadata, target);
   }
 }

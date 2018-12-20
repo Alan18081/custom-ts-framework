@@ -30,8 +30,10 @@ export class Server {
     const modules = Reflect.getMetadata(METADATA_KEY.module, Reflect) || [];
 
 
+
     modules.forEach(({ type }) => {
-      const controllers = Reflect.getMetadata(MODULE_KEYS.controllers, type);
+      const controllers = Reflect.getMetadata(MODULE_KEYS.controllers, type) || {};
+      console.log(type, controllers);
       const controllersList = Object.keys(controllers).map(key => controllers[key]);
       const servicesList = Reflect.getMetadata(MODULE_KEYS.services, type) || {};
 
@@ -47,7 +49,7 @@ export class Server {
           const validatorsMiddleware = this.createValidationMiddleware(validators);
           const guardsMiddleware = this.createGuardsMiddleware(guards, module, servicesList);
           const expressHandler = this.createHandler(handler.bind(controller.instance), methodParams);
-          this.app[method](`/${controller.path}/${path}`, guardsMiddleware, validatorsMiddleware, ...middlewares, expressHandler);
+          this.app[method](`/${controller.path}/${path}`, ...middlewares, expressHandler);
         });
       })
     });
