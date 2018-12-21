@@ -9,23 +9,18 @@ function Module(config) {
         const imports = config.imports || [];
         const exports = config.exports || [];
         const moduleConstructor = target;
-        let containerModule = new inversify_1.ContainerModule((bind => {
-            bind(target).to(target).inSingletonScope();
-            services.forEach((ServiceType) => {
-                bind(ServiceType).to(ServiceType).inSingletonScope();
-            });
-            controllers.forEach((ServiceType) => {
-                bind(ServiceType).to(ServiceType).inSingletonScope();
-            });
-        }));
-        const moduleContainer = new inversify_1.Container();
-        const modules = [];
-        imports.forEach(Type => {
-            const container = Reflect.getMetadata(keys_1.METADATA_KEY.containerModule, Type);
-            mod;
+        let moduleContainer = new inversify_1.Container();
+        services.forEach((ServiceType) => {
+            moduleContainer.bind(ServiceType).to(ServiceType);
         });
-        //
-        // moduleContainer.;
+        controllers.forEach((ServiceType) => {
+            moduleContainer.bind(ServiceType).to(ServiceType).inSingletonScope();
+        });
+        imports.forEach(Type => {
+            const container = Reflect.getMetadata(keys_1.METADATA_KEY.container, Type);
+            moduleContainer = inversify_1.Container.merge(moduleContainer, container);
+        });
+        moduleContainer.bind(target).to(target);
         const controllersMetadata = {};
         controllers.forEach((controller) => {
             const instance = moduleContainer.get(controller);
@@ -48,7 +43,7 @@ function Module(config) {
         modulesList.push({
             name: moduleConstructor.name,
             type: moduleConstructor,
-            container: moduleContainer
+            container: moduleContainer,
         });
     };
 }

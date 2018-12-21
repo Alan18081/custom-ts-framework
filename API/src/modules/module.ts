@@ -114,7 +114,6 @@ export function Module(config: ModuleConfig) {
       type: moduleConstructor
     });
 
-    console.log('Modules list', modulesList);
   }
 }
 

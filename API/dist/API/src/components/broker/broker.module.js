@@ -9,8 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const message_broker_1 = require("../../broker/message-broker");
 const module_inversify_1 = require("../../modules/module.inversify");
+const broker_service_1 = require("./broker.service");
 let BrokerModule = class BrokerModule {
     constructor() {
         console.log('Broker module created');
@@ -19,7 +19,7 @@ let BrokerModule = class BrokerModule {
 BrokerModule = __decorate([
     module_inversify_1.Module({
         imports: [],
-        services: [message_broker_1.MessageBroker]
+        services: [broker_service_1.BrokerService]
     }),
     __metadata("design:paramtypes", [])
 ], BrokerModule);

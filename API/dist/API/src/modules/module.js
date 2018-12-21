@@ -65,7 +65,6 @@ function Module(config) {
             name: moduleConstructor.name,
             type: moduleConstructor
         });
-        console.log('Modules list', modulesList);
     };
 }
 exports.Module = Module;

@@ -1,19 +1,5 @@
-import {QueuesEnum} from './queues.enum';
-import { Message } from './message';
-import {injectable} from 'inversify';
-
-@injectable()
-export class MessageBroker {
+export const messageBroker = new class {
     connection: any;
-
-    constructor() {
-        console.log('Broker created');
-    }
-
-    async sendMessage(queue: QueuesEnum, message: Message): Promise<void> {
-        await this.connection.assertQueue(queue);
-        this.connection.sendToQueue(queue, Buffer.from(JSON.stringify(message)));
-    }
 
     private handleError(err) {
         console.log('[AMQP] Connection error: ', err);

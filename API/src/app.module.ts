@@ -1,6 +1,5 @@
 import {Module} from './modules/module.inversify';
 import {UsersModule} from './components/users/users.module';
-import { MessageBroker } from './broker/message-broker';
 import {inject, injectable} from 'inversify';
 import {config} from '../../config';
 import {connect} from 'amqplib';
@@ -11,12 +10,13 @@ import {BrokerModule} from './components/broker/broker.module';
         BrokerModule,
         UsersModule,
     ],
+    services: [],
     controllers: [],
     exports: [],
 })
 @injectable()
 export class AppModule {
-    // @inject(MessageBroker) messageBroker: MessageBroker;
+    // @inject(UsersService) usersService: UsersService;
     //
     // constructor() {
     //     this.initBroker();

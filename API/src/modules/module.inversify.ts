@@ -1,6 +1,5 @@
-import {Container, ContainerModule, interfaces} from 'inversify';
+import {Container, interfaces} from 'inversify';
 import {METADATA_KEY, MODULE_KEYS} from '../../../Common/metadata/keys';
-import { isFunction } from 'lodash';
 
 interface ModuleConfig {
     imports?: any[];
@@ -18,28 +17,25 @@ export function Module(config: ModuleConfig) {
 
         const moduleConstructor = target;
 
-        let containerModule = new ContainerModule((bind => {
-            bind<typeof target>(target).to(target).inSingletonScope();
-            services.forEach(<T extends { new(...args) }>(ServiceType: T) => {
-                bind<T>(ServiceType).to(ServiceType).inSingletonScope();
-            });
+        let moduleContainer: interfaces.Container = new Container();
 
-            controllers.forEach(<T extends { new(...args) }>(ServiceType: T) => {
-                bind<T>(ServiceType).to(ServiceType).inSingletonScope();
-            });
-        }));
-
-        const moduleContainer = new Container();
-
-        const modules = [];
-        imports.forEach(Type => {
-           const container: ContainerModule = Reflect.getMetadata(METADATA_KEY.containerModule, Type);
-           mod
+        services.forEach(<T extends { new(...args) }>(ServiceType: T) => {
+            moduleContainer.bind<T>(ServiceType).to(ServiceType);
         });
-        //
-        // moduleContainer.;
+
+        controllers.forEach(<T extends { new(...args) }>(ServiceType: T) => {
+            moduleContainer.bind<T>(ServiceType).to(ServiceType).inSingletonScope();
+        });
 
 
+
+        imports.forEach(Type => {
+           const container: Container = Reflect.getMetadata(METADATA_KEY.container, Type);
+           moduleContainer = Container.merge(moduleContainer, container);
+        });
+
+
+        moduleContainer.bind(target).to(target);
 
         const controllersMetadata = {};
 
@@ -82,7 +78,7 @@ export function Module(config: ModuleConfig) {
         modulesList.push({
             name: moduleConstructor.name,
             type: moduleConstructor,
-            container: moduleContainer
+            container: moduleContainer,
         });
     }
 }

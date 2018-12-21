@@ -1,13 +1,16 @@
 import {inject, injectable} from 'inversify';
-import { MessageBroker } from '../../broker/message-broker';
+import {BrokerService} from '../broker/broker.service';
+import { QueuesEnum } from '../../../../Common/broker/queues.enum';
+import {Message} from '../../broker/message';
 
 @injectable()
 export class UsersService {
 
-    @inject(MessageBroker) messageBroker: MessageBroker;
+    @inject(BrokerService) messageBroker: BrokerService;
 
-    createUser() {
-        console.log(this.messageBroker.connection);
+    async createUser() {
+        const msg = new Message('456', { name: 'Alan' });
+        await this.messageBroker.sendMessage(QueuesEnum.USERS_SERVICE, msg);
         console.log('Hello from create user');
     }
 

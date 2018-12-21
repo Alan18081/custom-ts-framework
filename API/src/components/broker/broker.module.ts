@@ -1,9 +1,9 @@
-import { MessageBroker } from '../../broker/message-broker';
 import { Module } from '../../modules/module.inversify';
+import {BrokerService} from './broker.service';
 
 @Module({
     imports: [],
-    services: [MessageBroker]
+    services: [BrokerService]
 })
 export class BrokerModule {
     constructor() {

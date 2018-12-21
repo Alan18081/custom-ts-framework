@@ -18,6 +18,7 @@ AppModule = __decorate([
             broker_module_1.BrokerModule,
             users_module_1.UsersModule,
         ],
+        services: [],
         controllers: [],
         exports: [],
     }),
