@@ -12,7 +12,8 @@ function RouteParams(type: PARAMS_TYPES_LIST, paramName?: string) {
       methodName: name,
       index,
       type,
-      paramName
+      paramName,
+      AsignedType: Reflect.getMetadata('design:paramtypes', target, name)
     };
 
     let metadataList = [];

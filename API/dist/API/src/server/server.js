@@ -13,6 +13,7 @@ const metadata_1 = require("./metadata");
 const keys_1 = require("../../../Common/metadata/keys");
 const bodyParser = require("body-parser");
 const injector_1 = require("../modules/injector");
+const util_1 = require("util");
 class Server {
     constructor(port) {
         this.port = port;
@@ -29,7 +30,6 @@ class Server {
         const modules = Reflect.getMetadata(metadata_1.METADATA_KEY.module, Reflect) || [];
         modules.forEach(({ type }) => {
             const controllers = Reflect.getMetadata(keys_1.MODULE_KEYS.controllers, type) || {};
-            console.log(type, controllers);
             const controllersList = Object.keys(controllers).map(key => controllers[key]);
             const servicesList = Reflect.getMetadata(keys_1.MODULE_KEYS.services, type) || {};
             controllersList.forEach(controller => {
@@ -37,12 +37,12 @@ class Server {
                 const params = Reflect.getMetadata(metadata_1.METADATA_KEY.controllerParams, controller.type);
                 const methodsList = Object.keys(methods).map(key => methods[key]);
                 methodsList.forEach(({ method, handler, path, middlewares, name, validators, guards }) => {
-                    console.log(Array.isArray(guards));
                     const methodParams = params.filter(({ methodName }) => methodName === name);
-                    const validatorsMiddleware = this.createValidationMiddleware(validators);
+                    const validatorsMiddleware = this.createValidationMiddleware(validators, methodParams);
                     const guardsMiddleware = this.createGuardsMiddleware(guards, module, servicesList);
+                    console.log('Method params', methodParams);
                     const expressHandler = this.createHandler(handler.bind(controller.instance), methodParams);
-                    this.app[method](`/${controller.path}/${path}`, ...middlewares, expressHandler);
+                    this.app[method](`/${controller.path}/${path}`, validatorsMiddleware, ...middlewares, expressHandler);
                 });
             });
         });
@@ -56,7 +56,7 @@ class Server {
             }
             catch (e) {
                 console.log(e);
-                next(e);
+                res.status(e.statusCode).json(e.message);
             }
         });
     }
@@ -81,14 +81,13 @@ class Server {
             }
         });
     }
-    createValidationMiddleware(validatorTypes) {
+    createValidationMiddleware(validatorTypes, methodParams) {
         return (req, res, next) => {
+            const args = this.createArgs(req, res, next, methodParams);
             try {
-                validatorTypes.forEach((Type) => {
-                    const validator = new Type();
-                    const params = Reflect.getMetadata(metadata_1.METADATA_KEY.controllerParams, Type);
-                    const args = this.createArgs(req, res, next, params);
-                    validator.validate(...args);
+                methodParams.forEach((param) => {
+                    if (util_1.isFunction(param.AsignedType)) {
+                    }
                 });
                 next();
             }
@@ -100,7 +99,6 @@ class Server {
     createGuardsMiddleware(guardTypes, module, serviceTypes) {
         return (req, res, next) => {
             try {
-                console.log(guardTypes);
                 guardTypes.forEach((guardType) => {
                     const guard = injector_1.Injector.resolve(guardType, module, serviceTypes);
                     guard.check(req, res, next);

@@ -21,10 +21,10 @@ class ServerError {
     }
 }
 exports.ServerError = ServerError;
-class Unathorized {
+class Unauthorized {
     constructor(message) {
         this.message = message;
         this.statusCode = 401;
     }
 }
-exports.Unathorized = Unathorized;
+exports.Unauthorized = Unauthorized;

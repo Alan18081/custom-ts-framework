@@ -15,16 +15,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
-const message_broker_1 = require("../../broker/message-broker");
-let BrokerService = class BrokerService {
-    sendMessage(queue, message) {
+const create_user_dto_1 = require("./dto/create-user.dto");
+const class_validator_1 = require("class-validator");
+const http_error_1 = require("../../server/http-error");
+let UsersFilter = class UsersFilter {
+    createUser(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield message_broker_1.messageBroker.channel.assertQueue(queue);
-            message_broker_1.messageBroker.channel.sendToQueue(queue, Buffer.from(JSON.stringify(message)));
+            const body = new create_user_dto_1.CreateUserDto(data);
+            const errors = yield class_validator_1.validate(body);
+            if (errors.length) {
+                const errorMessages = errors.map(({ property, constraints }) => ({
+                    property,
+                    constrains: Object.keys(constraints).map(key => constraints[key])
+                }));
+                throw new http_error_1.BadRequest({ errors: errorMessages });
+            }
         });
     }
 };
-BrokerService = __decorate([
+UsersFilter = __decorate([
     inversify_1.injectable()
-], BrokerService);
-exports.BrokerService = BrokerService;
+], UsersFilter);
+exports.UsersFilter = UsersFilter;

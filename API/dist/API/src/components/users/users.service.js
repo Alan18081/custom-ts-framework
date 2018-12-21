@@ -19,14 +19,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
 const broker_service_1 = require("../broker/broker.service");
-const queues_enum_1 = require("../../../../Common/broker/queues.enum");
-const message_1 = require("../../broker/message");
 let UsersService = class UsersService {
     createUser() {
         return __awaiter(this, void 0, void 0, function* () {
-            const msg = new message_1.Message('456', { name: 'Alan' });
-            yield this.messageBroker.sendMessage(queues_enum_1.QueuesEnum.USERS_SERVICE, msg);
-            console.log('Hello from create user');
+            // await this.messageBroker.sendMessage(QueuesEnum.USERS_SERVICE, new Message('456', 'Hi' ));
         });
     }
 };

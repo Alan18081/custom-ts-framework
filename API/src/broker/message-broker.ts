@@ -1,5 +1,8 @@
+import {Channel, Connection} from 'amqplib';
+
 export const messageBroker = new class {
-    connection: any;
+    private connection: Connection;
+    public channel: Channel;
 
     private handleError(err) {
         console.log('[AMQP] Connection error: ', err);
@@ -9,8 +12,9 @@ export const messageBroker = new class {
         console.log('[AMQP] Connection closed: ', err);
     }
 
-    run(connection: any) {
+    async run(connection: any) {
         this.connection = connection;
+        this.channel = await this.connection.createChannel();
         this.connection.on('error', this.handleError.bind(this));
         this.connection.on('close', this.handleClose.bind(this));
         console.log('[AMQP] Connection established');

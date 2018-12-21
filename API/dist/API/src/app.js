@@ -24,7 +24,7 @@ class API {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const connection = yield channel_api_1.connect(config_1.config.rabbitmq.url);
-                message_broker_1.messageBroker.run(connection);
+                yield message_broker_1.messageBroker.run(connection);
             }
             catch (e) {
                 console.log('[AMQP] Failed to create connection: ', e.message);

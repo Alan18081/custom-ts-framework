@@ -7,8 +7,7 @@ import {messageBroker} from '../../broker/message-broker';
 export class BrokerService {
 
     async sendMessage(queue: QueuesEnum, message: Message): Promise<void> {
-        console.log(messageBroker.connection);
-        // await messageBroker.connection.assertQueue(queue);
-        messageBroker.connection.sendToQueue(queue, Buffer.from(JSON.stringify(message)));
+        await messageBroker.channel.assertQueue(queue);
+        messageBroker.channel.sendToQueue(queue, Buffer.from(JSON.stringify(message)));
     }
 }

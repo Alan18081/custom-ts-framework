@@ -8,7 +8,8 @@ function RouteParams(type, paramName) {
             methodName: name,
             index,
             type,
-            paramName
+            paramName,
+            AsignedType: Reflect.getMetadata('design:paramtypes', target, name)
         };
         let metadataList = [];
         if (!Reflect.hasMetadata(metadata_1.METADATA_KEY.controllerParams, target.constructor)) {

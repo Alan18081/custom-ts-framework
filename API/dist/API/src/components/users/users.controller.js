@@ -24,9 +24,12 @@ const route_decorators_1 = require("../../server/route-decorators");
 const route_params_decorators_1 = require("../../server/route-params.decorators");
 const inversify_1 = require("inversify");
 const users_service_1 = require("./users.service");
+const create_user_dto_1 = require("./dto/create-user.dto");
+const users_filter_1 = require("./users.filter");
 let UsersController = class UsersController {
     createOne(body) {
         return __awaiter(this, void 0, void 0, function* () {
+            yield this.usersFilter.createUser(body);
             this.usersService.createUser();
         });
     }
@@ -36,10 +39,14 @@ __decorate([
     __metadata("design:type", users_service_1.UsersService)
 ], UsersController.prototype, "usersService", void 0);
 __decorate([
+    inversify_1.inject(users_filter_1.UsersFilter),
+    __metadata("design:type", users_filter_1.UsersFilter)
+], UsersController.prototype, "usersFilter", void 0);
+__decorate([
     route_decorators_1.Post(''),
     __param(0, route_params_decorators_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "createOne", null);
 UsersController = __decorate([

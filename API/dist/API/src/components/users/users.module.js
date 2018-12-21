@@ -10,6 +10,7 @@ const module_inversify_1 = require("../../modules/module.inversify");
 const users_controller_1 = require("./users.controller");
 const users_service_1 = require("./users.service");
 const broker_module_1 = require("../broker/broker.module");
+const users_filter_1 = require("./users.filter");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
@@ -17,7 +18,7 @@ UsersModule = __decorate([
         imports: [
             broker_module_1.BrokerModule
         ],
-        services: [users_service_1.UsersService],
+        services: [users_service_1.UsersService, users_filter_1.UsersFilter],
         controllers: [users_controller_1.UsersController]
     })
 ], UsersModule);

@@ -7,6 +7,8 @@ import * as bodyParser from 'body-parser';
 import {PARAM} from './interfaces';
 import {Guard, GuardCreator} from "./guards-decorators";
 import {Injector} from "../modules/injector";
+import {isFunction} from 'util';
+import {HttpError} from './http-error';
 
 export class Server {
 
@@ -29,11 +31,8 @@ export class Server {
   private registerControllers() {
     const modules = Reflect.getMetadata(METADATA_KEY.module, Reflect) || [];
 
-
-
     modules.forEach(({ type }) => {
       const controllers = Reflect.getMetadata(MODULE_KEYS.controllers, type) || {};
-      console.log(type, controllers);
       const controllersList = Object.keys(controllers).map(key => controllers[key]);
       const servicesList = Reflect.getMetadata(MODULE_KEYS.services, type) || {};
 
@@ -44,12 +43,12 @@ export class Server {
         const methodsList = Object.keys(methods).map(key => methods[key]);
 
         methodsList.forEach(({ method, handler, path, middlewares, name, validators, guards }: Handler) => {
-          console.log(Array.isArray(guards));
           const methodParams = params.filter(({ methodName }) => methodName === name);
-          const validatorsMiddleware = this.createValidationMiddleware(validators);
+          const validatorsMiddleware = this.createValidationMiddleware(validators, methodParams);
           const guardsMiddleware = this.createGuardsMiddleware(guards, module, servicesList);
+          console.log('Method params', methodParams);
           const expressHandler = this.createHandler(handler.bind(controller.instance), methodParams);
-          this.app[method](`/${controller.path}/${path}`, ...middlewares, expressHandler);
+          this.app[method](`/${controller.path}/${path}`, validatorsMiddleware, ...middlewares, expressHandler);
         });
       })
     });
@@ -63,7 +62,7 @@ export class Server {
         res.send(result);
       } catch (e) {
         console.log(e);
-        next(e);
+        res.status(e.statusCode).json(e.message);
       }
     }
   }
@@ -92,15 +91,16 @@ export class Server {
     });
   }
 
-  private createValidationMiddleware(validatorTypes: any[]): RequestHandler {
+  private createValidationMiddleware(validatorTypes: any[], methodParams: any[]): RequestHandler {
     return (req: Request, res: Response, next: NextFunction) => {
+      const args = this.createArgs(req, res, next, methodParams);
       try {
-        validatorTypes.forEach((Type: any) => {
-          const validator = new Type();
-          const params = Reflect.getMetadata(METADATA_KEY.controllerParams, Type);
-          const args = this.createArgs(req, res, next, params);
-          validator.validate(...args);
+        methodParams.forEach((param: PARAM) => {
+            if(isFunction(param.AsignedType)) {
+
+            }
         });
+
         next();
       } catch (e) {
         res.status(400).json({ error: e.message });
@@ -111,7 +111,6 @@ export class Server {
   private createGuardsMiddleware(guardTypes: GuardCreator[], module: any, serviceTypes): RequestHandler {
     return (req: Request, res: Response, next: NextFunction) => {
         try {
-          console.log(guardTypes);
           guardTypes.forEach((guardType: GuardCreator) => {
               const guard = Injector.resolve(guardType, module, serviceTypes) as Guard;
               guard.check(req, res, next);

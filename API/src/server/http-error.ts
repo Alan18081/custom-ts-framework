@@ -1,11 +1,12 @@
-interface HttpError {
-  message: string;
+export interface HttpError {
+  message: any;
   statusCode: number;
 }
 
 export class NotFound implements HttpError {
-  public readonly message: string;
+  public readonly message: any;
   public readonly statusCode: number;
+
   constructor(message: string) {
     this.message = message;
     this.statusCode = 404;
@@ -13,16 +14,17 @@ export class NotFound implements HttpError {
 }
 
 export class BadRequest implements HttpError {
-  public readonly message: string;
+  public readonly message: any;
   public readonly statusCode: number;
-  constructor(message: string) {
+
+  constructor(message: any) {
     this.message = message;
     this.statusCode = 400;
   }
 }
 
 export class ServerError implements HttpError {
-  public readonly message: string;
+  public readonly message: any;
   public readonly statusCode: number;
   constructor(message: string) {
     this.message = message;
@@ -30,8 +32,8 @@ export class ServerError implements HttpError {
   }
 }
 
-export class Unathorized implements HttpError {
-  public readonly message: string;
+export class Unauthorized implements HttpError {
+  public readonly message: any;
   public readonly statusCode: number;
   constructor(message: string) {
     this.message = message;

@@ -9,6 +9,7 @@ export interface PARAM {
   index: number;
   type: PARAMS_TYPES_LIST;
   paramName?: string;
+  AsignedType: Function
 }
 
 export interface Method {
