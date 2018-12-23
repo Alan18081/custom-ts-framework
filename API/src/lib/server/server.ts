@@ -57,7 +57,12 @@ export class Server {
       try {
         const args = this.createArgs(req, res, next, params);
         const result = await method(...args);
-        res.send(result);
+        console.log('Method result', result);
+        if(result.isError) {
+            res.status(result.statusCode).json(result.payload);
+        } else {
+            res.send(result);
+        }
       } catch (e) {
         console.log(e);
         res.status(e.statusCode).json(e.message);
@@ -85,6 +90,9 @@ export class Server {
 
         case PARAMS_TYPES.body:
           return req.body;
+
+        case PARAMS_TYPES.query:
+          return req.query;
       }
     });
   }

@@ -70,7 +70,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "updateOne", null);
 UsersController = __decorate([
-    route_decorators_1.Controller('users'),
+    route_decorators_1.Controller('auth'),
     __metadata("design:paramtypes", [users_service_1.UsersService])
 ], UsersController);
 exports.UsersController = UsersController;

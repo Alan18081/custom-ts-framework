@@ -48,6 +48,14 @@ export function Body(): ParameterDecorator {
   return RouteParams(PARAMS_TYPES.body);
 }
 
+export function Query(name?: string): ParameterDecorator {
+  if(name) {
+      return RouteParams(PARAMS_TYPES.queryField, name);
+  }
+
+  return RouteParams(PARAMS_TYPES.query);
+}
+
 export function getHandler(target: any, name: string, descriptor: PropertyDescriptor): Handler {
   let methods: { [key: string]: Handler } = {};
   if(!Reflect.hasMetadata(METADATA_KEY.controllerMethod, target.constructor)) {

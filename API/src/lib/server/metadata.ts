@@ -22,5 +22,7 @@ export const METHODS = {
 export const PARAMS_TYPES = {
   params: 'params',
   headers: 'headers',
-  body: 'body'
+  body: 'body',
+  query: 'query',
+  queryField: 'queryField'
 };

@@ -51,6 +51,6 @@ __decorate([
 ], UsersController.prototype, "createOne", null);
 UsersController = __decorate([
     inversify_1.injectable(),
-    route_decorators_1.Controller('users')
+    route_decorators_1.Controller('auth')
 ], UsersController);
 exports.UsersController = UsersController;

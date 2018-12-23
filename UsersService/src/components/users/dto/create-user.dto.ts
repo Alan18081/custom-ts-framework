@@ -1,7 +1,9 @@
-import {IsString, IsEmail, MinLength, IsInt} from 'class-validator';
-import {PASSWORD_LENGTH} from "../../../config/common";
+import {IsEmail, IsString, MinLength} from 'class-validator';
+import {BaseDto} from '../../../../../Common/dto/base.dto';
+import {config} from '../../../../../config';
 
-export class CreateUserDto {
+
+export class CreateUserDto extends BaseDto {
 
     @IsString()
     firstName: string;
@@ -12,11 +14,8 @@ export class CreateUserDto {
     @IsEmail()
     email: string;
 
-    @IsInt()
-    age: number;
-
     @IsString()
-    @MinLength(PASSWORD_LENGTH)
+    @MinLength(config.common.passwordLength)
     password: string;
 
 }

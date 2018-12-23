@@ -1,7 +1,7 @@
-import {CommunicationErrors} from './communication-errors';
+import {Messages} from './messages';
 
 export class BrokerException {
     constructor(
-       public readonly message: CommunicationErrors,
+       public readonly message: Messages,
     ) {}
 }

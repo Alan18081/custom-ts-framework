@@ -1,13 +1,12 @@
 import { Module } from '../../lib/modules/module.inversify';
 import { UsersService } from './users.service';
-import { UsersController } from './users.controller';
-import { UserModel } from './user.model';
+import { UsersHandler } from './users.handler';
 import {CoreModule} from '../core/core.module';
+import {UsersFilter} from './users.filter';
 
 @Module({
   imports: [CoreModule],
-  controllers: [],
-  services: [UsersService, UserModel],
-  handlers: [UsersController]
+  services: [UsersService, UsersFilter],
+  handlers: [UsersHandler]
 })
 export class UsersModule {}

@@ -12,6 +12,7 @@ export const messageBroker = new class {
     private readonly queue = QueuesEnum.API;
 
     private bufferMessage(message: Message): Buffer {
+        console.log('Message to buffer', message);
         return Buffer.from(JSON.stringify(message));
     }
 
