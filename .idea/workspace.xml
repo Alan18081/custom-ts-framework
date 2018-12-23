@@ -1,242 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c0954dd-edcd-4e2d-a789-cbf74c7cbf92" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/API/src/helpers/dto/pagination.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/Common/broker-exception.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/Common/broker/message-broker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/Common/broker/message.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/Common/broker/queues.enum.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/Common/communication-codes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/Common/communication-errors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/Common/metadata/keys.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/Common/models/base.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/Common/models/knex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/Common/queues.enum.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/app.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/dto/create-user.dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/user.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/user.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/users.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/users.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/users.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/config/common.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/config/communication-codes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/config/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/helpers/http-errors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/broker/decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/broker/message-broker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/broker/message.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/broker/metadata.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/broker/queues.enum.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/message-broker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/models/base-model.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/models/base.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/models/knex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/models/user.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/modules/injector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/modules/interfaces.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/modules/module.inversify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/modules/module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/app.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/auth/auth.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/auth/auth.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/auth/auth.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/auth/auth.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/auth/auth.guard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/auth/auth.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/auth/auth.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/auth/dto/login.dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/auth/interfaces/jwt-payload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/auth/interfaces/jwt-response.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/auth/strategies/jwt.strategy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/db/db.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/users/dto/create-user.dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/users/user.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/users/user.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/users/users.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/users/users.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/components/users/users.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/config/common.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/config/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/filter/decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/helpers/http-errors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/helpers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/injector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/knexfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/helpers/params-parser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/helpers/params.parser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/base-model.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/base.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/column.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/entity-metadata.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/helpers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/injector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/interfaces.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/knex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/profile.entity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/repository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/table.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/user.entity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/models/user.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/modules/db.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/repository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/handler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/http-error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/injector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/interfaces.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/methods.enum.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/methods.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/route-params.decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/server/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/lib/users.repository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/migrations/20181218205104_create_users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/model/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/model/decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/model/user.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server/decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server/handler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server/helpers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server/http-error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server/injector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server/interfaces.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server/route-params.decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/server/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/app.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/filter/decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/helpers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/models/base-model.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/models/base.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/models/knex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/models/user.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/server/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/server/guards-decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/server/handler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/server/http-error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/server/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/server/injector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/server/interfaces.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/server/route-decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/server/route-params.decorators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/common/server/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/auth/auth.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/auth/auth.guard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/auth/auth.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/auth/auth.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/auth/dto/login.dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/auth/interfaces/jwt-payload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/auth/interfaces/jwt-response.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/auth/strategies/jwt.strategy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/users/dto/create-user.dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/users/user.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/users/user.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/users/users.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/users/users.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/components/users/users.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/config/common.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/config/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/helpers/http-errors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/src/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/users/base.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/users/users.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/users/users.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/dist/users/users.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/knexfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/migrations/20181222202225_create_users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/migrations/20181222205326_create_users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/migrations/20181222205347_create_users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/app.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/components/auth/auth.filter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/components/auth/auth.handler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/components/auth/auth.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/components/auth/auth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/components/auth/dto/login.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/components/auth/jwt-response.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/components/core/core.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/components/core/services/passwords.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/components/core/services/validator.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/config/common.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/config/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/helpers/dto/pagination.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/helpers/http-errors.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/helpers/interfaces/user.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/broker/decorators.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/broker/message-broker.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/broker/message.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/broker/metadata.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/models/base-model.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/models/base.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/models/knex.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/models/user.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/modules/injector.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/modules/interfaces.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/modules/interfaces.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/modules/module.inversify.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/src/lib/modules/module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthService/yarn.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/broker/error-message.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/interfaces/validation-error.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/messages.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UsersService/src/components/core/services/validator.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UsersService/src/components/users/dto/find-user.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UsersService/src/components/users/dto/find-users-list.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UsersService/src/components/users/users.filter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UsersService/src/components/users/users.handler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UsersService/src/helpers/dto/pagination.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/dist/API/src/components/users/users.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/API/dist/API/src/components/users/users.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/API/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/components/users/dto/create-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/components/users/dto/create-user.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/components/users/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/components/users/users.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/components/users/users.filter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/components/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/components/users/users.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/components/users/users.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/lib/broker/message-broker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/lib/broker/message-broker.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/lib/server/metadata.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/lib/server/metadata.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/lib/server/route-params.decorators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/lib/server/route-params.decorators.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/lib/server/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/lib/server/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/broker-exception.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/broker-exception.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/communication-codes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/communication-codes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/communication-errors.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/dist/UsersService/src/components/users/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/dist/UsersService/src/components/users/user.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/dist/components/users/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/dist/components/users/user.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/dist/components/users/users.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/dist/components/users/users.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/dist/migrations/20181218205104_create_users.js" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/dist/migrations/20181218205104_create_users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/dist/src/components/users/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/dist/src/components/users/user.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/dist/src/components/users/users.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/dist/src/components/users/users.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/dist/users/users.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/dist/users/users.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/migrations/20181222205347_create_users.js" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/migrations/20181222205347_create_users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/src/components/core/core.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/components/core/core.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/src/components/users/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/components/users/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/src/components/users/users.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/src/components/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/components/users/users.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/src/components/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/components/users/users.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/src/helpers/http-errors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/helpers/http-errors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/src/lib/broker/message-broker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/lib/broker/message-broker.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersService/src/lib/models/base.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/lib/models/base.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn-error.log" beforeDir="false" />
-    </list>
+    <list default="true" id="2c0954dd-edcd-4e2d-a789-cbf74c7cbf92" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -429,12 +194,12 @@
       <workItem from="1545550971725" duration="3865000" />
       <workItem from="1545554855812" duration="180000" />
       <workItem from="1545555045962" duration="553000" />
-      <workItem from="1545556257948" duration="25438000" />
+      <workItem from="1545556257948" duration="26152000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105140000" />
+    <option name="totallyTimeSpent" value="105854000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -445,7 +210,7 @@
       <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Thumbnails" order="8" weight="0.3298647" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.9142857" weight="0.6763788" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.9142857" visible="true" weight="0.6763788" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24905661" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
