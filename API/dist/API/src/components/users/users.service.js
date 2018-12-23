@@ -19,10 +19,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
 const broker_service_1 = require("../broker/broker.service");
+const queues_enum_1 = require("../../../../Common/queues.enum");
+const message_1 = require("../../lib/broker/message");
+const communication_codes_1 = require("../../../../Common/communication-codes");
 let UsersService = class UsersService {
-    createUser() {
+    createUser(body) {
         return __awaiter(this, void 0, void 0, function* () {
-            // await this.messageBroker.sendMessage(QueuesEnum.USERS_SERVICE, new Message('456', 'Hi' ));
+            yield this.messageBroker.sendMessage(queues_enum_1.QueuesEnum.USERS_SERVICE, new message_1.Message(communication_codes_1.CommunicationCodes.CREATE_USER, body));
         });
     }
 };

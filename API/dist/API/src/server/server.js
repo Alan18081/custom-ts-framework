@@ -13,7 +13,6 @@ const metadata_1 = require("./metadata");
 const keys_1 = require("../../../Common/metadata/keys");
 const bodyParser = require("body-parser");
 const injector_1 = require("../modules/injector");
-const util_1 = require("util");
 class Server {
     constructor(port) {
         this.port = port;
@@ -38,11 +37,9 @@ class Server {
                 const methodsList = Object.keys(methods).map(key => methods[key]);
                 methodsList.forEach(({ method, handler, path, middlewares, name, validators, guards }) => {
                     const methodParams = params.filter(({ methodName }) => methodName === name);
-                    const validatorsMiddleware = this.createValidationMiddleware(validators, methodParams);
                     const guardsMiddleware = this.createGuardsMiddleware(guards, module, servicesList);
-                    console.log('Method params', methodParams);
                     const expressHandler = this.createHandler(handler.bind(controller.instance), methodParams);
-                    this.app[method](`/${controller.path}/${path}`, validatorsMiddleware, ...middlewares, expressHandler);
+                    this.app[method](`/${controller.path}/${path}`, ...middlewares, expressHandler);
                 });
             });
         });
@@ -80,21 +77,6 @@ class Server {
                     return req.body;
             }
         });
-    }
-    createValidationMiddleware(validatorTypes, methodParams) {
-        return (req, res, next) => {
-            const args = this.createArgs(req, res, next, methodParams);
-            try {
-                methodParams.forEach((param) => {
-                    if (util_1.isFunction(param.AsignedType)) {
-                    }
-                });
-                next();
-            }
-            catch (e) {
-                res.status(400).json({ error: e.message });
-            }
-        };
     }
     createGuardsMiddleware(guardTypes, module, serviceTypes) {
         return (req, res, next) => {

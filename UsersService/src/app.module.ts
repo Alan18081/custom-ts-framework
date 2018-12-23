@@ -1,5 +1,4 @@
-import {Module} from './module';
-import {AuthModule} from './components/auth/auth.module';
+import {Module} from './lib/modules/module.inversify';
 import {UsersModule} from './components/users/users.module';
 
 @Module({

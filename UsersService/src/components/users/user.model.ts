@@ -1,4 +1,4 @@
-import { BaseModel } from '../../common/models/base.model';
+import { BaseModel } from '../../lib/models/base.model';
 import { User } from './user.interface';
 import { toNumber } from 'lodash';
 
@@ -9,13 +9,15 @@ export class UserModel extends BaseModel<User> {
   public firstName: string;
   public lastName: string;
   public email: string;
-  public position_id: number;
+  public positionId: number;
+  public password: string;
 
-  constructor(data: User) {
+  constructor(data: Partial<User>) {
     super();
     this.firstName = data.firstName;
     this.lastName = data.lastName;
-    this.position_id = toNumber(data.position_id);
+    this.email = data.email;
+    this.positionId = data.positionId && toNumber(data.positionId);
   }
 
 }

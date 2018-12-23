@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const module_inversify_1 = require("../../modules/module.inversify");
+const module_inversify_1 = require("../../lib/modules/module.inversify");
 const broker_service_1 = require("./broker.service");
 let BrokerModule = class BrokerModule {
     constructor() {

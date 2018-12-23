@@ -8,7 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const queues_enum_1 = require("../../../Common/broker/queues.enum");
+const rxjs_1 = require("rxjs");
+const keys_1 = require("../../../Common/metadata/keys");
 exports.messageBroker = new class {
+    constructor() {
+        this.queue = queues_enum_1.QueuesEnum.API;
+    }
     handleError(err) {
         console.log('[AMQP] Connection error: ', err);
     }
@@ -23,5 +29,23 @@ exports.messageBroker = new class {
             this.connection.on('close', this.handleClose.bind(this));
             console.log('[AMQP] Connection established');
         });
+    }
+    subscribe(queue) {
+        return new rxjs_1.Observable(observer => {
+            this.channel.consume(queue, (msg) => {
+                if (msg) {
+                    try {
+                        observer.next(JSON.parse(msg.content.toString()));
+                    }
+                    catch (e) {
+                        console.log('[AMQP] Failed to parse message');
+                    }
+                }
+            });
+        });
+    }
+    init() {
+        const subscribers = Reflect.getMetadata(keys_1.METADATA_KEY.subscribers, Reflect) || [];
+        subscribers.forEach();
     }
 };

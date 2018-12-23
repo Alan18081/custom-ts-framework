@@ -6,7 +6,12 @@ export const METADATA_KEY = {
   module: 'ioc:module',
   service: 'ioc:service',
   repository: 'ioc:repository',
-  args: 'ioc:args'
+  args: 'ioc:args',
+  container: 'ioc:container',
+  containerModule: 'ioc:container-module',
+  subscribers: 'ioc:subscribers',
+  resolvedSubscribers: 'ioc:resolved-subscribers',
+  messageHandler: 'ioc:message-handler'
 };
 
 export const MODULE_KEYS = {

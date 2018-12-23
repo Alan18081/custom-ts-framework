@@ -17,7 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
 const create_user_dto_1 = require("./dto/create-user.dto");
 const class_validator_1 = require("class-validator");
-const http_error_1 = require("../../server/http-error");
+const http_error_1 = require("../../lib/server/http-error");
 let UsersFilter = class UsersFilter {
     createUser(data) {
         return __awaiter(this, void 0, void 0, function* () {

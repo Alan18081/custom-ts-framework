@@ -6,16 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var module_1 = require("./module");
-var users_module_1 = require("./components/users/users.module");
-var AppModule = /** @class */ (function () {
-    function AppModule() {
-    }
-    AppModule = __decorate([
-        module_1.Module({
-            imports: [users_module_1.UsersModule],
-        })
-    ], AppModule);
-    return AppModule;
-}());
+const module_1 = require("./module");
+const users_module_1 = require("./components/users/users.module");
+let AppModule = class AppModule {
+};
+AppModule = __decorate([
+    module_1.Module({
+        imports: [users_module_1.UsersModule],
+    })
+], AppModule);
 exports.AppModule = AppModule;

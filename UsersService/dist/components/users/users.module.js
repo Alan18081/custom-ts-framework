@@ -6,22 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var module_1 = require("../../module");
-var users_service_1 = require("./users.service");
-var users_controller_1 = require("./users.controller");
-var auth_module_1 = require("../auth/auth.module");
-var db_module_1 = require("../../lib/modules/db.module");
-var UsersModule = /** @class */ (function () {
-    function UsersModule() {
-    }
-    UsersModule = __decorate([
-        module_1.Module({
-            imports: [auth_module_1.AuthModule, db_module_1.DbModule],
-            controllers: [users_controller_1.UsersController],
-            services: [users_service_1.UsersService],
-            exports: []
-        })
-    ], UsersModule);
-    return UsersModule;
-}());
+const module_1 = require("../../module");
+const users_service_1 = require("./users.service");
+const users_controller_1 = require("./users.controller");
+const auth_module_1 = require("../auth/auth.module");
+let UsersModule = class UsersModule {
+};
+UsersModule = __decorate([
+    module_1.Module({
+        imports: [auth_module_1.AuthModule],
+        controllers: [users_controller_1.UsersController],
+        services: [users_service_1.UsersService],
+        exports: []
+    })
+], UsersModule);
 exports.UsersModule = UsersModule;

@@ -1,8 +1,8 @@
 import { config } from '../../config';
 import { connect } from 'amqplib/channel_api';
-import { Server } from './server/server';
+import { Server } from './lib/server/server';
 import { AppModule } from './app.module';
-import { messageBroker } from './broker/message-broker';
+import { messageBroker } from './lib/broker/message-broker';
 
 class API {
 
@@ -21,7 +21,7 @@ class API {
             const connection = await connect(config.rabbitmq.url);
             await messageBroker.run(connection);
         } catch (e) {
-          console.log('[AMQP] Failed to create connection: ', e.message);
+            console.log('[AMQP] Failed to create connection: ', e.message);
         }
     }
 }

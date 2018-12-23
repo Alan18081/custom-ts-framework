@@ -15,7 +15,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
-const message_broker_1 = require("../../broker/message-broker");
+const message_broker_1 = require("../../lib/broker/message-broker");
 let BrokerService = class BrokerService {
     sendMessage(queue, message) {
         return __awaiter(this, void 0, void 0, function* () {

@@ -1,15 +1,15 @@
 import {inject, injectable} from 'inversify';
-import {BrokerService} from '../broker/broker.service';
-import { QueuesEnum } from '../../../../Common/broker/queues.enum';
-import { Message } from '../../broker/message';
+import { messageBroker } from '../../lib/broker/message-broker';
+import { QueuesEnum } from '../../../../Common/queues.enum';
+import { Message } from '../../../../Common/broker/message';
+import {CommunicationCodes} from '../../../../Common/communication-codes';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @injectable()
 export class UsersService {
 
-    @inject(BrokerService) messageBroker: BrokerService;
+    async createUser(body: CreateUserDto) {
 
-    async createUser() {
-        // await this.messageBroker.sendMessage(QueuesEnum.USERS_SERVICE, new Message('456', 'Hi' ));
     }
 
 }

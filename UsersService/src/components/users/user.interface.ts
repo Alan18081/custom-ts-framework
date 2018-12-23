@@ -3,5 +3,5 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
-  position_id: number;
+  positionId?: number;
 }

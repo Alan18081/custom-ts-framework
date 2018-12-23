@@ -6,13 +6,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var decorators_1 = require("../../lib/server/decorators");
-var AuthController = /** @class */ (function () {
-    function AuthController() {
-    }
-    AuthController = __decorate([
-        decorators_1.Controller('auth')
-    ], AuthController);
-    return AuthController;
-}());
+const route_decorators_1 = require("../../common/server/route-decorators");
+let AuthController = class AuthController {
+};
+AuthController = __decorate([
+    route_decorators_1.Controller('auth')
+], AuthController);
 exports.AuthController = AuthController;

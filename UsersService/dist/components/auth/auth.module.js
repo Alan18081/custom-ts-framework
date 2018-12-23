@@ -6,20 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var module_1 = require("../../module");
-var auth_controller_1 = require("./auth.controller");
-var auth_service_1 = require("./auth.service");
-var AuthModule = /** @class */ (function () {
-    function AuthModule() {
-    }
-    AuthModule = __decorate([
-        module_1.Module({
-            imports: [],
-            controllers: [auth_controller_1.AuthController],
-            services: [auth_service_1.AuthService],
-            exports: [auth_service_1.AuthService],
-        })
-    ], AuthModule);
-    return AuthModule;
-}());
+const module_1 = require("../../module");
+const auth_controller_1 = require("./auth.controller");
+const auth_service_1 = require("./auth.service");
+const auth_guard_1 = require("./auth.guard");
+let AuthModule = class AuthModule {
+};
+AuthModule = __decorate([
+    module_1.Module({
+        imports: [],
+        controllers: [auth_controller_1.AuthController],
+        services: [auth_service_1.AuthService, auth_guard_1.AuthGuard],
+        exports: [auth_service_1.AuthService],
+    })
+], AuthModule);
 exports.AuthModule = AuthModule;

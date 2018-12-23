@@ -1,5 +1,5 @@
 import * as knex from 'knex';
-import {DB_CONFIG} from '../../config';
+import {} from './config';
 
-export const db = knex(DB_CONFIG);
+export const db = knex(config.UsersService.database);
 

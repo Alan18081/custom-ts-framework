@@ -3,8 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const keys_1 = require("../../../Common/metadata/keys");
 function Injectable() {
-    return function (target) {
-    };
+    return function (target) { };
 }
 exports.Injectable = Injectable;
 exports.Injector = new class {

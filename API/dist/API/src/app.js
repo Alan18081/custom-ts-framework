@@ -10,9 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = require("../../config");
 const channel_api_1 = require("amqplib/channel_api");
-const server_1 = require("./server/server");
+const server_1 = require("./lib/server/server");
 const app_module_1 = require("./app.module");
-const message_broker_1 = require("./broker/message-broker");
+const message_broker_1 = require("./lib/broker/message-broker");
 class API {
     constructor(port) {
         this.appModule = new app_module_1.AppModule();

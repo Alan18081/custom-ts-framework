@@ -1,7 +1,7 @@
 import {injectable} from 'inversify';
 import { CreateUserDto } from './dto/create-user.dto';
 import {validate} from 'class-validator';
-import { BadRequest } from '../../server/http-error';
+import { BadRequest } from '../../lib/server/http-error';
 
 @injectable()
 export class UsersFilter {

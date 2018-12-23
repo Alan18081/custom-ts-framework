@@ -1,33 +1,31 @@
-import {Controller, Get, Post, Put,} from '../../common/server/route-decorators';
 import { UsersService } from './users.service';
-import { Body, Headers, Param, UseMiddlewares } from '../../common/server/route-params.decorators';
 import {User} from "./user.interface";
-import {UseGuards} from "../../common/server/guards-decorators";
-import {AuthGuard} from "../auth/auth.guard";
+import {SubscribeMessage} from '../../lib/broker/decorators';
+import {CommunicationCodes} from '../../../../Common/communication-codes';
+import {inject, injectable} from 'inversify';
+import { CreateUserDto } from './dto/create-user.dto';
+import {BrokerException} from '../../../../Common/broker-exception';
+import {CommunicationErrors} from '../../../../Common/communication-errors';
 
-@Controller('users')
+@injectable()
 export class UsersController {
+  @inject(UsersService)
+  private readonly usersService: UsersService;
 
-  constructor(
-    private readonly usersService: UsersService
-  ) {}
-
-
-  @Get('')
-  @UseGuards(AuthGuard)
-  async getUsers(@Param('id') id: number): Promise<User[]> {
-    return [];
-    // return await this.usersService.findAll();
+  @SubscribeMessage(CommunicationCodes.CREATE_USER)
+  async createOne(payload: CreateUserDto): Promise<User> {
+      const user = await this.usersService.findOneByEmail(payload.email);
+      if(user) {
+          console.log('User already exists');
+          throw new BrokerException(CommunicationErrors.USER_ALREADY_EXISTS);
+      }
+      console.log('Payload', payload);
+      const resUser = await this.usersService.createOne(payload);
+      console.log('Create user', resUser);
+      return resUser;
   }
 
-  @Post('')
-  async createOne(@Body() body: any): Promise<User> {
-    return await this.usersService.createOne(body);
-  }
-
-  @Put(':id')
-  async updateOne(@Param('id') id: number, @Body() body: any): Promise<User | undefined> {
-    // return await this.usersService.updateOne(id, body);
+  async updateOne(): Promise<User | undefined> {
       return null;
   }
 }

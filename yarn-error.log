@@ -30,10 +30,10 @@ npm manifest:
   {
     "name": "tsc",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "app.js",
     "license": "MIT",
     "scripts": {
-      "start": "concurrently \"tsc -w\" \"nodemon dist/index.js\" ",
+      "start": "concurrently \"tsc -w\" \"nodemon dist/app.js\" ",
       "watch": "tsc -w"
     },
     "dependencies": {

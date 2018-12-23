@@ -20,8 +20,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const route_decorators_1 = require("../../server/route-decorators");
-const route_params_decorators_1 = require("../../server/route-params.decorators");
+const route_decorators_1 = require("../../lib/server/route-decorators");
+const route_params_decorators_1 = require("../../lib/server/route-params.decorators");
 const inversify_1 = require("inversify");
 const users_service_1 = require("./users.service");
 const create_user_dto_1 = require("./dto/create-user.dto");
@@ -30,7 +30,7 @@ let UsersController = class UsersController {
     createOne(body) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.usersFilter.createUser(body);
-            this.usersService.createUser();
+            yield this.usersService.createUser(body);
         });
     }
 };

@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const module_inversify_1 = require("./modules/module.inversify");
+const module_inversify_1 = require("./lib/modules/module.inversify");
 const users_module_1 = require("./components/users/users.module");
 const inversify_1 = require("inversify");
 const broker_module_1 = require("./components/broker/broker.module");
