@@ -12,6 +12,8 @@ exports.METADATA_KEY = {
     container: 'ioc:container',
     containerModule: 'ioc:container-module',
     subscribers: 'ioc:subscribers',
+    resolvedSubscribers: 'ioc:resolved-subscribers',
+    messageHandler: 'ioc:message-handler'
 };
 exports.MODULE_KEYS = {
     controllers: 'module:controllers',
@@ -21,6 +23,8 @@ exports.MODULE_KEYS = {
 };
 exports.PARAMS_TYPES = {
     params: 'params',
-    headers: 'headers'
+    headers: 'headers',
+    body: 'body',
+    query: 'query'
 };
 // const app = express();

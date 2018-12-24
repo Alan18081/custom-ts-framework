@@ -1,14 +1,12 @@
 import { injectable, inject } from 'inversify';
 import { SubscribeMessage } from '../../lib/broker/decorators';
-import { CommunicationCodes } from '../../../../Common/communication-codes';
-import {JwtResponse} from './jwt-response';
-import {AuthFilter} from './auth.filter';
-import { messageBroker } from '../../lib/broker/message-broker';
-import { QueuesEnum } from '../../../../Common/queues.enum';
+import { CommunicationCodes, QueuesEnum, Messages, Message } from '../../../../Common';
+import {JwtResponse} from './interfaces/jwt-response';
 import { NotFound } from '../../helpers/http-errors';
-import {Messages} from '../../../../Common/messages';
 import { LoginDto } from './dto/login.dto';
 import { AuthService } from './auth.service';
+import { AuthFilter } from './auth.filter';
+import { messageBroker } from '../../lib/broker/message-broker';
 
 @injectable()
 export class AuthHandler {
@@ -23,12 +21,12 @@ export class AuthHandler {
     async login(payload: LoginDto): Promise<JwtResponse> {
         await this.authFilter.login(payload);
         const message = new Message(CommunicationCodes.GET_USER_BY_ID, { email: payload.email });
-        const user = await messageBroker.sendMessageAndGetResponse(QueuesEnum.USERS_SERVICE, message);
-        if(!user) {
+        const receivedMessage = await messageBroker.sendMessageAndGetResponse(QueuesEnum.USERS_SERVICE, message);
+        if(!receivedMessage.payload) {
             throw new NotFound({ error: Messages.USER_NOT_FOUND });
         }
 
-        return await this.authService.login(payload, user);
+        return await this.authService.login(payload, receivedMessage.payload);
     }
 
 }

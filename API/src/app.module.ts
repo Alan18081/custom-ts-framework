@@ -1,10 +1,14 @@
+import { inject, injectable } from 'inversify';
 import {Module} from './lib/modules/module.inversify';
 import {UsersModule} from './components/users/users.module';
-import {injectable} from 'inversify';
+import { AuthModule } from './components/auth/auth.module';
+import { BrokerModule } from './components/broker/broker.module';
 
 @Module({
     imports: [
-        UsersModule,
+      UsersModule,
+      AuthModule,
+      BrokerModule
     ],
     services: [],
     controllers: [],

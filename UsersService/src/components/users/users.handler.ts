@@ -9,6 +9,7 @@ import {FindUsersListDto} from './dto/find-users-list.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { BadRequest } from '../../helpers/http-errors';
 import {FindUserDto} from './dto/find-user.dto';
+import { FindUserByEmail } from './dto/find-user-by-email';
 
 @injectable()
 export class UsersHandler {
@@ -28,6 +29,12 @@ export class UsersHandler {
   async findOne(query: FindUserDto): Promise<User | undefined> {
       await this.usersFilter.findOne(query);
       return await this.usersService.findOneById(query.id);
+  }
+
+  @SubscribeMessage(CommunicationCodes.GET_USER_BY_EMAIL)
+  async findOneByEmail(query: FindUserByEmail): Promise<User | undefined> {
+    await this.usersFilter.findOneByEmail(query);
+    return await this.usersService.findOneByEmail(query.email);
   }
 
   @SubscribeMessage(CommunicationCodes.CREATE_USER)

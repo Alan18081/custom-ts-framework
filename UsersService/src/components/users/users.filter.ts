@@ -4,6 +4,7 @@ import { BadRequest } from '../../helpers/http-errors';
 import {ValidatorService} from '../core/services/validator.service';
 import {FindUsersListDto} from './dto/find-users-list.dto';
 import {FindUserDto} from './dto/find-user.dto';
+import { FindUserByEmail } from './dto/find-user-by-email';
 
 @injectable()
 export class UsersFilter {
@@ -26,6 +27,17 @@ export class UsersFilter {
         if(errors) {
             throw new BadRequest({ errors });
         }
+    }
+
+    async findOneByEmail(query: FindUserByEmail): Promise<void> {
+        const dataToValidate = new FindUserByEmail(query);
+
+        const errors = await this.validatorService.validate(dataToValidate);
+
+        if(errors) {
+            throw new BadRequest({ errors });
+        }
+
     }
 
     async createUser(body: CreateUserDto): Promise<void> {

@@ -92,8 +92,8 @@ export const messageBroker = new class {
                 } catch (e) {
                     console.log('[AMQP] Failed to parse message', e);
                 }
+                this.channel.ack(msg);
             }
-            this.channel.ack(msg);
         });
     }
 };

@@ -8,17 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const module_inversify_1 = require("../../lib/modules/module.inversify");
 const users_controller_1 = require("./users.controller");
-const users_service_1 = require("./users.service");
-const broker_module_1 = require("../broker/broker.module");
-const users_filter_1 = require("./users.filter");
+const auth_module_1 = require("../auth/auth.module");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
     module_inversify_1.Module({
-        imports: [
-            broker_module_1.BrokerModule
-        ],
-        services: [users_service_1.UsersService, users_filter_1.UsersFilter],
+        imports: [auth_module_1.AuthModule],
         controllers: [users_controller_1.UsersController]
     })
 ], UsersModule);

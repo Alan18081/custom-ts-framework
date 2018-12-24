@@ -1,24 +1,370 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c0954dd-edcd-4e2d-a789-cbf74c7cbf92" name="Default" comment="" />
+    <list default="true" id="93da08f2-235b-423b-8038-56864eb5a610" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/API/src/components/auth/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API/src/components/auth/interfaces/jwt-payload.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API/src/components/auth/interfaces/login.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API/src/components/broker/broker.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API/src/components/broker/broker.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API/src/helpers/guards/jwt.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API/src/helpers/passport/passport.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API/src/lib/modules/provider.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AuthService/src/components/auth/interfaces/jwt-response.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AuthService/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/broker/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/interfaces/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/models/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/Common/broker-exception.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/Common/communication-errors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/Common/models/base.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/components/users/user.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/config/communication-codes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/config/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/helpers/http-errors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/models/base.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/models/knex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/models/user.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/app.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/auth/auth.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/auth/auth.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/auth/auth.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/components/auth/auth.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/components/auth/auth.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/components/auth/auth.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/components/auth/strategies/jwt.strategy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/components/db/db.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/components/users/dto/create-user.dto.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/components/users/user.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/components/users/users.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/components/users/users.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/config/common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/helpers/http-errors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/helpers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/injector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/knexfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/helpers/params-parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/helpers/params.parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/base-model.interface.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/base.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/column.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/decorators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/entity-metadata.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/injector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/interfaces.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/knex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/profile.entity.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/user.entity.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/modules/db.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/repository.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/decorators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/http-error.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/injector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/interfaces.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/methods.enum.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/methods.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/route-params.decorators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/users.repository.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/migrations/20181218205104_create_users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/model/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/model/decorators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/model/user.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/server/decorators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/server/handler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/server/helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/server/http-error.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/server/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/server/injector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/server/interfaces.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/server/route-params.decorators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/server/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/app.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/filter/decorators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/helpers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/models/base-model.interface.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/models/base.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/models/knex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/models/user.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/server/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/server/interfaces.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/auth/auth.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/auth/auth.guard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/auth/auth.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/auth/auth.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/auth/dto/login.dto.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/auth/interfaces/jwt-payload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/auth/interfaces/jwt-response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/auth/strategies/jwt.strategy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/users/dto/create-user.dto.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/users/user.interface.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/users/user.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/users/users.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/users/users.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/components/users/users.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/config/common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/config/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/helpers/http-errors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/src/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/users/base.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/users/users.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/users/users.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/dist/users/users.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/knexfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/migrations/20181222202225_create_users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/migrations/20181222205326_create_users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/migrations/20181222205347_create_users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/app.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/components/auth/auth.filter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/components/auth/auth.handler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/components/auth/auth.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/components/auth/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/components/auth/dto/login.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/components/auth/interfaces/jwt-payload.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/components/auth/interfaces/jwt-response.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/components/core/core.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/components/core/services/passwords.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/components/core/services/validator.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/config/common.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/config/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/helpers/dto/pagination.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/helpers/http-errors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/helpers/interfaces/user.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/broker/decorators.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/broker/message-broker.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/broker/message.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/broker/metadata.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/models/base-model.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/models/base.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/models/knex.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/modules/injector.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/modules/interfaces.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/modules/interfaces.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/modules/module.inversify.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/src/lib/modules/module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/tslint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DatabasesService/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UsersService/src/components/users/dto/find-user-by-email.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/processes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/app.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/app.module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/broker/message-broker.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/message-broker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/broker/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/broker/message.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/broker/queues.enum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/components/broker/broker.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/components/auth/dto/login.dto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/components/broker/broker.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/components/auth/auth.guard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/components/users/dto/create-user.dto.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/components/users/dto/create-user.dto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/components/users/users.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/components/users/users.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/components/users/users.filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/components/users/users.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/components/users/users.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/components/users/users.module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/components/users/users.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/components/users/users.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/inversify.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/broker/decorators.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/broker/decorators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/broker/message-broker.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/broker/message-broker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/broker/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/Common/broker/message.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/broker/metadata.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/broker/metadata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/broker/queues.enum.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/broker/queues.enum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/modules/injector.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/modules/injector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/modules/interfaces.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/components/users/user.interface.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/modules/module.inversify.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/modules/module.inversify.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/modules/module.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/modules/module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/server/guards-decorators.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/server/handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/handler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/server/http-error.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/components/auth/auth.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/server/interfaces.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/components/auth/interfaces/jwt-response.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/server/metadata.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/server/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/server/route-decorators.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/server/route-decorators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/server/route-params.decorators.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/server/route-params.decorators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/lib/server/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/modules/Provider.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/modules/injector.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/modules/interfaces.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/components/auth/interfaces/jwt-payload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/modules/module.inversify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/modules/module.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/server/guards-decorators.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/server/guards-decorators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/server/handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/server/handler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/server/http-error.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/server/http-error.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/components/auth/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/server/injector.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/server/interfaces.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/modules/interfaces.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/server/metadata.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/server/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/server/route-decorators.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/server/route-params.decorators.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/API/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/AuthService/src/common/server/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/server/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/AuthService/src/common/server/injector.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/src/common/server/injector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/AuthService/src/common/server/interfaces.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/lib/models/base-model.interface.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/AuthService/src/module.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/src/module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/AuthService/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/Common/broker/message-broker.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/Common/broker/message-broker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/Common/broker/queues.enum.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/Common/queues.enum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/Common/communication-codes.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/Common/communication-codes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/Common/dto/base.dto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/Common/injector.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/Common/metadata/keys.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/Common/metadata/keys.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/Common/modules/module.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/Common/queues.enum.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/Common/broker/queues.enum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/UsersService/src/config/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/config/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/dist/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/API/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/components/users/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/components/users/users.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/components/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/components/users/users.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/lib/broker/message-broker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/lib/broker/message-broker.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/lib/modules/module.inversify.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/lib/modules/module.inversify.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/lib/server/handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/lib/server/handler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/lib/server/route-params.decorators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/lib/server/route-params.decorators.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/lib/server/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/lib/server/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/API/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/API/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthService/src/components/auth/auth.handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AuthService/src/components/auth/auth.handler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthService/src/components/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AuthService/src/components/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthService/src/components/auth/jwt-response.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AuthService/src/components/auth/interfaces/jwt-payload.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthService/src/components/core/services/validator.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AuthService/src/components/core/services/validator.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthService/src/lib/broker/message-broker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AuthService/src/lib/broker/message-broker.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/communication-codes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/communication-codes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/filter/decorators.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/filter/decorators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/filter/decorators.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/metadata/keys.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/metadata/keys.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/models/base-model.interface.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/UsersService/src/components/users/user.interface.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/models/base.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/models/knex.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/Common/models/knex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/dist/lib/models/user.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DatabasesService/src/lib/models/user.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersService/src/components/users/users.filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/components/users/users.filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersService/src/components/users/users.handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/src/components/users/users.handler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersService/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/UsersService/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/index.ts" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/src/app.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="564">
+              <caret line="28" column="36" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/tsconfig.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="659">
+              <caret line="41" selection-start-line="41" selection-start-column="2" selection-end-line="44" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/src/components/auth/auth.controller.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/processes.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DatabasesService/src/lib/broker/message.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/auth.handler.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/auth.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AuthService/src/lib/broker/message-broker.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="54" column="31" lean-forward="true" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AuthService/src/components/core/services/validator.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
-    <findStrings>
-      <find>serviceTypes</find>
-      <find>function Inject</find>
-      <find>console.log</find>
-      <find>MessageBroker</find>
-    </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/API/src/lib/broker</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,89 +372,58 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/UsersService/migrations/20181222202225_create_users.js" />
-        <option value="$PROJECT_DIR$/UsersService/migrations/20181222205326_create_users.js" />
-        <option value="$PROJECT_DIR$/UsersService/src/components/users/user.interface.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/components/core/services/passwords.service.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/lib/modules/module.inversify.ts" />
-        <option value="$PROJECT_DIR$/API/src/components/users/users.service.ts" />
-        <option value="$PROJECT_DIR$/API/src/app.ts" />
-        <option value="$PROJECT_DIR$/API/src/app.module.ts" />
-        <option value="$PROJECT_DIR$/Common/queues.enum.ts" />
-        <option value="$PROJECT_DIR$/Common/event-emitter.ts" />
-        <option value="$PROJECT_DIR$/API/src/components/core/core.module.ts" />
-        <option value="$PROJECT_DIR$/Common/interfaces/validation-error.ts" />
-        <option value="$PROJECT_DIR$/API/src/components/users/dto/find-users-list.dto.ts" />
-        <option value="$PROJECT_DIR$/API/src/helpers/dto/pagination.dto.ts" />
-        <option value="$PROJECT_DIR$/API/src/components/users/users.filter.ts" />
-        <option value="$PROJECT_DIR$/API/src/components/core/services/validator.service.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/components/users/interfaces/create-user.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/helpers/pagination.ts" />
-        <option value="$PROJECT_DIR$/API/src/components/users/users.module.ts" />
-        <option value="$PROJECT_DIR$/Common/broker/message.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/components/core/core.module.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/lib/broker/message-broker.ts" />
-        <option value="$PROJECT_DIR$/Common/broker/error-message.ts" />
-        <option value="$PROJECT_DIR$/Common/communication-errors.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/helpers/http-errors.ts" />
-        <option value="$PROJECT_DIR$/API/src/lib/broker/message-broker.ts" />
-        <option value="$PROJECT_DIR$/API/src/lib/server/metadata.ts" />
-        <option value="$PROJECT_DIR$/API/src/lib/server/route-params.decorators.ts" />
-        <option value="$PROJECT_DIR$/API/src/lib/server/server.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/components/users/dto/find-user.dto.ts" />
+        <option value="$PROJECT_DIR$/API/src/components/auth/interfaces/login.ts" />
+        <option value="$PROJECT_DIR$/API/src/helpers/guards/auth.guard.ts" />
+        <option value="$PROJECT_DIR$/config/index.ts" />
+        <option value="$PROJECT_DIR$/API/src/components/auth/interfaces/jwt-payload.ts" />
         <option value="$PROJECT_DIR$/API/src/components/users/users.controller.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/components/users/users.filter.ts" />
+        <option value="$PROJECT_DIR$/API/src/helpers/passport/passport.ts" />
+        <option value="$PROJECT_DIR$/Common/metadata/keys.ts" />
+        <option value="$PROJECT_DIR$/API/src/components/users/users.module.ts" />
+        <option value="$PROJECT_DIR$/API/src/components/broker/broker.service.ts" />
+        <option value="$PROJECT_DIR$/API/src/app.ts" />
+        <option value="$PROJECT_DIR$/API/src/lib/modules/provider.ts" />
+        <option value="$PROJECT_DIR$/API/src/components/auth/auth.module.ts" />
+        <option value="$PROJECT_DIR$/API/src/components/broker/broker.module.ts" />
+        <option value="$PROJECT_DIR$/API/src/helpers/guards/jwt.guard.ts" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/server.ts" />
+        <option value="$PROJECT_DIR$/API/src/lib/modules/module.inversify.ts" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/route-params.decorators.ts" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/handler.ts" />
+        <option value="$PROJECT_DIR$/API/src/lib/broker/message-broker.ts" />
+        <option value="$PROJECT_DIR$/processes.json" />
+        <option value="$PROJECT_DIR$/UsersService/tsconfig.json" />
+        <option value="$PROJECT_DIR$/API/src/app.module.ts" />
+        <option value="$PROJECT_DIR$/AuthService/src/components/auth/interfaces/jwt-payload.ts" />
         <option value="$PROJECT_DIR$/UsersService/src/components/users/users.service.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/components/users/users.controller.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/lib/models/base.model.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/components/users/user.model.ts" />
-        <option value="$PROJECT_DIR$/AuthService/src/app.ts" />
-        <option value="$PROJECT_DIR$/UsersService/src/components/users/users.module.ts" />
-        <option value="$PROJECT_DIR$/AuthService/package.json" />
-        <option value="$PROJECT_DIR$/API/package.json" />
-        <option value="$PROJECT_DIR$/UsersService/package.json" />
-        <option value="$PROJECT_DIR$/AuthService/src/components/auth/jwt-response.ts" />
-        <option value="$PROJECT_DIR$/AuthService/src/components/auth/dto/login.dto.ts" />
+        <option value="$PROJECT_DIR$/UsersService/src/components/users/dto/find-user-by-query.dto.ts" />
         <option value="$PROJECT_DIR$/Common/communication-codes.ts" />
-        <option value="$PROJECT_DIR$/AuthService/src/helpers/interfaces/user.interface.ts" />
-        <option value="$PROJECT_DIR$/Common/messages.ts" />
-        <option value="$PROJECT_DIR$/AuthService/src/components/auth/auth.filter.ts" />
-        <option value="$PROJECT_DIR$/AuthService/src/components/auth/auth.service.ts" />
+        <option value="$PROJECT_DIR$/UsersService/src/components/users/dto/find-user-by-email.ts" />
+        <option value="$PROJECT_DIR$/UsersService/src/components/users/users.handler.ts" />
+        <option value="$PROJECT_DIR$/UsersService/src/components/users/users.filter.ts" />
+        <option value="$PROJECT_DIR$/AuthService/src/components/auth/interfaces/jwt-response.ts" />
+        <option value="$PROJECT_DIR$/API/package.json" />
+        <option value="$PROJECT_DIR$/API/tsconfig.json" />
+        <option value="$PROJECT_DIR$/UsersService/package.json" />
+        <option value="$PROJECT_DIR$/Common/broker/index.ts" />
+        <option value="$PROJECT_DIR$/Common/models/user.model.ts" />
+        <option value="$PROJECT_DIR$/Common/models/index.ts" />
+        <option value="$PROJECT_DIR$/Common/interfaces/index.ts" />
+        <option value="$PROJECT_DIR$/Common/index.ts" />
+        <option value="$PROJECT_DIR$/API/src/components/auth/auth.controller.ts" />
+        <option value="$PROJECT_DIR$/API/src/components/auth/auth.service.ts" />
+        <option value="$PROJECT_DIR$/AuthService/src/components/core/services/validator.service.ts" />
+        <option value="$PROJECT_DIR$/AuthService/src/lib/broker/message-broker.ts" />
         <option value="$PROJECT_DIR$/AuthService/src/components/auth/auth.handler.ts" />
-        <option value="$PROJECT_DIR$/AuthService/src/components/auth/auth.module.ts" />
-        <option value="$PROJECT_DIR$/AuthService/src/app.module.ts" />
+        <option value="$PROJECT_DIR$/AuthService/src/components/auth/auth.service.ts" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
-  </component>
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/API/node_modules" />
-    <handled-path value="$PROJECT_DIR$/AuthService/node_modules" />
-    <handled-path value="$PROJECT_DIR$/UsersService/node_modules" />
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/API/package.json" />
-      <path value="$PROJECT_DIR$/AuthService/package.json" />
-      <path value="$PROJECT_DIR$/UsersService/package.json" />
-    </packageJsonPaths>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="64" />
-    <option name="y" value="-11" />
-    <option name="width" value="1857" />
-    <option name="height" value="1092" />
+    <option name="x" value="1920" />
+    <option name="y" value="-4" />
+    <option name="width" value="1920" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -118,46 +433,104 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="broker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+              <item name="AuthService" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+              <item name="AuthService" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+              <item name="AuthService" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+              <item name="AuthService" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spaceships-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spaceships-service" type="462c0819:PsiDirectoryNode" />
+              <item name="AuthService" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="broker" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.tslint" value="" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Projects/oleo-front" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/UsersService/node_modules/typescript/lib" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/AuthService/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/UsersService/src/components/core/services" />
-      <recent name="$PROJECT_DIR$/UsersService" />
-      <recent name="$PROJECT_DIR$/Common" />
-      <recent name="$PROJECT_DIR$/API/src/lib" />
-      <recent name="$PROJECT_DIR$/API/src/modules" />
+      <recent name="$PROJECT_DIR$/AuthService/src/components/auth/interfaces" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/AuthService/src/helpers/models" />
-      <recent name="$PROJECT_DIR$/AuthService" />
+      <recent name="$PROJECT_DIR$/AuthService/src/lib/broker" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/UsersService/src/helpers" />
-      <recent name="$PROJECT_DIR$/UsersService/src" />
+      <recent name="$PROJECT_DIR$/AuthService/src/components/auth/interfaces" />
+      <recent name="$PROJECT_DIR$/AuthService" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -177,462 +550,288 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2c0954dd-edcd-4e2d-a789-cbf74c7cbf92" name="Default" comment="" />
-      <created>1545157611358</created>
+      <changelist id="93da08f2-235b-423b-8038-56864eb5a610" name="Default Changelist" comment="" />
+      <created>1545641809038</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1545157611358</updated>
-      <workItem from="1545157612651" duration="1943000" />
-      <workItem from="1545159567475" duration="6281000" />
-      <workItem from="1545165901042" duration="2282000" />
-      <workItem from="1545327865050" duration="13618000" />
-      <workItem from="1545369210484" duration="4434000" />
-      <workItem from="1545430195205" duration="3149000" />
-      <workItem from="1545471836736" duration="18253000" />
-      <workItem from="1545493691244" duration="13999000" />
-      <workItem from="1545512074046" duration="7330000" />
-      <workItem from="1545550971725" duration="3865000" />
-      <workItem from="1545554855812" duration="180000" />
-      <workItem from="1545555045962" duration="553000" />
-      <workItem from="1545556257948" duration="26152000" />
+      <updated>1545641809038</updated>
+      <workItem from="1545641810261" duration="17937000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105854000" />
+    <option name="totallyTimeSpent" value="17937000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <frame x="1920" y="-4" width="1920" height="1084" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.08571429" side_tool="true" weight="0.67845994" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Thumbnails" order="8" weight="0.3298647" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.9142857" visible="true" weight="0.6763788" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24905661" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3298647" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25133404" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="TypeScript" />
+      <window_info anchor="bottom" id="Docker" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" weight="0.80381763" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="TypeScript" order="10" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="14" weight="0.3298647" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24905661" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Thumbnails" order="8" weight="0.3298647" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="TypeScript" order="10" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3298647" />
-      <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="14" weight="0.3298647" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.9142857" weight="0.6763788" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.08571429" side_tool="true" weight="0.67845994" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
     <option name="exactExcludedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Common/filter/decorators.js" />
-        <option value="$PROJECT_DIR$/Common/models/knex.js" />
-        <option value="$PROJECT_DIR$/Common/models/base.model.js" />
-        <option value="$PROJECT_DIR$/Common/models/user.model.js" />
-        <option value="$PROJECT_DIR$/Common/models/base-model.interface.js" />
+        <option value="$PROJECT_DIR$/API/src/helpers/dto/pagination.dto.js" />
+        <option value="$PROJECT_DIR$/API/src/components/auth/auth.controller.js" />
+        <option value="$PROJECT_DIR$/API/src/components/auth/auth.service.js" />
+        <option value="$PROJECT_DIR$/API/src/components/auth/auth.module.js" />
+        <option value="$PROJECT_DIR$/API/src/components/auth/interfaces/jwt-payload.js" />
+        <option value="$PROJECT_DIR$/API/src/components/auth/interfaces/login.js" />
+        <option value="$PROJECT_DIR$/API/src/helpers/guards/jwt.guard.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/http-error.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/index.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/server.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/guards-decorators.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/route-decorators.js" />
+        <option value="$PROJECT_DIR$/API/src/app.js" />
+        <option value="$PROJECT_DIR$/API/src/app.module.js" />
+        <option value="$PROJECT_DIR$/UsersService/src/lib/broker/metadata.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/broker/metadata.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/broker/message-broker.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/broker/decorators.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/broker/message.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/handler.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/metadata.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/route-params.decorators.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/server/interfaces.js" />
+        <option value="$PROJECT_DIR$/config/index.js" />
+        <option value="$PROJECT_DIR$/Common/event-emitter.js" />
+        <option value="$PROJECT_DIR$/Common/communication-codes.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/modules/provider.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/modules/module.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/modules/module.inversify.js" />
+        <option value="$PROJECT_DIR$/API/src/lib/modules/injector.js" />
+        <option value="$PROJECT_DIR$/API/src/helpers/passport/passport.js" />
+        <option value="$PROJECT_DIR$/API/src/components/broker/broker.module.js" />
+        <option value="$PROJECT_DIR$/API/src/components/broker/broker.service.js" />
       </list>
     </option>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="4" />
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Common/interfaces/validation-error.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/helpers/dto/pagination.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/components/users/dto/find-users-list.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="46" lean-forward="true" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/components/core/core.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/lib/server/route-decorators.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/components/core/services/validator.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/interfaces/create-user.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/helpers/http-errors.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/components/users/users.filter.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/helpers/dto/pagination.dto.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/dto/find-users-list.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/helpers/pagination.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/dto/create-user.dto.ts">
+    <entry file="file://$PROJECT_DIR$/API/src/lib/server/interfaces.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/components/users/users.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common/broker/message.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/components/core/services/validator.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common/broker/error-message.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/lib/broker/message-broker.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="59" column="77" selection-start-line="59" selection-start-column="77" selection-end-line="59" selection-end-column="77" />
-          <folding>
-            <element signature="e#0#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/components/core/core.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/helpers/http-errors.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="48" column="29" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/lib/server/metadata.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/lib/server/route-params.decorators.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/src/lib/server/server.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="94" selection-start-line="94" selection-end-line="94" />
+        <state relative-caret-position="-541">
+          <caret line="76" column="44" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/lib/broker/message-broker.ts">
+    <entry file="file://$PROJECT_DIR$/API/src/app.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1445">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/components/users/users.controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/dto/find-user.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
+        <state relative-caret-position="252">
+          <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="66" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/users.handler.ts">
+    <entry file="file://$PROJECT_DIR$/API/node_modules/@types/amqplib/properties.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+        <state relative-caret-position="195">
+          <caret line="141" column="17" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/node_modules/@types/amqplib/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/lib/server/route-params.decorators.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
           <folding>
-            <element signature="e#0#47#0" expanded="true" />
+            <element signature="e#0#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/lib/models/base.model.ts">
+    <entry file="file://$PROJECT_DIR$/API/src/lib/server/handler.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1288">
-          <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+        <state relative-caret-position="364">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/lib/broker/message-broker.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/app.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AuthService/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UsersService/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/dist/API/src/app.module.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/dto/find-user-by-query.dto.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="61" selection-start-column="61" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/user.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/interfaces/jwt-response.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/interfaces/jwt-payload.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="27" selection-start-column="27" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/users.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        <state relative-caret-position="1064">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/user.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/users.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/dist/components/auth/dto/login.dto.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/dto/login.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/jwt-response.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/user.interface.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/src/helpers/interfaces/user.interface.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/auth.filter.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/dist/src/components/auth/auth.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/auth.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="57" lean-forward="true" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/users.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common/communication-codes.ts">
+    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/dto/find-user-by-email.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
-          <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
+          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/users.filter.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="18" selection-end-column="8" />
+        <state relative-caret-position="-388">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UsersService/src/components/users/users.handler.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="36" column="63" selection-start-line="36" selection-start-column="63" selection-end-line="36" selection-end-column="63" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/auth.handler.ts">
+    <entry file="file://$PROJECT_DIR$/API/src/components/auth/auth.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+        <state relative-caret-position="140">
+          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="41" selection-start-line="41" selection-start-column="2" selection-end-line="44" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/node_modules/@space/common/broker/message.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UsersService/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/event-emitter.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/communication-codes.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
@@ -640,56 +839,158 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Common/messages.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/yarn-error.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/queues.enum.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="60" selection-start-line="2" selection-start-column="60" selection-end-line="2" selection-end-column="60" />
+        <state>
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/src/app.module.ts">
+    <entry file="file://$PROJECT_DIR$/Common/models/base-model.interface.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/broker/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/filter/decorators.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/models/user.model.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/models/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/auth.module.ts">
+    <entry file="file://$PROJECT_DIR$/Common/interfaces/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/interfaces/validation-error.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
-          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/components/auth/auth.controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding>
-            <element signature="e#0#60#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AuthService/src/app.ts">
+    <entry file="file://$PROJECT_DIR$/processes.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatabasesService/src/lib/broker/message.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/helpers/guards/jwt.guard.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" column="33" lean-forward="true" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/lib/modules/module.inversify.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1424">
+          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/components/auth/auth.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/auth.filter.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AuthService/node_modules/class-validator/validation/Validator.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AuthService/src/components/core/services/validator.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AuthService/src/lib/broker/message-broker.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="54" column="31" lean-forward="true" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/auth.handler.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/auth.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

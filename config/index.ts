@@ -3,7 +3,8 @@ export const config = {
       url: 'amqp://grrmkucz:4ipXMzmjEiphGhUFt88-SAJbtqZtEjDv@bee.rmq.cloudamqp.com/grrmkucz?heartbeat=60'
   },
   common: {
-      passwordLength: 4
+      passwordLength: 4,
+      jwtSecret: 'Enterprise & Endurance'
   },
   UsersService: {
       database: {

@@ -4,14 +4,14 @@ import {Guard, GuardCreator} from "./guards-decorators";
 
 export class Handler {
 
-  name: string;
+  name: string = '';
   middlewares: RequestHandler[] = [];
   validators: Function[] = [];
   guards: GuardCreator[] = [];
   path: string = '';
-  method: METHODS_LIST;
+  method: METHODS_LIST = 'GET';
   handler: any;
-  controller: Function;
+  controller: Function = () => {};
 
   constructor(data: Partial<Handler>) {
     if(data.name) this.name = data.name;

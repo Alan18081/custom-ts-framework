@@ -1,0 +1,23 @@
+[
+  {
+    "script"    : "./API/src/app.js",
+    "name"      : "web-api",
+    "exec_mode" : "fork",
+    "instances" : 1,
+    "watch"     : ["./API/src"]
+  },
+  {
+    "script"    : "./UsersService/src/app.js",
+    "name"      : "users-service",
+    "exec_mode" : "fork",
+    "instances" : 1,
+    "watch"     : ["./UsersService/src"]
+  },
+  {
+    "script"    : "./AuthService/src/app.js",
+    "name"      : "users-service",
+    "exec_mode" : "fork",
+    "instances" : 1,
+    "watch"     : ["./UsersService/src"]
+  }
+]

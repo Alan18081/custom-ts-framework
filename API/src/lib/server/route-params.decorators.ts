@@ -15,7 +15,7 @@ function RouteParams(type: PARAMS_TYPES_LIST, paramName?: string) {
       paramName,
     };
 
-    let metadataList = [];
+    let metadataList: PARAM[] = [];
 
     if(!Reflect.hasMetadata(METADATA_KEY.controllerParams, target.constructor)) {
       Reflect.defineMetadata(METADATA_KEY.controllerParams, metadataList, target.constructor);

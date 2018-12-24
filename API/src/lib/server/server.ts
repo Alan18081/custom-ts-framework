@@ -1,5 +1,6 @@
 import * as express from 'express';
-import {METADATA_KEY, PARAMS_TYPES} from './metadata';
+import 'reflect-metadata';
+import {METADATA_KEY, PARAMS_TYPES} from '../../../../Common/metadata/keys';
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { MODULE_KEYS } from '../../../../Common/metadata/keys';
 import { Handler } from './handler';
@@ -7,8 +8,7 @@ import * as bodyParser from 'body-parser';
 import {PARAM} from './interfaces';
 import {Guard, GuardCreator} from "./guards-decorators";
 import {Injector} from "../modules/injector";
-import {isFunction} from 'util';
-import {HttpError} from './http-error';
+import { Container } from 'inversify';
 
 export class Server {
 
@@ -34,7 +34,7 @@ export class Server {
     modules.forEach(({ type }) => {
       const controllers = Reflect.getMetadata(MODULE_KEYS.controllers, type) || {};
       const controllersList = Object.keys(controllers).map(key => controllers[key]);
-      const servicesList = Reflect.getMetadata(MODULE_KEYS.services, type) || {};
+      const container = Reflect.getMetadata(METADATA_KEY.container, type);
 
       controllersList.forEach(controller => {
         const methods = Reflect.getMetadata(METADATA_KEY.controllerMethod, controller.type) || {};
@@ -44,9 +44,9 @@ export class Server {
 
         methodsList.forEach(({ method, handler, path, middlewares, name, validators, guards }: Handler) => {
           const methodParams = params.filter(({ methodName }) => methodName === name);
-          const guardsMiddleware = this.createGuardsMiddleware(guards, module, servicesList);
+           const guardsMiddleware = this.createGuardsMiddleware(guards, container);
           const expressHandler = this.createHandler(handler.bind(controller.instance), methodParams);
-          this.app[method](`/${controller.path}/${path}`, ...middlewares, expressHandler);
+          this.app[method](`/${controller.path}/${path}`, guardsMiddleware, ...middlewares, expressHandler);
         });
       })
     });
@@ -57,7 +57,6 @@ export class Server {
       try {
         const args = this.createArgs(req, res, next, params);
         const result = await method(...args);
-        console.log('Method result', result);
         if(result.isError) {
             res.status(result.statusCode).json(result.payload);
         } else {
@@ -75,7 +74,7 @@ export class Server {
       return [req, res, next];
     }
 
-    return params.map(({ type, paramName }) => {
+    return params.map(({ type, paramName = '' }) => {
       switch (type) {
         case PARAMS_TYPES.params:
           const param = req.params[paramName];
@@ -97,17 +96,18 @@ export class Server {
     });
   }
 
-  private createGuardsMiddleware(guardTypes: GuardCreator[], module: any, serviceTypes): RequestHandler {
+  private createGuardsMiddleware(guardTypes: GuardCreator[], container: Container): RequestHandler {
     return (req: Request, res: Response, next: NextFunction) => {
         try {
           guardTypes.forEach((guardType: GuardCreator) => {
-              const guard = Injector.resolve(guardType, module, serviceTypes) as Guard;
+              const guard = container.get(guardType);
               guard.check(req, res, next);
               next();
           });
 
         } catch (e) {
-            res.status(403).json({ error: e.message });
+          console.log(e);
+          res.status(403).json({ error: e.message });
         }
     }
   }

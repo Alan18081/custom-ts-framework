@@ -23,34 +23,53 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const route_decorators_1 = require("../../lib/server/route-decorators");
 const route_params_decorators_1 = require("../../lib/server/route-params.decorators");
 const inversify_1 = require("inversify");
-const users_service_1 = require("./users.service");
-const create_user_dto_1 = require("./dto/create-user.dto");
-const users_filter_1 = require("./users.filter");
+const message_1 = require("../../../../Common/broker/message");
+const message_broker_1 = require("../../lib/broker/message-broker");
+const communication_codes_1 = require("../../../../Common/communication-codes");
+const queues_enum_1 = require("../../../../Common/queues.enum");
+const guards_decorators_1 = require("../../lib/server/guards-decorators");
+const jwt_guard_1 = require("../../helpers/guards/jwt.guard");
 let UsersController = class UsersController {
+    findMany(query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield message_broker_1.messageBroker.sendMessageAndGetResponse(queues_enum_1.QueuesEnum.USERS_SERVICE, new message_1.Message(communication_codes_1.CommunicationCodes.GET_USERS_LIST, query));
+        });
+    }
+    findOne(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield message_broker_1.messageBroker.sendMessageAndGetResponse(queues_enum_1.QueuesEnum.USERS_SERVICE, new message_1.Message(communication_codes_1.CommunicationCodes.GET_USER, { id }));
+        });
+    }
     createOne(body) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.usersFilter.createUser(body);
-            yield this.usersService.createUser(body);
+            return yield message_broker_1.messageBroker.sendMessageAndGetResponse(queues_enum_1.QueuesEnum.USERS_SERVICE, new message_1.Message(communication_codes_1.CommunicationCodes.CREATE_USER, body));
         });
     }
 };
 __decorate([
-    inversify_1.inject(users_service_1.UsersService),
-    __metadata("design:type", users_service_1.UsersService)
-], UsersController.prototype, "usersService", void 0);
+    route_decorators_1.Get(''),
+    guards_decorators_1.UseGuards(jwt_guard_1.JwtGuard),
+    __param(0, route_params_decorators_1.Query()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "findMany", null);
 __decorate([
-    inversify_1.inject(users_filter_1.UsersFilter),
-    __metadata("design:type", users_filter_1.UsersFilter)
-], UsersController.prototype, "usersFilter", void 0);
+    route_decorators_1.Get(':id'),
+    __param(0, route_params_decorators_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "findOne", null);
 __decorate([
     route_decorators_1.Post(''),
     __param(0, route_params_decorators_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "createOne", null);
 UsersController = __decorate([
     inversify_1.injectable(),
-    route_decorators_1.Controller('auth')
+    route_decorators_1.Controller('users')
 ], UsersController);
 exports.UsersController = UsersController;

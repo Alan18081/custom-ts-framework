@@ -1,5 +1,5 @@
 import { validate } from 'class-validator';
-import {ValidationError} from '../../../../../Common/interfaces/validation-error';
+import {ValidationError} from '../../../../../Common';
 import {injectable} from 'inversify';
 
 @injectable()

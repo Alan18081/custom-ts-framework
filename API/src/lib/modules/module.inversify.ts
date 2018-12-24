@@ -8,6 +8,12 @@ interface ModuleConfig {
     exports?: any[];
 }
 
+interface ModuleMetadata {
+    name: string;
+    type: any;
+    container: interfaces.Container;
+}
+
 export function Module(config: ModuleConfig) {
     return function (target: any) {
         const services = config.services || [];
@@ -20,7 +26,7 @@ export function Module(config: ModuleConfig) {
         let moduleContainer: interfaces.Container = new Container();
 
         services.forEach(<T extends { new(...args) }>(ServiceType: T) => {
-            moduleContainer.bind<T>(ServiceType).to(ServiceType);
+            moduleContainer.bind<T>(ServiceType).to(ServiceType).inSingletonScope();
         });
 
         controllers.forEach(<T extends { new(...args) }>(ServiceType: T) => {
@@ -64,7 +70,7 @@ export function Module(config: ModuleConfig) {
             moduleConstructor
         );
 
-        let modulesList = [];
+        let modulesList: ModuleMetadata[] = [];
 
         if(!Reflect.hasMetadata(METADATA_KEY.module, Reflect)) {
             Reflect.defineMetadata(METADATA_KEY.module, modulesList, Reflect);

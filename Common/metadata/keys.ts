@@ -23,7 +23,9 @@ export const MODULE_KEYS = {
 
 export const PARAMS_TYPES = {
   params: 'params',
-  headers: 'headers'
+  headers: 'headers',
+  body: 'body',
+  query: 'query'
 };
 
 // const app = express();
