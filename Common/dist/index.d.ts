@@ -7,3 +7,4 @@ export * from './metadata/keys';
 export * from './broker';
 export * from './server';
 export * from './config';
+export * from './entities';
