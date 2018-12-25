@@ -17,7 +17,7 @@ export class ProjectsHandler {
     async createOne(body: CreateProjectDto): Promise<Project> {
         await this.projectsFilter.createOne(body);
 
-        return await this.projectsService.
+        return await this.projectsService.createOne(body);
     }
 
 }

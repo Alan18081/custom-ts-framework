@@ -19,6 +19,19 @@ export class BaseModel<T> {
     return db.queryBuilder();
   }
 
+  public static async findOne<T>(this: GenericModel<T>, query: object, columns?: string[]): Promise<T | undefined> {
+    const sql = db.table(this.tableName);
+
+    if(columns) {
+      sql.select(...columns);
+    } else {
+      sql.select('*')
+    }
+
+    const data = await sql.where(query);
+    return new this(data[0]);
+  }
+
   public static async getOne<T>(this: GenericModel<T>, query: QueryBuilder): Promise<T | undefined> {
     const data = await raw.oneOrNone(query.toSQL().sql);
     return new this(data);
