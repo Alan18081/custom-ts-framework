@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { LoginDto } from './dto/login.dto';
-import {BadRequest} from '../../../../UsersService/src/helpers/http-errors';
+import {BadRequest} from '../../../../Common/src/server/http-errors';
 import {ValidatorService} from '../core/services/validator.service';
 
 @injectable()

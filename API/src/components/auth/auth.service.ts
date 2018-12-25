@@ -2,11 +2,10 @@ import { inject, injectable } from 'inversify';
 import { ExtractJwt, Strategy as JwtStrategy, StrategyOptions } from 'passport-jwt';
 import * as passport from 'passport';
 import { PassportStatic } from 'passport';
-import { config } from '../../../../config';
+import { config, Message, QueuesEnum, CommunicationCodes } from '@astra/common';
 import { JwtPayload } from './interfaces/jwt-payload';
 import { NextFunction, Request, Response } from 'express';
-import { messageBroker } from '../../lib/broker/message-broker';
-import { CommunicationCodes, QueuesEnum, Message } from '../../../../Common';
+import { messageBroker } from '../../helpers/message-broker';
 
 @injectable()
 export class AuthService {

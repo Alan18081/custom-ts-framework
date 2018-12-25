@@ -1,4 +1,4 @@
-import { Guard } from '../../lib/server/guards-decorators';
+import { Guard } from '@astra/common';
 import { Request, Response, NextFunction } from 'express';
 import { inject, injectable } from 'inversify';
 import { AuthService } from '../../components/auth/auth.service';

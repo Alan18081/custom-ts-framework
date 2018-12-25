@@ -1,4 +1,4 @@
-import { Module } from '../../lib/modules/module.inversify';
+import { Module } from '@astra/common';
 import {PasswordsService} from './services/passwords.service';
 import {ValidatorService} from './services/validator.service';
 

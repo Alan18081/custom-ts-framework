@@ -1,6 +1,5 @@
 import {IsEmail, IsString, MinLength} from 'class-validator';
-import {BaseDto} from '../../../../../Common/dto/base.dto';
-import {config} from '../../../../../config';
+import {BaseDto, config} from '@astra/common';
 
 
 export class CreateUserDto extends BaseDto {

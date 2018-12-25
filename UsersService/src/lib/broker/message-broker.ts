@@ -1,11 +1,11 @@
 import {Channel, Connection, ConsumeMessage, Options} from 'amqplib';
-import { Message } from '../../../../Common/broker/message';
-import {QueuesEnum} from '../../../../Common/queues.enum';
-import {METADATA_KEY} from '../../../../Common/metadata/keys';
+import { Message } from '../../../../Common/src/broker/message';
+import {QueuesEnum} from '../../../../Common/src/common/queues.enum';
+import {METADATA_KEY} from '../../../../Common/src/metadata/keys';
 import {ResolvedSubscriber} from './metadata';
 import * as uid from 'uid';
-import {ErrorMessage} from '../../../../Common/broker/error-message';
-import { HttpError } from '../../helpers/http-errors';
+import {ErrorMessage} from '../../../../Common/src/broker/error-message';
+import { HttpError } from '../../../../Common/src/server/http-errors';
 
 export const messageBroker = new class {
     private connection: Connection;

@@ -1,5 +1,5 @@
 import {IsInt, IsOptional} from 'class-validator';
-import { BaseDto } from '../../../../Common/dto/base.dto';
+import { BaseDto } from '../../../../Common/src/dto/base.dto';
 
 export class PaginationDto extends BaseDto {
     @IsOptional()

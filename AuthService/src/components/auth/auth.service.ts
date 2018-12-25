@@ -3,7 +3,7 @@ import {User} from '../../helpers/interfaces/user.interface';
 import {JwtResponse} from './interfaces/jwt-response';
 import {PasswordsService} from '../core/services/passwords.service';
 import { Unauthorized } from '../../helpers/http-errors';
-import { Messages } from '../../../../Common';
+import { Messages } from '../../../../Common/src';
 import { sign } from 'jsonwebtoken';
 import { JWT_SECRET } from '../../config/common';
 import { LoginDto } from './dto/login.dto';

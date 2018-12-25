@@ -1,13 +1,10 @@
+import { CommunicationCodes, Messages, BadRequest } from '@astra/common';
 import { UsersService } from './users.service';
 import {User} from "./user.interface";
-import {SubscribeMessage} from '../../lib/broker/decorators';
-import {CommunicationCodes} from '../../../../Common/communication-codes';
 import {inject, injectable} from 'inversify';
-import {Messages} from '../../../../Common/messages';
 import {UsersFilter} from './users.filter';
 import {FindUsersListDto} from './dto/find-users-list.dto';
 import { CreateUserDto } from './dto/create-user.dto';
-import { BadRequest } from '../../helpers/http-errors';
 import {FindUserDto} from './dto/find-user.dto';
 import { FindUserByEmail } from './dto/find-user-by-email';
 

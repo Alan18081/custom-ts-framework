@@ -1,5 +1,5 @@
 import { validate } from 'class-validator';
-import {ValidationError} from '../../../../../Common/interfaces/validation-error';
+import {ValidationError} from '@astra/common';
 import {injectable} from 'inversify';
 
 @injectable()

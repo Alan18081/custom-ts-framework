@@ -1,5 +1,5 @@
 import {Injector} from './injector';
-import {METADATA_KEY, MODULE_KEYS} from '../../../../Common/metadata/keys';
+import {METADATA_KEY, MODULE_KEYS} from '../../../../Common/src/metadata/keys';
 import { Exports, Service } from './interfaces';
 
 interface ModuleConfig {

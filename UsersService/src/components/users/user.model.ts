@@ -1,4 +1,4 @@
-import { BaseModel } from '../../lib/models/base.model';
+import { BaseModel } from '@astra/common';
 import { User } from './user.interface';
 import { toNumber } from 'lodash';
 

@@ -1,9 +1,7 @@
-import { config } from '../../config';
+import { config, Server } from '@astra/common';
 import { connect } from 'amqplib/channel_api';
-import { Server } from './lib/server/server';
 import { AppModule } from './app.module';
-import { messageBroker } from './lib/broker/message-broker';
-import { Provider } from './lib/modules/provider';
+import { messageBroker } from './helpers/message-broker';
 
 class API {
 
@@ -11,7 +9,7 @@ class API {
     private readonly appModule: AppModule;
 
     constructor(port: number) {
-        this.appModule = Provider.create(AppModule);
+        this.appModule = new AppModule();
         this.server = new Server(port);
         this.initBroker();
         this.server.run();

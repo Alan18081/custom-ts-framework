@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import {METADATA_KEY, MODULE_KEYS} from '../../../../Common/metadata/keys';
+import {METADATA_KEY, MODULE_KEYS} from '../../../../Common/src/metadata/keys';
 import {Service} from "../server/interfaces";
 
 export function Injectable() {

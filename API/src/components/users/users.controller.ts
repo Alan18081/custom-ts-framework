@@ -1,11 +1,6 @@
-import {Controller, Post, Get} from '../../lib/server/route-decorators';
-import {Body, Query, Param} from '../../lib/server/route-params.decorators';
+import {Controller, Post, Get, Param, QueuesEnum, Query, Message, CommunicationCodes, UseGuards, Body} from '@astra/common';
 import {injectable} from 'inversify';
-import {Message} from '../../../../Common/broker/message';
-import {messageBroker} from '../../lib/broker/message-broker';
-import {CommunicationCodes} from '../../../../Common/communication-codes';
-import {QueuesEnum} from '../../../../Common/queues.enum';
-import {UseGuards} from '../../lib/server/guards-decorators';
+import {messageBroker} from '../../helpers/message-broker';
 import { JwtGuard } from '../../helpers/guards/jwt.guard';
 
 @injectable()

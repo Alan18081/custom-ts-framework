@@ -1,4 +1,4 @@
-import { Module } from '../../lib/modules/module.inversify';
+import { Module } from '@astra/common';
 import { UsersService } from './users.service';
 import { UsersHandler } from './users.handler';
 import {CoreModule} from '../core/core.module';

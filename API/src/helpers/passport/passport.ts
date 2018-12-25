@@ -1,7 +1,7 @@
 import * as passport from 'passport';
 import { ExtractJwt, Strategy as JwtStrategy, StrategyOptions } from 'passport-jwt';
 import { JwtPayload } from '../../components/auth/interfaces/jwt-payload';
-import { config } from '../../../../config';
+import { config } from '@astra/common';
 
 
 

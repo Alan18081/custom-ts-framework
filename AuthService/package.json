@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "concurrently \"tsc -w\" \"nodemon dist/index.js\" ",
-    "dev": "ts-node-dev ./src/app.ts"
+    "dev": "ts-node-dev ./src/app.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "@types/amqplib": "^0.5.9",

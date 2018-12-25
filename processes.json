@@ -1,21 +1,21 @@
 [
   {
-    "script"    : "./API/src/app.js",
+    "script"    : "./API/dist/app.js",
     "name"      : "web-api",
     "exec_mode" : "fork",
     "instances" : 1,
     "watch"     : ["./API/src"]
   },
   {
-    "script"    : "./UsersService/src/app.js",
+    "script"    : "./UsersService/dist/app.js",
     "name"      : "users-service",
     "exec_mode" : "fork",
     "instances" : 1,
     "watch"     : ["./UsersService/src"]
   },
   {
-    "script"    : "./AuthService/src/app.js",
-    "name"      : "users-service",
+    "script"    : "./AuthService/dist/app.js",
+    "name"      : "auth-service",
     "exec_mode" : "fork",
     "instances" : 1,
     "watch"     : ["./UsersService/src"]

@@ -1,5 +1,5 @@
 import {IsInt} from 'class-validator';
-import {BaseDto} from '../../../../../Common/dto/base.dto';
+import {BaseDto} from '@astra/common';
 
 export class FindUserDto extends BaseDto {
 

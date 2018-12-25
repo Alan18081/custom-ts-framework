@@ -1,6 +1,6 @@
 import {inject, injectable} from 'inversify';
 import { CreateUserDto } from './dto/create-user.dto';
-import { BadRequest } from '../../helpers/http-errors';
+import { BadRequest } from '@astra/common';
 import {ValidatorService} from '../core/services/validator.service';
 import {FindUsersListDto} from './dto/find-users-list.dto';
 import {FindUserDto} from './dto/find-user.dto';

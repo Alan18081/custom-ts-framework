@@ -1,6 +1,6 @@
 import { injectable, inject } from 'inversify';
 import { SubscribeMessage } from '../../lib/broker/decorators';
-import { CommunicationCodes, QueuesEnum, Messages, Message } from '../../../../Common';
+import { CommunicationCodes, QueuesEnum, Messages, Message } from '../../../../Common/src';
 import {JwtResponse} from './interfaces/jwt-response';
 import { NotFound } from '../../helpers/http-errors';
 import { LoginDto } from './dto/login.dto';
