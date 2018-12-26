@@ -1,8 +1,8 @@
 import { IsInt } from 'class-validator';
 
-export class GetStorageDto {
+export class FindStorageListDto {
 
   @IsInt()
-  id: number;
+  projectId: number;
 
 }

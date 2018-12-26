@@ -8,6 +8,14 @@ import { UpdateProjectDto } from './dto/update-project.dto';
 @injectable()
 export class ProjectsService {
 
+    async findAll(): Promise<Project[]> {
+        return await ProjectModel.find({});
+    }
+
+    async findManyByUser(userId: number): Promise<Project[]> {
+        return await ProjectModel.find({ userId });
+    }
+
     async findOne(id: number): Promise<Project | undefined> {
         return await ProjectModel.findOne({ id });
     }

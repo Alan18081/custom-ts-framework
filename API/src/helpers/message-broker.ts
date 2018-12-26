@@ -1,5 +1,5 @@
 import {Channel, Connection, ConsumeMessage, Options} from 'amqplib';
-import {QueuesEnum, Message, ResolvedSubscriber, eventEmitter, METADATA_KEY} from '@astra/common';
+import {QueuesEnum, Message, ResolvedSubscriber, eventEmitter, METADATA_KEY, CommunicationCodes} from '@astra/common';
 import * as uid from 'uid';
 
 class MessageBroker {
@@ -24,15 +24,16 @@ class MessageBroker {
         console.log('[AMQP] Connection closed: ', err);
     }
 
-    async sendMessage(queue: QueuesEnum, message: Message, config: Options.Publish = {}): Promise<void> {
+    async sendMessage(queue: QueuesEnum, code: CommunicationCodes, payload: any, config: Options.Publish = {}): Promise<void> {
         await this.channel.assertQueue(queue);
+        const message = new Message(code, payload);
         this.channel.sendToQueue(queue, this.bufferMessage(message), config);
     }
 
-    async sendMessageAndGetResponse(queue: QueuesEnum, message: Message): Promise<Message> {
+    async sendMessageAndGetResponse(queue: QueuesEnum, code: CommunicationCodes, payload: any): Promise<Message> {
           await this.channel.assertQueue(queue);
           const id = uid();
-          await this.sendMessage(queue, message, { correlationId: id, replyTo: QueuesEnum.RPC_API, contentType: 'application/json' })
+          await this.sendMessage(queue, code, payload, { correlationId: id, replyTo: QueuesEnum.RPC_API, contentType: 'application/json' })
           return await this.subscribe(id);
     }
 

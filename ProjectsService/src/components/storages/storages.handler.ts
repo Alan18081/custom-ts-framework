@@ -4,8 +4,8 @@ import { CommunicationCodes, SubscribeMessage } from '@astra/common';
 import { CreateStorageDto } from './dto/create-storage.dto';
 import { StoragesService } from './storages.service';
 import { RemoveStorageDto } from './dto/remove-storage.dto';
-import { GetStorageListDto } from './dto/get-storage-list.dto';
-import { GetStorageDto } from './dto/get-storage.dto';
+import { FindStorageListDto } from './dto/find-storage-list.dto';
+import { FindStorageDto } from './dto/find-storage.dto';
 
 @injectable()
 export class StoragesHandler {
@@ -17,15 +17,15 @@ export class StoragesHandler {
   private readonly storagesService: StoragesService;
 
   @SubscribeMessage(CommunicationCodes.GET_STORAGES_LIST)
-  async findManyByProject(query: GetStorageListDto): Promise<Storage[]> {
-    await this.validatorService.validate(query, GetStorageListDto);
+  async findManyByProject(query: FindStorageListDto): Promise<Storage[]> {
+    await this.validatorService.validate(query, FindStorageListDto);
 
     return await this.storagesService.findManyByProject(query.projectId);
   }
 
   @SubscribeMessage(CommunicationCodes.GET_STORAGE)
-  async findOneById(query: GetStorageDto): Promise<Storage | undefined> {
-    await this.validatorService.validate(query, GetStorageDto);
+  async findOneById(query: FindStorageDto): Promise<Storage | undefined> {
+    await this.validatorService.validate(query, FindStorageDto);
 
     return await this.storagesService.findOneById(query.id);
   }

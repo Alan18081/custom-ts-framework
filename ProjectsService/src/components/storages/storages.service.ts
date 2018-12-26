@@ -23,7 +23,7 @@ export class StoragesService {
   }
 
   async updateOne(data: UpdateProjectDto): Promise<Storage | undefined> {
-
+    return await StorageModel.update({ id: data.id }, { ...data });
   }
 
   async removeOne(id: number): Promise<void> {
