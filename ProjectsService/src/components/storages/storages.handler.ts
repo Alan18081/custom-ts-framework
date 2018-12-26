@@ -4,6 +4,8 @@ import { CommunicationCodes, SubscribeMessage } from '@astra/common';
 import { CreateStorageDto } from './dto/create-storage.dto';
 import { StoragesService } from './storages.service';
 import { RemoveStorageDto } from './dto/remove-storage.dto';
+import { GetStorageListDto } from './dto/get-storage-list.dto';
+import { GetStorageDto } from './dto/get-storage.dto';
 
 @injectable()
 export class StoragesHandler {
@@ -14,6 +16,20 @@ export class StoragesHandler {
   @inject(StoragesService)
   private readonly storagesService: StoragesService;
 
+  @SubscribeMessage(CommunicationCodes.GET_STORAGES_LIST)
+  async findManyByProject(query: GetStorageListDto): Promise<Storage[]> {
+    await this.validatorService.validate(query, GetStorageListDto);
+
+    return await this.storagesService.findManyByProject(query.projectId);
+  }
+
+  @SubscribeMessage(CommunicationCodes.GET_STORAGE)
+  async findOneById(query: GetStorageDto): Promise<Storage | undefined> {
+    await this.validatorService.validate(query, GetStorageDto);
+
+    return await this.storagesService.findOneById(query.id);
+  }
+
   @SubscribeMessage(CommunicationCodes.CREATE_STORAGE)
   async createOne(body: CreateStorageDto): Promise<Storage> {
     await this.validatorService.validate(body, CreateStorageDto);
@@ -22,10 +38,10 @@ export class StoragesHandler {
   }
 
   @SubscribeMessage(CommunicationCodes.REMOVE_STORAGE)
-  async removeOne(body: RemoveStorageDto): Promise<Storage> {
+  async removeOne(body: RemoveStorageDto): Promise<void> {
     await this.validatorService.validate(body, RemoveStorageDto);
 
-    return await this.storagesService.removeOne(body.id);
+    await this.storagesService.removeOne(body.id);
   }
 
 }

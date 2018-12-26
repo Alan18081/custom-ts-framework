@@ -2,197 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93da08f2-235b-423b-8038-56864eb5a610" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/dto/remove-storage.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/dto/update-storage-data.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/dto/update-storage.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/storage.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.handler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/dto/get-storage-list.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/dto/get-storage.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/Common/broker-exception.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/Common/broker/message-broker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/Common/broker/message.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/Common/broker/queues.enum.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/Common/communication-codes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/Common/communication-errors.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/Common/metadata/keys.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/Common/models/base.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/Common/models/knex.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/Common/queues.enum.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/app.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/dto/create-user.dto.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/user.interface.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/user.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/users.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/users.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/components/users/users.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/config/common.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/config/communication-codes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/config/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/helpers/http-errors.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/broker/decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/broker/message-broker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/broker/message.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/broker/metadata.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/broker/queues.enum.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/message-broker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/models/base-model.interface.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/models/base.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/models/knex.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/models/user.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/modules/injector.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/modules/interfaces.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/modules/module.inversify.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/UsersService/src/lib/modules/module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/app.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/auth/auth.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/auth/auth.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/auth/auth.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/auth/auth.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/auth/auth.guard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/auth/auth.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/auth/auth.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/auth/dto/login.dto.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/auth/interfaces/jwt-payload.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/auth/interfaces/jwt-response.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/auth/strategies/jwt.strategy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/db/db.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/users/dto/create-user.dto.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/users/user.interface.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/users/user.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/users/users.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/users/users.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/components/users/users.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/config/common.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/config/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/filter/decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/helpers/http-errors.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/helpers/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/injector.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/knexfile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/helpers/params-parser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/helpers/params.parser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/base-model.interface.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/base.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/column.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/constants.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/entity-metadata.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/helpers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/injector.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/interfaces.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/knex.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/profile.entity.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/repository.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/table.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/user.entity.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/models/user.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/modules/db.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/dto/create-storage.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/constants.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/handler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/http-error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/projects/dto/update-project.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/injector.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/interfaces.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/methods.enum.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/methods.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/route-params.decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/server/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/lib/users.repository.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/migrations/20181218205104_create_users.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/model/constants.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/model/decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/model/user.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server/constants.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server/decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server/handler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server/helpers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server/http-error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/projects/dto/remove-project.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server/injector.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server/interfaces.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server/route-params.decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/server/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/app.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/filter/decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/helpers/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/models/base-model.interface.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/models/base.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/models/knex.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/models/user.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/server/constants.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/server/guards-decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/server/handler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/server/http-error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/entities/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/server/injector.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/server/interfaces.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/server/route-decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/server/route-params.decorators.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/common/server/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/auth/auth.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/auth/auth.guard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/auth/auth.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/auth/auth.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/auth/dto/login.dto.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/auth/interfaces/jwt-payload.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/auth/interfaces/jwt-response.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/auth/strategies/jwt.strategy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/users/dto/create-user.dto.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/users/user.interface.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/users/user.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/users/users.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/users/users.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/components/users/users.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/config/common.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/config/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/helpers/http-errors.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/src/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/users/base.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/users/users.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/users/users.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/dist/users/users.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/knexfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/AuthService/knexfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/app.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/components/auth/auth.filter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/components/auth/auth.handler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/components/auth/auth.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/components/auth/auth.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/components/auth/dto/login.dto.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/components/auth/interfaces/jwt-payload.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/components/auth/interfaces/jwt-response.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/components/core/core.module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/components/core/services/passwords.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/components/core/services/validator.service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuthService/src/helpers/interfaces/user.interface.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/dist/models/base.model.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dist/models/base.model.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/dist/models/base.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dist/models/base.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/dist/modules/module.js" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dist/modules/module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/entities/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/entities/project.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/entities/project.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/entities/project.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/models/base.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/models/base.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/models/base.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/models/base.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/modules/module.js" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/modules/module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/modules/module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/modules/module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/core/services/validator.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/core/services/validator.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/projects/project.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/entities/storage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/projects/project.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/projects/project.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.filter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/common.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/common.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.handler.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -202,18 +15,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/storages.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/dto/create-storage.dto.ts">
           <provider selected="true" editor-type-id="text-editor">
@@ -241,13 +42,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/storages.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="60">
+              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/projects/projects.handler.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -265,14 +78,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/storages.handler.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+            <state relative-caret-position="504">
+              <caret line="27" column="63" lean-forward="true" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/dto/get-storage.dto.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/dto/get-storage-list.dto.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -284,27 +115,6 @@
               <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Common/src/entities/storage.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/projects/project.model.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -333,8 +143,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/API/src/components/users/users.controller.ts" />
-        <option value="$PROJECT_DIR$/API/src/helpers/passport/passport.ts" />
         <option value="$PROJECT_DIR$/API/src/helpers/message-broker.ts" />
         <option value="$PROJECT_DIR$/API/src/components/auth/auth.controller.ts" />
         <option value="$PROJECT_DIR$/Common/src/broker/decorators.ts" />
@@ -370,7 +178,6 @@
         <option value="$PROJECT_DIR$/ProjectsService/src/components/projects/dto/update-project.dto.ts" />
         <option value="$PROJECT_DIR$/ProjectsService/src/components/projects/dto/remove-project.dto.ts" />
         <option value="$PROJECT_DIR$/scripts/common.sh" />
-        <option value="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.handler.ts" />
         <option value="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.service.ts" />
         <option value="$PROJECT_DIR$/ProjectsService/src/components/storages/dto/create-storage.dto.ts" />
         <option value="$PROJECT_DIR$/ProjectsService/src/components/storages/dto/remove-storage.dto.ts" />
@@ -381,9 +188,12 @@
         <option value="$PROJECT_DIR$/ProjectsService/src/components/projects/project.model.ts" />
         <option value="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.module.ts" />
         <option value="$PROJECT_DIR$/ProjectsService/src/components/storages/storage.model.ts" />
-        <option value="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.handler.ts" />
         <option value="$PROJECT_DIR$/Common/src/models/base.model.ts" />
         <option value="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.service.ts" />
+        <option value="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.handler.ts" />
+        <option value="$PROJECT_DIR$/ProjectsService/src/components/storages/dto/get-storage-list.dto.ts" />
+        <option value="$PROJECT_DIR$/ProjectsService/src/components/storages/dto/get-storage.dto.ts" />
+        <option value="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.handler.ts" />
       </list>
     </option>
   </component>
@@ -508,7 +318,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42689000" />
+    <option name="totallyTimeSpent" value="43191000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-4" width="1920" height="1084" extended-state="6" />
@@ -609,20 +419,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AuthService/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UsersService/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AuthService/src/components/auth/interfaces/jwt-payload.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -875,16 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/projects/projects.handler.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/dto/update-storage.dto.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -950,16 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/storages.handler.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/storage.model.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -982,10 +758,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/storages.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="60">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/projects/projects.handler.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/dto/get-storage-list.dto.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/dto/get-storage.dto.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/storages.handler.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="27" column="63" lean-forward="true" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
