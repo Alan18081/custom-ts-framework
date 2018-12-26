@@ -15,7 +15,7 @@ export function Module(config: ModuleConfig) {
         const services = config.services || [];
         const controllers = config.controllers || [];
         const imports = config.imports || [];
-        const handlers = config.handlers;
+        const handlers = config.handlers || [];
 
         const moduleConstructor = target;
 

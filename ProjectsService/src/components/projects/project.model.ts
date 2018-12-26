@@ -4,19 +4,18 @@ import { toNumber } from 'lodash';
 export class ProjectModel extends BaseModel<Project> implements Project {
     static tableName = 'projects';
 
-    id?: number;
-    name: string;
-    description?: string;
-    clientId: string;
-    clientSecret: string;
-    authProjectId?: number;
-    storagesCount: number;
-    userId: number;
-    createdAt: Date;
+    public id: number;
+    public name: string;
+    public description?: string;
+    public clientId: string;
+    public clientSecret: string;
+    public authProjectId?: number;
+    public storagesCount: number;
+    public userId: number;
+    public createdAt: Date;
 
     constructor(data: Partial<Project>) {
         super();
-        this.id = toNumber(data.id);
         this.name = data.name;
         this.description = data.description;
         this.clientId = data.clientId;

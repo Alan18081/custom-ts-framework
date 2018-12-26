@@ -19,6 +19,19 @@ class BaseModel {
     static createQueryBuilder() {
         return knex_1.db.queryBuilder();
     }
+    static findOne(query, columns) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const sql = knex_1.db.table(this.tableName);
+            if (columns) {
+                sql.select(...columns);
+            }
+            else {
+                sql.select('*');
+            }
+            const data = yield sql.where(query);
+            return new this(data[0]);
+        });
+    }
     static getOne(query) {
         return __awaiter(this, void 0, void 0, function* () {
             const data = yield raw.oneOrNone(query.toSQL().sql);

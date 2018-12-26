@@ -3,15 +3,13 @@ import * as uid from 'uid';
 import {CreateProjectDto} from './dto/create-project.dto';
 import {Project} from '@astra/common';
 import {ProjectModel} from './project.model';
+import { UpdateProjectDto } from './dto/update-project.dto';
 
 @injectable()
 export class ProjectsService {
 
     async findOne(id: number): Promise<Project | undefined> {
-        const query = ProjectModel.createQueryBuilder()
-            .select('*')
-            .from(ProjectModel.tableName)
-            .where();
+        return await ProjectModel.findOne({ id });
     }
 
     async createOne(body: CreateProjectDto): Promise<Project> {
@@ -20,6 +18,10 @@ export class ProjectsService {
         project.clientSecret = uid(15);
 
         return await ProjectModel.save(project);
+    }
+
+    async updateOne(body: UpdateProjectDto): Promise<Project | undefined> {
+        return await ProjectModel.update({ id: body }, { ...body });
     }
 
     async removeOne(id: number): Promise<void> {

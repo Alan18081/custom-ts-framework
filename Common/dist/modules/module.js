@@ -7,7 +7,7 @@ function Module(config) {
         const services = config.services || [];
         const controllers = config.controllers || [];
         const imports = config.imports || [];
-        const handlers = config.handlers;
+        const handlers = config.handlers || [];
         const moduleConstructor = target;
         let moduleContainer = new inversify_1.Container();
         services.forEach((ServiceType) => {

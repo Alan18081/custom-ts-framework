@@ -19,6 +19,19 @@ export class BaseModel<T> {
     return db.queryBuilder();
   }
 
+  public static async find(this: GenericModel<T>, query: object, columns?: string[]): Promise<T | undefined> {
+    const sql = db.table(this.tableName);
+
+    if(columns) {
+      sql.select(...columns);
+    } else {
+      sql.select('*')
+    }
+
+    const data = await sql.where(query);
+    return data.map(item => new this(item));
+  }
+
   public static async findOne<T>(this: GenericModel<T>, query: object, columns?: string[]): Promise<T | undefined> {
     const sql = db.table(this.tableName);
 
@@ -43,6 +56,10 @@ export class BaseModel<T> {
   }
 
   public static async save<T>(this: GenericModel<T>, entity: T): Promise<T> {
+    if(!(entity instanceof this)) {
+      throw new Error('Entity should be an instance of model');
+    }
+
      const rawData = await db.table(this.tableName)
        .insert(entity)
        .returning('*');

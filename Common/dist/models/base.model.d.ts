@@ -6,6 +6,7 @@ declare type GenericModel<T> = {
 export declare class BaseModel<T> {
     constructor(...args: any[]);
     static createQueryBuilder(): QueryBuilder;
+    static findOne<T>(this: GenericModel<T>, query: object, columns?: string[]): Promise<T | undefined>;
     static getOne<T>(this: GenericModel<T>, query: QueryBuilder): Promise<T | undefined>;
     static getMany<T>(this: GenericModel<T>, query: QueryBuilder): Promise<T[]>;
     static save<T>(this: GenericModel<T>, entity: T): Promise<T>;
