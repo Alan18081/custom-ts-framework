@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93da08f2-235b-423b-8038-56864eb5a610" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/models/base.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/models/base.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/core/core.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/core/core.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/core/services/passwords.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/core/services/tokens.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/projects/project.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/projects/project.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.service.ts" afterDir="false" />
-    </list>
+    <list default="true" id="93da08f2-235b-423b-8038-56864eb5a610" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +82,7 @@
       <file leaf-file-name="base.model.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Common/src/models/base.model.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
+            <state relative-caret-position="43">
               <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -1926,7 +1918,7 @@
       <path value="$PROJECT_DIR$/UsersService/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="64" />
     <option name="y" value="-11" />
     <option name="width" value="1857" />
@@ -2071,18 +2063,17 @@
       <workItem from="1545724975726" duration="9257000" />
       <workItem from="1545744375230" duration="61000" />
       <workItem from="1545744574643" duration="18000" />
-      <workItem from="1545770892033" duration="3296000" />
+      <workItem from="1545770892033" duration="3323000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34782000" />
+    <option name="totallyTimeSpent" value="34809000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2592992" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2592992" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
@@ -2091,7 +2082,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.76378775" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.76378775" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
@@ -2500,7 +2491,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Common/src/models/base.model.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
+        <state relative-caret-position="43">
           <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
