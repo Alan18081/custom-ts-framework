@@ -1,4 +1,4 @@
-import {Module} from './lib/modules/module.inversify';
+import {Module} from '@astra/common';
 import {AuthModule} from './components/auth/auth.module';
 
 @Module({

@@ -2,6 +2,7 @@ import { BaseModel, Storage } from '@astra/common';
 import { toNumber } from 'lodash';
 
 export class StorageModel extends BaseModel<Storage> implements Storage {
+  public static tableName = 'storages';
 
   public id: number;
   public name: string;

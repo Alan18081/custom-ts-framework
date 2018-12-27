@@ -1,6 +1,5 @@
-import { IsEmail } from 'class-validator';
-import {PASSWORD_LENGTH} from '../../../config/common';
-import { BaseDto } from '../../../../../Common/src/dto/base.dto';
+import {IsEmail, IsString, MinLength} from 'class-validator';
+import {config, BaseDto} from '@astra/common';
 
 export class LoginDto extends BaseDto {
 
@@ -8,7 +7,7 @@ export class LoginDto extends BaseDto {
     email: string;
 
     @IsString()
-    @MinLength(PASSWORD_LENGTH)
+    @MinLength(config.common.passwordLength)
     password: string;
 
 }

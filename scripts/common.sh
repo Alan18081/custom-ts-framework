@@ -16,9 +16,9 @@ MICROSERVICES=(
 )
 
 for i in ${MICROSERVICES[@]}; do
+    echo "Transpiling ${i}"
     cd ../${i}
     rm -rf node_modules
     yarn
     rm -rf dist
-    yarn build
 done

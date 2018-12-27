@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { connect } from 'amqplib';
-import { messageBroker } from './lib/broker/message-broker';
-import {RABBITMQ_URL} from './config';
+import { messageBroker } from './helpers/message-broker';
+import {config} from '@astra/common';
 import { AppModule } from './app.module';
 
 class AuthService {
@@ -14,8 +14,9 @@ class AuthService {
 
     async initBroker() {
         try {
-            const connection = await connect(RABBITMQ_URL);
+            const connection = await connect(config.rabbitmq.url);
             await messageBroker.run(connection);
+            console.log('AuthService is working');
         } catch (e) {
             console.log('[AMQP] Failed to create connection: ', e.message);
         }

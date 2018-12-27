@@ -1,12 +1,16 @@
 import { injectable, inject } from 'inversify';
-import { SubscribeMessage } from '../../lib/broker/decorators';
-import { CommunicationCodes, QueuesEnum, Messages, Message } from '../../../../Common/src';
+import {
+    CommunicationCodes,
+    QueuesEnum,
+    Messages,
+    NotFound,
+    SubscribeMessage,
+    ValidatorService
+} from '@astra/common';
 import {JwtResponse} from './interfaces/jwt-response';
-import { NotFound } from '../../helpers/http-errors';
 import { LoginDto } from './dto/login.dto';
 import { AuthService } from './auth.service';
-import { AuthFilter } from './auth.filter';
-import { messageBroker } from '../../lib/broker/message-broker';
+import { messageBroker } from '../../helpers/message-broker';
 
 @injectable()
 export class AuthHandler {
@@ -14,14 +18,18 @@ export class AuthHandler {
     @inject(AuthService)
     private readonly authService: AuthService;
 
-    @inject(AuthFilter)
-    private readonly authFilter: AuthFilter;
+    @inject(ValidatorService)
+    private readonly validatorService: ValidatorService;
 
     @SubscribeMessage(CommunicationCodes.LOGIN)
     async login(payload: LoginDto): Promise<JwtResponse> {
-        await this.authFilter.login(payload);
-        const message = new Message(CommunicationCodes.GET_USER_BY_ID, { email: payload.email });
-        const receivedMessage = await messageBroker.sendMessageAndGetResponse(QueuesEnum.USERS_SERVICE, message);
+        await this.validatorService.validate(payload, LoginDto);
+        const receivedMessage = await messageBroker.sendMessageAndGetResponse(
+            QueuesEnum.USERS_SERVICE,
+            CommunicationCodes.GET_USER_BY_ID,
+            { email: payload.email }
+        );
+
         if(!receivedMessage.payload) {
             throw new NotFound({ error: Messages.USER_NOT_FOUND });
         }

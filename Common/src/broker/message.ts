@@ -1,4 +1,4 @@
-import { CommunicationCodes } from '../common';
+import { CommunicationCodes } from '../enums';
 
 export class Message {
     constructor(

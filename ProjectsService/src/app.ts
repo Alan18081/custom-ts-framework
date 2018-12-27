@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { connect } from 'amqplib';
-import { messageBroker } from './lib/broker/message-broker';
+import { messageBroker } from './helpers/message';
 import {RABBITMQ_URL} from './config';
 import { AppModule } from './app.module';
 
@@ -16,6 +16,7 @@ class UsersService {
         try {
             const connection = await connect(RABBITMQ_URL);
             await messageBroker.run(connection);
+            console.log('ProjectsService is working');
         } catch (e) {
             console.log('[AMQP] Failed to create connection: ', e.message);
         }

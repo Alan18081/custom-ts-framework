@@ -1,6 +1,7 @@
 import {Channel, Connection, ConsumeMessage, Options} from 'amqplib';
 import * as uid from 'uid';
-import { CommunicationCodes, eventEmitter, QueuesEnum } from '../common';
+import { eventEmitter } from '../common';
+import { CommunicationCodes, QueuesEnum } from '../enums';
 import { Message } from './message';
 import { METADATA_KEY } from '../metadata/keys';
 import { ResolvedSubscriber } from './metadata';
@@ -40,7 +41,7 @@ export class MessageBroker {
   async sendMessageAndGetResponse(queue: QueuesEnum, code: CommunicationCodes, payload: any): Promise<Message> {
     await this.channel.assertQueue(queue);
     const id = uid();
-    await this.sendMessage(queue, code, payload, { correlationId: id, replyTo: QueuesEnum.RPC_API, contentType: 'application/json' })
+    await this.sendMessage(queue, code, payload, { correlationId: id, replyTo: this.rpcQueue, contentType: 'application/json' })
     return await this.subscribe(id);
   }
 
@@ -65,8 +66,8 @@ export class MessageBroker {
     const subscribers = Reflect.getMetadata(METADATA_KEY.subscribers, Reflect) || {};
     await this.channel.assertQueue(this.queue);
 
-    await this.channel.assertQueue(QueuesEnum.RPC_API);
-    this.channel.consume(QueuesEnum.RPC_API, msg => {
+    await this.channel.assertQueue(this.rpcQueue);
+    this.channel.consume(this.rpcQueue, msg => {
       if(msg) {
         try {
           eventEmitter.emit(msg.properties.correlationId, this.parseMessage(msg.content));
@@ -87,7 +88,7 @@ export class MessageBroker {
             const result: Promise<Message> | Message = subscriber.handler.call(subscriber.instance, message.payload, subscriber.withResponse ? this.sendMessage : null);
             if(result instanceof Promise) {
               result
-                .then(res => this.sendMessage(msg.properties.replyTo, message.code, message.payload, { correlationId: msg.properties.correlationId }))
+                .then(res => this.sendMessage(msg.properties.replyTo, message.code, res, { correlationId: msg.properties.correlationId }))
                 .catch(err => this.sendMessage(msg.properties.replyTo, message.code, err, { correlationId: msg.properties.correlationId }));
             } else {
               this.sendMessage(msg.properties.replyTo, message.code, message.payload, { correlationId: msg.properties.correlationId })

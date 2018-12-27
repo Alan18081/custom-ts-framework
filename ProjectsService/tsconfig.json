@@ -55,5 +55,9 @@
     /* Experimental Options */
      "experimentalDecorators": true,        /* Enables experimental support for ES7 route-decorators.ts. */
      "emitDecoratorMetadata": true         /* Enables experimental support for emitting type metadata for route-decorators.ts. */
-  }
+  },
+  "exclude": [
+    "./migrations/**/*.*",
+    "./knexfile.js"
+  ]
 }

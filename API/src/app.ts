@@ -19,6 +19,7 @@ class API {
         try {
             const connection = await connect(config.rabbitmq.url);
             await messageBroker.run(connection);
+            console.log('API is working');
         } catch (e) {
             console.log('[AMQP] Failed to create connection: ', e.message);
         }

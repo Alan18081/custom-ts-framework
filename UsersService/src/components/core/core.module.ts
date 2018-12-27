@@ -1,6 +1,6 @@
 import { Module } from '@astra/common';
 import {PasswordsService} from './services/passwords.service';
-import {ValidatorService} from './services/validator.service';
+import { ValidatorService } from '@astra/common';
 
 @Module({
     services: [PasswordsService, ValidatorService]

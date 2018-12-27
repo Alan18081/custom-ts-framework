@@ -1,4 +1,5 @@
 import { injectable } from 'inversify';
+import { Storage } from '@astra/common';
 import { CreateStorageDto } from './dto/create-storage.dto';
 import { StorageModel } from './storage.model';
 import { UpdateProjectDto } from '../projects/dto/update-project.dto';
