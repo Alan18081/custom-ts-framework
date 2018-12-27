@@ -16,14 +16,14 @@ import {JwtGuard} from '../../helpers/guards/jwt.guard';
 
 @injectable()
 @Controller('projects')
-export class ProjectsController {
+export class StoragesController {
 
     @Get('all')
     @UseGuards(JwtGuard)
     async findAll(@Query() query: any): Promise<Project[]> {
         const message = await messageBroker.sendMessageAndGetResponse(
             QueuesEnum.PROJECTS_SERVICE,
-            CommunicationCodes.GET_PROJECTS_LIST,
+            CommunicationCodes.GET_STORAGES_LIST,
             query
         );
 
@@ -35,7 +35,7 @@ export class ProjectsController {
     async findManyByUser(@User() user: User): Promise<Project[]> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
-          CommunicationCodes.GET_PROJECTS_LIST_BY_USER,
+          CommunicationCodes.GET_STORAGES_LIST,
             { userId: user.id }
         );
 
@@ -47,7 +47,7 @@ export class ProjectsController {
     async findOne(@Param('id') id: number, @User() user: User): Promise<Project> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
-          CommunicationCodes.GET_PROJECT,
+          CommunicationCodes.GET_STORAGE,
             { id, userId: user.id }
         );
 
@@ -59,7 +59,7 @@ export class ProjectsController {
     async createOne(@User() user, @Body() body: any): Promise<Project> {
         const message =  await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
-          CommunicationCodes.CREATE_PROJECT,
+          CommunicationCodes.CREATE_STORAGE,
             { ...body, userId: user.id }
         );
 
@@ -71,7 +71,7 @@ export class ProjectsController {
     async updateOne(@Param('id') id: number, @User() user: User, @Body() body: any): Promise<Project | undefined> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
-          CommunicationCodes.UPDATE_PROJECT,
+          CommunicationCodes.UPDATE_STORAGE,
             { ...body, userId: user.id, id  }
         );
 
@@ -83,7 +83,7 @@ export class ProjectsController {
     async removeOne(@Param('id') id: number): Promise<void> {
         await messageBroker.sendMessageAndGetResponse(
             QueuesEnum.PROJECTS_SERVICE,
-            CommunicationCodes.REMOVE_PROJECT,
+            CommunicationCodes.REMOVE_STORAGE,
             { id }
         );
     }
