@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const keys_1 = require("../metadata/keys");
 class Handler {
     constructor(data) {
         this.name = '';
@@ -7,7 +8,7 @@ class Handler {
         this.validators = [];
         this.guards = [];
         this.path = '';
-        this.method = 'GET';
+        this.method = keys_1.METHODS.get;
         this.controller = () => { };
         if (data.name)
             this.name = data.name;
@@ -23,9 +24,6 @@ class Handler {
             this.controller = data.controller;
         if (data.method)
             this.method = data.method;
-    }
-    addValidator(validators) {
-        this.validators = this.validators.concat(validators);
     }
 }
 exports.Handler = Handler;

@@ -1,5 +1,6 @@
+import { CommunicationCodes } from '../common';
 export declare class Message {
-    readonly code: string;
+    readonly code: CommunicationCodes;
     readonly payload: any;
-    constructor(code: string, payload: any);
+    constructor(code: CommunicationCodes, payload: any);
 }

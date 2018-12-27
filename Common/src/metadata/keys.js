@@ -15,6 +15,14 @@ exports.METADATA_KEY = {
     resolvedSubscribers: 'ioc:resolved-subscribers',
     messageHandler: 'ioc:message-handler'
 };
+var METHODS;
+(function (METHODS) {
+    METHODS["get"] = "get";
+    METHODS["post"] = "post";
+    METHODS["put"] = "put";
+    METHODS["delete"] = "delete";
+})(METHODS = exports.METHODS || (exports.METHODS = {}));
+;
 exports.MODULE_KEYS = {
     controllers: 'module:controllers',
     services: 'module:services',
@@ -25,6 +33,7 @@ exports.PARAMS_TYPES = {
     params: 'params',
     headers: 'headers',
     body: 'body',
-    query: 'query'
+    query: 'query',
+    queryField: 'queryField',
+    user: 'user',
 };
-// const app = express();

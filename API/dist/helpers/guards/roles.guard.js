@@ -10,17 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
-const auth_service_1 = require("../../components/auth/auth.service");
-let JwtGuard = class JwtGuard {
+const common_1 = require("@astra/common");
+let RolesGuard = class RolesGuard {
+    constructor(requiredRole) {
+        this.requiredRole = requiredRole;
+    }
     check(req, res, next) {
-        return this.authService.authenticateJwt(req, res, next);
+        return req.user.roleId === this.requiredRole;
     }
 };
-__decorate([
-    inversify_1.inject(auth_service_1.AuthService),
-    __metadata("design:type", auth_service_1.AuthService)
-], JwtGuard.prototype, "authService", void 0);
-JwtGuard = __decorate([
-    inversify_1.injectable()
-], JwtGuard);
-exports.JwtGuard = JwtGuard;
+RolesGuard = __decorate([
+    inversify_1.injectable(),
+    __metadata("design:paramtypes", [Number])
+], RolesGuard);
+exports.RolesGuard = RolesGuard;

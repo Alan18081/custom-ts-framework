@@ -13,6 +13,12 @@ export declare const METADATA_KEY: {
     resolvedSubscribers: string;
     messageHandler: string;
 };
+export declare enum METHODS {
+    get = "get",
+    post = "post",
+    put = "put",
+    delete = "delete"
+}
 export declare const MODULE_KEYS: {
     controllers: string;
     services: string;
@@ -24,4 +30,6 @@ export declare const PARAMS_TYPES: {
     headers: string;
     body: string;
     query: string;
+    queryField: string;
+    user: string;
 };

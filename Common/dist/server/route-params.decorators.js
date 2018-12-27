@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-const metadata_1 = require("./metadata");
+const keys_1 = require("../metadata/keys");
 const handler_1 = require("./handler");
 function RouteParams(type, paramName) {
     return function (target, name, index) {
@@ -12,11 +12,11 @@ function RouteParams(type, paramName) {
             paramName,
         };
         let metadataList = [];
-        if (!Reflect.hasMetadata(metadata_1.METADATA_KEY.controllerParams, target.constructor)) {
-            Reflect.defineMetadata(metadata_1.METADATA_KEY.controllerParams, metadataList, target.constructor);
+        if (!Reflect.hasMetadata(keys_1.METADATA_KEY.controllerParams, target.constructor)) {
+            Reflect.defineMetadata(keys_1.METADATA_KEY.controllerParams, metadataList, target.constructor);
         }
         else {
-            metadataList = Reflect.getMetadata(metadata_1.METADATA_KEY.controllerParams, target.constructor);
+            metadataList = Reflect.getMetadata(keys_1.METADATA_KEY.controllerParams, target.constructor);
         }
         metadataList.unshift(metadata);
     };
@@ -29,31 +29,35 @@ function UseMiddlewares(...middlewares) {
 }
 exports.UseMiddlewares = UseMiddlewares;
 function Param(name) {
-    return RouteParams(metadata_1.PARAMS_TYPES.params, name);
+    return RouteParams(keys_1.PARAMS_TYPES.params, name);
 }
 exports.Param = Param;
 function Headers(name) {
-    return RouteParams(metadata_1.PARAMS_TYPES.headers, name);
+    return RouteParams(keys_1.PARAMS_TYPES.headers, name);
 }
 exports.Headers = Headers;
 function Body() {
-    return RouteParams(metadata_1.PARAMS_TYPES.body);
+    return RouteParams(keys_1.PARAMS_TYPES.body);
 }
 exports.Body = Body;
 function Query(name) {
     if (name) {
-        return RouteParams(metadata_1.PARAMS_TYPES.queryField, name);
+        return RouteParams(keys_1.PARAMS_TYPES.queryField, name);
     }
-    return RouteParams(metadata_1.PARAMS_TYPES.query);
+    return RouteParams(keys_1.PARAMS_TYPES.query);
 }
 exports.Query = Query;
+function ReqUser() {
+    return RouteParams(keys_1.PARAMS_TYPES.user);
+}
+exports.ReqUser = ReqUser;
 function getHandler(target, name, descriptor) {
     let methods = {};
-    if (!Reflect.hasMetadata(metadata_1.METADATA_KEY.controllerMethod, target.constructor)) {
-        Reflect.defineMetadata(metadata_1.METADATA_KEY.controllerMethod, methods, target.constructor);
+    if (!Reflect.hasMetadata(keys_1.METADATA_KEY.controllerMethod, target.constructor)) {
+        Reflect.defineMetadata(keys_1.METADATA_KEY.controllerMethod, methods, target.constructor);
     }
     else {
-        methods = Reflect.getMetadata(metadata_1.METADATA_KEY.controllerMethod, target.constructor);
+        methods = Reflect.getMetadata(keys_1.METADATA_KEY.controllerMethod, target.constructor);
     }
     let methodHandler;
     if (!methods[name]) {

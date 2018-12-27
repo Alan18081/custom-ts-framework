@@ -31,8 +31,13 @@ let AuthService = class AuthService {
         };
         passport.use(new passport_jwt_1.Strategy(this.options, (payload, done) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const message = new common_1.Message(common_1.CommunicationCodes.AUTH_BY_TOKEN, payload);
-                const user = yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.AUTH_SERVICE, message);
+                const user = yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.USERS_SERVICE, common_1.CommunicationCodes.GET_USER_BY_EMAIL, { email: payload.email });
+                if (user) {
+                    done(null, user);
+                }
+                else {
+                    done({ error: common_1.Messages.USER_NOT_FOUND }, false);
+                }
             }
             catch (e) {
                 done(e);

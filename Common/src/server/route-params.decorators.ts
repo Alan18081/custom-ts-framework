@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { PARAM, PARAMS_TYPES_LIST } from './interfaces';
-import { METADATA_KEY, PARAMS_TYPES } from './metadata';
+import { METADATA_KEY, PARAMS_TYPES } from '../metadata/keys';
 import { RequestHandler } from 'express';
 import { Handler } from './handler';
 
@@ -55,6 +55,10 @@ export function Query(name?: string): ParameterDecorator {
   }
 
   return RouteParams(PARAMS_TYPES.query);
+}
+
+export function ReqUser() {
+  return RouteParams(PARAMS_TYPES.user);
 }
 
 export function getHandler(target: any, name: string, descriptor: PropertyDescriptor): Handler {

@@ -9,8 +9,8 @@ import {
     Project,
     Put,
     Query,
-    QueuesEnum,
-    UseGuards
+    QueuesEnum, ReqUser,
+    UseGuards, User
 } from '@astra/common';
 import {JwtGuard} from '../../helpers/guards/jwt.guard';
 
@@ -32,7 +32,7 @@ export class StoragesController {
 
     @Get('')
     @UseGuards(JwtGuard)
-    async findManyByUser(@User() user: User): Promise<Project[]> {
+    async findManyByUser(@ReqUser() user: User): Promise<Project[]> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_STORAGES_LIST,
@@ -44,7 +44,7 @@ export class StoragesController {
 
     @Get(':id')
     @UseGuards(JwtGuard)
-    async findOne(@Param('id') id: number, @User() user: User): Promise<Project> {
+    async findOne(@Param('id') id: number, @ReqUser() user: User): Promise<Project> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_STORAGE,
@@ -56,7 +56,7 @@ export class StoragesController {
 
     @Post('')
     @UseGuards(JwtGuard)
-    async createOne(@User() user, @Body() body: any): Promise<Project> {
+    async createOne(@ReqUser() user: User, @Body() body: any): Promise<Project> {
         const message =  await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.CREATE_STORAGE,
@@ -68,7 +68,7 @@ export class StoragesController {
 
     @Put(':id')
     @UseGuards(JwtGuard)
-    async updateOne(@Param('id') id: number, @User() user: User, @Body() body: any): Promise<Project | undefined> {
+    async updateOne(@Param('id') id: number, @ReqUser() user: User, @Body() body: any): Promise<Project | undefined> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.UPDATE_STORAGE,

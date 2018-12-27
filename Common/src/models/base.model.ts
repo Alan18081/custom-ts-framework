@@ -19,7 +19,7 @@ export class BaseModel<T> {
     return db.queryBuilder();
   }
 
-  public static async find(this: GenericModel<T>, query: object, columns?: string[]): Promise<T | undefined> {
+  public static async find<T>(this: GenericModel<T>, query: object, columns?: string[]): Promise<T | undefined> {
     const sql = db.table(this.tableName);
 
     if(columns) {
@@ -43,16 +43,6 @@ export class BaseModel<T> {
 
     const data = await sql.where(query);
     return new this(data[0]);
-  }
-
-  public static async getOne<T>(this: GenericModel<T>, query: QueryBuilder): Promise<T | undefined> {
-    const data = await raw.oneOrNone(query.toSQL().sql);
-    return new this(data);
-  }
-
-  public static async getMany<T>(this: GenericModel<T>, query: QueryBuilder): Promise<T[]> {
-    const data = await raw.manyOrNone(query.toSQL().sql);
-    return data.map(item => new this(item));
   }
 
   public static async save<T>(this: GenericModel<T>, entity: T): Promise<T> {

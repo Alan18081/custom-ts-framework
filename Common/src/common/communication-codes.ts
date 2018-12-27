@@ -12,11 +12,13 @@ export enum CommunicationCodes {
 
     GET_PROJECTS_LIST = '[ProjectsService] Get Projects List',
     GET_PROJECTS_LIST_BY_USER = '[ProjectsService] Get Projects By User',
+    GET_PROJECT = '[ProjectsService] Get Project',
     CREATE_PROJECT = '[ProjectsService] Create Project',
     UPDATE_PROJECT = '[ProjectsService] Update Project',
     REMOVE_PROJECT = '[ProjectsService] Remove Project',
 
     GET_STORAGES_LIST = '[ProjectsService] Get Storages List',
+    GET_STORAGE = '[ProjectsService] Get Storage',
     CREATE_STORAGE = '[ProjectsService] Create Storage',
     UPDATE_STORAGE = '[ProjectsService] Update Storage',
     UPDATE_STORAGE_DATA = '[ProjectsService] Update Storage Data',

@@ -26,8 +26,8 @@ const message_broker_1 = require("../../helpers/message-broker");
 let AuthController = class AuthController {
     login(body) {
         return __awaiter(this, void 0, void 0, function* () {
-            const message = new common_1.Message(common_1.CommunicationCodes.LOGIN, body);
-            return yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.AUTH_SERVICE, message);
+            const message = yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.AUTH_SERVICE, common_1.CommunicationCodes.LOGIN, body);
+            return message.payload;
         });
     }
 };

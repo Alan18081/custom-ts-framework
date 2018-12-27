@@ -6,8 +6,10 @@ import { MODULE_KEYS } from '../metadata/keys';
 import { Handler } from './handler';
 import * as bodyParser from 'body-parser';
 import {PARAM} from './interfaces';
-import {GuardCreator} from "./guards-decorators";
+import { GuardCreator, GuardType } from "./guards-decorators";
 import { Container } from 'inversify';
+import { isFunction } from 'lodash';
+import { AuthorizedRequest } from '../interfaces';
 
 export class Server {
 
@@ -68,7 +70,7 @@ export class Server {
     }
   }
 
-  private createArgs(req: Request, res: Response, next: NextFunction, params: PARAM[]): any[] {
+  private createArgs(req: AuthorizedRequest, res: Response, next: NextFunction, params: PARAM[]): any[] {
     if(!params || !params.length) {
       return [req, res, next];
     }
@@ -91,15 +93,23 @@ export class Server {
 
         case PARAMS_TYPES.query:
           return req.query;
+
+        case PARAMS_TYPES.user:
+          return req.user;
       }
     });
   }
 
-  private createGuardsMiddleware(guardTypes: GuardCreator[], container: Container): RequestHandler {
+  private createGuardsMiddleware(guardTypes: GuardType[], container: Container): RequestHandler {
     return (req: Request, res: Response, next: NextFunction) => {
         try {
-          guardTypes.forEach((guardType: GuardCreator) => {
-              const guard = container.get(guardType);
+          guardTypes.forEach((guardType: GuardType) => {
+              let guard;
+              if(isFunction(guardType)) {
+                guard = container.get(guardType);
+              } else {
+                guard = guardType;
+              }
               guard.check(req, res, next);
               next();
           });

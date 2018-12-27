@@ -1,4 +1,4 @@
-import { METHODS, PARAMS_TYPES } from './metadata';
+import { METHODS, PARAMS_TYPES } from '../metadata/keys';
 import { RequestHandler } from 'express-serve-static-core';
 export declare type PARAMS_TYPES_LIST = typeof PARAMS_TYPES[keyof typeof PARAMS_TYPES];
 export declare type METHODS_LIST = typeof METHODS[keyof typeof METHODS];

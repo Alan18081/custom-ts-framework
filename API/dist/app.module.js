@@ -10,6 +10,9 @@ const inversify_1 = require("inversify");
 const common_1 = require("@astra/common");
 const users_module_1 = require("./components/users/users.module");
 const auth_module_1 = require("./components/auth/auth.module");
+const projects_module_1 = require("./components/projects/projects.module");
+const storages_module_1 = require("./components/storages/storages.module");
+const payments_module_1 = require("./components/payments/payments.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -17,10 +20,10 @@ AppModule = __decorate([
         imports: [
             users_module_1.UsersModule,
             auth_module_1.AuthModule,
+            projects_module_1.ProjectsModule,
+            storages_module_1.StoragesModule,
+            payments_module_1.PaymentsModule
         ],
-        services: [],
-        controllers: [],
-        exports: [],
     }),
     inversify_1.injectable()
 ], AppModule);

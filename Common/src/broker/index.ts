@@ -1,3 +1,5 @@
+export * from './message-broker';
+
 export * from './decorators';
 
 export * from './error-message';

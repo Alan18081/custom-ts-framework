@@ -1,4 +1,4 @@
-import { METADATA_KEY, METHODS } from './metadata';
+import { METADATA_KEY, METHODS } from '../metadata/keys';
 import { getHandler } from './route-params.decorators';
 
 export function Controller(path: string) {
@@ -28,7 +28,7 @@ export function Delete(path: string) {
 }
 
 
-function RouteMethod(method: string, path: string) {
+function RouteMethod(method: METHODS, path: string) {
   return function (target: any, name: string, descriptor: PropertyDescriptor) {
     const handler = getHandler(target, name, descriptor);
     handler.method = method;

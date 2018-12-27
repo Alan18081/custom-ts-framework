@@ -10,7 +10,9 @@ export type GuardCreator = {
     new(...args): Guard
 }
 
-export function UseGuards(...guards: GuardCreator[]): MethodDecorator {
+export type GuardType = Guard | GuardCreator;
+
+export function UseGuards(...guards: GuardType[]): MethodDecorator {
     return function (target: any, name: string, descriptor: PropertyDescriptor) {
         const handler = getHandler(target, name, descriptor);
         handler.guards = [...handler.guards, ...guards ];

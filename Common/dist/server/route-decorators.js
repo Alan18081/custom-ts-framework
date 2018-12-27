@@ -1,30 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const metadata_1 = require("./metadata");
+const keys_1 = require("../metadata/keys");
 const route_params_decorators_1 = require("./route-params.decorators");
 function Controller(path) {
     return function (target) {
         const metadata = {
             path
         };
-        Reflect.defineMetadata(metadata_1.METADATA_KEY.controller, metadata, target);
+        Reflect.defineMetadata(keys_1.METADATA_KEY.controller, metadata, target);
     };
 }
 exports.Controller = Controller;
 function Get(path) {
-    return RouteMethod(metadata_1.METHODS.get, path);
+    return RouteMethod(keys_1.METHODS.get, path);
 }
 exports.Get = Get;
 function Post(path) {
-    return RouteMethod(metadata_1.METHODS.post, path);
+    return RouteMethod(keys_1.METHODS.post, path);
 }
 exports.Post = Post;
 function Put(path) {
-    return RouteMethod(metadata_1.METHODS.put, path);
+    return RouteMethod(keys_1.METHODS.put, path);
 }
 exports.Put = Put;
 function Delete(path) {
-    return RouteMethod(metadata_1.METHODS.delete, path);
+    return RouteMethod(keys_1.METHODS.delete, path);
 }
 exports.Delete = Delete;
 function RouteMethod(method, path) {

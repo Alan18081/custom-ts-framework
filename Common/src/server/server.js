@@ -13,6 +13,7 @@ require("reflect-metadata");
 const keys_1 = require("../metadata/keys");
 const keys_2 = require("../metadata/keys");
 const bodyParser = require("body-parser");
+const lodash_1 = require("lodash");
 class Server {
     constructor(port) {
         this.port = port;
@@ -82,6 +83,8 @@ class Server {
                     return req.body;
                 case keys_1.PARAMS_TYPES.query:
                     return req.query;
+                case keys_1.PARAMS_TYPES.user:
+                    return req.user;
             }
         });
     }
@@ -89,7 +92,13 @@ class Server {
         return (req, res, next) => {
             try {
                 guardTypes.forEach((guardType) => {
-                    const guard = container.get(guardType);
+                    let guard;
+                    if (lodash_1.isFunction(guardType)) {
+                        guard = container.get(guardType);
+                    }
+                    else {
+                        guard = guardType;
+                    }
                     guard.check(req, res, next);
                     next();
                 });

@@ -1,15 +1,14 @@
 import { RequestHandler } from 'express-serve-static-core';
-import { METHODS_LIST } from './interfaces';
-import { GuardCreator } from "./guards-decorators";
+import { GuardType } from "./guards-decorators";
+import { METHODS } from '../metadata/keys';
 export declare class Handler {
     name: string;
     middlewares: RequestHandler[];
     validators: Function[];
-    guards: GuardCreator[];
+    guards: GuardType[];
     path: string;
-    method: METHODS_LIST;
+    method: METHODS;
     handler: any;
     controller: Function;
     constructor(data: Partial<Handler>);
-    addValidator(validators: Function[]): void;
 }

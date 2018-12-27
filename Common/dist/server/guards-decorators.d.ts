@@ -6,4 +6,5 @@ export interface Guard {
 export declare type GuardCreator = {
     new (...args: any[]): Guard;
 };
-export declare function UseGuards(...guards: GuardCreator[]): MethodDecorator;
+export declare type GuardType = Guard | GuardCreator;
+export declare function UseGuards(...guards: GuardType[]): MethodDecorator;

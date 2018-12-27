@@ -1,25 +1,31 @@
-import {injectable} from 'inversify';
+import { injectable } from 'inversify';
 import { messageBroker } from '../../helpers/message-broker';
 import {
     Body,
     CommunicationCodes,
-    Controller, Delete,
-    Get, Param,
+    Controller,
+    Delete,
+    Get,
+    Param,
     Post,
     Project,
     Put,
     Query,
     QueuesEnum,
-    UseGuards
+    ReqUser,
+    Roles,
+    UseGuards,
+    User,
 } from '@astra/common';
-import {JwtGuard} from '../../helpers/guards/jwt.guard';
+import { JwtGuard } from '../../helpers/guards/jwt.guard';
+import { rolesGuardsFactory } from '../../helpers/roles-guards.factory';
 
 @injectable()
 @Controller('projects')
 export class ProjectsController {
 
     @Get('all')
-    @UseGuards(JwtGuard)
+    @UseGuards(JwtGuard, rolesGuardsFactory(Roles.ADMIN))
     async findAll(@Query() query: any): Promise<Project[]> {
         const message = await messageBroker.sendMessageAndGetResponse(
             QueuesEnum.PROJECTS_SERVICE,
@@ -32,7 +38,7 @@ export class ProjectsController {
 
     @Get('')
     @UseGuards(JwtGuard)
-    async findManyByUser(@User() user: User): Promise<Project[]> {
+    async findManyByUser(@ReqUser() user: User): Promise<Project[]> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_PROJECTS_LIST_BY_USER,
@@ -44,7 +50,7 @@ export class ProjectsController {
 
     @Get(':id')
     @UseGuards(JwtGuard)
-    async findOne(@Param('id') id: number, @User() user: User): Promise<Project> {
+    async findOne(@Param('id') id: number, @ReqUser() user: User): Promise<Project> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_PROJECT,
@@ -56,7 +62,7 @@ export class ProjectsController {
 
     @Post('')
     @UseGuards(JwtGuard)
-    async createOne(@User() user, @Body() body: any): Promise<Project> {
+    async createOne(@ReqUser() user: User, @Body() body: any): Promise<Project> {
         const message =  await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.CREATE_PROJECT,
@@ -68,7 +74,7 @@ export class ProjectsController {
 
     @Put(':id')
     @UseGuards(JwtGuard)
-    async updateOne(@Param('id') id: number, @User() user: User, @Body() body: any): Promise<Project | undefined> {
+    async updateOne(@Param('id') id: number, @ReqUser() user: User, @Body() body: any): Promise<Project | undefined> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.UPDATE_PROJECT,

@@ -1,8 +1,7 @@
-import { METHODS, PARAMS_TYPES } from '../server/metadata';
+import { METHODS, PARAMS_TYPES } from '../metadata/keys';
 import { RequestHandler } from 'express';
 
 export type PARAMS_TYPES_LIST = typeof PARAMS_TYPES[keyof typeof PARAMS_TYPES];
-export type METHODS_LIST = typeof METHODS[keyof typeof METHODS];
 
 export interface PARAM {
   methodName: string;
@@ -13,7 +12,7 @@ export interface PARAM {
 
 export interface Method {
   key: string;
-  method: METHODS_LIST;
+  method: METHODS;
   path: string;
   target: any;
   middlewares: RequestHandler[];

@@ -13,3 +13,5 @@ export * from './server';
 export * from './config';
 
 export * from './entities';
+
+export * from './enums';

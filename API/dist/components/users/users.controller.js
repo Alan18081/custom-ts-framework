@@ -24,26 +24,41 @@ const common_1 = require("@astra/common");
 const inversify_1 = require("inversify");
 const message_broker_1 = require("../../helpers/message-broker");
 const jwt_guard_1 = require("../../helpers/guards/jwt.guard");
+const roles_guards_factory_1 = require("../../helpers/roles-guards.factory");
 let UsersController = class UsersController {
     findMany(query) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.USERS_SERVICE, new common_1.Message(common_1.CommunicationCodes.GET_USERS_LIST, query));
+            const message = yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.USERS_SERVICE, common_1.CommunicationCodes.GET_USERS_LIST, query);
+            return message.payload;
         });
     }
     findOne(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.USERS_SERVICE, new common_1.Message(common_1.CommunicationCodes.GET_USER, { id }));
+            const message = yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.USERS_SERVICE, common_1.CommunicationCodes.GET_USER, { id });
+            return message.payload;
         });
     }
     createOne(body) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.USERS_SERVICE, new common_1.Message(common_1.CommunicationCodes.CREATE_USER, body));
+            const message = yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.USERS_SERVICE, common_1.CommunicationCodes.CREATE_USER, body);
+            return message.payload;
+        });
+    }
+    updateOne(id, body) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const message = yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.USERS_SERVICE, common_1.CommunicationCodes.UPDATE_USER, Object.assign({}, body, { id }));
+            return message.payload;
+        });
+    }
+    removeOne(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield message_broker_1.messageBroker.sendMessageAndGetResponse(common_1.QueuesEnum.USERS_SERVICE, common_1.CommunicationCodes.REMOVE_USER, { id });
         });
     }
 };
 __decorate([
     common_1.Get(''),
-    common_1.UseGuards(jwt_guard_1.JwtGuard),
+    common_1.UseGuards(jwt_guard_1.JwtGuard, roles_guards_factory_1.rolesGuardsFactory(common_1.Roles.ADMIN)),
     __param(0, common_1.Query()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -51,6 +66,7 @@ __decorate([
 ], UsersController.prototype, "findMany", null);
 __decorate([
     common_1.Get(':id'),
+    common_1.UseGuards(jwt_guard_1.JwtGuard, roles_guards_factory_1.rolesGuardsFactory(common_1.Roles.ADMIN)),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
@@ -63,6 +79,22 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "createOne", null);
+__decorate([
+    common_1.Put(':id'),
+    common_1.UseGuards(jwt_guard_1.JwtGuard, roles_guards_factory_1.rolesGuardsFactory(common_1.Roles.ADMIN)),
+    __param(0, common_1.Param('id')), __param(1, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "updateOne", null);
+__decorate([
+    common_1.Delete(':id'),
+    common_1.UseGuards(jwt_guard_1.JwtGuard, roles_guards_factory_1.rolesGuardsFactory(common_1.Roles.ADMIN)),
+    __param(0, common_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "removeOne", null);
 UsersController = __decorate([
     inversify_1.injectable(),
     common_1.Controller('users')

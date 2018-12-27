@@ -11,3 +11,4 @@ __export(require("./metadata/keys"));
 __export(require("./broker"));
 __export(require("./server"));
 __export(require("./config"));
+__export(require("./enums"));

@@ -14,6 +14,13 @@ export const METADATA_KEY = {
   messageHandler: 'ioc:message-handler'
 };
 
+export enum METHODS {
+  get = 'get',
+  post = 'post',
+  put = 'put',
+  delete = 'delete'
+};
+
 export const MODULE_KEYS = {
   controllers: 'module:controllers',
   services: 'module:services',
@@ -25,7 +32,8 @@ export const PARAMS_TYPES = {
   params: 'params',
   headers: 'headers',
   body: 'body',
-  query: 'query'
+  query: 'query',
+  queryField: 'queryField',
+  user: 'user',
 };
 
-// const app = express();
