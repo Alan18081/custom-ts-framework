@@ -11,7 +11,7 @@ export class UsersService {
     @inject(PasswordsService)
     private readonly passwordsService: PasswordsService;
 
-    async findMany(query: FindUsersListDto): Promise<User[]> {
+    async findMany(query: FindUsersListDto): Promise<UserModel[]> {
         return await UserModel.find(query);
     }
 

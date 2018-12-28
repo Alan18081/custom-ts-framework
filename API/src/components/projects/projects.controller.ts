@@ -39,6 +39,7 @@ export class ProjectsController {
     @Get('')
     @UseGuards(JwtGuard)
     async findManyByUser(@ReqUser() user: User): Promise<Project[]> {
+        console.log('Data');
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_PROJECTS_LIST_BY_USER,

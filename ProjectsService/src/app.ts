@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { connect } from 'amqplib';
-import { messageBroker } from './helpers/message';
-import {RABBITMQ_URL} from './config';
+import { messageBroker } from './helpers/message-broker';
+import {config} from '@astra/common';
 import { AppModule } from './app.module';
 
 class UsersService {
@@ -14,7 +14,7 @@ class UsersService {
 
     async initBroker() {
         try {
-            const connection = await connect(RABBITMQ_URL);
+            const connection = await connect(config.rabbitmq.url);
             await messageBroker.run(connection);
             console.log('ProjectsService is working');
         } catch (e) {

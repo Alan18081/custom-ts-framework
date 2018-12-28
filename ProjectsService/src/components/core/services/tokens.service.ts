@@ -3,6 +3,8 @@ import {injectable} from 'inversify';
 @injectable()
 export class TokensService {
 
-    generateToken(): Promise<string> {}
+    async generateToken(): Promise<string> {
+        return 'Hello';
+    }
 
 }

@@ -25,9 +25,17 @@ export function Module(config: ModuleConfig) {
             moduleContainer.bind<T>(ServiceType).to(ServiceType);
         });
 
+        const controllersMetadata = [];
+
         controllers.forEach(<T extends { new(...args) }>(ServiceType: T) => {
             moduleContainer.bind<T>(ServiceType).to(ServiceType).inSingletonScope();
+
+            controllersMetadata.push({
+               type: ServiceType
+            });
         });
+
+        Reflect.defineMetadata(MODULE_KEYS.controllers, controllersMetadata, moduleConstructor);
 
         if(handlers) {
             handlers.forEach(<T extends { new(...args) }>(ServiceType: T) => {

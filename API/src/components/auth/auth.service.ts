@@ -2,7 +2,7 @@ import { injectable } from 'inversify';
 import { ExtractJwt, Strategy as JwtStrategy, StrategyOptions } from 'passport-jwt';
 import * as passport from 'passport';
 import { PassportStatic } from 'passport';
-import { CommunicationCodes, config, Message, Messages, QueuesEnum } from '@astra/common';
+import { CommunicationCodes, config, Messages, QueuesEnum } from '@astra/common';
 import { JwtPayload } from './interfaces/jwt-payload';
 import { NextFunction, Request, Response } from 'express';
 import { messageBroker } from '../../helpers/message-broker';

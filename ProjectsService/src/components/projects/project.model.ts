@@ -1,7 +1,7 @@
 import {BaseModel, Project} from '@astra/common';
 import { toNumber } from 'lodash';
 
-export class ProjectModel extends BaseModel<Project> implements Project {
+export class ProjectModel extends BaseModel implements Project {
     static tableName = 'projects';
 
     public id: number;

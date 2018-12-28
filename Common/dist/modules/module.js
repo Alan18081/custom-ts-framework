@@ -13,9 +13,14 @@ function Module(config) {
         services.forEach((ServiceType) => {
             moduleContainer.bind(ServiceType).to(ServiceType);
         });
+        const controllersMetadata = [];
         controllers.forEach((ServiceType) => {
             moduleContainer.bind(ServiceType).to(ServiceType).inSingletonScope();
+            controllersMetadata.push({
+                type: ServiceType
+            });
         });
+        Reflect.defineMetadata(keys_1.MODULE_KEYS.controllers, controllersMetadata, moduleConstructor);
         if (handlers) {
             handlers.forEach((ServiceType) => {
                 moduleContainer.bind(ServiceType).to(ServiceType).inSingletonScope();

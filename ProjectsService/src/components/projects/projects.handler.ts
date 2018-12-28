@@ -1,8 +1,7 @@
-import {inject, injectable} from 'inversify';find-one.dto
-import {CommunicationCodes, Project, SubscribeMessage} from '@astra/common';
+import {inject, injectable} from 'inversify';
+import {CommunicationCodes, Project, SubscribeMessage, ValidatorService} from '@astra/common';
 import {CreateProjectDto} from './dto/create-project.dto';
 import {ProjectsService} from './projects.service';
-import { ValidatorService } from '../core/services/validator.service';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { RemoveProjectDto } from './dto/remove-project.dto';
 import {FindProjectsListByUserDto} from './dto/find-projects-list-by-user.dto';
@@ -44,14 +43,14 @@ export class ProjectsHandler {
     }
 
     @SubscribeMessage(CommunicationCodes.UPDATE_PROJECT)
-    async createOne(body: UpdateProjectDto): Promise<Project> {
+    async updateOne(body: UpdateProjectDto): Promise<Project> {
         await this.validatorService.validate(body, UpdateProjectDto);
 
         return await this.projectsService.updateOne(body);
     }
 
     @SubscribeMessage(CommunicationCodes.REMOVE_PROJECT)
-    async createOne(body: RemoveProjectDto): Promise<void> {
+    async removeOne(body: RemoveProjectDto): Promise<void> {
         await this.validatorService.validate(body, RemoveProjectDto);
         await this.projectsService.removeOne(body.id);
     }

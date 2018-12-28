@@ -32,15 +32,18 @@ class Server {
             const controllers = Reflect.getMetadata(keys_2.MODULE_KEYS.controllers, type) || {};
             const controllersList = Object.keys(controllers).map(key => controllers[key]);
             const container = Reflect.getMetadata(keys_1.METADATA_KEY.container, type);
+            console.log('Controllers', controllersList);
             controllersList.forEach(controller => {
+                const controllerMetadata = Reflect.getMetadata(keys_1.METADATA_KEY.controller, controller.type);
                 const methods = Reflect.getMetadata(keys_1.METADATA_KEY.controllerMethod, controller.type) || {};
                 const params = Reflect.getMetadata(keys_1.METADATA_KEY.controllerParams, controller.type);
+                const instance = container.get(controller.type);
                 const methodsList = Object.keys(methods).map(key => methods[key]);
                 methodsList.forEach(({ method, handler, path, middlewares, name, validators, guards }) => {
                     const methodParams = params.filter(({ methodName }) => methodName === name);
                     const guardsMiddleware = this.createGuardsMiddleware(guards, container);
-                    const expressHandler = this.createHandler(handler.bind(controller.instance), methodParams);
-                    this.app[method](`/${controller.path}/${path}`, guardsMiddleware, ...middlewares, expressHandler);
+                    const expressHandler = this.createHandler(handler.bind(instance), methodParams);
+                    this.app[method](`/${controllerMetadata.path}/${path}`, guardsMiddleware, ...middlewares, expressHandler);
                 });
             });
         });
@@ -48,6 +51,7 @@ class Server {
     createHandler(method, params) {
         return (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
+                console.log('Inside handler', req.body);
                 const args = this.createArgs(req, res, next, params);
                 const result = yield method(...args);
                 if (result.isError) {
@@ -100,8 +104,8 @@ class Server {
                         guard = guardType;
                     }
                     guard.check(req, res, next);
-                    next();
                 });
+                next();
             }
             catch (e) {
                 console.log(e);

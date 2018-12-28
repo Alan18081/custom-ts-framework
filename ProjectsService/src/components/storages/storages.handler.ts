@@ -1,6 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { ValidatorService } from '../core/services/validator.service';
-import { CommunicationCodes, SubscribeMessage } from '@astra/common';
+import { CommunicationCodes, Storage, SubscribeMessage, ValidatorService } from '@astra/common';
 import { CreateStorageDto } from './dto/create-storage.dto';
 import { StoragesService } from './storages.service';
 import { RemoveStorageDto } from './dto/remove-storage.dto';

@@ -24,9 +24,10 @@ export class AuthHandler {
     @SubscribeMessage(CommunicationCodes.LOGIN)
     async login(payload: LoginDto): Promise<JwtResponse> {
         await this.validatorService.validate(payload, LoginDto);
+        
         const receivedMessage = await messageBroker.sendMessageAndGetResponse(
             QueuesEnum.USERS_SERVICE,
-            CommunicationCodes.GET_USER_BY_ID,
+            CommunicationCodes.GET_USER_BY_EMAIL,
             { email: payload.email }
         );
 

@@ -1,6 +1,8 @@
-import {Module} from './lib/modules/module.inversify';
+import {Module} from '@astra/common';
+import { ProjectsModule } from './components/projects/projects.module';
+import { StoragesModule } from './components/storages/storages.module';
 
 @Module({
-  imports: [UsersModule],
+  imports: [ProjectsModule, StoragesModule],
 })
 export class AppModule {}

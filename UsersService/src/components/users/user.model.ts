@@ -1,4 +1,4 @@
-import { BaseModel, User } from '@astra/common';
+import { User, BaseModel } from '@astra/common';
 import { toNumber } from 'lodash';
 
 export class UserModel extends BaseModel implements User {

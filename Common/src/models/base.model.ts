@@ -42,7 +42,7 @@ export class BaseModel {
     return new this(data[0]);
   }
 
-  public static async save<T>(this: GenericModel<T>, entity: GenericModel<T>): Promise<T> {
+  public static async save<T>(this: GenericModel<T>, entity: BaseModel): Promise<T> {
     if(!(entity instanceof this)) {
       throw new Error('Entity should be an instance of model');
     }

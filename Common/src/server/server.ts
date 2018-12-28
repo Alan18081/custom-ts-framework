@@ -6,7 +6,7 @@ import { MODULE_KEYS } from '../metadata/keys';
 import { Handler } from './handler';
 import * as bodyParser from 'body-parser';
 import {PARAM} from './interfaces';
-import { GuardCreator, GuardType } from "./guards-decorators";
+import { GuardType } from "./guards-decorators";
 import { Container } from 'inversify';
 import { isFunction } from 'lodash';
 import { AuthorizedRequest } from '../interfaces';
@@ -37,17 +37,23 @@ export class Server {
       const controllersList = Object.keys(controllers).map(key => controllers[key]);
       const container = Reflect.getMetadata(METADATA_KEY.container, type);
 
+      console.log('Controllers', controllersList);
+
       controllersList.forEach(controller => {
+        const controllerMetadata = Reflect.getMetadata(METADATA_KEY.controller, controller.type);
         const methods = Reflect.getMetadata(METADATA_KEY.controllerMethod, controller.type) || {};
         const params = Reflect.getMetadata(METADATA_KEY.controllerParams, controller.type);
+
+        const instance = container.get(controller.type);
 
         const methodsList = Object.keys(methods).map(key => methods[key]);
 
         methodsList.forEach(({ method, handler, path, middlewares, name, validators, guards }: Handler) => {
           const methodParams = params.filter(({ methodName }) => methodName === name);
-           const guardsMiddleware = this.createGuardsMiddleware(guards, container);
-          const expressHandler = this.createHandler(handler.bind(controller.instance), methodParams);
-          this.app[method](`/${controller.path}/${path}`, guardsMiddleware, ...middlewares, expressHandler);
+          const guardsMiddleware = this.createGuardsMiddleware(guards, container);
+          const expressHandler = this.createHandler(handler.bind(instance), methodParams);
+
+          this.app[method](`/${controllerMetadata.path}/${path}`, guardsMiddleware, ...middlewares, expressHandler);
         });
       })
     });
@@ -56,6 +62,7 @@ export class Server {
   private createHandler(method: Function, params: any[]) {
     return async (req: Request, res: Response, next: NextFunction) => {
       try {
+        console.log('Inside handler', req.body);
         const args = this.createArgs(req, res, next, params);
         const result = await method(...args);
         if(result.isError) {
@@ -111,9 +118,8 @@ export class Server {
                 guard = guardType;
               }
               guard.check(req, res, next);
-              next();
           });
-
+          next();
         } catch (e) {
           console.log(e);
           res.status(403).json({ error: e.message });
