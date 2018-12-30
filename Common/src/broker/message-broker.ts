@@ -84,7 +84,6 @@ export class MessageBroker {
           const message: Message = JSON.parse(msg.content.toString());
           const { code } = message;
           const subscriber: ResolvedSubscriber | undefined = subscribers[code];
-          console.log('[AMQP] New message', message);
           if(subscriber) {
             const result: Promise<Message> | Message = subscriber.handler.call(subscriber.instance, message.payload, subscriber.withResponse ? this.sendMessage : null);
             if(result instanceof Promise) {

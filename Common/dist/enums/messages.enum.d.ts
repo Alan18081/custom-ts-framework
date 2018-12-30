@@ -3,5 +3,7 @@ export declare enum Messages {
     USER_NOT_FOUND = "User with that email doesn't exists",
     WRONG_PASSWORD = "Wrong password",
     PROJECT_NOT_FOUND = "Project doesn't exist",
-    STORAGE_NAME_ERROR = "Storage with provided name already exists"
+    STORAGE_NOT_FOUND = "Storage doesn't exist",
+    STORAGE_NAME_ERROR = "Storage with provided name already exists",
+    STORAGE_DATA_ALREADY_EXISTS = "Storage Data for provided storage already exists"
 }

@@ -21,10 +21,11 @@ export enum CommunicationCodes {
     GET_STORAGE = '[ProjectsService] Get Storage',
     CREATE_STORAGE = '[ProjectsService] Create Storage',
     UPDATE_STORAGE = '[ProjectsService] Update Storage',
+    UPDATE_STORAGE_DATA = '[DataService] Update Storage Data',
     REMOVE_STORAGE = '[ProjectsService] Remove Storage',
 
     GET_STORAGE_DATA = '[DataService] Get Storage Data',
     CREATE_STORAGE_DATA = '[DataService] Create Storage Data',
-    UPDATE_STORAGE_DATA = '[DataService] Update Storage Data',
+    CHANGE_STORAGE_DATA = '[DataService] Change Storage Data',
     REMOVE_STORAGE_DATA = '[DataService] Remove Storage Data'
 }

@@ -8,6 +8,7 @@ import { FindStorageDto } from './dto/find-storage.dto';
 import {Storage} from './storage';
 import {ProjectsService} from '../projects/projects.service';
 import {messageBroker} from '../../helpers/message-broker';
+import {UpdateStorageDataDto} from './dto/update-storage-data.dto';
 
 @injectable()
 export class StoragesHandler {
@@ -46,30 +47,53 @@ export class StoragesHandler {
     }
 
     const storage = await this.storagesService.findOneByName(body.name);
-    console.log('Found storage', storage);
 
     if(storage) {
       throw new BadRequest({ error: Messages.STORAGE_NAME_ERROR });
     }
 
+    const { userId, ...data } = body;
+
+    const newStorage = await this.storagesService.createOne({ ...data });
+
+
       const { payload } = await messageBroker.sendMessageAndGetResponse(
-          QueuesEnum.DATA_SERVICE,
-          CommunicationCodes.CREATE_STORAGE_DATA,
-          { }
+        QueuesEnum.DATA_SERVICE,
+        CommunicationCodes.CREATE_STORAGE_DATA,
+        { storageId: newStorage.id, projectId: body.projectId, userId: body.userId }
       );
 
-    console.log('Payload from data service', payload);
+      console.log(payload);
 
-    const newStorage = await this.storagesService.createOne({ ...body, dataId: payload._id });
+    return await this.storagesService.updateOne(newStorage.id, { dataId: payload.id });
+  }
 
-    newStorage.data = payload.data;
+  @SubscribeMessage(CommunicationCodes.UPDATE_STORAGE_DATA)
+  async updateOneData(body: UpdateStorageDataDto): Promise<Storage | undefined> {
+    await this.validatorService.validate(body, UpdateStorageDataDto);
 
-    return newStorage;
+    const storage = await this.storagesService.findOneById(body.id);
+    if(!storage) {
+      throw new NotFound({ error: Messages.STORAGE_NOT_FOUND });
+    }
+
+    const { payload } = await messageBroker.sendMessageAndGetResponse(
+      QueuesEnum.DATA_SERVICE,
+      CommunicationCodes.CHANGE_STORAGE_DATA,
+        { id: storage.dataId, data: body.data }
+    );
+
+    storage.data = payload.data;
+
+    return storage;
+
   }
 
   @SubscribeMessage(CommunicationCodes.REMOVE_STORAGE)
   async removeOne(body: RemoveStorageDto): Promise<void> {
     await this.validatorService.validate(body, RemoveStorageDto);
+
+    
 
     await this.storagesService.removeOne(body.id);
   }

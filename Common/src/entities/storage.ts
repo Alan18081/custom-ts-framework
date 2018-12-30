@@ -4,6 +4,6 @@ export interface IStorage {
   description: string;
   path: string;
   projectId: number;
-  dataId: string;
+  dataId?: string;
   data?: object;
 }

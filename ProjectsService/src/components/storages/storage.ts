@@ -8,7 +8,7 @@ export class Storage implements IStorage {
   public path: string;
   public projectId: number;
   public data: object;
-  public dataId: string;
+  public dataId?: string;
 
   constructor(data: Partial<Storage>) {
     this.id = data.id;

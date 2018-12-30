@@ -25,7 +25,7 @@ export abstract class MongoRepository<T> {
         const data = await this.collection.findOne(query);
 
         if(data[0]) {
-            return Reflect.construct(this.MappingType, [data[0]]);
+            return Reflect.construct(this.MappingType, [data]);
         }
     }
 
@@ -34,10 +34,12 @@ export abstract class MongoRepository<T> {
             throw new Error('Entity should be an instance of model');
         }
 
-        const { insertedId } = await this.collection.insertOne(entity);
-        const rawData = this.collection.findOne({ id: insertedId });
 
-        return Reflect.construct(this.MappingType, [rawData[0]]);
+        const { insertedId } = await this.collection.insertOne(entity);
+        const rawData = await this.collection.findOne({ _id: insertedId });
+        console.log(rawData);
+
+        return Reflect.construct(this.MappingType, [rawData]);
     }
 
     public async updateOne(query: object, entity: Partial<T>): Promise<T | undefined> {
@@ -46,7 +48,7 @@ export abstract class MongoRepository<T> {
         const rawData = await this.collection.findOne(query);
 
         if(rawData[0]) {
-            return Reflect.construct(this.MappingType, [rawData[0]]);
+            return Reflect.construct(this.MappingType, [rawData]);
         }
     }
 

@@ -30,8 +30,8 @@ export class StoragesService {
     return this.storagesRepository.save(storage);
   }
 
-  async updateOne(data: UpdateProjectDto): Promise<Storage | undefined> {
-    return await this.storagesRepository.update({ id: data.id }, { ...data });
+  async updateOne(id: number, data: Partial<Storage>): Promise<Storage | undefined> {
+    return await this.storagesRepository.update({ id }, { ...data });
   }
 
   async removeOne(id: number): Promise<void> {

@@ -6,7 +6,6 @@ import {
     Controller, Delete,
     Get, Param,
     Post,
-    IProject,
     Put,
     Query,
     QueuesEnum, ReqUser,
@@ -73,6 +72,18 @@ export class StoragesController {
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.UPDATE_STORAGE,
             { ...body, userId: user.id, id  }
+        );
+
+        return message.payload;
+    }
+
+    @Put(':id/data')
+    @UseGuards(JwtGuard)
+    async updateOneData(@Param('id') id: number, @Body() body: any): Promise<IStorage | undefined> {
+        const message = await messageBroker.sendMessageAndGetResponse(
+          QueuesEnum.PROJECTS_SERVICE,
+          CommunicationCodes.UPDATE_STORAGE_DATA,
+            { storageId: id, data: body }
         );
 
         return message.payload;
