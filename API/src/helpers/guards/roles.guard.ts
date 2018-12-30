@@ -10,7 +10,10 @@ export class RolesGuard implements Guard {
   ) {}
 
 
-  check(req: AuthorizedRequest, res: Response, next: NextFunction): boolean | Promise<boolean> {
-    return req.user.roleId === this.requiredRole;
+  check(req: AuthorizedRequest, res: Response, next: NextFunction): void | Promise<void> {
+    // if(req.user.roleId !== this.requiredRole) {
+    //   throw new Forbidden();
+    // }
+    next();
   }
 }

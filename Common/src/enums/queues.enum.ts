@@ -9,5 +9,8 @@ export enum QueuesEnum {
     RPC_USERS_SERVICE = '[RPC Queue] Users Service',
 
     PROJECTS_SERVICE = '[Queue] Projects Service',
-    RPC_PROJECTS_SERVICE  = '[RPC Queue] Projects Service'
+    RPC_PROJECTS_SERVICE  = '[RPC Queue] Projects Service',
+
+    DATA_SERVICE = '[Queue] Data Service',
+    RPC_DATA_SERVICE = '[RPC Queue] Data Service'
 }

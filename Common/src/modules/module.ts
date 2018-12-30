@@ -15,11 +15,11 @@ export function Module(config: ModuleConfig) {
         const services = config.services || [];
         const controllers = config.controllers || [];
         const imports = config.imports || [];
-        const handlers = config.handlers || [];
+        const handlers = config.handlers;
 
         const moduleConstructor = target;
 
-        let moduleContainer: interfaces.Container = new Container();
+        let moduleContainer: interfaces.Container = new Container({ skipBaseClassChecks: true });
 
         services.forEach(<T extends { new(...args) }>(ServiceType: T) => {
             moduleContainer.bind<T>(ServiceType).to(ServiceType);
@@ -67,6 +67,7 @@ export function Module(config: ModuleConfig) {
                     });
                 }
             });
+
 
         }
 

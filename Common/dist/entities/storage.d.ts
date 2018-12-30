@@ -1,8 +1,9 @@
-export interface Storage {
+export interface IStorage {
     id: number;
     name: string;
     description: string;
     path: string;
     projectId: number;
-    userId: number;
+    dataId: string;
+    data?: object;
 }

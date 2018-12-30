@@ -1,4 +1,4 @@
-import { CommunicationCodes, Messages, BadRequest, SubscribeMessage, User, ValidatorService } from '@astra/common';
+import { CommunicationCodes, Messages, BadRequest, SubscribeMessage, ValidatorService } from '@astra/common';
 import { UsersService } from './users.service';
 import {inject, injectable} from 'inversify';
 import {FindUsersListDto} from './dto/find-users-list.dto';
@@ -7,6 +7,7 @@ import {FindUserDto} from './dto/find-user.dto';
 import { FindUserByEmailDto } from './dto/find-user-by-email.dto';
 import {UpdateUserDto} from './dto/update-user.dto';
 import {RemoveUserDto} from './dto/remove-user.dto';
+import {User} from './user';
 
 @injectable()
 export class UsersHandler {
@@ -42,7 +43,6 @@ export class UsersHandler {
       await this.validatorService.validate(payload, CreateUserDto);
 
       const user = await this.usersService.findOneByEmail(payload.email);
-
       if(user) {
           throw new BadRequest({ error: Messages.USER_ALREADY_EXISTS });
       }

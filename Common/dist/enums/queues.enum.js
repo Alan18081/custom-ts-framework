@@ -10,4 +10,6 @@ var QueuesEnum;
     QueuesEnum["RPC_USERS_SERVICE"] = "[RPC Queue] Users Service";
     QueuesEnum["PROJECTS_SERVICE"] = "[Queue] Projects Service";
     QueuesEnum["RPC_PROJECTS_SERVICE"] = "[RPC Queue] Projects Service";
+    QueuesEnum["DATA_SERVICE"] = "[Queue] Data Service";
+    QueuesEnum["RPC_DATA_SERVICE"] = "[RPC Queue] Data Service";
 })(QueuesEnum = exports.QueuesEnum || (exports.QueuesEnum = {}));

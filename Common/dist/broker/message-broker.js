@@ -34,6 +34,7 @@ class MessageBroker {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.channel.assertQueue(queue);
             const message = new message_1.Message(code, payload);
+            console.log(`[Sending Message] ${queue} : ${code}`, payload);
             this.channel.sendToQueue(queue, this.bufferMessage(message), config);
         });
     }
@@ -64,7 +65,7 @@ class MessageBroker {
     }
     init() {
         return __awaiter(this, void 0, void 0, function* () {
-            const subscribers = Reflect.getMetadata(keys_1.METADATA_KEY.subscribers, Reflect) || {};
+            const subscribers = Reflect.getMetadata(keys_1.METADATA_KEY.resolvedSubscribers, Reflect) || {};
             yield this.channel.assertQueue(this.queue);
             yield this.channel.assertQueue(this.rpcQueue);
             this.channel.consume(this.rpcQueue, msg => {

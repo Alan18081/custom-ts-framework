@@ -2,7 +2,7 @@ import { injectable } from 'inversify';
 import { ExtractJwt, Strategy as JwtStrategy, StrategyOptions } from 'passport-jwt';
 import * as passport from 'passport';
 import { PassportStatic } from 'passport';
-import { CommunicationCodes, config, Messages, QueuesEnum } from '@astra/common';
+import {AuthorizedRequest, CommunicationCodes, config, Messages, QueuesEnum, Unauthorized} from '@astra/common';
 import { JwtPayload } from './interfaces/jwt-payload';
 import { NextFunction, Request, Response } from 'express';
 import { messageBroker } from '../../helpers/message-broker';
@@ -13,32 +13,40 @@ export class AuthService {
 
   options: StrategyOptions = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: config.common.jwtSecret
+    secretOrKey: config.common.jwtSecret,
+    passReqToCallback: true
   };
 
   constructor() {
-    passport.use(new JwtStrategy(this.options, async (payload: JwtPayload, done: Function) => {
-      try {
-        const user = await messageBroker.sendMessageAndGetResponse(
-          QueuesEnum.USERS_SERVICE,
-          CommunicationCodes.GET_USER_BY_EMAIL,
-          { email: payload.email }
+    passport.use(new JwtStrategy(this.options, (req: AuthorizedRequest, payload: JwtPayload, done: Function) => {
+      const result = async () => {
+        const message = await messageBroker.sendMessageAndGetResponse(
+            QueuesEnum.USERS_SERVICE,
+            CommunicationCodes.GET_USER_BY_EMAIL,
+            { email: payload.email }
         );
 
-        if(user) {
-          done(null, user);
-        } else {
-          done({ error: Messages.USER_NOT_FOUND }, false);
-        }
+        return message.payload;
+      };
 
-      } catch (e) {
-        done(e);
-      }
+      result()
+        .then(user => {
+          if(user) {
+              req.user = user;
+              console.log('Requested user', req.user);
+              done(null, user);
+          } else {
+              done({ error: Messages.USER_NOT_FOUND }, false);
+          }
+        })
+        .catch(err => done(err))
     }))
   }
 
-  authenticateJwt(req: Request, res: Response, next: NextFunction): boolean {
-    return this.passport.authenticate('jwt')(req, res, next);
+  authenticateJwt(req: Request, res: Response, next: NextFunction): void {
+    this.passport.authenticate('jwt', { session: false }, () => {
+        next();
+    })(req, res, next);
   }
 
 }

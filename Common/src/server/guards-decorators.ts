@@ -3,7 +3,7 @@ import {Response} from "express";
 import { getHandler } from './route-params.decorators';
 
 export interface Guard {
-    check(req: Request, res: Response, next: NextFunction): boolean | Promise<boolean>
+    check(req: Request, res: Response, next: NextFunction): void | Promise<void>
 }
 
 export type GuardCreator = {

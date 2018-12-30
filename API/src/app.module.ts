@@ -5,6 +5,7 @@ import { AuthModule } from './components/auth/auth.module';
 import { ProjectsModule } from './components/projects/projects.module';
 import { StoragesModule } from './components/storages/storages.module';
 import { PaymentsModule } from './components/payments/payments.module';
+import {StorageDataModule} from './components/storage-data/storage-data.module';
 
 @Module({
     imports: [
@@ -12,7 +13,8 @@ import { PaymentsModule } from './components/payments/payments.module';
       AuthModule,
       ProjectsModule,
       StoragesModule,
-      PaymentsModule
+      PaymentsModule,
+      StorageDataModule
     ],
 })
 @injectable()

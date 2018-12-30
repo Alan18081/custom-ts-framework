@@ -1,11 +1,12 @@
 import { Module } from '@astra/common';
-import { CoreModule } from '../core/core.module';
 import { StoragesHandler } from './storages.handler';
 import { StoragesService } from './storages.service';
+import {StoragesRepository} from './storages.repository';
+import {ProjectsModule} from '../projects/projects.module';
 
 @Module({
-  imports: [CoreModule],
+  imports: [ProjectsModule],
   handlers: [StoragesHandler],
-  services: [StoragesService]
+  services: [StoragesService, StoragesRepository],
 })
 export class StoragesModule {}

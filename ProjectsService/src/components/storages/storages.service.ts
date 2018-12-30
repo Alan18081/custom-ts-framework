@@ -1,34 +1,41 @@
-import { injectable } from 'inversify';
-import { Storage } from '@astra/common';
-import { CreateStorageDto } from './dto/create-storage.dto';
-import { StorageModel } from './storage.model';
+import { injectable, inject } from 'inversify';
+import { Storage } from './storage';
 import { UpdateProjectDto } from '../projects/dto/update-project.dto';
+import {StoragesRepository} from './storages.repository';
 
 @injectable()
 export class StoragesService {
 
+  @inject(StoragesRepository)
+  private readonly storagesRepository: StoragesRepository;
+
   async findManyByProject(projectId: number): Promise<Storage[]> {
-    return await StorageModel.find({ projectId });
+    return await this.storagesRepository.find({ projectId });
   }
 
   async findOneById(id: number): Promise<Storage | undefined> {
-    return await StorageModel.findOne({ id });
+    return await this.storagesRepository.findOne({ id });
   }
 
-  async createOne(data: CreateStorageDto): Promise<Storage> {
-    const storage = new StorageModel({
+  async findOneByName(name: string): Promise<Storage | undefined> {
+    return await this.storagesRepository.findOne({ name });
+  }
+
+  async createOne(data: Partial<Storage>): Promise<Storage> {
+    const storage = new Storage({
       ...data,
     });
 
-    return await StorageModel.save(storage);
+
+    return this.storagesRepository.save(storage);
   }
 
   async updateOne(data: UpdateProjectDto): Promise<Storage | undefined> {
-    return await StorageModel.update({ id: data.id }, { ...data });
+    return await this.storagesRepository.update({ id: data.id }, { ...data });
   }
 
   async removeOne(id: number): Promise<void> {
-    await StorageModel.delete({ id });
+    await this.storagesRepository.delete({ id });
   }
 }
 

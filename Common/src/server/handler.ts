@@ -12,6 +12,7 @@ export class Handler {
   method: METHODS = METHODS.get;
   handler: any;
   controller: Function = () => {};
+  jwt: boolean = false;
 
   constructor(data: Partial<Handler>) {
     if(data.name) this.name = data.name;

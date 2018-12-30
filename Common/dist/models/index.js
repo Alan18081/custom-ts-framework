@@ -4,4 +4,4 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./base.model"));
-__export(require("./knex"));
+__export(require("./base.repository"));

@@ -9,7 +9,8 @@ export class JwtGuard implements Guard {
   @inject(AuthService)
   private readonly authService: AuthService;
 
-  check(req: Request, res: Response, next: NextFunction): boolean | Promise<boolean> {
+  check(req: Request, res: Response, next: NextFunction): void | Promise<void> {
+    console.log('JWT Guard');
     return this.authService.authenticateJwt(req, res, next);
   }
 }

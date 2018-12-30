@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { User } from '../entities';
+import { IUser } from '../entities';
 export interface AuthorizedRequest extends Request {
-    user?: User;
+    user?: IUser;
 }

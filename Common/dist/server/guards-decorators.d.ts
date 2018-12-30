@@ -1,7 +1,7 @@
 import { NextFunction, Request } from "express";
 import { Response } from "express";
 export interface Guard {
-    check(req: Request, res: Response, next: NextFunction): boolean | Promise<boolean>;
+    check(req: Request, res: Response, next: NextFunction): void | Promise<void>;
 }
 export declare type GuardCreator = {
     new (...args: any[]): Guard;

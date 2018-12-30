@@ -8,18 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const knex_1 = require("./knex");
 class BaseModel {
     constructor(...args) {
         return new Proxy(this, this);
     }
     ;
     static createQueryBuilder() {
-        return knex_1.db.queryBuilder();
+        return this.db.queryBuilder();
     }
     static find(query, columns) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = knex_1.db.table(this.tableName);
+            const sql = this.db.table(this.tableName);
             if (columns) {
                 sql.select(...columns);
             }
@@ -32,7 +31,7 @@ class BaseModel {
     }
     static findOne(query, columns) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = knex_1.db.table(this.tableName);
+            const sql = this.db.table(this.tableName);
             if (columns) {
                 sql.select(...columns);
             }
@@ -40,7 +39,9 @@ class BaseModel {
                 sql.select('*');
             }
             const data = yield sql.where(query);
-            return new this(data[0]);
+            if (data[0]) {
+                return new this(data[0]);
+            }
         });
     }
     static save(entity) {
@@ -48,15 +49,15 @@ class BaseModel {
             if (!(entity instanceof this)) {
                 throw new Error('Entity should be an instance of model');
             }
-            const rawData = yield knex_1.db.table(this.tableName)
+            const rawData = yield this.db.table(this.tableName)
                 .insert(entity)
                 .returning('*');
-            return new this(rawData);
+            return new this(rawData[0]);
         });
     }
     static update(query, entity) {
         return __awaiter(this, void 0, void 0, function* () {
-            const rawData = yield knex_1.db.table(this.tableName)
+            const rawData = yield this.db.table(this.tableName)
                 .update(entity)
                 .where(query)
                 .returning('*');
@@ -65,7 +66,7 @@ class BaseModel {
     }
     static delete(query) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield knex_1.db.table(this.tableName)
+            yield this.db.table(this.tableName)
                 .delete('')
                 .where(query);
         });

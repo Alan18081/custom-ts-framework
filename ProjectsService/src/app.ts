@@ -4,7 +4,8 @@ import { messageBroker } from './helpers/message-broker';
 import {config} from '@astra/common';
 import { AppModule } from './app.module';
 
-class UsersService {
+
+class ProjectsService {
 
     private readonly appModule = new AppModule();
 
@@ -23,4 +24,4 @@ class UsersService {
     }
 }
 
-new UsersService();
+new ProjectsService();

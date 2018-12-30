@@ -1,5 +1,6 @@
 import { injectable } from 'inversify';
 import { messageBroker } from '../../helpers/message-broker';
+import { toNumber } from 'lodash';
 import {
     Body,
     CommunicationCodes,
@@ -8,14 +9,14 @@ import {
     Get,
     Param,
     Post,
-    Project,
+    IProject,
     Put,
     Query,
     QueuesEnum,
     ReqUser,
     Roles,
     UseGuards,
-    User,
+    IUser,
 } from '@astra/common';
 import { JwtGuard } from '../../helpers/guards/jwt.guard';
 import { rolesGuardsFactory } from '../../helpers/roles-guards.factory';
@@ -26,7 +27,8 @@ export class ProjectsController {
 
     @Get('all')
     @UseGuards(JwtGuard, rolesGuardsFactory(Roles.ADMIN))
-    async findAll(@Query() query: any): Promise<Project[]> {
+    async findAll(@Query() query: any): Promise<IProject[]> {
+
         const message = await messageBroker.sendMessageAndGetResponse(
             QueuesEnum.PROJECTS_SERVICE,
             CommunicationCodes.GET_PROJECTS_LIST,
@@ -38,12 +40,12 @@ export class ProjectsController {
 
     @Get('')
     @UseGuards(JwtGuard)
-    async findManyByUser(@ReqUser() user: User): Promise<Project[]> {
-        console.log('Data');
+    async findManyByUser(@ReqUser() user: IUser): Promise<IProject[]> {
+        console.log('Data', user);
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_PROJECTS_LIST_BY_USER,
-            { userId: user.id }
+            { userId: toNumber(user.id) }
         );
 
         return message.payload;
@@ -51,11 +53,11 @@ export class ProjectsController {
 
     @Get(':id')
     @UseGuards(JwtGuard)
-    async findOne(@Param('id') id: number, @ReqUser() user: User): Promise<Project> {
+    async findOne(@Param('id') id: number, @ReqUser() user: IUser): Promise<IProject> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_PROJECT,
-            { id, userId: user.id }
+            { id: toNumber(id), userId: toNumber(user.id) }
         );
 
         return message.payload;
@@ -63,7 +65,8 @@ export class ProjectsController {
 
     @Post('')
     @UseGuards(JwtGuard)
-    async createOne(@ReqUser() user: User, @Body() body: any): Promise<Project> {
+    async createOne(@ReqUser() user: IUser, @Body() body: any): Promise<IProject> {
+        console.log(user);
         const message =  await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.CREATE_PROJECT,
@@ -75,7 +78,7 @@ export class ProjectsController {
 
     @Put(':id')
     @UseGuards(JwtGuard)
-    async updateOne(@Param('id') id: number, @ReqUser() user: User, @Body() body: any): Promise<Project | undefined> {
+    async updateOne(@Param('id') id: number, @ReqUser() user: IUser, @Body() body: any): Promise<IProject | undefined> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.UPDATE_PROJECT,

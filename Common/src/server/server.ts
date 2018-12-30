@@ -1,5 +1,6 @@
 import * as express from 'express';
 import 'reflect-metadata';
+import { INTERNAL_SERVER_ERROR } from 'http-status-codes';
 import {METADATA_KEY, PARAMS_TYPES} from '../metadata/keys';
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { MODULE_KEYS } from '../metadata/keys';
@@ -10,6 +11,7 @@ import { GuardType } from "./guards-decorators";
 import { Container } from 'inversify';
 import { isFunction } from 'lodash';
 import { AuthorizedRequest } from '../interfaces';
+import * as passport from 'passport';
 
 export class Server {
 
@@ -20,6 +22,7 @@ export class Server {
     this.port = port;
     this.app = express();
     this.app.use(bodyParser.json());
+    this.app.use(passport.initialize());
     this.registerControllers();
   }
 
@@ -37,8 +40,6 @@ export class Server {
       const controllersList = Object.keys(controllers).map(key => controllers[key]);
       const container = Reflect.getMetadata(METADATA_KEY.container, type);
 
-      console.log('Controllers', controllersList);
-
       controllersList.forEach(controller => {
         const controllerMetadata = Reflect.getMetadata(METADATA_KEY.controller, controller.type);
         const methods = Reflect.getMetadata(METADATA_KEY.controllerMethod, controller.type) || {};
@@ -50,10 +51,10 @@ export class Server {
 
         methodsList.forEach(({ method, handler, path, middlewares, name, validators, guards }: Handler) => {
           const methodParams = params.filter(({ methodName }) => methodName === name);
-          const guardsMiddleware = this.createGuardsMiddleware(guards, container);
+          const guardsMiddlewares = this.createGuardsMiddleware(guards, container);
           const expressHandler = this.createHandler(handler.bind(instance), methodParams);
 
-          this.app[method](`/${controllerMetadata.path}/${path}`, guardsMiddleware, ...middlewares, expressHandler);
+          this.app[method](`/${controllerMetadata.path}/${path}`, ...guardsMiddlewares, ...middlewares, expressHandler);
         });
       })
     });
@@ -62,17 +63,17 @@ export class Server {
   private createHandler(method: Function, params: any[]) {
     return async (req: Request, res: Response, next: NextFunction) => {
       try {
-        console.log('Inside handler', req.body);
         const args = this.createArgs(req, res, next, params);
         const result = await method(...args);
-        if(result.isError) {
+
+        if(result && result.isError) {
             res.status(result.statusCode).json(result.payload);
         } else {
             res.send(result);
         }
       } catch (e) {
         console.log(e);
-        res.status(e.statusCode).json(e.message);
+        res.status(e.statusCode || INTERNAL_SERVER_ERROR).json(e.message);
       }
     }
   }
@@ -107,23 +108,15 @@ export class Server {
     });
   }
 
-  private createGuardsMiddleware(guardTypes: GuardType[], container: Container): RequestHandler {
-    return (req: Request, res: Response, next: NextFunction) => {
-        try {
-          guardTypes.forEach((guardType: GuardType) => {
-              let guard;
-              if(isFunction(guardType)) {
-                guard = container.get(guardType);
-              } else {
-                guard = guardType;
-              }
-              guard.check(req, res, next);
-          });
-          next();
-        } catch (e) {
-          console.log(e);
-          res.status(403).json({ error: e.message });
+  private createGuardsMiddleware(guardTypes: GuardType[], container: Container): RequestHandler[] {
+    return guardTypes.map((guardType: GuardType) => {
+        let guard;
+        if(isFunction(guardType)) {
+            guard = container.get(guardType);
+        } else {
+            guard = guardType;
         }
-    }
+        return guard.check.bind(guard);
+    });
   }
 }

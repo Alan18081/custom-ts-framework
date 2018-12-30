@@ -1,6 +1,6 @@
-import { User } from '../../../helpers/interfaces/user.interface';
+import { IUser } from '@astra/common';
 
 export interface JwtResponse {
     token: string;
-    user: User;
+    user: IUser;
 }

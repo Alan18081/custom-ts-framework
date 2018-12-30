@@ -1,9 +1,12 @@
 import { QueryBuilder } from 'knex';
+import Knex = require('knex');
 declare type GenericModel<T> = {
     new (...args: any[]): T;
     tableName: string;
+    db: Knex;
 };
 export declare class BaseModel {
+    static db: Knex;
     constructor(...args: any[]);
     static createQueryBuilder(): QueryBuilder;
     static find<T>(this: GenericModel<T>, query: object, columns?: string[]): Promise<T[]>;

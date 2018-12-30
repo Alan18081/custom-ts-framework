@@ -51,6 +51,13 @@ function ReqUser() {
     return RouteParams(keys_1.PARAMS_TYPES.user);
 }
 exports.ReqUser = ReqUser;
+function UseJwt() {
+    return function (target, name, descriptor) {
+        const handler = getHandler(target, name, descriptor);
+        handler.jwt = true;
+    };
+}
+exports.UseJwt = UseJwt;
 function getHandler(target, name, descriptor) {
     let methods = {};
     if (!Reflect.hasMetadata(keys_1.METADATA_KEY.controllerMethod, target.constructor)) {

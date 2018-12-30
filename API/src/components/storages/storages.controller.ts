@@ -6,21 +6,21 @@ import {
     Controller, Delete,
     Get, Param,
     Post,
-    Project,
+    IProject,
     Put,
     Query,
     QueuesEnum, ReqUser,
-    UseGuards, User
+    UseGuards, IStorage, IUser
 } from '@astra/common';
 import {JwtGuard} from '../../helpers/guards/jwt.guard';
 
 @injectable()
-@Controller('projects')
+@Controller('storages')
 export class StoragesController {
 
     @Get('all')
     @UseGuards(JwtGuard)
-    async findAll(@Query() query: any): Promise<Project[]> {
+    async findAll(@Query() query: any): Promise<IStorage[]> {
         const message = await messageBroker.sendMessageAndGetResponse(
             QueuesEnum.PROJECTS_SERVICE,
             CommunicationCodes.GET_STORAGES_LIST,
@@ -32,7 +32,7 @@ export class StoragesController {
 
     @Get('')
     @UseGuards(JwtGuard)
-    async findManyByUser(@ReqUser() user: User): Promise<Project[]> {
+    async findManyByUser(@ReqUser() user: IUser): Promise<IStorage[]> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_STORAGES_LIST,
@@ -44,7 +44,7 @@ export class StoragesController {
 
     @Get(':id')
     @UseGuards(JwtGuard)
-    async findOne(@Param('id') id: number, @ReqUser() user: User): Promise<Project> {
+    async findOne(@Param('id') id: number, @ReqUser() user: IUser): Promise<IStorage> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_STORAGE,
@@ -56,7 +56,7 @@ export class StoragesController {
 
     @Post('')
     @UseGuards(JwtGuard)
-    async createOne(@ReqUser() user: User, @Body() body: any): Promise<Project> {
+    async createOne(@ReqUser() user: IUser, @Body() body: any): Promise<IStorage> {
         const message =  await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.CREATE_STORAGE,
@@ -68,7 +68,7 @@ export class StoragesController {
 
     @Put(':id')
     @UseGuards(JwtGuard)
-    async updateOne(@Param('id') id: number, @ReqUser() user: User, @Body() body: any): Promise<Project | undefined> {
+    async updateOne(@Param('id') id: number, @ReqUser() user: IUser, @Body() body: any): Promise<IStorage | undefined> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.UPDATE_STORAGE,

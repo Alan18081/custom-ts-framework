@@ -10,6 +10,7 @@ class Handler {
         this.path = '';
         this.method = keys_1.METHODS.get;
         this.controller = () => { };
+        this.jwt = false;
         if (data.name)
             this.name = data.name;
         if (data.path)

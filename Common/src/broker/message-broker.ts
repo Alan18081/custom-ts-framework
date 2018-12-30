@@ -35,6 +35,7 @@ export class MessageBroker {
   async sendMessage(queue: QueuesEnum, code: CommunicationCodes, payload: any, config: Options.Publish = {}): Promise<void> {
     await this.channel.assertQueue(queue);
     const message = new Message(code, payload);
+    console.log(`[Sending Message] ${queue} : ${code}`, payload);
     this.channel.sendToQueue(queue, this.bufferMessage(message), config);
   }
 
@@ -63,7 +64,7 @@ export class MessageBroker {
   }
 
   private async init(): Promise<void> {
-    const subscribers = Reflect.getMetadata(METADATA_KEY.subscribers, Reflect) || {};
+    const subscribers = Reflect.getMetadata(METADATA_KEY.resolvedSubscribers, Reflect) || {};
     await this.channel.assertQueue(this.queue);
 
     await this.channel.assertQueue(this.rpcQueue);

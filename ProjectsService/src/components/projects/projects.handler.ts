@@ -1,11 +1,12 @@
 import {inject, injectable} from 'inversify';
-import {CommunicationCodes, Project, SubscribeMessage, ValidatorService} from '@astra/common';
+import {CommunicationCodes, SubscribeMessage, ValidatorService} from '@astra/common';
 import {CreateProjectDto} from './dto/create-project.dto';
 import {ProjectsService} from './projects.service';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { RemoveProjectDto } from './dto/remove-project.dto';
 import {FindProjectsListByUserDto} from './dto/find-projects-list-by-user.dto';
 import {FindProjectDto} from './dto/find-project.dto';
+import {Project} from './project';
 
 @injectable()
 export class ProjectsHandler {

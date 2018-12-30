@@ -1,6 +1,5 @@
-
 exports.up = async function(knex, Promise) {
-  await knex.createTableIfNotExists('projects', t => {
+  await knex.schema.createTable('projects', t => {
     t.increments('id').unsigned().primary();
     t.string('name').notNull();
     t.string('description');
@@ -12,16 +11,17 @@ exports.up = async function(knex, Promise) {
     t.date('createdAt').notNull();
   });
 
-  await knex.createTableIfNotExists('storages', t => {
-    t.increments('id').unsinged().primary();
+  await knex.schema.createTable('storage-data', t => {
+    t.increments('id').unsigned().primary();
+    t.integer('projectId').unsigned().notNull();
     t.string('name').notNull().unique();
     t.string('description');
     t.string('dataId').notNull();
-    t.foreign('projectId').reference('id').inTable('projects');
+    t.foreign('projectId').references('id').inTable('projects');
   });
 };
 
 exports.down = async function(knex, Promise) {
   knex.dropTableIfExists('projects');
-  knex.dropTableIfExists('storages');
+  knex.dropTableIfExists('storage-data');
 };

@@ -10,5 +10,6 @@ export declare class Handler {
     method: METHODS;
     handler: any;
     controller: Function;
+    jwt: boolean;
     constructor(data: Partial<Handler>);
 }

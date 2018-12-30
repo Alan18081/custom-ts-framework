@@ -16,4 +16,20 @@ export declare const config: {
             };
         };
     };
+    ProjectsService: {
+        database: {
+            client: string;
+            connection: {
+                user: string;
+                password: string;
+                database: string;
+            };
+        };
+    };
+    DataService: {
+        database: {
+            url: string;
+            database: string;
+        };
+    };
 };
