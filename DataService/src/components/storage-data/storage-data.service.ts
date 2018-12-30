@@ -23,12 +23,13 @@ export class StorageDataService {
         return await this.storageDataRepository.save(newStorage);
     }
 
-    async updateOne(id: string, data: object): Promise<StorageData | undefined> {
-        return await this.storageDataRepository.updateOne({ _id: id }, data);
+    async updateOne(id: number, data: object): Promise<StorageData | undefined> {
+        console.log(id, data);
+        return await this.storageDataRepository.updateOne({ storageId: id }, { $set: { data } });
     }
 
-    async removeOne(id: string): Promise<void> {
-        await this.storageDataRepository.delete({ _id: id });
+    async removeOne(id: number): Promise<void> {
+        await this.storageDataRepository.delete({ storageId: id });
     }
 
 }

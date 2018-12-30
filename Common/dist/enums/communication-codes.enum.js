@@ -24,6 +24,7 @@ var CommunicationCodes;
     CommunicationCodes["UPDATE_STORAGE_DATA"] = "[DataService] Update Storage Data";
     CommunicationCodes["REMOVE_STORAGE"] = "[ProjectsService] Remove Storage";
     CommunicationCodes["GET_STORAGE_DATA"] = "[DataService] Get Storage Data";
+    CommunicationCodes["GET_STORAGE_DATA_BY_STORAGE"] = "[DataService] Get Storage Data By Storage";
     CommunicationCodes["CREATE_STORAGE_DATA"] = "[DataService] Create Storage Data";
     CommunicationCodes["CHANGE_STORAGE_DATA"] = "[DataService] Change Storage Data";
     CommunicationCodes["REMOVE_STORAGE_DATA"] = "[DataService] Remove Storage Data";

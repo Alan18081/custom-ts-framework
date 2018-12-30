@@ -33,7 +33,18 @@ export class StoragesHandler {
   async findOneById(query: FindStorageDto): Promise<Storage | undefined> {
     await this.validatorService.validate(query, FindStorageDto);
 
-    return await this.storagesService.findOneById(query.id);
+    const [message, storage] = await Promise.all([
+        messageBroker.sendMessageAndGetResponse(
+          QueuesEnum.DATA_SERVICE,
+          CommunicationCodes.GET_STORAGE_DATA_BY_STORAGE,
+            { storageId: query.id }
+        ),
+        this.storagesService.findOneById(query.id)
+    ]);
+
+    storage.data = message.payload.data;
+
+    return storage;
   }
 
   @SubscribeMessage(CommunicationCodes.CREATE_STORAGE)
@@ -71,8 +82,12 @@ export class StoragesHandler {
   @SubscribeMessage(CommunicationCodes.UPDATE_STORAGE_DATA)
   async updateOneData(body: UpdateStorageDataDto): Promise<Storage | undefined> {
     await this.validatorService.validate(body, UpdateStorageDataDto);
+    console.log(body);
 
     const storage = await this.storagesService.findOneById(body.id);
+
+    console.log(storage);
+
     if(!storage) {
       throw new NotFound({ error: Messages.STORAGE_NOT_FOUND });
     }
@@ -92,8 +107,6 @@ export class StoragesHandler {
   @SubscribeMessage(CommunicationCodes.REMOVE_STORAGE)
   async removeOne(body: RemoveStorageDto): Promise<void> {
     await this.validatorService.validate(body, RemoveStorageDto);
-
-    
 
     await this.storagesService.removeOne(body.id);
   }

@@ -81,7 +81,7 @@ export class StoragesController {
     @UseGuards(JwtGuard)
     async updateOneData(@Param('id') id: number, @Body() body: any): Promise<IStorage | undefined> {
         const message = await messageBroker.sendMessageAndGetResponse(
-          QueuesEnum.PROJECTS_SERVICE,
+          QueuesEnum.DATA_SERVICE,
           CommunicationCodes.UPDATE_STORAGE_DATA,
             { storageId: id, data: body }
         );

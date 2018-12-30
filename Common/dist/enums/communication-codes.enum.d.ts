@@ -21,6 +21,7 @@ export declare enum CommunicationCodes {
     UPDATE_STORAGE_DATA = "[DataService] Update Storage Data",
     REMOVE_STORAGE = "[ProjectsService] Remove Storage",
     GET_STORAGE_DATA = "[DataService] Get Storage Data",
+    GET_STORAGE_DATA_BY_STORAGE = "[DataService] Get Storage Data By Storage",
     CREATE_STORAGE_DATA = "[DataService] Create Storage Data",
     CHANGE_STORAGE_DATA = "[DataService] Change Storage Data",
     REMOVE_STORAGE_DATA = "[DataService] Remove Storage Data"
