@@ -7,6 +7,7 @@ import { RemoveProjectDto } from './dto/remove-project.dto';
 import {FindProjectsListByUserDto} from './dto/find-projects-list-by-user.dto';
 import {FindProjectDto} from './dto/find-project.dto';
 import {Project} from './project';
+import {FindProjectByClientInfoDto} from './dto/find-project-by-client-info.dto';
 
 @injectable()
 export class ProjectsHandler {
@@ -34,6 +35,13 @@ export class ProjectsHandler {
         await this.validatorService.validate(query, FindProjectDto);
 
         return await this.projectsService.findOne(query.id);
+    }
+
+    @SubscribeMessage(CommunicationCodes.GET_PROJECT_BY_CLIENT_INFO)
+    async findOneByClientInfo(query: FindProjectByClientInfoDto): Promise<Project | undefined> {
+        await this.validatorService.validate(query, FindProjectByClientInfoDto);
+
+        return await this.projectsService.findOneByClientInfo(query.clientId, query.clientSecret);
     }
 
     @SubscribeMessage(CommunicationCodes.CREATE_PROJECT)

@@ -32,4 +32,5 @@ export declare const PARAMS_TYPES: {
     query: string;
     queryField: string;
     user: string;
+    project: string;
 };

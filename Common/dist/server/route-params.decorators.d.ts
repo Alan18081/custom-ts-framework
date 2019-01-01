@@ -7,5 +7,5 @@ export declare function Headers(name: string): ParameterDecorator;
 export declare function Body(): ParameterDecorator;
 export declare function Query(name?: string): ParameterDecorator;
 export declare function ReqUser(): ParameterDecorator;
-export declare function UseJwt(): (target: any, name: string, descriptor: PropertyDescriptor) => void;
+export declare function Project(): ParameterDecorator;
 export declare function getHandler(target: any, name: string, descriptor: PropertyDescriptor): Handler;

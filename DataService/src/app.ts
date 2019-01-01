@@ -7,7 +7,6 @@ import { client } from './helpers/mongo-db';
 
 class DataService {
 
-    // private readonly appModule = new AppModule();
     private app: AppModule;
 
     constructor() {

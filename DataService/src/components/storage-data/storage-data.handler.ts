@@ -2,11 +2,11 @@ import { injectable, inject } from 'inversify';
 import { ValidatorService, SubscribeMessage, Messages, BadRequest } from '@astra/common';
 import {StorageDataService} from './storage-data.service';
 import {CommunicationCodes} from '@astra/common';
-import {CreateStorageDataDto} from './dto/create-storage-data.dto';
-import {UpdateStorageDataDto} from './dto/update-storage-data.dto';
+import {CreateStorageDataDto} from './dto/storage/create-storage-data.dto';
+import {UpdateStorageDataDto} from './dto/storage/update-storage-data.dto';
 import {StorageData} from './storage-data';
-import {RemoveStorageDataDto} from './dto/remove-storage-data.dto';
-import {FindStorageDataDto} from './dto/find-storage-data.dto';
+import {RemoveStorageDataDto} from './dto/storage/remove-storage-data.dto';
+import {FindStorageDataDto} from './dto/storage/find-storage-data.dto';
 
 @injectable()
 export class StorageDataHandler {
@@ -17,9 +17,9 @@ export class StorageDataHandler {
     @inject(StorageDataService)
     private readonly storageDataService: StorageDataService;
 
-    @SubscribeMessage(CommunicationCodes.GET_STORAGE_DATA)
+    @SubscribeMessage(CommunicationCodes.GET_STORAGE_DATA_BY_STORAGE)
     async findOne(payload: FindStorageDataDto): Promise<StorageData | undefined> {
-        return await this.storageDataService.findOne(payload.id);
+        return await this.storageDataService.findOneByStorageId(payload.storageId);
     }
 
     @SubscribeMessage(CommunicationCodes.CREATE_STORAGE_DATA)
@@ -38,14 +38,16 @@ export class StorageDataHandler {
     async updateOne(payload: UpdateStorageDataDto): Promise<StorageData | undefined> {
         await this.validatorService.validate(payload, UpdateStorageDataDto);
 
-        console.log('Updating data', payload);
-
-        return await this.storageDataService.updateOne(payload.storageId, payload.data);
+        return await this.storageDataService.updateOne(payload.id, payload.data);
     }
 
     @SubscribeMessage(CommunicationCodes.REMOVE_STORAGE_DATA)
     async removeOne(payload: RemoveStorageDataDto): Promise<void> {
+        console.log(payload.storageId);
         await this.storageDataService.removeOne(payload.storageId);
     }
+
+
+
 
 }

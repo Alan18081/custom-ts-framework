@@ -28,3 +28,10 @@ class Unauthorized {
     }
 }
 exports.Unauthorized = Unauthorized;
+class Forbidden {
+    constructor(message) {
+        this.message = message;
+        this.statusCode = 403;
+    }
+}
+exports.Forbidden = Forbidden;

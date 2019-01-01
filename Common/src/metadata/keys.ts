@@ -35,5 +35,6 @@ export const PARAMS_TYPES = {
   query: 'query',
   queryField: 'queryField',
   user: 'user',
+  project: 'project'
 };
 

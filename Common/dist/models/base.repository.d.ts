@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import * as Knex from 'knex';
+import { QueryInterface, Transaction } from 'knex';
 export declare abstract class BaseRepository<T> {
     private readonly db;
     private readonly table;
@@ -12,4 +13,8 @@ export declare abstract class BaseRepository<T> {
     save(entity: Partial<T>): Promise<T>;
     update(query: object, entity: Partial<T>): Promise<T | undefined>;
     delete(query: object): Promise<void>;
+    getOneQueryResult(query: QueryInterface): Promise<T | undefined>;
+    getManyQueryResults(query: QueryInterface): Promise<T[]>;
+    queryBuilder(): QueryInterface;
+    transaction(callback: (ctx: Transaction) => void): any;
 }

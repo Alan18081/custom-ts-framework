@@ -1,11 +1,21 @@
 import { injectable } from 'inversify';
+import { decode } from 'jsonwebtoken';
 import { ExtractJwt, Strategy as JwtStrategy, StrategyOptions } from 'passport-jwt';
 import * as passport from 'passport';
 import { PassportStatic } from 'passport';
-import {AuthorizedRequest, CommunicationCodes, config, Messages, QueuesEnum, Unauthorized} from '@astra/common';
+import {
+    AuthorizedRequest,
+    CommunicationCodes,
+    config,
+    IProject,
+    Messages,
+    QueuesEnum,
+    Unauthorized
+} from '@astra/common';
 import { JwtPayload } from './interfaces/jwt-payload';
 import { NextFunction, Request, Response } from 'express';
 import { messageBroker } from '../../helpers/message-broker';
+import {JwtProjectPayload} from './interfaces/jwt-project-payload';
 
 @injectable()
 export class AuthService {
@@ -47,6 +57,22 @@ export class AuthService {
     this.passport.authenticate('jwt', { session: false }, () => {
         next();
     })(req, res, next);
+  }
+
+  async authenticateJwtProject(token: string): Promise<IProject> {
+      const data = decode(token) as JwtProjectPayload;
+
+      const message = await messageBroker.sendMessageAndGetResponse(
+          QueuesEnum.PROJECTS_SERVICE,
+          CommunicationCodes.GET_PROJECT,
+          { id: data.id }
+      );
+
+      if(!message.payload) {
+          throw new Unauthorized({ error: Messages.PROJECT_NOT_FOUND });
+      }
+
+      return message.payload;
   }
 
 }

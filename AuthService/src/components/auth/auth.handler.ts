@@ -11,6 +11,8 @@ import {JwtResponse} from './interfaces/jwt-response';
 import { LoginDto } from './dto/login.dto';
 import { AuthService } from './auth.service';
 import { messageBroker } from '../../helpers/message-broker';
+import {LoginProjectDto} from './dto/login-project.dto';
+import {JwtProject} from './interfaces/jwt-project';
 
 @injectable()
 export class AuthHandler {
@@ -35,7 +37,25 @@ export class AuthHandler {
             throw new NotFound({ error: Messages.USER_NOT_FOUND });
         }
 
-        return await this.authService.login(payload, receivedMessage.payload);
+        return this.authService.login(payload, receivedMessage.payload);
+    }
+
+    @SubscribeMessage(CommunicationCodes.LOGIN_PROJECT)
+    async loginProject(payload: LoginProjectDto): Promise<JwtProject> {
+        console.log(payload);
+        await this.validatorService.validate(payload, LoginProjectDto);
+
+        const message = await messageBroker.sendMessageAndGetResponse(
+          QueuesEnum.PROJECTS_SERVICE,
+          CommunicationCodes.GET_PROJECT_BY_CLIENT_INFO,
+          payload
+        );
+
+        if(!message.payload) {
+            throw new NotFound({ error: Messages.PROJECT_NOT_FOUND });
+        }
+
+        return this.authService.loginProject(message.payload);
     }
 
 }

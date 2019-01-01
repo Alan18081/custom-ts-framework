@@ -8,7 +8,7 @@ import { FindStorageDto } from './dto/find-storage.dto';
 import {Storage} from './storage';
 import {ProjectsService} from '../projects/projects.service';
 import {messageBroker} from '../../helpers/message-broker';
-import {UpdateStorageDataDto} from './dto/update-storage-data.dto';
+import {UpdateStorageDto} from './dto/update-storage.dto';
 
 @injectable()
 export class StoragesHandler {
@@ -33,6 +33,10 @@ export class StoragesHandler {
   async findOneById(query: FindStorageDto): Promise<Storage | undefined> {
     await this.validatorService.validate(query, FindStorageDto);
 
+    if(!query.includeData) {
+      return await this.storagesService.findOneById(query.id);
+    }
+
     const [message, storage] = await Promise.all([
         messageBroker.sendMessageAndGetResponse(
           QueuesEnum.DATA_SERVICE,
@@ -41,6 +45,10 @@ export class StoragesHandler {
         ),
         this.storagesService.findOneById(query.id)
     ]);
+
+    if(!message.payload) {
+      throw new NotFound({ error: Messages.STORAGE_NOT_FOUND });
+    }
 
     storage.data = message.payload.data;
 
@@ -57,50 +65,30 @@ export class StoragesHandler {
       throw new NotFound({ error: Messages.PROJECT_NOT_FOUND });
     }
 
-    const storage = await this.storagesService.findOneByName(body.name);
+    const storageByPath = await this.storagesService.findOneByPath(body.path);
 
-    if(storage) {
-      throw new BadRequest({ error: Messages.STORAGE_NAME_ERROR });
+    if(storageByPath) {
+        throw new BadRequest({ error: Messages.STORAGE_PATH_ERROR });
     }
 
     const { userId, ...data } = body;
 
     const newStorage = await this.storagesService.createOne({ ...data });
 
-
-      const { payload } = await messageBroker.sendMessageAndGetResponse(
-        QueuesEnum.DATA_SERVICE,
-        CommunicationCodes.CREATE_STORAGE_DATA,
-        { storageId: newStorage.id, projectId: body.projectId, userId: body.userId }
-      );
-
-      console.log(payload);
-
-    return await this.storagesService.updateOne(newStorage.id, { dataId: payload.id });
-  }
-
-  @SubscribeMessage(CommunicationCodes.UPDATE_STORAGE_DATA)
-  async updateOneData(body: UpdateStorageDataDto): Promise<Storage | undefined> {
-    await this.validatorService.validate(body, UpdateStorageDataDto);
-    console.log(body);
-
-    const storage = await this.storagesService.findOneById(body.id);
-
-    console.log(storage);
-
-    if(!storage) {
-      throw new NotFound({ error: Messages.STORAGE_NOT_FOUND });
-    }
-
     const { payload } = await messageBroker.sendMessageAndGetResponse(
       QueuesEnum.DATA_SERVICE,
-      CommunicationCodes.CHANGE_STORAGE_DATA,
-        { id: storage.dataId, data: body.data }
+      CommunicationCodes.CREATE_STORAGE_DATA,
+      { storageId: newStorage.id, projectId: body.projectId, userId: body.userId, path: body.path }
     );
 
-    storage.data = payload.data;
+    return await this.storagesService.updateOne(newStorage.id, { dataId: payload._id });
+  }
 
-    return storage;
+  @SubscribeMessage(CommunicationCodes.UPDATE_STORAGE)
+  async updateOneData(body: UpdateStorageDto): Promise<Storage | undefined> {
+    await this.validatorService.validate(body, UpdateStorageDto);
+
+    return await this.storagesService.updateOne(body.id, body);
 
   }
 
@@ -108,7 +96,15 @@ export class StoragesHandler {
   async removeOne(body: RemoveStorageDto): Promise<void> {
     await this.validatorService.validate(body, RemoveStorageDto);
 
-    await this.storagesService.removeOne(body.id);
+    await Promise.all([
+        this.storagesService.removeOne(body.id),
+        messageBroker.sendMessageAndGetResponse(
+            QueuesEnum.DATA_SERVICE,
+            CommunicationCodes.REMOVE_STORAGE_DATA,
+            { storageId: body.id }
+        )
+    ]);
+
   }
 
 }

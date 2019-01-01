@@ -9,10 +9,20 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() body: Login): Promise<any> {
-    console.log(body);
     const message = await messageBroker.sendMessageAndGetResponse(
       QueuesEnum.AUTH_SERVICE,
       CommunicationCodes.LOGIN,
+      body
+    );
+
+    return message.payload;
+  }
+
+  @Post('login/project')
+  async loginProject(@Body() body: any): Promise<any> {
+    const message = await messageBroker.sendMessageAndGetResponse(
+      QueuesEnum.AUTH_SERVICE,
+      CommunicationCodes.LOGIN_PROJECT,
       body
     );
 

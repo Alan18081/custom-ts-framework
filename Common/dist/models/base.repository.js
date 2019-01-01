@@ -39,7 +39,6 @@ let BaseRepository = class BaseRepository {
                 sql = this.table.select('*');
             }
             const data = yield sql.where(query);
-            console.log('Data', data);
             return data.map(item => Reflect.construct(this.MappingType, [item]));
         });
     }
@@ -52,7 +51,9 @@ let BaseRepository = class BaseRepository {
             else {
                 sql = this.table.select('*');
             }
+            console.log('Query', query, sql.where(query).toQuery());
             const data = yield sql.where(query);
+            console.log('Raw data', data);
             if (data[0]) {
                 return Reflect.construct(this.MappingType, [data[0]]);
             }
@@ -86,6 +87,26 @@ let BaseRepository = class BaseRepository {
                 .delete('')
                 .where(query);
         });
+    }
+    getOneQueryResult(query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = yield query.returning('*');
+            if (result[0]) {
+                return Reflect.construct(this.MappingType, [result[0]]);
+            }
+        });
+    }
+    getManyQueryResults(query) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = yield query.returning('*');
+            return result.map(item => Reflect.construct(this.MappingType, [item]));
+        });
+    }
+    queryBuilder() {
+        return this.table;
+    }
+    transaction(callback) {
+        return this.db.transaction(callback);
     }
 };
 BaseRepository = __decorate([

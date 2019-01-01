@@ -1,4 +1,4 @@
-import {Collection, MongoClient, UpdateQuery} from 'mongodb';
+import {Collection, MongoClient, UpdateQuery, ObjectId} from 'mongodb';
 import {injectable, unmanaged} from 'inversify';
 import { config } from '@astra/common';
 
@@ -24,7 +24,7 @@ export abstract class MongoRepository<T> {
     public async findOne(query: object): Promise<T | undefined> {
         const data = await this.collection.findOne(query);
 
-        if(data[0]) {
+        if(data) {
             return Reflect.construct(this.MappingType, [data]);
         }
     }
@@ -40,6 +40,20 @@ export abstract class MongoRepository<T> {
         console.log(rawData);
 
         return Reflect.construct(this.MappingType, [rawData]);
+    }
+
+    public async updateOneById(id: string, entity: UpdateQuery<T>): Promise<T | undefined> {
+        const { upsertedId } = await this.collection.updateOne({ _id: new ObjectId(id) }, {
+            ...entity,
+            $currentDate: { lastModified: true }
+        });
+        const rawData = await this.collection.findOne(upsertedId);
+
+        console.log('Raw data', rawData);
+
+        if(rawData) {
+            return Reflect.construct(this.MappingType, [rawData]);
+        }
     }
 
     public async updateOne(query: object, entity: UpdateQuery<T>): Promise<T | undefined> {

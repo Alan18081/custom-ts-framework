@@ -10,7 +10,7 @@ import {PARAM} from './interfaces';
 import { GuardType } from "./guards-decorators";
 import { Container } from 'inversify';
 import { isFunction } from 'lodash';
-import { AuthorizedRequest } from '../interfaces';
+import {AuthorizedRequest, ProjectRequest} from '../interfaces';
 import * as passport from 'passport';
 
 export class Server {
@@ -53,7 +53,6 @@ export class Server {
           const methodParams = params.filter(({ methodName }) => methodName === name);
           const guardsMiddlewares = this.createGuardsMiddleware(guards, container);
           const expressHandler = this.createHandler(handler.bind(instance), methodParams);
-
           this.app[method](`/${controllerMetadata.path}/${path}`, ...guardsMiddlewares, ...middlewares, expressHandler);
         });
       })
@@ -78,7 +77,7 @@ export class Server {
     }
   }
 
-  private createArgs(req: AuthorizedRequest, res: Response, next: NextFunction, params: PARAM[]): any[] {
+  private createArgs(req: ProjectRequest & AuthorizedRequest, res: Response, next: NextFunction, params: PARAM[]): any[] {
     if(!params || !params.length) {
       return [req, res, next];
     }
@@ -102,8 +101,14 @@ export class Server {
         case PARAMS_TYPES.query:
           return req.query;
 
+        case PARAMS_TYPES.queryField:
+          return req.query[paramName];
+
         case PARAMS_TYPES.user:
           return req.user;
+
+        case PARAMS_TYPES.project:
+          return req.project;
       }
     });
   }
@@ -116,7 +121,14 @@ export class Server {
         } else {
             guard = guardType;
         }
-        return guard.check.bind(guard);
+        return (req: Request, res: Response, next: NextFunction) => {
+            try {
+                guard.check.call(guard, req, res, next);
+            } catch (e) {
+                console.log(e);
+                res.status(e.statusCode).json(e);
+            }
+        }
     });
   }
 }

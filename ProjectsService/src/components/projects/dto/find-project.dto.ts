@@ -6,7 +6,4 @@ export class FindProjectDto extends BaseDto {
     @IsInt()
     id: number;
 
-    @IsInt()
-    userId: number;
-
 }

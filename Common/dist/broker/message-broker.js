@@ -76,6 +76,7 @@ class MessageBroker {
                     catch (e) {
                     }
                 }
+                this.channel.ack(msg);
             });
             this.channel.consume(this.queue, (msg) => {
                 if (msg) {

@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import * as Knex from 'knex';
-import {QueryInterface} from 'knex';
+import {QueryInterface, Transaction} from 'knex';
 import {injectable, unmanaged} from 'inversify';
 
 @injectable()
@@ -29,7 +29,6 @@ export abstract class BaseRepository<T> {
         }
 
         const data = await sql.where(query);
-        console.log('Data', data);
         return data.map(item => Reflect.construct(this.MappingType, [item]));
     }
 
@@ -42,7 +41,11 @@ export abstract class BaseRepository<T> {
             sql = this.table.select('*')
         }
 
+        console.log('Query', query, sql.where(query).toQuery());
+
         const data = await sql.where(query);
+
+        console.log('Raw data', data);
 
         if(data[0]) {
             return Reflect.construct(this.MappingType, [data[0]]);
@@ -79,4 +82,25 @@ export abstract class BaseRepository<T> {
             .where(query);
     }
 
+    public async getOneQueryResult(query: QueryInterface): Promise<T | undefined> {
+        const result = await query.returning('*');
+
+        if(result[0]) {
+            return Reflect.construct(this.MappingType, [result[0]]);
+        }
+    }
+
+    public async getManyQueryResults(query: QueryInterface): Promise<T[]> {
+        const result = await query.returning('*');
+
+        return result.map(item => Reflect.construct(this.MappingType, [item]));
+    }
+
+    public queryBuilder(): QueryInterface {
+        return this.table;
+    }
+
+    public transaction(callback: (ctx: Transaction) => void): any {
+        return this.db.transaction(callback);
+    }
 }

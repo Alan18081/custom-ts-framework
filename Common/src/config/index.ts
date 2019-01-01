@@ -4,7 +4,8 @@ export const config = {
   },
   common: {
       passwordLength: 4,
-      jwtSecret: 'Enterprise & Endurance'
+      jwtSecret: 'Enterprise & Endurance',
+      jwtProjectSecret: 'Jupiter & Apollon',
   },
   UsersService: {
       database: {

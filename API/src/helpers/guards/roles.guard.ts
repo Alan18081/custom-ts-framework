@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { Response, NextFunction } from 'express';
-import { AuthorizedRequest, Guard, Roles } from '@astra/common';
+import { AuthorizedRequest, Guard, Roles, Forbidden, Messages } from '@astra/common';
 
 @injectable()
 export class RolesGuard implements Guard {
@@ -11,9 +11,9 @@ export class RolesGuard implements Guard {
 
 
   check(req: AuthorizedRequest, res: Response, next: NextFunction): void | Promise<void> {
-    // if(req.user.roleId !== this.requiredRole) {
-    //   throw new Forbidden();
-    // }
+    if(req.user.roleId !== this.requiredRole) {
+      throw new Forbidden({ error: Messages.INVALID_PERMISSIONS });
+    }
     next();
   }
 }

@@ -1,17 +1,13 @@
 import { injectable, inject } from 'inversify';
 import {StorageData} from './storage-data';
 import {StorageDataRepository} from './storage-data.repository';
-import {CreateStorageDataDto} from './dto/create-storage-data.dto';
+import {CreateStorageDataDto} from './dto/storage/create-storage-data.dto';
 
 @injectable()
 export class StorageDataService {
 
     @inject(StorageDataRepository)
     private readonly storageDataRepository: StorageDataRepository;
-
-    async findOne(id: string): Promise<StorageData | undefined> {
-        return await this.storageDataRepository.findOne({ _id: id });
-    }
 
     async findOneByStorageId(id: number): Promise<StorageData | undefined> {
         return await this.storageDataRepository.findOne({ storageId: id });
@@ -23,13 +19,21 @@ export class StorageDataService {
         return await this.storageDataRepository.save(newStorage);
     }
 
-    async updateOne(id: number, data: object): Promise<StorageData | undefined> {
-        console.log(id, data);
-        return await this.storageDataRepository.updateOne({ storageId: id }, { $set: { data } });
+    async updateOne(id: number, data: Partial<StorageData>): Promise<StorageData | undefined> {
+        return await this.storageDataRepository.updateOne({ storageId: id }, { $set: { data: data } });
     }
 
     async removeOne(id: number): Promise<void> {
         await this.storageDataRepository.delete({ storageId: id });
+    }
+
+    async setOneRecord(projectId: number, path: string, key: string, data: any): Promise<StorageData> {
+        const updatedData = await this.storageDataRepository.updateOne({ projectId, path }, { $set: { key: data } });
+        return updatedData;
+    }
+
+    async removeOneRecord(storageId: number, key: string): Promise<StorageData> {
+        return await this.storageDataRepository.updateOne({ storageId }, { $unset: { key: null } });
     }
 
 }

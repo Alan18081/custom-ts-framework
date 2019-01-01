@@ -76,6 +76,7 @@ export class MessageBroker {
 
         }
       }
+      this.channel.ack(msg);
     });
 
     this.channel.consume(this.queue, (msg: ConsumeMessage | null) => {

@@ -51,3 +51,12 @@ export class Unauthorized implements HttpError {
     this.statusCode = 401;
   }
 }
+
+export class Forbidden implements HttpError {
+    public readonly message: Errors;
+    public readonly statusCode: number;
+    constructor(message: Errors) {
+        this.message = message;
+        this.statusCode = 403;
+    }
+}

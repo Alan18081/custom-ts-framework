@@ -61,11 +61,8 @@ export function ReqUser() {
   return RouteParams(PARAMS_TYPES.user);
 }
 
-export function UseJwt() {
-  return function (target: any, name: string, descriptor: PropertyDescriptor) {
-      const handler = getHandler(target, name, descriptor);
-      handler.jwt = true;
-  }
+export function Project() {
+  return RouteParams(PARAMS_TYPES.project);
 }
 
 export function getHandler(target: any, name: string, descriptor: PropertyDescriptor): Handler {

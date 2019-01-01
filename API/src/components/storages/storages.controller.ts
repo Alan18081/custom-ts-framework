@@ -1,4 +1,5 @@
 import {injectable} from 'inversify';
+import { toNumber } from 'lodash';
 import { messageBroker } from '../../helpers/message-broker';
 import {
     Body,
@@ -31,11 +32,11 @@ export class StoragesController {
 
     @Get('')
     @UseGuards(JwtGuard)
-    async findManyByUser(@ReqUser() user: IUser): Promise<IStorage[]> {
+    async findManyByUser(@Query('projectId') projectId: string,  @ReqUser() user: IUser): Promise<IStorage[]> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_STORAGES_LIST,
-            { userId: user.id }
+            { userId: user.id, projectId: toNumber(projectId) }
         );
 
         return message.payload;
@@ -43,11 +44,11 @@ export class StoragesController {
 
     @Get(':id')
     @UseGuards(JwtGuard)
-    async findOne(@Param('id') id: number, @ReqUser() user: IUser): Promise<IStorage> {
+    async findOne(@Param('id') id: number, @ReqUser() user: IUser, @Query() query: any): Promise<IStorage> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_STORAGE,
-            { id, userId: user.id }
+            { id, userId: user.id, includeData: Boolean(query.includeData) }
         );
 
         return message.payload;
@@ -67,26 +68,26 @@ export class StoragesController {
 
     @Put(':id')
     @UseGuards(JwtGuard)
-    async updateOne(@Param('id') id: number, @ReqUser() user: IUser, @Body() body: any): Promise<IStorage | undefined> {
-        const message = await messageBroker.sendMessageAndGetResponse(
-          QueuesEnum.PROJECTS_SERVICE,
-          CommunicationCodes.UPDATE_STORAGE,
-            { ...body, userId: user.id, id  }
-        );
+    async updateOneData(@Param('id') id: number, @ReqUser() user: IUser, @Body() body: any): Promise<IStorage | undefined> {
+        const { data, ...rest } = body;
 
-        return message.payload;
-    }
+        const [storageMessage, storageDataMessage] = await Promise.all([
+            messageBroker.sendMessageAndGetResponse(
+                QueuesEnum.PROJECTS_SERVICE,
+                CommunicationCodes.UPDATE_STORAGE,
+                { id,...rest }
+            ),
+            messageBroker.sendMessageAndGetResponse(
+                QueuesEnum.DATA_SERVICE,
+                CommunicationCodes.UPDATE_STORAGE_DATA,
+                { id, data }
+            )
+        ]);
 
-    @Put(':id/data')
-    @UseGuards(JwtGuard)
-    async updateOneData(@Param('id') id: number, @Body() body: any): Promise<IStorage | undefined> {
-        const message = await messageBroker.sendMessageAndGetResponse(
-          QueuesEnum.DATA_SERVICE,
-          CommunicationCodes.UPDATE_STORAGE_DATA,
-            { storageId: id, data: body }
-        );
+        const storage = storageMessage.payload;
+        storage.data = storageDataMessage.payload.data;
 
-        return message.payload;
+        return storage;
     }
 
     @Delete(':id')

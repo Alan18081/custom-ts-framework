@@ -5,6 +5,7 @@ export declare const config: {
     common: {
         passwordLength: number;
         jwtSecret: string;
+        jwtProjectSecret: string;
     };
     UsersService: {
         database: {

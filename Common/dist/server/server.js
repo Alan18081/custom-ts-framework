@@ -88,8 +88,12 @@ class Server {
                     return req.body;
                 case keys_1.PARAMS_TYPES.query:
                     return req.query;
+                case keys_1.PARAMS_TYPES.queryField:
+                    return req.query[paramName];
                 case keys_1.PARAMS_TYPES.user:
                     return req.user;
+                case keys_1.PARAMS_TYPES.project:
+                    return req.project;
             }
         });
     }
@@ -102,7 +106,15 @@ class Server {
             else {
                 guard = guardType;
             }
-            return guard.check.bind(guard);
+            return (req, res, next) => {
+                try {
+                    guard.check.call(guard, req, res, next);
+                }
+                catch (e) {
+                    console.log(e);
+                    res.status(e.statusCode).json(e);
+                }
+            };
         });
     }
 }

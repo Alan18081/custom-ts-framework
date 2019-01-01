@@ -1,5 +1,5 @@
 export interface IStorageData {
-    id: string;
+    _id: string;
     storageId: number;
     projectId: number;
     userId: number;

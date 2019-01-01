@@ -29,4 +29,9 @@ export declare class Unauthorized implements HttpError {
     readonly statusCode: number;
     constructor(message: Errors);
 }
+export declare class Forbidden implements HttpError {
+    readonly message: Errors;
+    readonly statusCode: number;
+    constructor(message: Errors);
+}
 export {};
