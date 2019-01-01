@@ -81,6 +81,8 @@ export class StoragesHandler {
       { storageId: newStorage.id, projectId: body.projectId, userId: body.userId, path: body.path }
     );
 
+    console.log('Storage payload', payload);
+
     return await this.storagesService.updateOne(newStorage.id, { dataId: payload._id });
   }
 

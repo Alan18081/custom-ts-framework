@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = {
     rabbitmq: {
-        url: 'amqp://grrmkucz:4ipXMzmjEiphGhUFt88-SAJbtqZtEjDv@bee.rmq.cloudamqp.com/grrmkucz?heartbeat=60'
+        url: 'amqp://hyjmvawo:Vdm3_ic0x1U8fVwN_3SrOwfLA72vkmAY@shark.rmq.cloudamqp.com/hyjmvawo'
     },
     common: {
         passwordLength: 4,

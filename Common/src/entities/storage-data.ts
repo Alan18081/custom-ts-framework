@@ -3,5 +3,6 @@ export interface IStorageData {
     storageId: number;
     projectId: number;
     userId: number;
+    path: string;
     data: object;
 }

@@ -14,6 +14,7 @@ MICROSERVICES=(
     UsersService
     ProjectsService
     DataService
+    PaymentsService
 )
 
 for i in ${MICROSERVICES[@]}; do

@@ -9,6 +9,10 @@ export class StorageDataService {
     @inject(StorageDataRepository)
     private readonly storageDataRepository: StorageDataRepository;
 
+    async findOne(projectId: number, path: string): Promise<StorageData[]> {
+        return await this.storageDataRepository.find({ projectId, path });
+    }
+
     async findOneByStorageId(id: number): Promise<StorageData | undefined> {
         return await this.storageDataRepository.findOne({ storageId: id });
     }
@@ -28,7 +32,8 @@ export class StorageDataService {
     }
 
     async setOneRecord(projectId: number, path: string, key: string, data: any): Promise<StorageData> {
-        const updatedData = await this.storageDataRepository.updateOne({ projectId, path }, { $set: { key: data } });
+        console.log(projectId, path, key, data);
+        const updatedData = await this.storageDataRepository.updateOne({ projectId, path }, { $set: { [key]: data } });
         return updatedData;
     }
 

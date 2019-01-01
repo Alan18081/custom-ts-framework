@@ -70,6 +70,7 @@ class MessageBroker {
             yield this.channel.assertQueue(this.rpcQueue);
             this.channel.consume(this.rpcQueue, msg => {
                 if (msg) {
+                    console.log('New RPC message', this.parseMessage(msg.content));
                     try {
                         common_1.eventEmitter.emit(msg.properties.correlationId, this.parseMessage(msg.content));
                     }

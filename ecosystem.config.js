@@ -4,9 +4,10 @@ module.exports = {
         name: 'API',
         script: './API/src/app.ts',
         instances: 1,
-        autorestart: true,
         watch: true,
         max_memory_restart: '1G',
+        exec_interpreter: 'ts-node',
+        exec_mode: 'cluster',
         env: {
           NODE_ENV: 'development'
         },
@@ -18,8 +19,9 @@ module.exports = {
           name: 'AuthService',
           script: './AuthService/src/app.ts',
           instances: 1,
-          autorestart: true,
           watch: true,
+          exec_mode: 'cluster',
+          exec_interpreter: 'ts-node',
           max_memory_restart: '1G',
           env: {
               NODE_ENV: 'development'
@@ -32,8 +34,9 @@ module.exports = {
           name: 'DataService',
           script: './DataService/src/app.ts',
           instances: 1,
-          autorestart: true,
           watch: true,
+          exec_mode: 'cluster',
+          exec_interpreter: 'ts-node',
           max_memory_restart: '1G',
           env: {
               NODE_ENV: 'development'
@@ -46,8 +49,9 @@ module.exports = {
           name: 'ProjectsService',
           script: './ProjectsService/src/app.ts',
           instances: 1,
-          autorestart: true,
           watch: true,
+          exec_mode: 'cluster',
+          exec_interpreter: 'ts-node',
           max_memory_restart: '1G',
           env: {
               NODE_ENV: 'development'
@@ -60,8 +64,9 @@ module.exports = {
           name: 'UsersService',
           script: './UsersService/src/app.ts',
           instances: 1,
-          autorestart: true,
           watch: true,
+          exec_mode: 'cluster',
+          exec_interpreter: 'ts-node',
           max_memory_restart: '1G',
           env: {
               NODE_ENV: 'development'
@@ -74,8 +79,9 @@ module.exports = {
           name: 'PaymentsService',
           script: './PaymentsService/src/app.ts',
           instances: 1,
-          autorestart: true,
           watch: true,
+          exec_mode: 'cluster',
+          exec_interpreter: 'ts-node',
           max_memory_restart: '1G',
           env: {
               NODE_ENV: 'development'
@@ -86,15 +92,4 @@ module.exports = {
       },
 
   ],
-
-  deploy : {
-    production : {
-      user : 'node',
-      host : '212.83.163.1',
-      ref  : 'origin/master',
-      repo : 'git@github.com:repo.git',
-      path : '/var/www/production',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
-    }
-  }
 };

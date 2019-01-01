@@ -51,9 +51,7 @@ let BaseRepository = class BaseRepository {
             else {
                 sql = this.table.select('*');
             }
-            console.log('Query', query, sql.where(query).toQuery());
             const data = yield sql.where(query);
-            console.log('Raw data', data);
             if (data[0]) {
                 return Reflect.construct(this.MappingType, [data[0]]);
             }

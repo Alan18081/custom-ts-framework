@@ -17,7 +17,7 @@ class API {
 
     async initBroker() {
         try {
-            const connection = await connect(config.rabbitmq.url);
+            const connection = await connect(config.rabbitmq.url, {  });
             await messageBroker.run(connection);
             console.log('API is working');
         } catch (e) {

@@ -1,10 +1,13 @@
-import { IsInt, IsDefined } from 'class-validator';
+import { IsInt, IsDefined, IsString } from 'class-validator';
 import { BaseDto } from '@astra/common';
 
 export class AddRecordDto extends BaseDto {
 
     @IsInt()
-    storageId: number;
+    projectId: number;
+
+    @IsString()
+    path: string;
 
     @IsDefined()
     record: any;
