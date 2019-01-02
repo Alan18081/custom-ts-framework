@@ -1,7 +1,7 @@
 import {Module} from '@astra/common';
-import { StorageDataModule } from './components/storage-data/storage-data.module';
+import { StorageRecordsModule } from './components/storage-records/storage-records.module';
 
 @Module({
-  imports: [StorageDataModule],
+  imports: [StorageRecordsModule],
 })
 export class AppModule {}

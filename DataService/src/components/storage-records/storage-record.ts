@@ -1,7 +1,7 @@
 import { toString, toNumber } from 'lodash';
-import { IStorageData } from '@astra/common';
+import { IStorageRecord } from '@astra/common';
 
-export class StorageData implements IStorageData {
+export class StorageRecord implements IStorageRecord {
 
     public _id: string;
     public storageId: number;
@@ -10,7 +10,7 @@ export class StorageData implements IStorageData {
     public path: string;
     public data: object;
 
-    constructor(data: Partial<StorageData>) {
+    constructor(data: Partial<StorageRecord>) {
         this._id = data._id && toString(data._id);
         this.storageId = toNumber(data.storageId);
         this.projectId = toNumber(data.projectId);

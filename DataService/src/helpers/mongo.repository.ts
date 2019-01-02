@@ -21,6 +21,10 @@ export abstract class MongoRepository<T> {
         return data.map(item => Reflect.construct(this.MappingType, [item]));
     }
 
+    public async findById(id: string): Promise<T | undefined> {
+        return await this.collection.findOne({ _id: new ObjectId(id) });
+    }
+
     public async findOne(query: object): Promise<T | undefined> {
         const data = await this.collection.findOne(query);
 
@@ -79,8 +83,14 @@ export abstract class MongoRepository<T> {
             .deleteMany(query);
     }
 
+    public async deleteById(id: string): Promise<void> {
+        await this.collection
+          .deleteOne({ _id: new ObjectId(id) });
+    }
+
     private async initData(client: MongoClient, collectionName: string) {
         const connectedClient = await client.connect();
+        console.log('Connected client');
         this.collection = connectedClient.db(config.DataService.database.database).collection(collectionName);
     }
 

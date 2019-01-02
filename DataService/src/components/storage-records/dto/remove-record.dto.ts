@@ -1,4 +1,4 @@
-import { IsInt, IsArray } from 'class-validator';
+import { IsInt, IsMongoId } from 'class-validator';
 import { BaseDto } from '@astra/common';
 
 export class RemoveRecordDto extends BaseDto {
@@ -6,7 +6,7 @@ export class RemoveRecordDto extends BaseDto {
     @IsInt()
     storageId: number;
 
-    @IsArray()
-    path: string[];
+    @IsMongoId()
+    recordId: string;
 
 }

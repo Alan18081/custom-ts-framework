@@ -6,10 +6,16 @@ export class AddRecordDto extends BaseDto {
     @IsInt()
     projectId: number;
 
+    @IsInt()
+    storageId: number;
+
+    @IsInt()
+    userId: number;
+
     @IsString()
     path: string;
 
     @IsDefined()
-    record: any;
+    data: any;
 
 }

@@ -1,13 +1,13 @@
 import { injectable } from 'inversify';
 import { MongoRepository } from '../../helpers/mongo.repository';
 import { client } from '../../helpers/mongo-db';
-import { StorageData } from './storage-data';
+import { StorageRecord } from './storage-record';
 
 @injectable()
-export class StorageDataRepository extends MongoRepository<StorageData> {
+export class StorageRecordsRepository extends MongoRepository<StorageRecord> {
 
     constructor() {
-        super(client, 'storage-data', StorageData);
+        super(client, 'storage-data', StorageRecord);
     }
 
 }
