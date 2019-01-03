@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93da08f2-235b-423b-8038-56864eb5a610" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/find-storage-record.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/find-storage-records-list.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/components/api-storages/api-storages.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/components/api-storages/api-storages.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/dist/broker/message-broker.js" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dist/broker/message-broker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/dist/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dist/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/dist/entities/storage-data.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dist/entities/storage-data.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/dist/enums/communication-codes.enum.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dist/enums/communication-codes.enum.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/dist/enums/communication-codes.enum.js" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dist/enums/communication-codes.enum.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/dist/models/base.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dist/models/base.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/broker/message-broker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/broker/message-broker.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/config/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/config/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/entities/storage-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/entities/storage-data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/enums/communication-codes.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/enums/communication-codes.enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/models/base.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/models/base.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/add-record.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/add-record.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataService/src/components/storage-data/storage-data-records.handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DataService/src/components/storage-data/storage-data-records.handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/components/storages/storages.handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecosystem.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ecosystem.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/common.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/common.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,53 +13,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="api-storages.controller.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="api-storages.controller.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/API/src/components/api-storages/api-storages.controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="59">
+              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="storage-data-records.handler.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data-records.handler.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="17" column="80" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
-              <folding>
-                <element signature="e#0#47#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="find-storage-records-list.dto.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/find-storage-records-list.dto.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="24" selection-end-line="10" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="find-storage-record.dto.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/find-storage-record.dto.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="storage-data.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="12" column="74" selection-start-line="12" selection-start-column="74" selection-end-line="12" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -213,51 +152,6 @@
               <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="starship-service" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
-              <item name="DataService" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
-              <item name="DataService" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
-              <item name="DataService" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
-              <item name="DataService" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="storage-data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
-              <item name="DataService" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="storage-data" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
-              <item name="DataService" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="storage-data" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-              <item name="records" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -324,12 +218,16 @@
       <workItem from="1546157759632" duration="5128000" />
       <workItem from="1546163484524" duration="32380000" />
       <workItem from="1546241788171" duration="33410000" />
-      <workItem from="1546296486746" duration="24585000" />
+      <workItem from="1546296486746" duration="27653000" />
+      <workItem from="1546346503168" duration="463000" />
+      <workItem from="1546373766473" duration="120000" />
+      <workItem from="1546459037314" duration="1325000" />
+      <workItem from="1546544514070" duration="599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230479000" />
+    <option name="totallyTimeSpent" value="236054000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -344,7 +242,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.74401665" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.7450572" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
@@ -448,20 +346,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/storages.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/API/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
@@ -470,9 +359,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="503">
           <caret line="61" column="39" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -499,9 +385,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -516,9 +399,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -533,9 +413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="473">
           <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -543,9 +420,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="557">
           <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -560,9 +434,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -577,9 +448,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
           <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -587,9 +455,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="473">
           <caret line="68" column="8" lean-forward="true" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -604,9 +469,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
           <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -614,9 +476,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -631,56 +490,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/update-record.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/remove-record.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/update-record.dto.ts" />
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/remove-record.dto.ts" />
     <entry file="file://$PROJECT_DIR$/ProjectsService/src/components/storages/storages.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="588">
           <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.module.ts" />
     <entry file="file://$PROJECT_DIR$/Common/src/models/base.repository.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="725">
           <caret line="101" column="1" selection-start-line="101" selection-start-column="1" selection-end-line="101" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -688,25 +514,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="88" column="54" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjectsService/src/helpers/message-broker.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/storage/create-storage-data.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/storage/create-storage-data.dto.ts" />
     <entry file="file://$PROJECT_DIR$/API/node_modules/amqplib/channel_api.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -714,9 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
           <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -748,16 +559,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/add-record.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/add-record.dto.ts" />
     <entry file="file://$PROJECT_DIR$/Common/src/broker/message-broker.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -765,16 +567,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.ts" />
     <entry file="file://$PROJECT_DIR$/DataService/src/helpers/mongo.repository.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -800,68 +593,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/src/components/projects/projects.controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.handler.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.handler.ts" />
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/find-storage-records-list.dto.ts" />
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/find-storage-record.dto.ts" />
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.service.ts" />
+    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data-records.handler.ts" />
     <entry file="file://$PROJECT_DIR$/API/src/components/api-storages/api-storages.controller.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        <state relative-caret-position="59">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/find-storage-records-list.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/dto/records/find-storage-record.dto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="12" column="74" selection-start-line="12" selection-start-column="74" selection-end-line="12" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-data/storage-data-records.handler.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="17" column="80" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>

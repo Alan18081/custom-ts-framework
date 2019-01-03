@@ -7,7 +7,7 @@ import {
     IProject,
     Param,
     Post,
-    Project,
+    Project, Put,
     QueuesEnum,
     UseGuards
 } from '@astra/common';
@@ -53,6 +53,23 @@ export class ApiStoragesController {
     @UseGuards(JwtProjectGuard)
     async createStorageRecordData(
         @Param('path') path: string,
+        @Project() project: IProject,
+        @Body() body: any,
+    ): Promise<any> {
+        const message = await messageBroker.sendMessageAndGetResponse(
+            QueuesEnum.DATA_SERVICE,
+            CommunicationCodes.SET_STORAGE_RECORD,
+            { projectId: project.id, path, record: body}
+        );
+
+        return message.payload;
+    }
+
+    @Put(':path/records/:recordId')
+    @UseGuards(JwtProjectGuard)
+    async createStorageRecordData(
+        @Param('path') path: string,
+        @Param('recordId') recordId: string,
         @Project() project: IProject,
         @Body() body: any,
     ): Promise<any> {
