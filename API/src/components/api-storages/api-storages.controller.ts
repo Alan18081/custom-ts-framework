@@ -18,7 +18,7 @@ import {messageBroker} from '../../helpers/message-broker';
 @Controller('apiStorages')
 export class ApiStoragesController {
 
-    @Get(':path/records')
+    @Get(':path')
     @UseGuards(JwtProjectGuard)
     async findStorageRecordsList(
         @Param('path') path: string,
@@ -33,7 +33,7 @@ export class ApiStoragesController {
         return message.payload;
     }
 
-    @Get(':path/records/:recordId')
+    @Get(':path/:recordId')
     @UseGuards(JwtProjectGuard)
     async getStorageDataRecord(
         @Param('path') path: string,
@@ -49,7 +49,7 @@ export class ApiStoragesController {
         return message.payload;
     }
 
-    @Post(':path/records')
+    @Post(':path')
     @UseGuards(JwtProjectGuard)
     async createStorageRecordData(
         @Param('path') path: string,
@@ -58,16 +58,16 @@ export class ApiStoragesController {
     ): Promise<any> {
         const message = await messageBroker.sendMessageAndGetResponse(
             QueuesEnum.DATA_SERVICE,
-            CommunicationCodes.SET_STORAGE_RECORD,
+            CommunicationCodes.CREATE_STORAGE_RECORD,
             { projectId: project.id, path, record: body}
         );
 
         return message.payload;
     }
 
-    @Put(':path/records/:recordId')
+    @Put(':path/:recordId')
     @UseGuards(JwtProjectGuard)
-    async createStorageRecordData(
+    async updateStorageRecordData(
         @Param('path') path: string,
         @Param('recordId') recordId: string,
         @Project() project: IProject,
@@ -75,16 +75,16 @@ export class ApiStoragesController {
     ): Promise<any> {
         const message = await messageBroker.sendMessageAndGetResponse(
             QueuesEnum.DATA_SERVICE,
-            CommunicationCodes.SET_STORAGE_RECORD,
+            CommunicationCodes.UPDATE_STORAGE_RECORD,
             { projectId: project.id, path, record: body}
         );
 
         return message.payload;
     }
 
-    @Delete(':path/records/:recordId')
+    @Delete(':path/:recordId')
     @UseGuards(JwtProjectGuard)
-    async createStorageRecordData(
+    async removeOne(
         @Param('path') path: string,
         @Param('recordId') recordId: string,
         @Project() project: IProject,

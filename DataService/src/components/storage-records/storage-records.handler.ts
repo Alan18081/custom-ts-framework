@@ -8,6 +8,7 @@ import { FindRecordsListDto } from './dto/find-records-list.dto';
 import { AddRecordDto } from './dto/add-record.dto';
 import { RemoveRecordDto } from './dto/remove-record.dto';
 import { GetRecordDto } from './dto/get-record.dto';
+import {UpdateRecordDto} from './dto/update-record.dto';
 
 @injectable()
 export class StorageRecordsHandler {
@@ -20,8 +21,12 @@ export class StorageRecordsHandler {
 
     @SubscribeMessage(CommunicationCodes.GET_STORAGE_RECORDS_LIST)
     async findMany(payload: FindRecordsListDto): Promise<StorageRecord[]> {
-        console.log('Some payload', typeof payload.storageId);
         await this.validatorService.validate(payload, FindRecordsListDto);
+
+        if(payload.page && payload.limit) {
+            const { page, limit, ...data } = payload;
+            return this.storageRecordsService.findManyWithPagination(payload, { page, limit });
+        }
 
         return this.storageRecordsService.findMany(payload);
     }
@@ -38,6 +43,13 @@ export class StorageRecordsHandler {
         await this.validatorService.validate(payload, AddRecordDto);
 
         return await this.storageRecordsService.createOne(payload);
+    }
+
+    @SubscribeMessage(CommunicationCodes.UPDATE_STORAGE_RECORD)
+    async updateOne(payload: UpdateRecordDto): Promise<StorageRecord | undefined> {
+        await this.validatorService.validate(payload, UpdateRecordDto);
+
+        return await this.storageRecordsService.updateOne(payload);
     }
 
     @SubscribeMessage(CommunicationCodes.REMOVE_STORAGE_RECORD)

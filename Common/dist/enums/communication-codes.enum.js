@@ -32,6 +32,7 @@ var CommunicationCodes;
     CommunicationCodes["REMOVE_STORAGE_DATA"] = "[DataService] Remove Storage Data";
     CommunicationCodes["GET_STORAGE_RECORDS_LIST"] = "[DataService] Get Storage Records List";
     CommunicationCodes["GET_STORAGE_RECORD"] = "[DataService] Get Storage Record";
-    CommunicationCodes["SET_STORAGE_RECORD"] = "[DataService] Set Storage Record";
+    CommunicationCodes["CREATE_STORAGE_RECORD"] = "[DataService] Create Storage Record";
+    CommunicationCodes["UPDATE_STORAGE_RECORD"] = "[DataService] Update Storage Record";
     CommunicationCodes["REMOVE_STORAGE_RECORD"] = "[DataService] Remove Storage Record";
 })(CommunicationCodes = exports.CommunicationCodes || (exports.CommunicationCodes = {}));

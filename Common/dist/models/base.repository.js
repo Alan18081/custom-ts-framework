@@ -29,6 +29,12 @@ let BaseRepository = class BaseRepository {
         this.table = db(tableName);
         this.MappingType = MappingType;
     }
+    clearData() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.table.clearSelect();
+            yield this.table.clearWhere();
+        });
+    }
     find(query, columns) {
         return __awaiter(this, void 0, void 0, function* () {
             let sql;
@@ -39,6 +45,7 @@ let BaseRepository = class BaseRepository {
                 sql = this.table.select('*');
             }
             const data = yield sql.where(query);
+            yield this.clearData();
             return data.map(item => Reflect.construct(this.MappingType, [item]));
         });
     }
@@ -52,6 +59,7 @@ let BaseRepository = class BaseRepository {
                 sql = this.table.select('*');
             }
             const data = yield sql.where(query);
+            yield this.clearData();
             if (data[0]) {
                 return Reflect.construct(this.MappingType, [data[0]]);
             }
@@ -65,6 +73,7 @@ let BaseRepository = class BaseRepository {
             const rawData = yield this.table
                 .insert(entity)
                 .returning('*');
+            yield this.clearData();
             return Reflect.construct(this.MappingType, [rawData[0]]);
         });
     }
@@ -74,6 +83,7 @@ let BaseRepository = class BaseRepository {
                 .update(entity)
                 .where(query)
                 .returning('*');
+            yield this.clearData();
             if (rawData[0]) {
                 return Reflect.construct(this.MappingType, [rawData[0]]);
             }
@@ -89,6 +99,7 @@ let BaseRepository = class BaseRepository {
     getOneQueryResult(query) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield query.returning('*');
+            yield this.clearData();
             if (result[0]) {
                 return Reflect.construct(this.MappingType, [result[0]]);
             }
@@ -97,6 +108,7 @@ let BaseRepository = class BaseRepository {
     getManyQueryResults(query) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield query.returning('*');
+            yield this.clearData();
             return result.map(item => Reflect.construct(this.MappingType, [item]));
         });
     }
@@ -105,6 +117,27 @@ let BaseRepository = class BaseRepository {
     }
     transaction(callback) {
         return this.db.transaction(callback);
+    }
+    findManyWithPagination(query, { page, limit }, columns) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let sql;
+            if (columns) {
+                sql = this.table.select(...columns);
+            }
+            else {
+                sql = this.table.select('*');
+            }
+            sql = sql.where(query).offset((page - 1) * limit).limit(limit);
+            const rawData = yield sql.clone();
+            const totalCount = yield sql.clone().count();
+            yield this.clearData();
+            return {
+                page,
+                data: rawData.map(item => Reflect.construct(this.MappingType, [item])),
+                itemsPerPage: limit,
+                totalCount: totalCount[0].count
+            };
+        });
     }
 };
 BaseRepository = __decorate([

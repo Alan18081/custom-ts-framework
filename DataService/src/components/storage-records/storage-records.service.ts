@@ -2,6 +2,8 @@ import { injectable, inject } from 'inversify';
 import { StorageRecordsRepository } from './storage-records.repository';
 import { StorageRecord } from './storage-record';
 import { FindRecordsListDto } from './dto/find-records-list.dto';
+import {UpdateRecordDto} from './dto/update-record.dto';
+import {PaginatedResponse} from '../../../../Common/dist/interfaces';
 
 @injectable()
 export class StorageRecordsService {
@@ -14,12 +16,15 @@ export class StorageRecordsService {
     }
 
     async findMany(query: FindRecordsListDto): Promise<StorageRecord[]> {
-        console.log('Query', query);
         return await this.storageRecordsRepository.find(query);
     }
 
-    async updateOne(id: number, data: Partial<StorageRecord>): Promise<StorageRecord | undefined> {
-        return await this.storageRecordsRepository.updateOne({ storageId: id }, { $set: { data: data } });
+    async findManyWithPagination(query: FindRecordsListDto): Promise<PaginatedResponse<StorageRecord>> {
+        return await this.storageRecordsRepository.findManyWithPagination(query);
+    }
+
+    async updateOne(data: UpdateRecordDto): Promise<StorageRecord | undefined> {
+        return await this.storageRecordsRepository.updateById(data.id, { $set: { data: data } });
     }
 
     async createOne(payload: Partial<StorageRecord>): Promise<StorageRecord> {

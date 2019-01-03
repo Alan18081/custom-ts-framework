@@ -1,16 +1,13 @@
-import { IsInt, IsArray, IsDefined } from 'class-validator';
+import { IsDefined, IsMongoId } from 'class-validator';
 import { BaseDto } from '@astra/common';
 
 export class UpdateRecordDto extends BaseDto {
 
-    @IsInt()
-    storageId: number;
-
-    @IsArray()
-    path: string[];
+    @IsMongoId()
+    id: string;
 
     @IsDefined()
-    record: any;
+    data: any;
 
 
 }

@@ -46,18 +46,8 @@ export abstract class MongoRepository<T> {
         return Reflect.construct(this.MappingType, [rawData]);
     }
 
-    public async updateOneById(id: string, entity: UpdateQuery<T>): Promise<T | undefined> {
-        const { upsertedId } = await this.collection.updateOne({ _id: new ObjectId(id) }, {
-            ...entity,
-            $currentDate: { lastModified: true }
-        });
-        const rawData = await this.collection.findOne(upsertedId);
-
-        console.log('Raw data', rawData);
-
-        if(rawData) {
-            return Reflect.construct(this.MappingType, [rawData]);
-        }
+    public async updateById(id: string, entity: UpdateQuery<T>): Promise<T | undefined> {
+        return await this.updateOne({ _id: new ObjectId(id) }, entity);
     }
 
     public async updateOne(query: object, entity: UpdateQuery<T>): Promise<T | undefined> {
