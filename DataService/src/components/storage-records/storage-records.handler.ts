@@ -25,7 +25,7 @@ export class StorageRecordsHandler {
 
         if(payload.page && payload.limit) {
             const { page, limit, ...data } = payload;
-            // return this.storageRecordsService.findManyWithPagination(payload, { page, limit });
+            return this.storageRecordsService.findManyWithPagination(payload, { page, limit });
         }
 
         return this.storageRecordsService.findMany(payload);

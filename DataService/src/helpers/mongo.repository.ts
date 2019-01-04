@@ -1,6 +1,8 @@
 import {Collection, MongoClient, UpdateQuery, ObjectId} from 'mongodb';
 import {injectable, unmanaged} from 'inversify';
 import { config } from '@astra/common';
+import {PaginationDto} from '../../../Common/src/dto';
+import {PaginatedResponse} from '../../../Common/src/interfaces';
 
 @injectable()
 export abstract class MongoRepository<T> {
@@ -82,6 +84,21 @@ export abstract class MongoRepository<T> {
         const connectedClient = await client.connect();
         console.log('Connected client');
         this.collection = connectedClient.db(config.DataService.database.database).collection(collectionName);
+    }
+
+    public async findManyWithPagination(query: object,  { page, limit }: Required<PaginationDto>): Promise<PaginatedResponse<T>> {
+
+        const mongoQuery = this.collection.find(query).skip((page - 1) * limit ).limit(limit);
+
+        const rawData = await mongoQuery.toArray();
+        const totalCount = await this.collection.count(query, { skip: (page - 1) * limit, limit });
+
+        return {
+            page,
+            data: rawData.map(item => Reflect.construct(this.MappingType, [item])),
+            itemsPerPage: limit,
+            totalCount: totalCount[0].count
+        }
     }
 
 }
