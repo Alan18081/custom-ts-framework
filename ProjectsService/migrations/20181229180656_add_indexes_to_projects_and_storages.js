@@ -4,7 +4,7 @@ exports.up = async function(knex, Promise) {
      t.index(['id', 'name']);
   });
 
-  await knex.schema.alterTable('storage-data', t => {
+  await knex.schema.alterTable('storages', t => {
      t.string('path').notNull();
      t.index(['id', 'name']);
      t.unique('path');
@@ -16,7 +16,7 @@ exports.down = async function(knex, Promise) {
         t.dropIndex(['id', 'name']);
     });
 
-    await knex.schema.alterTable('storage-data', t => {
+    await knex.schema.alterTable('storages', t => {
         t.dropColumn('path');
         t.dropIndex(['id', 'name']);
         t.dropUnique('path');

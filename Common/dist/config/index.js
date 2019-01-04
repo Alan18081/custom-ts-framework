@@ -32,7 +32,7 @@ exports.config = {
     DataService: {
         database: {
             url: 'mongodb://localhost:27017',
-            database: 'sh_projects_service'
+            database: 'data-service'
         }
     }
 };

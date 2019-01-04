@@ -35,6 +35,8 @@ export class UsersHandler {
   async findOneByEmail(query: FindUserByEmailDto): Promise<User | undefined> {
     await this.validatorService.validate(query, FindUserByEmailDto);
 
+    console.log(query.email);
+
     return await this.usersService.findOneByEmail(query.email);
   }
 

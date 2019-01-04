@@ -37,6 +37,8 @@ export class ProjectsService {
         project.clientId = uid(10);
         project.clientSecret = uid(15);
 
+        console.log(project);
+
         return await this.projectsRepository.save(project);
     }
 

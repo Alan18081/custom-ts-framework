@@ -1,4 +1,4 @@
-export interface IStorageData {
+export interface IStorageRecord {
     _id: string;
     storageId: number;
     projectId: number;

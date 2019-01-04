@@ -34,6 +34,6 @@ export enum CommunicationCodes {
 
     GET_STORAGE_RECORDS_LIST = '[DataService] Get Storage Records List',
     GET_STORAGE_RECORD = '[DataService] Get Storage Record',
-    SET_STORAGE_RECORD = '[DataService] Set Storage Record',
+    CREATE_STORAGE_RECORD = '[DataService] Set Storage Record',
     REMOVE_STORAGE_RECORD = '[DataService] Remove Storage Record',
 }

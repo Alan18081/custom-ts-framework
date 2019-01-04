@@ -23,7 +23,7 @@ export class ApiStoragesController {
     async findStorageRecordsList(
         @Param('path') path: string,
         @Project() project: IProject
-    ) {
+    ): Promise<any> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.DATA_SERVICE,
           CommunicationCodes.GET_STORAGE_RECORDS_LIST,
@@ -33,53 +33,53 @@ export class ApiStoragesController {
         return message.payload;
     }
 
-    @Get(':path/records/:recordId')
-    @UseGuards(JwtProjectGuard)
-    async getStorageDataRecord(
-        @Param('path') path: string,
-        @Param('recordId') recordId: string,
-        @Project() project: IProject
-    ): Promise<any> {
-        const message = await messageBroker.sendMessageAndGetResponse(
-          QueuesEnum.DATA_SERVICE,
-          CommunicationCodes.GET_STORAGE_RECORD,
-            { projectId: project.id, path, recordId}
-        );
-
-        return message.payload;
-    }
-
-    @Post(':path/records')
-    @UseGuards(JwtProjectGuard)
-    async createStorageRecordData(
-        @Param('path') path: string,
-        @Project() project: IProject,
-        @Body() body: any,
-    ): Promise<any> {
-        const message = await messageBroker.sendMessageAndGetResponse(
-            QueuesEnum.DATA_SERVICE,
-            CommunicationCodes.SET_STORAGE_RECORD,
-            { projectId: project.id, path, record: body}
-        );
-
-        return message.payload;
-    }
-
-    @Delete(':path/records/:recordId')
-    @UseGuards(JwtProjectGuard)
-    async createStorageRecordData(
-        @Param('path') path: string,
-        @Param('recordId') recordId: string,
-        @Project() project: IProject,
-        @Body() body: any,
-    ): Promise<any> {
-        const message = await messageBroker.sendMessageAndGetResponse(
-            QueuesEnum.DATA_SERVICE,
-            CommunicationCodes.REMOVE_STORAGE_RECORD,
-            { projectId: project.id, path, recordId }
-        );
-
-        return message.payload;
-    }
+    // @Get(':path/records/:recordId')
+    // @UseGuards(JwtProjectGuard)
+    // async getStorageDataRecord(
+    //     @Param('path') path: string,
+    //     @Param('recordId') recordId: string,
+    //     @Project() project: IProject
+    // ): Promise<any> {
+    //     const message = await messageBroker.sendMessageAndGetResponse(
+    //       QueuesEnum.DATA_SERVICE,
+    //       CommunicationCodes.GET_STORAGE_RECORD,
+    //         { projectId: project.id, path, recordId}
+    //     );
+    //
+    //     return message.payload;
+    // }
+    //
+    // @Post(':path/records')
+    // @UseGuards(JwtProjectGuard)
+    // async createStorageRecordData(
+    //     @Param('path') path: string,
+    //     @Project() project: IProject,
+    //     @Body() body: any,
+    // ): Promise<any> {
+    //     const message = await messageBroker.sendMessageAndGetResponse(
+    //         QueuesEnum.DATA_SERVICE,
+    //         CommunicationCodes.SET_STORAGE_RECORD,
+    //         { projectId: project.id, path, record: body}
+    //     );
+    //
+    //     return message.payload;
+    // }
+    //
+    // @Delete(':path/records/:recordId')
+    // @UseGuards(JwtProjectGuard)
+    // async removeStorageRecordData(
+    //     @Param('path') path: string,
+    //     @Param('recordId') recordId: string,
+    //     @Project() project: IProject,
+    //     @Body() body: any,
+    // ): Promise<any> {
+    //     const message = await messageBroker.sendMessageAndGetResponse(
+    //         QueuesEnum.DATA_SERVICE,
+    //         CommunicationCodes.REMOVE_STORAGE_RECORD,
+    //         { projectId: project.id, path, recordId }
+    //     );
+    //
+    //     return message.payload;
+    // }
 
 }

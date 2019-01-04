@@ -26,6 +26,6 @@
     "uid": "^0.0.2"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "rm -rf dist && tsc"
   }
 }

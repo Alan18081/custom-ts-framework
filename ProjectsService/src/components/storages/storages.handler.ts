@@ -73,17 +73,9 @@ export class StoragesHandler {
 
     const { userId, ...data } = body;
 
-    const newStorage = await this.storagesService.createOne({ ...data });
+    return await this.storagesService.createOne({ ...data });
 
-    const { payload } = await messageBroker.sendMessageAndGetResponse(
-      QueuesEnum.DATA_SERVICE,
-      CommunicationCodes.CREATE_STORAGE_DATA,
-      { storageId: newStorage.id, projectId: body.projectId, userId: body.userId, path: body.path }
-    );
 
-    console.log('Storage payload', payload);
-
-    return await this.storagesService.updateOne(newStorage.id, { dataId: payload._id });
   }
 
   @SubscribeMessage(CommunicationCodes.UPDATE_STORAGE)
