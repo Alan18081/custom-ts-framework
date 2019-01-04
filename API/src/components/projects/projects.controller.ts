@@ -98,4 +98,14 @@ export class ProjectsController {
         );
     }
 
+    @Delete(':projectId/accounts/:accountId')
+    @UseGuards(JwtGuard)
+    async removeOne(@Param('projectId') projectId: number, @Param('accountId') accountId: number): Promise<void> {
+        await messageBroker.sendMessageAndGetResponse(
+          QueuesEnum.PROJECTS_SERVICE,
+          CommunicationCodes.REMOVE_PROJECT_ACCOUNT,
+            { projectId, accountId }
+        );
+    }
+
 }
