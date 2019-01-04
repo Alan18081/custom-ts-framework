@@ -1,3 +1,3 @@
 import { MessageBroker, QueuesEnum } from '@astra/common';
 
-export const messageBroker = new MessageBroker(QueuesEnum.PROJECTS_SERVICE, QueuesEnum.RPC_PROJECTS_SERVICE);
+export const messageBroker = new MessageBroker(QueuesEnum.PAYMENTS_SERVICE, QueuesEnum.PAYMENTS_SERVICE);

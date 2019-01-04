@@ -1,0 +1,25 @@
+{
+  "name": "spaceships-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ecosystem.config.js",
+  "scripts": {
+    "all": "npm-run-all -p api auth users projects data payment",
+    "api": "cd ./API && nodemon",
+    "auth": "cd ./AuthService && nodemon",
+    "users": "cd ./UsersService && nodemon",
+    "projects": "cd ./ProjectsService && nodemon",
+    "data": "cd ./DataService && nodemon",
+    "payment": "cd ./PaymentsService && nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alan18081/tsc-template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alan18081/tsc-template/issues"
+  },
+  "homepage": "https://github.com/Alan18081/tsc-template#readme"
+}

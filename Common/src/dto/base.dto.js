@@ -1,8 +1,9 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class BaseDto {
-    constructor(data) {
+exports.__esModule = true;
+var BaseDto = /** @class */ (function () {
+    function BaseDto(data) {
         Object.assign(this, data);
     }
-}
+    return BaseDto;
+}());
 exports.BaseDto = BaseDto;

@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"tsc -w\" \"nodemon dist/index.js\" ",
-    "dev": "ts-node-dev ./src/app.ts",
+    "start": "ts-node ./src/app.ts",
+    "dev": "nodemon",
     "build": "tsc"
   },
   "dependencies": {

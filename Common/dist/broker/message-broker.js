@@ -75,6 +75,7 @@ class MessageBroker {
                         common_1.eventEmitter.emit(msg.properties.correlationId, this.parseMessage(msg.content));
                     }
                     catch (e) {
+                        console.log(e);
                     }
                 }
                 this.channel.ack(msg);

@@ -1,0 +1,6 @@
+GET http://localhost:5000/users
+Accept: */*
+Cache-Control: no-cache
+
+###
+

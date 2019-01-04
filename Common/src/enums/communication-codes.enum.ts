@@ -18,6 +18,7 @@ export enum CommunicationCodes {
     CREATE_PROJECT = '[ProjectsService] Create Project',
     UPDATE_PROJECT = '[ProjectsService] Update Project',
     REMOVE_PROJECT = '[ProjectsService] Remove Project',
+    REMOVE_PROJECT_ACCOUNT = '[ProjectsService] Remove Project Account',
 
     GET_STORAGES_LIST = '[ProjectsService] Get Storages List',
     GET_STORAGE = '[ProjectsService] Get Storage',
@@ -34,6 +35,7 @@ export enum CommunicationCodes {
 
     GET_STORAGE_RECORDS_LIST = '[DataService] Get Storage Records List',
     GET_STORAGE_RECORD = '[DataService] Get Storage Record',
-    CREATE_STORAGE_RECORD = '[DataService] Set Storage Record',
+    CREATE_STORAGE_RECORD = '[DataService] Create Storage Record',
+    UPDATE_STORAGE_RECORD = '[DataService] Update Storage Record',
     REMOVE_STORAGE_RECORD = '[DataService] Remove Storage Record',
 }

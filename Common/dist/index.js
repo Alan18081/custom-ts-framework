@@ -4,7 +4,6 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./common"));
-__export(require("./dto/base.dto"));
 __export(require("./models"));
 __export(require("./modules/module"));
 __export(require("./metadata/keys"));
@@ -13,3 +12,4 @@ __export(require("./server"));
 __export(require("./config"));
 __export(require("./enums"));
 __export(require("./services"));
+__export(require("./dto"));

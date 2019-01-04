@@ -58,7 +58,7 @@ export class MessageBroker {
   subscribe(id: string): Promise<Message> {
     return new Promise<Message>((resolve) => {
       eventEmitter.once(id, message => {
-        resolve(message)
+        resolve(message);
       });
     });
   }
@@ -74,7 +74,7 @@ export class MessageBroker {
         try {
           eventEmitter.emit(msg.properties.correlationId, this.parseMessage(msg.content));
         } catch (e) {
-
+          console.log(e);
         }
       }
       this.channel.ack(msg);

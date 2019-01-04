@@ -1,6 +1,8 @@
 import 'reflect-metadata';
 import * as Knex from 'knex';
 import { QueryInterface, Transaction } from 'knex';
+import { PaginatedResponse } from '../interfaces';
+import { PaginationDto } from '../dto';
 export declare abstract class BaseRepository<T> {
     private readonly db;
     private readonly table;
@@ -8,6 +10,7 @@ export declare abstract class BaseRepository<T> {
     protected constructor(db: Knex, tableName: string, MappingType: {
         new (...args: any[]): T;
     });
+    private clearData;
     find(query: object, columns?: string[]): Promise<T[]>;
     findOne(query: object, columns?: string[]): Promise<T | undefined>;
     save(entity: Partial<T>): Promise<T>;
@@ -17,4 +20,5 @@ export declare abstract class BaseRepository<T> {
     getManyQueryResults(query: QueryInterface): Promise<T[]>;
     queryBuilder(): QueryInterface;
     transaction(callback: (ctx: Transaction) => void): any;
+    findManyWithPagination(query: object, { page, limit }: Required<PaginationDto>, columns?: string[]): Promise<PaginatedResponse<T>>;
 }

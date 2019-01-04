@@ -1,7 +1,7 @@
 import { IsInt } from 'class-validator';
-import { BaseDto } from '@astra/common';
+import { PaginationDto } from '@astra/common';
 
-export class FindStorageListDto extends BaseDto {
+export class FindStorageListDto extends PaginationDto {
 
   @IsInt()
   projectId: number;

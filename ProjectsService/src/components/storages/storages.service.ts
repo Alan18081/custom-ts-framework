@@ -1,8 +1,10 @@
 import { injectable, inject } from 'inversify';
+import { PaginatedResponse } from '@astra/common';
 import { Storage } from './storage';
 import {StoragesRepository} from './storages.repository';
 import {Transaction} from 'knex';
 import {ProjectsService} from '../projects/projects.service';
+import {FindStorageListDto} from './dto/find-storage-list.dto';
 
 @injectable()
 export class StoragesService {
@@ -15,6 +17,10 @@ export class StoragesService {
 
   async findManyByProject(projectId: number): Promise<Storage[]> {
     return await this.storagesRepository.find({ projectId });
+  }
+
+  async findManyWithPagination(query: FindStorageListDto): Promise<PaginatedResponse<Storage>> {
+    return await this.storagesRepository.findManyWithPagination(query, { page: query.page, limit: query.limit });
   }
 
   async findOneById(id: number): Promise<Storage | undefined> {

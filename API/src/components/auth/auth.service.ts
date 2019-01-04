@@ -1,4 +1,4 @@
-import { injectable } from 'inversify';
+import { injectable, interfaces } from 'inversify';
 import { decode } from 'jsonwebtoken';
 import { ExtractJwt, Strategy as JwtStrategy, StrategyOptions } from 'passport-jwt';
 import * as passport from 'passport';
@@ -13,7 +13,7 @@ import {
     Unauthorized
 } from '@astra/common';
 import { JwtPayload } from './interfaces/jwt-payload';
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response, RequestHandler } from 'express';
 import { messageBroker } from '../../helpers/message-broker';
 import {JwtProjectPayload} from './interfaces/jwt-project-payload';
 
@@ -29,6 +29,7 @@ export class AuthService {
 
   constructor() {
     passport.use(new JwtStrategy(this.options, (req: AuthorizedRequest, payload: JwtPayload, done: Function) => {
+      console.log('Jwt payload', payload);
       const result = async () => {
         const message = await messageBroker.sendMessageAndGetResponse(
             QueuesEnum.USERS_SERVICE,
@@ -53,9 +54,14 @@ export class AuthService {
     }))
   }
 
-  authenticateJwt(req: Request, res: Response, next: NextFunction): void {
-    this.passport.authenticate('jwt', { session: false }, () => {
+  authenticateJwt(req: Request, res: Response, next: NextFunction): RequestHandler {
+    return this.passport.authenticate('jwt', { session: false }, (err, user, info) => {
+
+      if(user) {
         next();
+      } else {
+        throw new Unauthorized({ error: Messages.INVALID_TOKEN });
+      }
     })(req, res, next);
   }
 

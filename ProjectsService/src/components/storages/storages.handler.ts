@@ -1,5 +1,14 @@
 import { inject, injectable } from 'inversify';
-import { CommunicationCodes, SubscribeMessage, ValidatorService, Messages, NotFound, QueuesEnum, BadRequest } from '@astra/common';
+import {
+    CommunicationCodes,
+    SubscribeMessage,
+    ValidatorService,
+    Messages,
+    NotFound,
+    QueuesEnum,
+    BadRequest,
+    PaginatedResponse
+} from '@astra/common';
 import { CreateStorageDto } from './dto/create-storage.dto';
 import { StoragesService } from './storages.service';
 import { RemoveStorageDto } from './dto/remove-storage.dto';
@@ -23,8 +32,12 @@ export class StoragesHandler {
   private readonly projectsService: ProjectsService;
 
   @SubscribeMessage(CommunicationCodes.GET_STORAGES_LIST)
-  async findManyByProject(query: FindStorageListDto): Promise<Storage[]> {
+  async findManyByProject(query: FindStorageListDto): Promise<Storage[] | PaginatedResponse<Storage>> {
     await this.validatorService.validate(query, FindStorageListDto);
+
+    if(query.page && query.limit) {
+      return await this.storagesService.findManyWithPagination(query);
+    }
 
     return await this.storagesService.findManyByProject(query.projectId);
   }
@@ -74,8 +87,6 @@ export class StoragesHandler {
     const { userId, ...data } = body;
 
     return await this.storagesService.createOne({ ...data });
-
-
   }
 
   @SubscribeMessage(CommunicationCodes.UPDATE_STORAGE)

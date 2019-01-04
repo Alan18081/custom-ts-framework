@@ -10,7 +10,8 @@ export class RolesGuard implements Guard {
   ) {}
 
 
-  check(req: AuthorizedRequest, res: Response, next: NextFunction): void | Promise<void> {
+  check(req: AuthorizedRequest, res: Response, next: NextFunction): void {
+    console.log(req.user, 'Roles guard');
     if(req.user.roleId !== this.requiredRole) {
       throw new Forbidden({ error: Messages.INVALID_PERMISSIONS });
     }

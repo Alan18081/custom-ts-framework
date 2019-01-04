@@ -1,6 +1,8 @@
 import {Collection, MongoClient, UpdateQuery, ObjectId} from 'mongodb';
 import {injectable, unmanaged} from 'inversify';
 import { config } from '@astra/common';
+import {PaginationDto} from '../../../Common/src/dto';
+import {PaginatedResponse} from '../../../Common/src/interfaces';
 
 @injectable()
 export abstract class MongoRepository<T> {
@@ -46,18 +48,8 @@ export abstract class MongoRepository<T> {
         return Reflect.construct(this.MappingType, [rawData]);
     }
 
-    public async updateOneById(id: string, entity: UpdateQuery<T>): Promise<T | undefined> {
-        const { upsertedId } = await this.collection.updateOne({ _id: new ObjectId(id) }, {
-            ...entity,
-            $currentDate: { lastModified: true }
-        });
-        const rawData = await this.collection.findOne(upsertedId);
-
-        console.log('Raw data', rawData);
-
-        if(rawData) {
-            return Reflect.construct(this.MappingType, [rawData]);
-        }
+    public async updateById(id: string, entity: UpdateQuery<T>): Promise<T | undefined> {
+        return await this.updateOne({ _id: new ObjectId(id) }, entity);
     }
 
     public async updateOne(query: object, entity: UpdateQuery<T>): Promise<T | undefined> {
@@ -90,8 +82,22 @@ export abstract class MongoRepository<T> {
 
     private async initData(client: MongoClient, collectionName: string) {
         const connectedClient = await client.connect();
-        console.log('Connected client');
         this.collection = connectedClient.db(config.DataService.database.database).collection(collectionName);
+    }
+
+    public async findManyWithPagination(query: object,  { page, limit }: Required<PaginationDto>): Promise<PaginatedResponse<T>> {
+
+        const mongoQuery = this.collection.find(query).skip((page - 1) * limit ).limit(limit);
+
+        const rawData = await mongoQuery.toArray();
+        const totalCount = await this.collection.count(query);
+
+        return {
+            page,
+            data: rawData.map(item => Reflect.construct(this.MappingType, [item])),
+            itemsPerPage: limit,
+            totalCount
+        }
     }
 
 }
