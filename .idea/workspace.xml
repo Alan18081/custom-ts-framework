@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93da08f2-235b-423b-8038-56864eb5a610" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/API/src/components/api-auth/api-auth.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API/src/components/api-auth/api-auth.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataService/src/components/storage-records/storage-records.handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DataService/src/components/storage-records/storage-records.handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecosystem.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ecosystem.config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,7 +18,7 @@
       <file leaf-file-name="storage-records.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-records/storage-records.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
+            <state relative-caret-position="672">
               <caret line="29" column="78" selection-start-line="29" selection-start-column="78" selection-end-line="29" selection-end-column="78" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
@@ -30,7 +30,7 @@
       <file leaf-file-name="ecosystem.config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ecosystem.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
+            <state relative-caret-position="4956">
               <caret line="177" selection-start-line="177" selection-end-line="177" />
             </state>
           </provider>
@@ -41,13 +41,37 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="storage-records.handler.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="storage-records.handler.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-records/storage-records.handler.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+            <state relative-caret-position="784">
+              <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="api-auth.module.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/src/components/api-auth/api-auth.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="api-auth.controller.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/API/src/components/api-auth/api-auth.controller.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,8 +111,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ProjectsService/src/components/projects/projects.service.ts" />
-        <option value="$PROJECT_DIR$/AuthService/src/components/auth/auth.handler.ts" />
         <option value="$PROJECT_DIR$/AuthService/src/components/auth/dto/login-project.dto.ts" />
         <option value="$PROJECT_DIR$/ProjectsService/src/components/projects/dto/find-project-by-client-info.dto.ts" />
         <option value="$PROJECT_DIR$/API/src/components/auth/auth.module.ts" />
@@ -138,6 +160,8 @@
         <option value="$PROJECT_DIR$/DataService/src/components/storage-records/storage-records.service.ts" />
         <option value="$PROJECT_DIR$/ecosystem.config.js" />
         <option value="$PROJECT_DIR$/DataService/src/components/storage-records/storage-records.handler.ts" />
+        <option value="$PROJECT_DIR$/API/src/components/api-auth/apiAuth.module.ts" />
+        <option value="$PROJECT_DIR$/API/src/components/api-auth/api-auth.controller.ts" />
       </list>
     </option>
   </component>
@@ -188,6 +212,32 @@
             <path>
               <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
               <item name="starship-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="starship-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="starship-service" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="api-auth" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -260,18 +310,19 @@
       <workItem from="1546373766473" duration="120000" />
       <workItem from="1546459037314" duration="1325000" />
       <workItem from="1546544514070" duration="4359000" />
-      <workItem from="1546554920723" duration="583000" />
+      <workItem from="1546554920723" duration="706000" />
+      <workItem from="1546585431002" duration="392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240397000" />
+    <option name="totallyTimeSpent" value="240912000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26738545" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26738545" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
@@ -280,7 +331,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.74401665" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.7435099" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
@@ -295,10 +346,10 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.3298647" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Thumbnails" order="7" weight="0.3298647" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -308,15 +359,15 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3298647" />
       <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="14" weight="0.3298647" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26520813" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.76352066" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26520813" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,20 +431,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Common/src/server/route-params.decorators.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common/src/server/server.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/src/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -625,7 +662,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-records/storage-records.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
+        <state relative-caret-position="672">
           <caret line="29" column="78" selection-start-line="29" selection-start-column="78" selection-end-line="29" selection-end-column="78" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
@@ -638,17 +675,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ecosystem.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
+        <state relative-caret-position="4956">
           <caret line="177" selection-start-line="177" selection-end-line="177" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DataService/src/components/storage-records/storage-records.handler.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+        <state relative-caret-position="784">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/components/api-auth/api-auth.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/components/api-auth/api-auth.controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
           </folding>
         </state>
       </provider>
