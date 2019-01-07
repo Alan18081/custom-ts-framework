@@ -1,8 +1,8 @@
 import { User } from './user';
-import {inject, injectable} from 'inversify';
+import { inject, injectable } from 'inversify';
 import { CreateUserDto } from './dto/create-user.dto';
-import {HashService} from '@astra/common';
-import {FindUsersListDto} from './dto/find-users-list.dto';
+import { HashService } from '@astra/common';
+import { FindUsersListDto } from './dto/find-users-list.dto';
 import {UsersRepository} from './users.repository';
 
 @injectable()
@@ -29,7 +29,6 @@ export class UsersService {
     async createOne(userData: CreateUserDto): Promise<User> {
       const newUser = new User(userData);
       newUser.password = await this.hashService.generateHash(userData.password);
-      console.log('Creating user');
       return await this.usersRepository.save(newUser);
     }
 

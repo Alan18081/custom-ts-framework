@@ -1,13 +1,13 @@
-import { injectable, interfaces } from 'inversify';
+import { injectable } from 'inversify';
 import { decode } from 'jsonwebtoken';
 import { ExtractJwt, Strategy as JwtStrategy, StrategyOptions } from 'passport-jwt';
 import * as passport from 'passport';
 import { PassportStatic } from 'passport';
 import {
-    AuthorizedRequest,
+    AuthRequest,
     CommunicationCodes,
     config,
-    IProject,
+    IProject, IProjectAccount,
     Messages,
     QueuesEnum,
     Unauthorized
@@ -28,8 +28,7 @@ export class AuthService {
   };
 
   constructor() {
-    passport.use(new JwtStrategy(this.options, (req: AuthorizedRequest, payload: JwtPayload, done: Function) => {
-      console.log('Jwt payload', payload);
+    passport.use(new JwtStrategy(this.options, (req: AuthRequest, payload: JwtPayload, done: Function) => {
       const result = async () => {
         const message = await messageBroker.sendMessageAndGetResponse(
             QueuesEnum.USERS_SERVICE,
@@ -65,20 +64,12 @@ export class AuthService {
     })(req, res, next);
   }
 
-  async authenticateJwtProject(token: string): Promise<IProject> {
-      const data = decode(token) as JwtProjectPayload;
+  async authenticateJwtProject(token: string): Promise<JwtProjectPayload> {
+      return decode(token) as JwtProjectPayload;
+  }
 
-      const message = await messageBroker.sendMessageAndGetResponse(
-          QueuesEnum.PROJECTS_SERVICE,
-          CommunicationCodes.GET_PROJECT,
-          { id: data.id }
-      );
-
-      if(!message.payload) {
-          throw new Unauthorized({ error: Messages.PROJECT_NOT_FOUND });
-      }
-
-      return message.payload;
+  async authenticateJwtProjectAccount(projectAccountToken: string): Promise<JwtPayload> {
+    return decode(projectAccountToken) as JwtPayload;
   }
 
 }

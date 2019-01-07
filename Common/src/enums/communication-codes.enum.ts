@@ -18,24 +18,31 @@ export enum CommunicationCodes {
     CREATE_PROJECT = '[ProjectsService] Create Project',
     UPDATE_PROJECT = '[ProjectsService] Update Project',
     REMOVE_PROJECT = '[ProjectsService] Remove Project',
-    REMOVE_PROJECT_ACCOUNT = '[ProjectsService] Remove Project Account',
+
+    GET_PROJECT_AND_ACCOUNT = '[ProjectsService] Get Project And Account',
 
     GET_STORAGES_LIST = '[ProjectsService] Get Storages List',
     GET_STORAGE = '[ProjectsService] Get Storage',
+    GET_STORAGE_BY_PATH = '[ProjectsService] Get Storage By Path',
     CREATE_STORAGE = '[ProjectsService] Create Storage',
     UPDATE_STORAGE = '[ProjectsService] Update Storage',
     UPDATE_STORAGE_DATA = '[DataService] Update Storage Data',
     REMOVE_STORAGE = '[ProjectsService] Remove Storage',
-
-    GET_STORAGE_DATA = '[DataService] Get Storage Data',
-    GET_STORAGE_DATA_BY_STORAGE = '[DataService] Get Storage Data By Storage',
-    CREATE_STORAGE_DATA = '[DataService] Create Storage Data',
-    CHANGE_STORAGE_DATA = '[DataService] Change Storage Data',
-    REMOVE_STORAGE_DATA = '[DataService] Remove Storage Data',
+    CHANGE_STORAGE_TYPE = '[ProjectsService] Change Storage Type',
 
     GET_STORAGE_RECORDS_LIST = '[DataService] Get Storage Records List',
     GET_STORAGE_RECORD = '[DataService] Get Storage Record',
     CREATE_STORAGE_RECORD = '[DataService] Create Storage Record',
     UPDATE_STORAGE_RECORD = '[DataService] Update Storage Record',
     REMOVE_STORAGE_RECORD = '[DataService] Remove Storage Record',
+    REMOVE_STORAGE_RECORDS_LIST = '[DataService] Remove Storage Records List',
+
+    LOGIN_PROJECT_ACCOUNT = '[ProjectsService] Login Project Account',
+    GET_PROJECT_ACCOUNTS_LIST = '[ProjectsService] Get Project Accounts List',
+    GET_PROJECT_ACCOUNT = '[ProjectsService] Get Project Account',
+    GET_PROJECT_ACCOUNT_BY_EMAIL = '[ProjectsService] Get Project Account By Email',
+    CREATE_PROJECT_ACCOUNT = '[ProjectsService] Create Project Account',
+    UPDATE_PROJECT_ACCOUNT = '[ProjectsService] Update Project Account',
+    REMOVE_PROJECT_ACCOUNT = '[ProjectsService] Remove Project Account',
+    REMOVE_PROJECT_ACCOUNT_BY_PROJECT_OWNER = '[ProjectsService] Remove Project Account By Project Owner'
 }

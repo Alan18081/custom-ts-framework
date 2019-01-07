@@ -13,3 +13,4 @@ __export(require("./config"));
 __export(require("./enums"));
 __export(require("./services"));
 __export(require("./dto"));
+__export(require("./cache"));

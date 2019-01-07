@@ -1,10 +1,13 @@
 import {Channel, Connection, ConsumeMessage, Options} from 'amqplib';
+import { validate } from 'class-validator';
 import * as uid from 'uid';
 import { eventEmitter } from '../common';
 import { CommunicationCodes, QueuesEnum } from '../enums';
 import { Message } from './message';
 import { METADATA_KEY } from '../metadata/keys';
-import { ResolvedSubscriber } from './metadata';
+import { ResolvedSubscriber } from './interfaces';
+import {ValidationError} from '../interfaces';
+import {BadRequest} from '../server';
 
 export class MessageBroker {
   private connection: Connection;
@@ -39,11 +42,22 @@ export class MessageBroker {
     this.channel.sendToQueue(queue, this.bufferMessage(message), config);
   }
 
+  async sendErrorMessage(queue: QueuesEnum, code: CommunicationCodes, payload: any, config: Options.Publish = {}): Promise<void> {
+      await this.channel.assertQueue(queue);
+      const message = new Message(code, payload, true);
+      console.log(`[Sending Error Message] ${queue} : ${code}`, payload);
+      this.channel.sendToQueue(queue, this.bufferMessage(message), config);
+  }
+
   async sendMessageAndGetResponse(queue: QueuesEnum, code: CommunicationCodes, payload: any): Promise<Message> {
     await this.channel.assertQueue(queue);
     const id = uid();
     await this.sendMessage(queue, code, payload, { correlationId: id, replyTo: this.rpcQueue, contentType: 'application/json' })
-    return await this.subscribe(id);
+    const message =  await this.subscribe(id);
+    if(message.error) {
+       throw message.payload;
+    }
+    return message;
   }
 
   async run(connection: any): Promise<void> {
@@ -56,8 +70,8 @@ export class MessageBroker {
   }
 
   subscribe(id: string): Promise<Message> {
-    return new Promise<Message>((resolve) => {
-      eventEmitter.once(id, message => {
+    return new Promise<Message>((resolve, reject) => {
+      eventEmitter.once(id, (message: Message) => {
         resolve(message);
       });
     });
@@ -66,41 +80,71 @@ export class MessageBroker {
   private async init(): Promise<void> {
     const subscribers = Reflect.getMetadata(METADATA_KEY.resolvedSubscribers, Reflect) || {};
     await this.channel.assertQueue(this.queue);
-
     await this.channel.assertQueue(this.rpcQueue);
+
     this.channel.consume(this.rpcQueue, msg => {
       if(msg) {
-        console.log('New RPC message', this.parseMessage(msg.content));
-        try {
-          eventEmitter.emit(msg.properties.correlationId, this.parseMessage(msg.content));
-        } catch (e) {
-          console.log(e);
-        }
+        this.channel.ack(msg);
+        eventEmitter.emit(msg.properties.correlationId, this.parseMessage(msg.content));
       }
-      this.channel.ack(msg);
     });
 
-    this.channel.consume(this.queue, (msg: ConsumeMessage | null) => {
+    this.channel.consume(this.queue, async (msg: ConsumeMessage | null) => {
       if(msg) {
         try {
+          this.channel.ack(msg);
           const message: Message = JSON.parse(msg.content.toString());
           const { code } = message;
           const subscriber: ResolvedSubscriber | undefined = subscribers[code];
           if(subscriber) {
+            if(subscriber.Validator) {
+              try {
+                await this.validate(message.payload, subscriber.Validator);
+              } catch (e) {
+                console.log('Validation error', e);
+                await this.sendErrorMessage(msg.properties.replyTo, message.code, e, { correlationId: msg.properties.correlationId });
+                return false;
+              }
+            }
+            if(subscriber.cacheInterceptor) {
+              const data = await subscriber.cacheInterceptor.get(JSON.stringify(message.payload));
+              if(data) {
+                return await this.sendMessage(msg.properties.replyTo, message.code, data, { correlationId: msg.properties.correlationId });
+              }
+            }
             const result: Promise<Message> | Message = subscriber.handler.call(subscriber.instance, message.payload, subscriber.withResponse ? this.sendMessage : null);
             if(result instanceof Promise) {
-              result
-                .then(res => this.sendMessage(msg.properties.replyTo, message.code, res, { correlationId: msg.properties.correlationId }))
-                .catch(err => this.sendMessage(msg.properties.replyTo, message.code, err, { correlationId: msg.properties.correlationId }));
+              try {
+                  const res = await result;
+                  await Promise.all([
+                      this.sendMessage(msg.properties.replyTo, message.code, res, { correlationId: msg.properties.correlationId }),
+                      subscriber.cacheInterceptor ? subscriber.cacheInterceptor.save(JSON.stringify(message.payload), res) : null
+                  ]);
+              } catch(e) {
+                 await  this.sendErrorMessage(msg.properties.replyTo, message.code, e, { correlationId: msg.properties.correlationId })
+              }
+
             } else {
-              this.sendMessage(msg.properties.replyTo, message.code, message.payload, { correlationId: msg.properties.correlationId })
+              await this.sendMessage(msg.properties.replyTo, message.code, message.payload, { correlationId: msg.properties.correlationId })
             }
           }
         } catch (e) {
-          console.log('[AMQP] Failed to parse message', e);
+          console.log('[AMQP] Failed to process message', e);
         }
-        this.channel.ack(msg);
       }
     });
+  }
+
+  private async validate(body: any = {}, DtoType: { new(...args) }): Promise<void> {
+      const data = new DtoType(body);
+      const errors = await validate(data);
+      if(errors.length) {
+          const errorMessages = errors.map(({ property, constraints }): ValidationError => ({
+              property,
+              constraints: Object.keys(constraints).map(key => constraints[key])
+          }));
+
+          throw new BadRequest({ errors: errorMessages });
+      }
   }
 };

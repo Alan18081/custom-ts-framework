@@ -1,0 +1,13 @@
+{
+  "name": "SDK",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+
+  },
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.18.0"
+  }
+}

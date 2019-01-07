@@ -1,3 +1,3 @@
-import {PaginationDto} from '../../../helpers/dto/pagination.dto';
+import {PaginationDto} from '@astra/common';
 
 export class FindUsersListDto extends PaginationDto {}

@@ -16,6 +16,11 @@ export declare const config: {
                 database: string;
             };
         };
+        redis: {
+            host: string;
+            port: number;
+            db: number;
+        };
     };
     ProjectsService: {
         database: {
@@ -26,11 +31,21 @@ export declare const config: {
                 database: string;
             };
         };
+        redis: {
+            host: string;
+            port: number;
+            db: number;
+        };
     };
     DataService: {
         database: {
             url: string;
             database: string;
+        };
+        redis: {
+            host: string;
+            port: number;
+            db: number;
         };
     };
 };

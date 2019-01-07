@@ -1,3 +1,3 @@
 export * from './validation-error';
-export * from './authorized-request';
+export * from './requests';
 export * from './paginated-response';

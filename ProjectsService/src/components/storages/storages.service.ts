@@ -5,6 +5,7 @@ import {StoragesRepository} from './storages.repository';
 import {Transaction} from 'knex';
 import {ProjectsService} from '../projects/projects.service';
 import {FindStorageListDto} from './dto/find-storage-list.dto';
+import {ChangeStorageTypeDto} from './dto/change-storage-type.dto';
 
 @injectable()
 export class StoragesService {
@@ -19,8 +20,8 @@ export class StoragesService {
     return await this.storagesRepository.find({ projectId });
   }
 
-  async findManyWithPagination(query: FindStorageListDto): Promise<PaginatedResponse<Storage>> {
-    return await this.storagesRepository.findManyWithPagination(query, { page: query.page, limit: query.limit });
+  async findManyWithPagination({ projectId, page, limit }: FindStorageListDto): Promise<PaginatedResponse<Storage>> {
+    return await this.storagesRepository.findManyWithPagination({ projectId }, { page, limit });
   }
 
   async findOneById(id: number): Promise<Storage | undefined> {
@@ -28,7 +29,11 @@ export class StoragesService {
   }
 
   async findOneByPath(path: string): Promise<Storage | undefined> {
-      return await this.storagesRepository.findOne({ path: path });
+      return await this.storagesRepository.findOne({ path });
+  }
+
+  async findOneByName(name: string): Promise<Storage | undefined> {
+      return await this.storagesRepository.findOne({ name });
   }
 
   async createOne(data: Partial<Storage>): Promise<Storage> {
@@ -64,6 +69,10 @@ export class StoragesService {
           }
 
       });
+  }
+
+  async changeType(payload: ChangeStorageTypeDto): Promise<Storage | undefined> {
+      return await this.storagesRepository.update({ id: payload.storageId }, { typeId: payload.typeId });
   }
 }
 

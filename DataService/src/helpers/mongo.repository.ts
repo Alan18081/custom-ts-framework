@@ -53,7 +53,6 @@ export abstract class MongoRepository<T> {
     }
 
     public async updateOne(query: object, entity: UpdateQuery<T>): Promise<T | undefined> {
-
         await this.collection.updateMany(query, entity);
         const rawData = await this.collection.findOne(query);
 

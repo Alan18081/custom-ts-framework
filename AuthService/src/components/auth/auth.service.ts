@@ -1,9 +1,11 @@
 import { injectable, inject } from 'inversify';
-import {Unauthorized, Messages, IUser, config, HashService, IProject} from '@astra/common';
+import {Unauthorized, Messages, IUser, config, HashService, IProject, IProjectAccount} from '@astra/common';
 import {JwtResponse} from './interfaces/jwt-response';
 import { sign } from 'jsonwebtoken';
 import { LoginDto } from './dto/login.dto';
 import {JwtProject} from './interfaces/jwt-project';
+import {JwtProjectAccount} from './interfaces/jwt-project-account';
+import {LoginProjectAccountDto} from './dto/login-project-account.dto';
 
 @injectable()
 export class AuthService {
@@ -29,6 +31,19 @@ export class AuthService {
 
         return {
             token
+        }
+    }
+
+    loginProjectAccount(payload: LoginProjectAccountDto, account: IProjectAccount): JwtProjectAccount {
+        if(!this.hashService.compareHash(payload.password, account.password)) {
+            throw new Unauthorized({ error: Messages.WRONG_PASSWORD });
+        }
+
+        const token = sign({ email: account.email, id: account.id }, config.common.jwtSecret);
+
+        return {
+            token,
+            user: account
         }
     }
 

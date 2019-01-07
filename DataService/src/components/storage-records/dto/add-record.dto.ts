@@ -1,4 +1,4 @@
-import { IsInt, IsDefined, IsString } from 'class-validator';
+import { IsInt, IsDefined, IsString, IsOptional } from 'class-validator';
 import { BaseDto } from '@astra/common';
 
 export class AddRecordDto extends BaseDto {
@@ -9,13 +9,14 @@ export class AddRecordDto extends BaseDto {
     @IsInt()
     storageId: number;
 
-    @IsInt()
-    userId: number;
-
     @IsString()
     path: string;
 
     @IsDefined()
     data: any;
+
+    @IsInt()
+    @IsOptional()
+    accountId: number;
 
 }

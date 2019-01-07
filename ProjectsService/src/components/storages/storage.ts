@@ -1,4 +1,4 @@
-import { IStorage } from '@astra/common';
+import { IStorage, StorageType } from '@astra/common';
 import { toNumber, toString } from 'lodash';
 
 export class Storage implements IStorage {
@@ -9,6 +9,7 @@ export class Storage implements IStorage {
   public projectId: number;
   public data: object;
   public dataId?: string;
+  public typeId: StorageType;
 
   constructor(data: Partial<Storage>) {
     this.id = data.id;

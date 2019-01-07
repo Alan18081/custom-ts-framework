@@ -12,8 +12,10 @@ exports.METADATA_KEY = {
     container: 'ioc:container',
     containerModule: 'ioc:container-module',
     subscribers: 'ioc:subscribers',
+    subscriberValidator: 'ioc:subscriber-validator',
     resolvedSubscribers: 'ioc:resolved-subscribers',
-    messageHandler: 'ioc:message-handler'
+    messageHandler: 'ioc:message-handler',
+    cacheInterceptor: 'ioc:cache-interceptor'
 };
 var METHODS;
 (function (METHODS) {
@@ -36,5 +38,6 @@ exports.PARAMS_TYPES = {
     query: 'query',
     queryField: 'queryField',
     user: 'user',
-    project: 'project'
+    project: 'project',
+    projectAccount: 'projectAccount',
 };

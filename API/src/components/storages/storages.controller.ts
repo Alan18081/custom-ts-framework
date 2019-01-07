@@ -32,11 +32,16 @@ export class StoragesController {
 
     @Get('')
     @UseGuards(JwtGuard)
-    async findManyByUser(@Query('projectId') projectId: string,  @ReqUser() user: IUser): Promise<IStorage[]> {
+    async findManyByUser(@Query() query: any,  @ReqUser() user: IUser): Promise<IStorage[]> {
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_STORAGES_LIST,
-            { userId: user.id, projectId: toNumber(projectId) }
+            {
+                userId: user.id,
+                projectId: toNumber(query.projectId),
+                page: query.page ? toNumber(query.page) : null,
+                limit: query.page ? toNumber(query.limit) : null,
+            }
         );
 
         return message.payload;

@@ -22,18 +22,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const Knex = require("knex");
+const lodash_1 = require("lodash");
 const inversify_1 = require("inversify");
 let BaseRepository = class BaseRepository {
     constructor(db, tableName, MappingType) {
         this.db = db;
-        this.table = db(tableName);
+        this._table = db(tableName);
         this.MappingType = MappingType;
     }
-    clearData() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this.table.clearSelect();
-            yield this.table.clearWhere();
-        });
+    get table() {
+        return this._table.clone();
     }
     find(query, columns) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -45,7 +43,6 @@ let BaseRepository = class BaseRepository {
                 sql = this.table.select('*');
             }
             const data = yield sql.where(query);
-            yield this.clearData();
             return data.map(item => Reflect.construct(this.MappingType, [item]));
         });
     }
@@ -59,7 +56,6 @@ let BaseRepository = class BaseRepository {
                 sql = this.table.select('*');
             }
             const data = yield sql.where(query);
-            yield this.clearData();
             if (data[0]) {
                 return Reflect.construct(this.MappingType, [data[0]]);
             }
@@ -73,7 +69,6 @@ let BaseRepository = class BaseRepository {
             const rawData = yield this.table
                 .insert(entity)
                 .returning('*');
-            yield this.clearData();
             return Reflect.construct(this.MappingType, [rawData[0]]);
         });
     }
@@ -83,7 +78,6 @@ let BaseRepository = class BaseRepository {
                 .update(entity)
                 .where(query)
                 .returning('*');
-            yield this.clearData();
             if (rawData[0]) {
                 return Reflect.construct(this.MappingType, [rawData[0]]);
             }
@@ -99,7 +93,6 @@ let BaseRepository = class BaseRepository {
     getOneQueryResult(query) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield query.returning('*');
-            yield this.clearData();
             if (result[0]) {
                 return Reflect.construct(this.MappingType, [result[0]]);
             }
@@ -108,7 +101,6 @@ let BaseRepository = class BaseRepository {
     getManyQueryResults(query) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield query.returning('*');
-            yield this.clearData();
             return result.map(item => Reflect.construct(this.MappingType, [item]));
         });
     }
@@ -129,13 +121,12 @@ let BaseRepository = class BaseRepository {
             }
             sql = sql.where(query).offset((page - 1) * limit).limit(limit);
             const rawData = yield sql.clone();
-            const totalCount = yield sql.clone().count();
-            yield this.clearData();
+            const totalCount = yield this.table.count('id').where(query);
             return {
                 page,
                 data: rawData.map(item => Reflect.construct(this.MappingType, [item])),
                 itemsPerPage: limit,
-                totalCount: totalCount[0].count
+                totalCount: lodash_1.toNumber(totalCount[0].count)
             };
         });
     }

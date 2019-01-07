@@ -57,7 +57,7 @@ export class StorageRecordsController {
 
     const message = await messageBroker.sendMessageAndGetResponse(
       QueuesEnum.DATA_SERVICE,
-      CommunicationCodes.SET_STORAGE_RECORD,
+      CommunicationCodes.CREATE_STORAGE_RECORD,
       {
         projectId: storage.id,
         storageId,

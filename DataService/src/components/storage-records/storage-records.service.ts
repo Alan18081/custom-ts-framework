@@ -24,8 +24,8 @@ export class StorageRecordsService {
         return await this.storageRecordsRepository.findManyWithPagination(query, pagination);
     }
 
-    async updateOne(data: UpdateRecordDto): Promise<StorageRecord | undefined> {
-        return await this.storageRecordsRepository.updateById(data.id, { $set: { data: data } });
+    async updateOne({ data, id }: UpdateRecordDto): Promise<StorageRecord | undefined> {
+      return await this.storageRecordsRepository.updateById(id, { $set: { data } });
     }
 
     async createOne(payload: Partial<StorageRecord>): Promise<StorageRecord> {

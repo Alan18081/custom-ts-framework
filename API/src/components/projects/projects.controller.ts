@@ -41,7 +41,6 @@ export class ProjectsController {
     @Get('')
     @UseGuards(JwtGuard)
     async findManyByUser(@ReqUser() user: IUser): Promise<IProject[]> {
-        console.log('Data', user);
         const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.GET_PROJECTS_LIST_BY_USER,
@@ -66,8 +65,7 @@ export class ProjectsController {
     @Post('')
     @UseGuards(JwtGuard)
     async createOne(@ReqUser() user: IUser, @Body() body: any): Promise<IProject> {
-        console.log(user);
-        const message =  await messageBroker.sendMessageAndGetResponse(
+        const message = await messageBroker.sendMessageAndGetResponse(
           QueuesEnum.PROJECTS_SERVICE,
           CommunicationCodes.CREATE_PROJECT,
             { ...body, userId: user.id }

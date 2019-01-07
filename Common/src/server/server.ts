@@ -10,8 +10,9 @@ import {PARAM} from './interfaces';
 import { GuardType } from "./guards-decorators";
 import { Container } from 'inversify';
 import { isFunction } from 'lodash';
-import {AuthorizedRequest, ProjectRequest} from '../interfaces';
+import {ProjectRequest, AuthRequest, ProjectAccountRequest} from '../interfaces';
 import * as passport from 'passport';
+import {Messages} from '../enums';
 
 export class Server {
 
@@ -64,20 +65,20 @@ export class Server {
       try {
         const args = this.createArgs(req, res, next, params);
         const result = await method(...args);
-
-        if(result && result.isError) {
-            res.status(result.statusCode).json(result.payload);
-        } else {
-            res.send(result);
-        }
+        res.send(result);
       } catch (e) {
-        console.log(e);
-        res.status(e.statusCode || INTERNAL_SERVER_ERROR).json(e.message);
+        if(e.message) {
+          res.status(e.statusCode).json(e);
+        } else {
+          res
+              .status(INTERNAL_SERVER_ERROR)
+              .json({ statusCode: INTERNAL_SERVER_ERROR, message: { error: Messages.INTERNAL_SERVER_ERROR } });
+        }
       }
     }
   }
 
-  private createArgs(req: ProjectRequest & AuthorizedRequest, res: Response, next: NextFunction, params: PARAM[]): any[] {
+  private createArgs(req: ProjectRequest & AuthRequest & ProjectAccountRequest, res: Response, next: NextFunction, params: PARAM[]): any[] {
     if(!params || !params.length) {
       return [req, res, next];
     }
@@ -109,6 +110,9 @@ export class Server {
 
         case PARAMS_TYPES.project:
           return req.project;
+
+        case PARAMS_TYPES.projectAccount:
+          return req.projectAccount;
       }
     });
   }
@@ -123,9 +127,15 @@ export class Server {
         }
         return (req: Request, res: Response, next: NextFunction) => {
             try {
-                guard.check.call(guard, req, res, next);
+                const result = guard.check.call(guard, req, res, next);
+                if(result instanceof Promise) {
+                    result.catch(e => {
+                        console.log('Guard error', e);
+                        res.status(e.statusCode).json(e);
+                    });
+                }
             } catch (e) {
-                console.log(e);
+                console.log('Guard error', e);
                 res.status(e.statusCode).json(e);
             }
         }

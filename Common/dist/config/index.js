@@ -17,7 +17,12 @@ exports.config = {
                 password: 'qwerty1',
                 database: 'sh_users_service'
             }
-        }
+        },
+        redis: {
+            host: 'localhost',
+            port: 6379,
+            db: 2
+        },
     },
     ProjectsService: {
         database: {
@@ -26,13 +31,23 @@ exports.config = {
                 user: 'postgres',
                 password: 'qwerty1',
                 database: 'sh_projects_service'
-            }
-        }
+            },
+        },
+        redis: {
+            host: 'localhost',
+            port: 6379,
+            db: 3
+        },
     },
     DataService: {
         database: {
             url: 'mongodb://localhost:27017',
             database: 'data-service'
-        }
+        },
+        redis: {
+            host: 'localhost',
+            port: 6379,
+            db: 4
+        },
     }
 };

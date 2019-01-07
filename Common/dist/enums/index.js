@@ -7,3 +7,4 @@ __export(require("./roles.enum"));
 __export(require("./queues.enum"));
 __export(require("./communication-codes.enum"));
 __export(require("./messages.enum"));
+__export(require("./storage-type.enum"));

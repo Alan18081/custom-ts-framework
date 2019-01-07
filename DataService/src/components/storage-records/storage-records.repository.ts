@@ -7,7 +7,7 @@ import { StorageRecord } from './storage-record';
 export class StorageRecordsRepository extends MongoRepository<StorageRecord> {
 
     constructor() {
-        super(client, 'storage-data', StorageRecord);
+        super(client, 'storage-records', StorageRecord);
     }
 
 }

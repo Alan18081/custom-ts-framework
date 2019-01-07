@@ -65,6 +65,10 @@ export function Project() {
   return RouteParams(PARAMS_TYPES.project);
 }
 
+export function ProjectAccount() {
+  return RouteParams(PARAMS_TYPES.projectAccount);
+}
+
 export function getHandler(target: any, name: string, descriptor: PropertyDescriptor): Handler {
   let methods: { [key: string]: Handler } = {};
   if(!Reflect.hasMetadata(METADATA_KEY.controllerMethod, target.constructor)) {

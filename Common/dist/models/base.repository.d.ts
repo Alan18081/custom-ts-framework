@@ -5,12 +5,12 @@ import { PaginatedResponse } from '../interfaces';
 import { PaginationDto } from '../dto';
 export declare abstract class BaseRepository<T> {
     private readonly db;
-    private readonly table;
+    private readonly _table;
     private readonly MappingType;
     protected constructor(db: Knex, tableName: string, MappingType: {
         new (...args: any[]): T;
     });
-    private clearData;
+    private readonly table;
     find(query: object, columns?: string[]): Promise<T[]>;
     findOne(query: object, columns?: string[]): Promise<T | undefined>;
     save(entity: Partial<T>): Promise<T>;

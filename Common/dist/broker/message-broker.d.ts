@@ -12,8 +12,10 @@ export declare class MessageBroker {
     private handleError;
     private handleClose;
     sendMessage(queue: QueuesEnum, code: CommunicationCodes, payload: any, config?: Options.Publish): Promise<void>;
+    sendErrorMessage(queue: QueuesEnum, code: CommunicationCodes, payload: any, config?: Options.Publish): Promise<void>;
     sendMessageAndGetResponse(queue: QueuesEnum, code: CommunicationCodes, payload: any): Promise<Message>;
     run(connection: any): Promise<void>;
     subscribe(id: string): Promise<Message>;
     private init;
+    private validate;
 }

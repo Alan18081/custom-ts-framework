@@ -16,6 +16,7 @@ const keys_2 = require("../metadata/keys");
 const bodyParser = require("body-parser");
 const lodash_1 = require("lodash");
 const passport = require("passport");
+const enums_1 = require("../enums");
 class Server {
     constructor(port) {
         this.port = port;
@@ -55,16 +56,17 @@ class Server {
             try {
                 const args = this.createArgs(req, res, next, params);
                 const result = yield method(...args);
-                if (result && result.isError) {
-                    res.status(result.statusCode).json(result.payload);
-                }
-                else {
-                    res.send(result);
-                }
+                res.send(result);
             }
             catch (e) {
-                console.log(e);
-                res.status(e.statusCode || http_status_codes_1.INTERNAL_SERVER_ERROR).json(e.message);
+                if (e.message) {
+                    res.status(e.statusCode).json(e);
+                }
+                else {
+                    res
+                        .status(http_status_codes_1.INTERNAL_SERVER_ERROR)
+                        .json({ statusCode: http_status_codes_1.INTERNAL_SERVER_ERROR, message: { error: enums_1.Messages.INTERNAL_SERVER_ERROR } });
+                }
             }
         });
     }
@@ -94,6 +96,8 @@ class Server {
                     return req.user;
                 case keys_1.PARAMS_TYPES.project:
                     return req.project;
+                case keys_1.PARAMS_TYPES.projectAccount:
+                    return req.projectAccount;
             }
         });
     }
@@ -108,10 +112,16 @@ class Server {
             }
             return (req, res, next) => {
                 try {
-                    guard.check.call(guard, req, res, next);
+                    const result = guard.check.call(guard, req, res, next);
+                    if (result instanceof Promise) {
+                        result.catch(e => {
+                            console.log('Guard error', e);
+                            res.status(e.statusCode).json(e);
+                        });
+                    }
                 }
                 catch (e) {
-                    console.log(e);
+                    console.log('Guard error', e);
                     res.status(e.statusCode).json(e);
                 }
             };

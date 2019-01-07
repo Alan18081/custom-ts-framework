@@ -1,6 +1,6 @@
 import {Container, interfaces} from 'inversify';
 import {METADATA_KEY, MODULE_KEYS} from '../metadata/keys';
-import {ResolvedSubscriber, Subscriber} from '../broker/metadata';
+import {ResolvedSubscriber, Subscriber} from '../broker/interfaces';
 
 interface ModuleConfig {
     imports?: any[];

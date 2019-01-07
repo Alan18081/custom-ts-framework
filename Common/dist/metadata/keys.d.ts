@@ -10,8 +10,10 @@ export declare const METADATA_KEY: {
     container: string;
     containerModule: string;
     subscribers: string;
+    subscriberValidator: string;
     resolvedSubscribers: string;
     messageHandler: string;
+    cacheInterceptor: string;
 };
 export declare enum METHODS {
     get = "get",
@@ -33,4 +35,5 @@ export declare const PARAMS_TYPES: {
     queryField: string;
     user: string;
     project: string;
+    projectAccount: string;
 };

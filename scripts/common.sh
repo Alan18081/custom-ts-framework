@@ -24,6 +24,3 @@ for i in ${MICROSERVICES[@]}; do
     yarn
     rm -rf dist
 done
-
-cd ..
-npm run all
