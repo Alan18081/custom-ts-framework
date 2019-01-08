@@ -8,6 +8,7 @@ import { FindUserByEmailDto } from './dto/find-user-by-email.dto';
 import {UpdateUserDto} from './dto/update-user.dto';
 import {RemoveUserDto} from './dto/remove-user.dto';
 import {User} from './user';
+import { ResetUserPasswordDto } from './dto/reset-user-password.dto';
 
 @injectable()
 export class UsersHandler {
@@ -58,4 +59,11 @@ export class UsersHandler {
   async removeOne(payload: RemoveUserDto): Promise<void> {
       await this.usersService.removeOne(payload.id);
   }
+
+  @SubscribeMessage(CommunicationCodes.RESET_USER_PASSWORD)
+  @Validate(ResetUserPasswordDto)
+  async resetPassword(payload: ResetUserPasswordDto): Promise<void> {
+
+  }
+
 }

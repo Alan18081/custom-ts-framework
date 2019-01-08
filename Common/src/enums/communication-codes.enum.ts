@@ -6,6 +6,7 @@ export enum CommunicationCodes {
     CREATE_USER = '[UsersService] Create User',
     UPDATE_USER = '[UsersService] Update User',
     REMOVE_USER = '[UsersService] Remove User',
+    RESET_USER_PASSWORD = '[UsersService] Reset User Password',
 
     LOGIN = '[AuthService] Login User',
     LOGIN_PROJECT = '[AuthService] Login Project',

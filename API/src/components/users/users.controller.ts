@@ -4,19 +4,20 @@ import {
     Controller,
     Delete,
     Get,
+    IUser,
     Param,
     Post,
     Put,
     Query,
     QueuesEnum,
     Roles,
-    UseGuards,
-    IUser
+    UseGuards
 } from '@astra/common';
 import { injectable } from 'inversify';
 import { messageBroker } from '../../helpers/message-broker';
 import { JwtGuard } from '../../helpers/guards/jwt.guard';
 import { rolesGuardsFactory } from '../../helpers/roles-guards.factory';
+import { ResetPassword } from './intefaces/reset-password';
 
 @injectable()
 @Controller('users')
@@ -78,6 +79,15 @@ export class UsersController {
           QueuesEnum.USERS_SERVICE,
           CommunicationCodes.REMOVE_USER,
           { id }
+        );
+    }
+
+    @Post('resetPassword')
+    async resetPassword(@Body() body: ResetPassword): Promise<void> {
+        await messageBroker.sendMessageAndGetResponse(
+          QueuesEnum.USERS_SERVICE,
+          CommunicationCodes.RESET_USER_PASSWORD,
+          { email: body.email }
         );
     }
 

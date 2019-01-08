@@ -9,6 +9,7 @@ var CommunicationCodes;
     CommunicationCodes["CREATE_USER"] = "[UsersService] Create User";
     CommunicationCodes["UPDATE_USER"] = "[UsersService] Update User";
     CommunicationCodes["REMOVE_USER"] = "[UsersService] Remove User";
+    CommunicationCodes["RESET_USER_PASSWORD"] = "[UsersService] Reset User Password";
     CommunicationCodes["LOGIN"] = "[AuthService] Login User";
     CommunicationCodes["LOGIN_PROJECT"] = "[AuthService] Login Project";
     CommunicationCodes["AUTH_BY_TOKEN"] = "[AuthService] Auth By Token";
